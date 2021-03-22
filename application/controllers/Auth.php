@@ -83,6 +83,20 @@ class Auth extends CI_Controller
 			{
 				//if the login is successful
 				//redirect them back to the home page
+				// $this->session->set_flashdata('message', $this->ion_auth->messages());
+				// redirect('/', 'refresh');
+
+                $group = array('PIW', 'SSW');
+                if ($this->ion_auth->in_group($group, false, true)) {
+                    /**
+                     * jika user yang login memiliki hak akses ke semua company
+                     * maka, proses selanjutnya ada memilih company
+                     */
+                    redirect(site_url('auth/selectCompany'), 'refresh');
+                }
+
+                //if the login is successful
+				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('/', 'refresh');
 			}
@@ -913,5 +927,37 @@ class Auth extends CI_Controller
 			return $view_html;
 		}
 	}
+
+    public function selectCompany()
+    {
+        $this->data['title'] = 'Pilih Perusahaan';
+
+        // check combo company
+        $this->form_validation->set_rules(
+            'idcompany',
+            'Company',
+            array("required", array("f_check_company", function ($company) {
+                return $company != "Company";
+            })),
+            array("f_check_company" => "Company harus terisi !")
+        );
+
+        if ($this->form_validation->run() === true) {
+
+            /**
+             * simpan session dbName sesuai dengan group name
+             */
+            $this->session->set_userdata('dbName', $this->input->post('idcompany'));
+            redirect('/', 'refresh');
+        } else {
+            $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+            // ambil data company
+            // dari db_sia2.groups
+            $this->data['groups'] = $this->ion_auth->groups()->result();
+
+            $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'select_company', $this->data);
+        }
+    }
 
 }

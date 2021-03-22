@@ -29,25 +29,23 @@
 
                 <div class="card-body login-card-body">
 
-                    <p class="login-box-msg"><?php echo lang('login_subheading');?></p>
+                    <p class="login-box-msg"><?php echo 'Select Company';?></p>
                     <p class="login-box-msg"><?php echo $message;?></p>
 
-                    <?php echo form_open("auth/login");?>
+                    <?php echo form_open("auth/selectCompany");?>
 
                         <div class="input-group mb-3">
-                            <?php echo form_input($identity, '', array('class'=>'form-control', 'placeholder'=>lang('login_identity_label')));?>
+                            <select class="form-control" name="idcompany">
+                                <option>Company</option>
+                                <?php foreach ($groups as $r) { ?>
+                                    <?php if (substr($r->description, 0, 2) == 'PT' or substr($r->description, 0, 2) == 'CV') { ?>
+                                    <option value="<?php echo $r->name; ?>"><?php echo $r->description; ?></option>
+                                    <?php } ?>
+                                <?php } ?>
+                            </select>
                             <div class="input-group-append">
                                 <div class="input-group-text">
-                                    <span class="fas fa-envelope"></span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="input-group mb-3">
-                            <?php echo form_input($password, '', array('class'=>'form-control', 'placeholder'=>lang('login_password_label')));?>
-                            <div class="input-group-append">
-                                <div class="input-group-text">
-                                    <span class="fas fa-lock"></span>
+                                    <span class="fas fa-building"></span>
                                 </div>
                             </div>
                         </div>
@@ -55,7 +53,7 @@
                         <div class="row">
                             <div class="col">
                                 <?php echo form_submit('submit', lang('login_submit_btn'), array('class'=>'btn btn-primary'));?>
-                                <a href="<?php echo site_url(); ?>" type="button" class="btn btn-secondary">Cancel</a>
+                                <a href="<?php echo site_url('auth/logout'); ?>" type="button" class="btn btn-secondary">Cancel</a>
                             </div>
                             <!-- /.col -->
 

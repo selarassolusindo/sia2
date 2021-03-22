@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>AdminLTE 3 | Dashboard</title>
+        <title><?php echo SITE_NAME . ' v' . SITE_VERSION; ?></title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Font Awesome -->
@@ -78,7 +78,7 @@
                     <img src="<?php echo base_url(); ?>assets/adminlte/dist/img/AdminLTELogo.png"
                     alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                    <span class="brand-text font-weight-light">TEMPLATE</span>
+                    <span class="brand-text font-weight-light"><?php echo SITE_NAME . ' v' . SITE_VERSION; ?></span>
                 </a>
 
                 <!-- Sidebar -->
