@@ -91,7 +91,7 @@
                         </div> -->
                         <div class="info">
                             <!-- <a href="#" class="d-block">Alexander Pierce</a> -->
-                            <a href="#" class="d-block"><?php echo $this->ion_auth->logged_in() ? $this->ion_auth->user()->row()->first_name . ' - ' . $this->ion_auth->user()->row()->username : ''; ?></a>
+                            <a href="#" class="d-block"><?php echo $this->ion_auth->logged_in() ? $this->ion_auth->user()->row()->first_name . ' - ' . $this->ion_auth->user()->row()->username . ' - ' . $this->session->userdata('dbName') : ''; ?></a>
                         </div>
                     </div>
 
@@ -116,7 +116,7 @@
                                 <?php
                                 switch ($this->uri->segment(1)) {
                                     case 'auth':
-                                    // case '_35_alamat':
+                                    case 't99_company':
                                     // case '_36_warganegara':
                                     // case '_37_hubungan':
                                     // case '_38_status':
@@ -138,7 +138,7 @@
                                     <?php
                                     switch ($this->uri->segment(1)) {
                                         case 'auth':
-                                        // case '_35_alamat':
+                                        case 't99_company':
                                         // case '_36_warganegara':
                                         // case '_37_hubungan':
                                         // case '_38_status':
@@ -168,6 +168,12 @@
                                         <a href="<?php echo site_url(); ?>auth" class="nav-link <?php echo $this->uri->segment(1) == 'auth' ? 'active' : ''; ?>">
                                             <i class="fas fa-users-cog nav-icon"></i>
                                             <p>Users & Groups</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t99_company" class="nav-link <?php echo $this->uri->segment(1) == 't99_company' ? 'active' : ''; ?>">
+                                            <i class="fas fa-building nav-icon"></i>
+                                            <p>Company</p>
                                         </a>
                                     </li>
                                     <?php } ?>
