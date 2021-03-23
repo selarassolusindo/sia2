@@ -331,8 +331,41 @@
                             </div><!-- /.col -->
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
-                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                    <li class="breadcrumb-item active">Dashboard v1</li>
+                                    <?php
+                                    $j = $this->uri->total_segments(); //echo $j;
+                                    if ($j == 0) {
+                                        ?>
+                                        <li class="breadcrumb-item active">Dashboard</li>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <li class="breadcrumb-item"><a href="<?php echo site_url(); ?>">Dashboard</a></li>
+                                        <?php
+                                        if ($j == 1) {
+                                            ?>
+                                            <li class="breadcrumb-item active">
+                                                <?php echo substr($this->uri->segment(1), 0, 1) == 't' ? ucfirst(substr($this->uri->segment(1), 4)) : ucfirst($this->uri->segment(1)); ?>
+                                            </li>
+                                            <?php
+                                        } else {
+                                            for ($i = 1; $i <= 2; $i++) {
+                                                if ($i == 1) {
+                                                    ?>
+                                                    <li class="breadcrumb-item">
+                                                        <a href="<?php echo site_url().$this->uri->segment(1); ?>"><?php echo substr($this->uri->segment(1), 0, 1) == 't' ? ucfirst(substr($this->uri->segment(1), 4)) : ucfirst($this->uri->segment(1)); ?></a>
+                                                    </li>
+                                                    <?php
+                                                } else {
+                                                    ?>
+                                                    <li class="breadcrumb-item active">
+                                                        <?php echo ucfirst($this->uri->segment(2)); ?>
+                                                    </li>
+                                                    <?php
+                                                }
+                                            }
+                                        }
+                                    }
+                                    ?>
                                 </ol>
                             </div><!-- /.col -->
                         </div><!-- /.row -->

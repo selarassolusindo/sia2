@@ -69,7 +69,7 @@
 				echo ' | ';
 				echo anchor(site_url('t99_company/update/'.$t99_company->idcompany),'Update');
 				echo ' | ';
-				echo anchor(site_url('t99_company/delete/'.$t99_company->idcompany),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"');
+				echo anchor(site_url('t99_company/delete/'.$t99_company->idcompany),'Delete','onclick="javascript: return confirm(\'Are You Sure ?\')"');
 				?>
 			</td>
 		</tr>

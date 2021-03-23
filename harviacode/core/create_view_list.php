@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 $string = "<!doctype html>
 <html>
@@ -29,7 +29,7 @@ $string = "<!doctype html>
                     <div class=\"input-group\">
                         <input type=\"text\" class=\"form-control\" name=\"q\" value=\"<?php echo \$q; ?>\">
                         <span class=\"input-group-btn\">
-                            <?php 
+                            <?php
                                 if (\$q <> '')
                                 {
                                     ?>
@@ -69,7 +69,7 @@ $string .= "\n\t\t\t<td style=\"text-align:center\" width=\"200px\">"
         . "\n\t\t\t\techo ' | '; "
         . "\n\t\t\t\techo anchor(site_url('".$c_url."/update/'.$".$c_url."->".$pk."),'Update'); "
         . "\n\t\t\t\techo ' | '; "
-        . "\n\t\t\t\techo anchor(site_url('".$c_url."/delete/'.$".$c_url."->".$pk."),'Delete','onclick=\"javasciprt: return confirm(\\'Are You Sure ?\\')\"'); "
+        . "\n\t\t\t\techo anchor(site_url('".$c_url."/delete/'.$".$c_url."->".$pk."),'Delete','onclick=\"javascript: return confirm(\\'Are You Sure ?\\')\"'); "
         . "\n\t\t\t\t?>"
         . "\n\t\t\t</td>";
 

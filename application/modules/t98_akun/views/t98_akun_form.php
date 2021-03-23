@@ -11,7 +11,11 @@
     </head>
     <body>
         <h2 style="margin-top:0px">T98_akun <?php echo $button ?></h2> -->
-        <form action="<?php echo $action; ?>" method="post">
+    <form action="<?php echo $action; ?>" method="post">
+        <div class="form-group">
+            <label for="varchar">Akun Induk</label>
+            <input type="text" class="form-control" name="AkunInduk" id="AkunInduk" placeholder="Akun Induk" value="<?php echo $KodeInduk . ' - ' . $NamaInduk; ?>" readonly="readonly" />
+        </div>
 	    <div class="form-group">
             <label for="varchar">Kode <?php echo form_error('Kode') ?></label>
             <input type="text" class="form-control" name="Kode" id="Kode" placeholder="Kode" value="<?php echo $Kode; ?>" />
@@ -21,12 +25,12 @@
             <input type="text" class="form-control" name="Nama" id="Nama" placeholder="Nama" value="<?php echo $Nama; ?>" />
         </div>
 	    <div class="form-group">
-            <label for="int">Induk <?php echo form_error('Induk') ?></label>
-            <input type="text" class="form-control" name="Induk" id="Induk" placeholder="Induk" value="<?php echo $Induk; ?>" />
+            <!-- <label for="int">Induk <?php echo form_error('Induk') ?></label> -->
+            <input type="hidden" class="form-control" name="Induk" id="Induk" placeholder="Induk" value="<?php echo $Induk; ?>" />
         </div>
 	    <div class="form-group">
-            <label for="varchar">Urut <?php echo form_error('Urut') ?></label>
-            <input type="text" class="form-control" name="Urut" id="Urut" placeholder="Urut" value="<?php echo $Urut; ?>" />
+            <!-- <label for="varchar">Urut <?php echo form_error('Urut') ?></label> -->
+            <input type="hidden" class="form-control" name="Urut" id="Urut" placeholder="Urut" value="<?php echo $Urut; ?>" />
         </div>
 	    <!-- <div class="form-group">
             <label for="tinyint">Idusers <?php echo form_error('idusers') ?></label>

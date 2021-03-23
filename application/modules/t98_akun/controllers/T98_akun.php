@@ -72,20 +72,27 @@ class T98_akun extends CI_Controller
         }
     }
 
-    public function create()
+    public function create($id)
     {
+        /**
+         * mencari satu baris record data -> berdasarkan idakun
+         */
+        $row = $this->T98_akun_model->get_by_id($id);
+
         $data = array(
             'button' => 'Create',
             'action' => site_url('t98_akun/create_action'),
-	    'idakun' => set_value('idakun'),
-	    'Kode' => set_value('Kode'),
-	    'Nama' => set_value('Nama'),
-	    'Induk' => set_value('Induk'),
-	    'Urut' => set_value('Urut'),
-	    'idusers' => set_value('idusers'),
-	    'created_at' => set_value('created_at'),
-	    'updated_at' => set_value('updated_at'),
-	);
+    	    'idakun' => set_value('idakun'),
+    	    'Kode' => set_value('Kode', $this->T98_akun_model->getNewKode($id)),
+    	    'Nama' => set_value('Nama'),
+    	    'Induk' => set_value('Induk'),
+    	    'Urut' => set_value('Urut'),
+    	    // 'idusers' => set_value('idusers'),
+    	    // 'created_at' => set_value('created_at'),
+    	    // 'updated_at' => set_value('updated_at'),
+            'KodeInduk' => $row->Kode,
+            'NamaInduk' => $row->Nama,
+        );
         // $this->load->view('t98_akun/t98_akun_form', $data);
         $data['_view'] = 't98_akun/t98_akun_form';
         $data['_caption'] = 'Akun';
