@@ -79,24 +79,29 @@ class T98_akun extends CI_Controller
          */
         $row = $this->T98_akun_model->get_by_id($id);
 
-        $data = array(
-            'button' => 'Create',
-            'action' => site_url('t98_akun/create_action'),
-    	    'idakun' => set_value('idakun'),
-    	    'Kode' => set_value('Kode', $this->T98_akun_model->getNewKode($id)),
-    	    'Nama' => set_value('Nama'),
-    	    'Induk' => set_value('Induk'),
-    	    'Urut' => set_value('Urut'),
-    	    // 'idusers' => set_value('idusers'),
-    	    // 'created_at' => set_value('created_at'),
-    	    // 'updated_at' => set_value('updated_at'),
-            'KodeInduk' => $row->Kode,
-            'NamaInduk' => $row->Nama,
-        );
-        // $this->load->view('t98_akun/t98_akun_form', $data);
-        $data['_view'] = 't98_akun/t98_akun_form';
-        $data['_caption'] = 'Akun';
-        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+        if ($row) {
+            $data = array(
+                'button' => 'Create',
+                'action' => site_url('t98_akun/create_action'),
+        	    'idakun' => set_value('idakun', $id),
+        	    'Kode' => set_value('Kode', $this->T98_akun_model->getNewKode($id)),
+        	    'Nama' => set_value('Nama'),
+        	    'Induk' => set_value('Induk', $id),
+        	    'Urut' => set_value('Urut'),
+        	    // 'idusers' => set_value('idusers'),
+        	    // 'created_at' => set_value('created_at'),
+        	    // 'updated_at' => set_value('updated_at'),
+                'KodeInduk' => $row->Kode,
+                'NamaInduk' => $row->Nama,
+            );
+            // $this->load->view('t98_akun/t98_akun_form', $data);
+            $data['_view'] = 't98_akun/t98_akun_form';
+            $data['_caption'] = 'Akun';
+            $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('t98_akun'));
+        }
     }
 
     public function create_action()
@@ -104,21 +109,25 @@ class T98_akun extends CI_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->create();
+            // $this->create();
+            echo '>'.$this->input->post('idakun', TRUE).'<';
+            $this->create($this->input->post('idakun', TRUE));
         } else {
+            $idakun = $this->input->post('idakun', TRUE);
             $data = array(
-		'Kode' => $this->input->post('Kode',TRUE),
-		'Nama' => $this->input->post('Nama',TRUE),
-		'Induk' => $this->input->post('Induk',TRUE),
-		'Urut' => $this->input->post('Urut',TRUE),
-		'idusers' => $this->input->post('idusers',TRUE),
-		'created_at' => $this->input->post('created_at',TRUE),
-		'updated_at' => $this->input->post('updated_at',TRUE),
-	    );
+        		'Kode' => $this->input->post('Kode',TRUE),
+        		'Nama' => $this->input->post('Nama',TRUE),
+        		'Induk' => $this->input->post('Induk',TRUE),
+        		// 'Urut' => $this->input->post('Urut',TRUE),
+                'Urut' => substr(trim($this->input->post('Kode',TRUE)) . '0000000000000', 0, 13),
+                'idusers' => $this->session->userdata('user_id'),
+        		// 'created_at' => $this->input->post('created_at',TRUE),
+        		// 'updated_at' => $this->input->post('updated_at',TRUE),
+            );
 
             $this->T98_akun_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('t98_akun'));
+            redirect(site_url('t98_akun/create/'.$idakun));
         }
     }
 
@@ -191,10 +200,10 @@ class T98_akun extends CI_Controller
 	$this->form_validation->set_rules('Kode', 'kode', 'trim|required');
 	$this->form_validation->set_rules('Nama', 'nama', 'trim|required');
 	$this->form_validation->set_rules('Induk', 'induk', 'trim|required');
-	$this->form_validation->set_rules('Urut', 'urut', 'trim|required');
-	$this->form_validation->set_rules('idusers', 'idusers', 'trim|required');
-	$this->form_validation->set_rules('created_at', 'created at', 'trim|required');
-	$this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
+	// $this->form_validation->set_rules('Urut', 'urut', 'trim|required');
+	// $this->form_validation->set_rules('idusers', 'idusers', 'trim|required');
+	// $this->form_validation->set_rules('created_at', 'created at', 'trim|required');
+	// $this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
 
 	$this->form_validation->set_rules('idakun', 'idakun', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
