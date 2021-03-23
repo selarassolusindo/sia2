@@ -55,9 +55,9 @@ class T99_company extends CI_Controller
 		'Nama' => $row->Nama,
 		'Alamat' => $row->Alamat,
 		'Kota' => $row->Kota,
-		'Group_Kode' => $row->Group_Kode,
-		'created_at' => $row->created_at,
-		'updated_at' => $row->updated_at,
+		// 'idusers' => $row->idusers,
+		// 'created_at' => $row->created_at,
+		// 'updated_at' => $row->updated_at,
 	    );
             // $this->load->view('t99_company/t99_company_read', $data);
             $data['_view'] = 't99_company/t99_company_read';
@@ -78,13 +78,13 @@ class T99_company extends CI_Controller
 	    'Nama' => set_value('Nama'),
 	    'Alamat' => set_value('Alamat'),
 	    'Kota' => set_value('Kota'),
-	    'Group_Kode' => set_value('Group_Kode'),
-	    'created_at' => set_value('created_at'),
-	    'updated_at' => set_value('updated_at'),
+	    // 'idusers' => set_value('idusers'),
+	    // 'created_at' => set_value('created_at'),
+	    // 'updated_at' => set_value('updated_at'),
 	);
         // $this->load->view('t99_company/t99_company_form', $data);
         $data['_view'] = 't99_company/t99_company_form';
-        $data['_caption'] = 'Company';
+        $data['_caption'] = 'Data Company';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -99,9 +99,9 @@ class T99_company extends CI_Controller
 		'Nama' => $this->input->post('Nama',TRUE),
 		'Alamat' => $this->input->post('Alamat',TRUE),
 		'Kota' => $this->input->post('Kota',TRUE),
-		'Group_Kode' => $this->input->post('Group_Kode',TRUE),
-		'created_at' => $this->input->post('created_at',TRUE),
-		'updated_at' => $this->input->post('updated_at',TRUE),
+        'idusers' => $this->session->userdata('user_id'),
+		// 'created_at' => $this->input->post('created_at',TRUE),
+		// 'updated_at' => $this->input->post('updated_at',TRUE),
 	    );
 
             $this->T99_company_model->insert($data);
@@ -122,13 +122,13 @@ class T99_company extends CI_Controller
 		'Nama' => set_value('Nama', $row->Nama),
 		'Alamat' => set_value('Alamat', $row->Alamat),
 		'Kota' => set_value('Kota', $row->Kota),
-		'Group_Kode' => set_value('Group_Kode', $row->Group_Kode),
-		'created_at' => set_value('created_at', $row->created_at),
-		'updated_at' => set_value('updated_at', $row->updated_at),
+		// 'idusers' => set_value('idusers', $row->idusers),
+		// 'created_at' => set_value('created_at', $row->created_at),
+		// 'updated_at' => set_value('updated_at', $row->updated_at),
 	    );
             // $this->load->view('t99_company/t99_company_form', $data);
             $data['_view'] = 't99_company/t99_company_form';
-            $data['_caption'] = 'Company';
+            $data['_caption'] = 'Data Company';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -147,9 +147,9 @@ class T99_company extends CI_Controller
 		'Nama' => $this->input->post('Nama',TRUE),
 		'Alamat' => $this->input->post('Alamat',TRUE),
 		'Kota' => $this->input->post('Kota',TRUE),
-		'Group_Kode' => $this->input->post('Group_Kode',TRUE),
-		'created_at' => $this->input->post('created_at',TRUE),
-		'updated_at' => $this->input->post('updated_at',TRUE),
+        'idusers' => $this->session->userdata('user_id'),
+		// 'created_at' => $this->input->post('created_at',TRUE),
+		// 'updated_at' => $this->input->post('updated_at',TRUE),
 	    );
 
             $this->T99_company_model->update($this->input->post('idcompany', TRUE), $data);
@@ -177,9 +177,9 @@ class T99_company extends CI_Controller
 	$this->form_validation->set_rules('Nama', 'nama', 'trim|required');
 	$this->form_validation->set_rules('Alamat', 'alamat', 'trim|required');
 	$this->form_validation->set_rules('Kota', 'kota', 'trim|required');
-	$this->form_validation->set_rules('Group_Kode', 'group kode', 'trim|required');
-	$this->form_validation->set_rules('created_at', 'created at', 'trim|required');
-	$this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
+	// $this->form_validation->set_rules('idusers', 'idusers', 'trim|required');
+	// $this->form_validation->set_rules('created_at', 'created at', 'trim|required');
+	// $this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
 
 	$this->form_validation->set_rules('idcompany', 'idcompany', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -210,7 +210,7 @@ class T99_company extends CI_Controller
 	xlsWriteLabel($tablehead, $kolomhead++, "Nama");
 	xlsWriteLabel($tablehead, $kolomhead++, "Alamat");
 	xlsWriteLabel($tablehead, $kolomhead++, "Kota");
-	xlsWriteLabel($tablehead, $kolomhead++, "Group Kode");
+	xlsWriteLabel($tablehead, $kolomhead++, "Idusers");
 	xlsWriteLabel($tablehead, $kolomhead++, "Created At");
 	xlsWriteLabel($tablehead, $kolomhead++, "Updated At");
 
@@ -222,7 +222,7 @@ class T99_company extends CI_Controller
 	    xlsWriteLabel($tablebody, $kolombody++, $data->Nama);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->Alamat);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->Kota);
-	    xlsWriteLabel($tablebody, $kolombody++, $data->Group_Kode);
+	    xlsWriteLabel($tablebody, $kolombody++, $data->idusers);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->created_at);
 	    xlsWriteLabel($tablebody, $kolombody++, $data->updated_at);
 
@@ -252,5 +252,5 @@ class T99_company extends CI_Controller
 /* End of file T99_company.php */
 /* Location: ./application/controllers/T99_company.php */
 /* Please DO NOT modify this information : */
-/* Generated by Harviacode Codeigniter CRUD Generator 2021-03-23 00:30:32 */
+/* Generated by Harviacode Codeigniter CRUD Generator 2021-03-23 02:08:35 */
 /* http://harviacode.com */

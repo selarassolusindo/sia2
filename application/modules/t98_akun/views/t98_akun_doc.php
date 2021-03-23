@@ -16,29 +16,31 @@
         </style>
     </head>
     <body>
-        <h2>T99_company List</h2>
+        <h2>T98_akun List</h2>
         <table class="word-table" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
+		<th>Kode</th>
 		<th>Nama</th>
-		<th>Alamat</th>
-		<th>Kota</th>
+		<th>Induk</th>
+		<th>Urut</th>
 		<th>Idusers</th>
 		<th>Created At</th>
 		<th>Updated At</th>
 		
             </tr><?php
-            foreach ($t99_company_data as $t99_company)
+            foreach ($t98_akun_data as $t98_akun)
             {
                 ?>
                 <tr>
 		      <td><?php echo ++$start ?></td>
-		      <td><?php echo $t99_company->Nama ?></td>
-		      <td><?php echo $t99_company->Alamat ?></td>
-		      <td><?php echo $t99_company->Kota ?></td>
-		      <td><?php echo $t99_company->idusers ?></td>
-		      <td><?php echo $t99_company->created_at ?></td>
-		      <td><?php echo $t99_company->updated_at ?></td>	
+		      <td><?php echo $t98_akun->Kode ?></td>
+		      <td><?php echo $t98_akun->Nama ?></td>
+		      <td><?php echo $t98_akun->Induk ?></td>
+		      <td><?php echo $t98_akun->Urut ?></td>
+		      <td><?php echo $t98_akun->idusers ?></td>
+		      <td><?php echo $t98_akun->created_at ?></td>
+		      <td><?php echo $t98_akun->updated_at ?></td>	
                 </tr>
                 <?php
             }

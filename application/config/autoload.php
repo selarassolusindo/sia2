@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('url', 'selusin_helper', 'form');
+$autoload['helper'] = array('url', 'selusin', 'form');
 
 /*
 | -------------------------------------------------------------------
