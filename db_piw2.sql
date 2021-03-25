@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 23, 2021 at 09:48 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: Mar 25, 2021 at 02:16 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_piw2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t97_saldoawal`
+--
+
+CREATE TABLE `t97_saldoawal` (
+  `idsa` int(11) NOT NULL,
+  `idakun` int(11) NOT NULL,
+  `Debit` double NOT NULL DEFAULT 0,
+  `Kredit` double NOT NULL DEFAULT 0,
+  `idusers` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t97_saldoawal`
+--
+
+INSERT INTO `t97_saldoawal` (`idsa`, `idakun`, `Debit`, `Kredit`, `idusers`, `created_at`, `updated_at`) VALUES
+(1, 4, 1000250, 0, 0, '2020-10-14 23:55:48', '2020-10-15 10:41:03'),
+(3, 410, 1144, 0, 0, '2020-10-19 08:12:19', '2020-10-19 09:44:47'),
+(5, 39, 1, 0, 0, '2020-10-19 22:43:45', '2020-10-19 22:43:45'),
+(6, 40, 2, 0, 0, '2020-10-19 22:44:13', '2020-10-19 22:44:13'),
+(7, 41, 3, 0, 0, '2020-10-19 22:44:29', '2020-10-19 22:44:29'),
+(8, 42, 4, 0, 0, '2020-10-19 22:45:03', '2020-10-19 22:45:03'),
+(9, 43, 5, 0, 0, '2020-10-19 22:45:18', '2020-10-19 22:45:18');
 
 -- --------------------------------------------------------
 
@@ -450,7 +479,9 @@ INSERT INTO `t98_akun` (`idakun`, `Kode`, `Nama`, `Induk`, `Urut`, `idusers`, `c
 (410, '1103004001001', 'Ninik R. #62', 32, '1103004001001', 1, '2021-03-23 01:36:20', '2021-03-23 01:36:20'),
 (411, '1103004001002', 'A', 32, '1103004001002', 1, '2021-03-23 01:36:20', '2021-03-23 01:36:20'),
 (412, '1103004001003', 'B', 32, '1103004001003', 1, '2021-03-23 01:36:20', '2021-03-23 01:36:20'),
-(413, '1103004001004', 'C', 32, '1103004001004', 1, '2021-03-23 01:36:20', '2021-03-23 01:36:20');
+(413, '1103004001004', 'C', 32, '1103004001004', 1, '2021-03-23 01:36:20', '2021-03-23 01:36:20'),
+(414, '14', 'Coba Tambah Data Induk', 1, '1400000000000', 1, '2021-03-23 18:37:47', '2021-03-24 14:46:39'),
+(415, '1401', 'Coba Tambah Data Cabang 1', 414, '1401000000000', 1, '2021-03-23 18:39:28', '2021-03-24 14:46:15');
 
 -- --------------------------------------------------------
 
@@ -480,6 +511,13 @@ INSERT INTO `t99_company` (`idcompany`, `Nama`, `Alamat`, `Kota`, `idusers`, `cr
 --
 
 --
+-- Indexes for table `t97_saldoawal`
+--
+ALTER TABLE `t97_saldoawal`
+  ADD PRIMARY KEY (`idsa`),
+  ADD UNIQUE KEY `idakun` (`idakun`);
+
+--
 -- Indexes for table `t98_akun`
 --
 ALTER TABLE `t98_akun`
@@ -497,10 +535,16 @@ ALTER TABLE `t99_company`
 --
 
 --
+-- AUTO_INCREMENT for table `t97_saldoawal`
+--
+ALTER TABLE `t97_saldoawal`
+  MODIFY `idsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `t98_akun`
 --
 ALTER TABLE `t98_akun`
-  MODIFY `idakun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=414;
+  MODIFY `idakun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=416;
 
 --
 -- AUTO_INCREMENT for table `t99_company`
