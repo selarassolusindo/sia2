@@ -44,7 +44,7 @@ class T98_akun extends CI_Controller
         );
         // $this->load->view('t98_akun/t98_akun_list', $data);
         $data['_view'] = 't98_akun/t98_akun_list';
-        $data['_caption'] = 'Akun';
+        $data['_caption'] = 'Data Akun';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -64,7 +64,7 @@ class T98_akun extends CI_Controller
 	    );
             // $this->load->view('t98_akun/t98_akun_read', $data);
             $data['_view'] = 't98_akun/t98_akun_read';
-            $data['_caption'] = 'Akun';
+            $data['_caption'] = 'Data Akun';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -81,7 +81,7 @@ class T98_akun extends CI_Controller
 
         if ($row) {
             $data = array(
-                'button' => 'Create',
+                'button' => 'Simpan',
                 'action' => site_url('t98_akun/create_action'),
         	    'idakun' => set_value('idakun', $id),
         	    'Kode' => set_value('Kode', $this->T98_akun_model->getNewKode($id)),
@@ -96,7 +96,7 @@ class T98_akun extends CI_Controller
             );
             // $this->load->view('t98_akun/t98_akun_form', $data);
             $data['_view'] = 't98_akun/t98_akun_form';
-            $data['_caption'] = 'Akun';
+            $data['_caption'] = 'Data Akun';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -138,7 +138,7 @@ class T98_akun extends CI_Controller
         if ($row) {
             $rowInduk = $this->T98_akun_model->get_by_id($row->Induk);
             $data = array(
-                'button' => 'Update',
+                'button' => 'Simpan',
                 'action' => site_url('t98_akun/update_action'),
         		'idakun' => set_value('idakun', $row->idakun),
         		'Kode' => set_value('Kode', $row->Kode),
@@ -153,7 +153,7 @@ class T98_akun extends CI_Controller
     	    );
             // $this->load->view('t98_akun/t98_akun_form', $data);
             $data['_view'] = 't98_akun/t98_akun_form';
-            $data['_caption'] = 'Akun';
+            $data['_caption'] = 'Data Akun';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
