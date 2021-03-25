@@ -62,6 +62,7 @@
             break;
 
         case "sia2.selusin.online":
+        case "selusin.online/sia2":
             $env = "production";
             define('DBPREFIX', 'u473805576');
             break;
