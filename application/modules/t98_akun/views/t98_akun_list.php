@@ -44,7 +44,7 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <!-- <th>No</th> -->
-        		<th>Nomor Akun</th>
+        		<th>No. Akun</th>
         		<th>Nama</th>
         		<!-- <th>Induk</th> -->
         		<!-- <th>Urut</th> -->
@@ -69,9 +69,9 @@
     				// echo anchor(site_url('t98_akun/read/'.$t98_akun->idakun),'Read');
                     echo anchor(site_url('t98_akun/create/'.$t98_akun->idakun),'Tambah');
     				echo ' | ';
-    				echo anchor(site_url('t98_akun/update/'.$t98_akun->idakun),'Edit');
+    				echo anchor(site_url('t98_akun/update/'.$t98_akun->idakun),'Ubah');
     				echo ' | ';
-    				echo anchor(site_url('t98_akun/delete/'.$t98_akun->idakun),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+    				echo anchor(site_url('t98_akun/delete/'.$t98_akun->idakun),'Hapus','onclick="javascript: return confirm(\'Apakah data akan dihapus ?\')"');
     				?>
     			</td>
     		</tr>

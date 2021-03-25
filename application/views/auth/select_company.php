@@ -29,14 +29,14 @@
 
                 <div class="card-body login-card-body">
 
-                    <p class="login-box-msg"><?php echo 'Select Company';?></p>
+                    <p class="login-box-msg"><?php echo 'Pilih Perusahaan';?></p>
                     <p class="login-box-msg"><?php echo $message;?></p>
 
                     <?php echo form_open("auth/selectCompany");?>
 
                         <div class="input-group mb-3">
                             <select class="form-control" name="idcompany">
-                                <option>Company</option>
+                                <option>Perusahaan</option>
                                 <?php foreach ($groups as $r) { ?>
                                     <?php if (substr($r->description, 0, 2) == 'PT' or substr($r->description, 0, 2) == 'CV') { ?>
                                     <option value="<?php echo $r->name; ?>"><?php echo $r->description; ?></option>
@@ -52,7 +52,7 @@
 
                         <div class="row">
                             <div class="col">
-                                <?php echo form_submit('submit', lang('login_submit_btn'), array('class'=>'btn btn-primary'));?>
+                                <?php echo form_submit('submit', 'Proses', array('class'=>'btn btn-primary'));?>
                                 <a href="<?php echo site_url('auth/logout'); ?>" type="button" class="btn btn-secondary">Cancel</a>
                             </div>
                             <!-- /.col -->

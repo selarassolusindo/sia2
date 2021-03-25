@@ -271,7 +271,7 @@
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t99_company" class="nav-link <?php echo $this->uri->segment(1) == 't99_company' ? 'active' : ''; ?>">
                                             <i class="fas fa-building nav-icon"></i>
-                                            <p>Company</p>
+                                            <p>Perusahaan</p>
                                         </a>
                                     </li>
                                     <!-- akun -->
@@ -351,7 +351,20 @@
                                         if ($j == 1) {
                                             ?>
                                             <li class="breadcrumb-item active">
-                                                <?php echo substr($this->uri->segment(1), 0, 1) == 't' ? ucfirst(substr($this->uri->segment(1), 4)) : ucfirst($this->uri->segment(1)); ?>
+                                                <?php //echo substr($this->uri->segment(1), 0, 1) == 't' ? ucfirst(substr($this->uri->segment(1), 4)) : ucfirst($this->uri->segment(1)); ?>
+                                                <?php
+                                                if (substr($this->uri->segment(1), 0, 1) == 't') {
+                                                    switch (substr($this->uri->segment(1), 4)) {
+                                                        case 'company':
+                                                            echo 'Perusahaan';
+                                                            break;
+                                                        default:
+                                                            echo ucfirst(substr($this->uri->segment(1), 4));
+                                                    }
+                                                } else {
+                                                    echo ucfirst($this->uri->segment(1));
+                                                }
+                                                ?>
                                             </li>
                                             <?php
                                         } else {
@@ -359,13 +372,41 @@
                                                 if ($i == 1) {
                                                     ?>
                                                     <li class="breadcrumb-item">
-                                                        <a href="<?php echo site_url().$this->uri->segment(1); ?>"><?php echo substr($this->uri->segment(1), 0, 1) == 't' ? ucfirst(substr($this->uri->segment(1), 4)) : ucfirst($this->uri->segment(1)); ?></a>
+                                                        <a href="<?php echo site_url().$this->uri->segment(1); ?>">
+                                                            <?php //echo substr($this->uri->segment(1), 0, 1) == 't' ? ucfirst(substr($this->uri->segment(1), 4)) : ucfirst($this->uri->segment(1)); ?>
+                                                            <?php
+                                                            if (substr($this->uri->segment(1), 0, 1) == 't') {
+                                                                switch (substr($this->uri->segment(1), 4)) {
+                                                                    case 'company':
+                                                                        echo 'Perusahaan';
+                                                                        break;
+                                                                    default:
+                                                                        echo ucfirst(substr($this->uri->segment(1), 4));
+                                                                }
+                                                            } else {
+                                                                echo ucfirst($this->uri->segment(1));
+                                                            }
+                                                            ?>
+                                                        </a>
                                                     </li>
                                                     <?php
                                                 } else {
                                                     ?>
                                                     <li class="breadcrumb-item active">
-                                                        <?php echo ucfirst($this->uri->segment(2)); ?>
+                                                        <?php //echo ucfirst($this->uri->segment(2)); ?>
+                                                        <?php
+                                                        switch ($this->uri->segment(2)) {
+                                                            case 'read':
+                                                                echo 'Lihat';
+                                                                break;
+                                                            case 'create':
+                                                                echo 'Tambah';
+                                                                break;
+                                                            case 'update':
+                                                                echo 'Ubah';
+                                                                break;
+                                                        }
+                                                        ?>
                                                     </li>
                                                     <?php
                                                 }

@@ -937,9 +937,9 @@ class Auth extends CI_Controller
             'idcompany',
             'Company',
             array("required", array("f_check_company", function ($company) {
-                return $company != "Company";
+                return $company != "Perusahaan";
             })),
-            array("f_check_company" => "Company harus terisi !")
+            array("f_check_company" => "Perusahaan harus terisi !")
         );
 
         if ($this->form_validation->run() === true) {

@@ -57,7 +57,7 @@ class T97_saldoawal extends CI_Controller
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
-            'total' => $saldoawalTotal,
+            'total' => $t97_saldoawalTotal,
         );
         // $this->load->view('t97_saldoawal/t97_saldoawal_list', $data);
         $data['_view'] = 't97_saldoawal/t97_saldoawal_list';

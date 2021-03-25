@@ -43,24 +43,22 @@
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
-                <th>No</th>
-        		<th>Idakun</th>
+                <th>No. Akun</th>
+                <th>Nama</th>
         		<th>Debit</th>
         		<th>Kredit</th>
-        		<th>Idusers</th>
-        		<th>Created At</th>
-        		<th>Updated At</th>
         		<th>Action</th>
             </tr>
+            <?php
+            $totalDebit = 0;
+            $totalKredit = 0;
+            ?>
             <?php foreach ($t97_saldoawal_data as $t97_saldoawal) { ?>
             <tr>
-    			<td width="80px"><?php echo ++$start ?></td>
-    			<td><?php echo $t97_saldoawal->idakun ?></td>
-    			<td><?php echo $t97_saldoawal->Debit ?></td>
-    			<td><?php echo $t97_saldoawal->Kredit ?></td>
-    			<td><?php echo $t97_saldoawal->idusers ?></td>
-    			<td><?php echo $t97_saldoawal->created_at ?></td>
-    			<td><?php echo $t97_saldoawal->updated_at ?></td>
+                <td><?php echo $t97_saldoawal->Kode ?></td>
+                <td><?php echo $t97_saldoawal->Nama ?></td>
+    			<td class="text-right"><?php echo numIndo($t97_saldoawal->Debit) ?></td>
+    			<td class="text-right"><?php echo numIndo($t97_saldoawal->Kredit) ?></td>
     			<td style="text-align:center" width="200px">
     				<?php
     				echo anchor(site_url('t97_saldoawal/read/'.$t97_saldoawal->idsa),'Read');
@@ -71,14 +69,58 @@
     				?>
     			</td>
     		</tr>
+            <?php
+            $totalDebit += $t97_saldoawal->Debit;
+            $totalKredit += $t97_saldoawal->Kredit;
+            ?>
             <?php } ?>
+            <tr>
+                <th>&nbsp;</th>
+        		<th>&nbsp;</th>
+        		<th>&nbsp;</th>
+        		<th>&nbsp;</th>
+        		<th>&nbsp;</th>
+            </tr>
+            <tr>
+        		<th colspan="2" style="text-align:right">Sub Total</th>
+        		<td align="right"><b><?php echo numIndo($totalDebit); ?></b></td>
+        		<td align="right"><b><?php echo numIndo($totalKredit); ?></b></td>
+        		<th>&nbsp;</th>
+            </tr>
+            <tr>
+        		<th colspan="2" style="text-align:right">Grand Total</th>
+        		<td align="right"><b><?php echo numIndo($total->Debit); ?></b></td>
+        		<td align="right"><b><?php echo numIndo($total->Kredit); ?></b></td>
+        		<th>&nbsp;</th>
+            </tr>
+            <?php
+            if ($total->Debit == $total->Kredit) {
+
+            } else {
+                if ($total->Debit > $total->Kredit) {
+                    $selisih1 = 0;
+                    $selisih2 = $total->Debit - $total->Kredit;
+                } else {
+                    $selisih1 = $total->Kredit - $total->Debit;
+                    $selisih2 = 0;
+                }
+                ?>
+                <tr>
+            		<th colspan="2" style="text-align:right; color:red">Selisih</th>
+            		<td align="right" style="text-align:right; color:red"><b><?php echo numIndo($selisih1); ?></b></td>
+            		<td align="right" style="text-align:right; color:red"><b><?php echo numIndo($selisih2); ?></b></td>
+            		<th>&nbsp;</th>
+                </tr>
+                <?php
+            }
+            ?>
         </table>
         <div class="row">
             <div class="col-md-6">
                 <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-		<?php echo anchor(site_url('t97_saldoawal/excel'), 'Excel', 'class="btn btn-primary"'); ?>
-		<?php echo anchor(site_url('t97_saldoawal/word'), 'Word', 'class="btn btn-primary"'); ?>
-	    </div>
+        		<?php echo anchor(site_url('t97_saldoawal/excel'), 'Excel', 'class="btn btn-primary"'); ?>
+        		<?php echo anchor(site_url('t97_saldoawal/word'), 'Word', 'class="btn btn-primary"'); ?>
+    	    </div>
             <div class="col-md-6 text-right">
                 <?php echo $pagination ?>
             </div>

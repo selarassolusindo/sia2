@@ -42,7 +42,7 @@ class T99_company extends CI_Controller
         );
         // $this->load->view('t99_company/t99_company_list', $data);
         $data['_view'] = 't99_company/t99_company_list';
-        $data['_caption'] = 'Company';
+        $data['_caption'] = 'Data Perusahaan';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -61,7 +61,7 @@ class T99_company extends CI_Controller
 	    );
             // $this->load->view('t99_company/t99_company_read', $data);
             $data['_view'] = 't99_company/t99_company_read';
-            $data['_caption'] = 'Company';
+            $data['_caption'] = 'Data Perusahaan';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -72,7 +72,7 @@ class T99_company extends CI_Controller
     public function create()
     {
         $data = array(
-            'button' => 'Create',
+            'button' => 'Simpan',
             'action' => site_url('t99_company/create_action'),
 	    'idcompany' => set_value('idcompany'),
 	    'Nama' => set_value('Nama'),
@@ -84,7 +84,7 @@ class T99_company extends CI_Controller
 	);
         // $this->load->view('t99_company/t99_company_form', $data);
         $data['_view'] = 't99_company/t99_company_form';
-        $data['_caption'] = 'Data Company';
+        $data['_caption'] = 'Data Perusahaan';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -116,7 +116,7 @@ class T99_company extends CI_Controller
 
         if ($row) {
             $data = array(
-                'button' => 'Update',
+                'button' => 'Simpan',
                 'action' => site_url('t99_company/update_action'),
 		'idcompany' => set_value('idcompany', $row->idcompany),
 		'Nama' => set_value('Nama', $row->Nama),
@@ -128,7 +128,7 @@ class T99_company extends CI_Controller
 	    );
             // $this->load->view('t99_company/t99_company_form', $data);
             $data['_view'] = 't99_company/t99_company_form';
-            $data['_caption'] = 'Data Company';
+            $data['_caption'] = 'Data Perusahaan';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

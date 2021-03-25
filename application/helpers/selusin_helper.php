@@ -107,60 +107,65 @@ function getNewInvoice($prefix, $fieldName, $tableName)
 /**
  * liat isi variabel
  */
- function pre($data) {
-   echo "<pre>";
-   print_r($data);
-   echo "</pre>";
- }
+function pre($data) {
+    echo "<pre>";
+    print_r($data);
+    echo "</pre>";
+}
 
- /**
-  * check akun last level
-  */
- function isLastLevel($akunLastLevel, $akun)
- {
-     $idakunArray = array_map('toArray', $akunLastLevel);
-     return in_array($akun->idakun, $idakunArray, true);
- }
+/**
+ * check akun last level
+ */
+function isLastLevel($akunLastLevel, $akun)
+{
+    $idakunArray = array_map('toArray', $akunLastLevel);
+    return in_array($akun->idakun, $idakunArray, true);
+}
 
- /**
-  * fungsi untuk mengubah posisi NAMA AKUN, disesuaikan dengan level akunnya
-  */
- function formatNamaAkun($akunLastLevel, $akun)
- {
-     $idakunArray = array_map('toArray', $akunLastLevel);
-     // $lenKode = strlen(($akun->KodeBB <> '' ? $akun->KodeBB : ($akun->KodeBP <> '' ? $akun->KodeBP : $akun->Kode)));
-     $lenKode = strlen($akun->Kode);
-     switch ($lenKode) {
-         case 1:
-             $result = '<b>' . $akun->Nama . '</b>';
-             break;
-         case 2:
-             $result = '&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $idakunArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
-             break;
-         case 4:
-             // $countId = $this->Akun_model0->totalRows($row->idakun, $this->table);
-             $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $idakunArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
-             // $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $indukArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
-             break;
-         case 7:
-             // $countId = $this->Akun_model0->totalRows($row->idakun, $this->table);
-             $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $idakunArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
-             // $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $indukArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
-             break;
-         case 10:
-             // $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $akun->Nama;
-             $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $idakunArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
-             break;
-         case 13:
-             $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $akun->Nama;
-             break;
-     }
+/**
+ * fungsi untuk mengubah posisi NAMA AKUN, disesuaikan dengan level akunnya
+ */
+function formatNamaAkun($akunLastLevel, $akun)
+{
+    $idakunArray = array_map('toArray', $akunLastLevel);
+    // $lenKode = strlen(($akun->KodeBB <> '' ? $akun->KodeBB : ($akun->KodeBP <> '' ? $akun->KodeBP : $akun->Kode)));
+    $lenKode = strlen($akun->Kode);
+    switch ($lenKode) {
+        case 1:
+            $result = '<b>' . $akun->Nama . '</b>';
+            break;
+        case 2:
+            $result = '&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $idakunArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
+            break;
+        case 4:
+            // $countId = $this->Akun_model0->totalRows($row->idakun, $this->table);
+            $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $idakunArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
+            // $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $indukArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
+            break;
+        case 7:
+            // $countId = $this->Akun_model0->totalRows($row->idakun, $this->table);
+            $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $idakunArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
+            // $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $indukArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
+            break;
+        case 10:
+            // $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $akun->Nama;
+            $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . (in_array($akun->idakun, $idakunArray, true) ? $akun->Nama : '<b>' . $akun->Nama . '</b>');
+            break;
+        case 13:
+            $result = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . $akun->Nama;
+            break;
+    }
 
-     return $result;
- }
+    return $result;
+}
 
- function toArray($obj)
- {
-     $obj = (array) $obj; //cast to array, optional
-     return $obj['idakun'];
- }
+function toArray($obj)
+{
+    $obj = (array) $obj; //cast to array, optional
+    return $obj['idakun'];
+}
+
+function numIndo($angka)
+{
+    return number_format($angka, 2, ',', '.');
+}

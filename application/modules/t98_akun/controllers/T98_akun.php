@@ -148,8 +148,8 @@ class T98_akun extends CI_Controller
         		'idusers' => set_value('idusers', $row->idusers),
         		// 'created_at' => set_value('created_at', $row->created_at),
         		// 'updated_at' => set_value('updated_at', $row->updated_at),
-                'KodeInduk' => $rowInduk->Kode,
-                'NamaInduk' => $rowInduk->Nama,
+                'KodeInduk' => ($row->Induk == '0' ? '' : $rowInduk->Kode),
+                'NamaInduk' => ($row->Induk == '0' ? '' : $rowInduk->Nama),
     	    );
             // $this->load->view('t98_akun/t98_akun_form', $data);
             $data['_view'] = 't98_akun/t98_akun_form';
