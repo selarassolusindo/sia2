@@ -65,8 +65,8 @@
 			<!-- <td><?php echo $t99_company->updated_at ?></td> -->
 			<td style="text-align:center" width="200px">
 				<?php
-				echo anchor(site_url('t99_company/read/'.$t99_company->idcompany),'Lihat');
-				echo ' | ';
+				// echo anchor(site_url('t99_company/read/'.$t99_company->idcompany),'Lihat');
+				// echo ' | ';
 				echo anchor(site_url('t99_company/update/'.$t99_company->idcompany),'Ubah');
 				// echo ' | ';
 				// echo anchor(site_url('t99_company/delete/'.$t99_company->idcompany),'Hapus','onclick="javascript: return confirm(\'Apakah data akan dihapus ?\')"');

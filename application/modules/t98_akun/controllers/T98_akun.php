@@ -276,6 +276,23 @@ class T98_akun extends CI_Controller
         $this->load->view('t98_akun/t98_akun_doc',$data);
     }
 
+    public function getData()
+    {
+        $result = $this->T98_akun_model->getData($this->input->get("search"));
+        if ($result) {
+            $list = array();
+            $key = 0;
+            foreach($result as $row) {
+                $list[$key]['id'] = $row->idakun;
+                $list[$key]['text'] = $row->Kode . ' - ' . $row->Nama;
+                $key++;
+            }
+            echo json_encode($list);
+        } else {
+            echo "Tidak ada data";
+        }
+    }
+
 }
 
 /* End of file T98_akun.php */

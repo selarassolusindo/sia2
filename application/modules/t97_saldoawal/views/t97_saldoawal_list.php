@@ -13,7 +13,7 @@
         <h2 style="margin-top:0px">T97_saldoawal List</h2> -->
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('t97_saldoawal/create'),'Create', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('t97_saldoawal/create'),'Tambah', 'class="btn btn-primary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -35,7 +35,7 @@
                                     <?php
                                 }
                             ?>
-                          <button class="btn btn-primary" type="submit">Search</button>
+                          <button class="btn btn-primary" type="submit">Cari</button>
                         </span>
                     </div>
                 </form>
@@ -43,11 +43,11 @@
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
-                <th>No. Akun</th>
-                <th>Nama</th>
-        		<th>Debit</th>
-        		<th>Kredit</th>
-        		<th>Action</th>
+                <th class="text-center">No. Akun</th>
+                <th class="text-center">Nama</th>
+        		<th class="text-center">Debit</th>
+        		<th class="text-center">Kredit</th>
+        		<th class="text-center">Action</th>
             </tr>
             <?php
             $totalDebit = 0;
@@ -61,11 +61,11 @@
     			<td class="text-right"><?php echo numIndo($t97_saldoawal->Kredit) ?></td>
     			<td style="text-align:center" width="200px">
     				<?php
-    				echo anchor(site_url('t97_saldoawal/read/'.$t97_saldoawal->idsa),'Read');
+    				// echo anchor(site_url('t97_saldoawal/read/'.$t97_saldoawal->idsa),'Lihat');
+    				// echo ' | ';
+    				echo anchor(site_url('t97_saldoawal/update/'.$t97_saldoawal->idsa),'Ubah');
     				echo ' | ';
-    				echo anchor(site_url('t97_saldoawal/update/'.$t97_saldoawal->idsa),'Update');
-    				echo ' | ';
-    				echo anchor(site_url('t97_saldoawal/delete/'.$t97_saldoawal->idsa),'Delete','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+    				echo anchor(site_url('t97_saldoawal/delete/'.$t97_saldoawal->idsa),'Hapus','onclick="javascript: return confirm(\'Apakah data akan dihapus ?\')"');
     				?>
     			</td>
     		</tr>
@@ -117,7 +117,7 @@
         </table>
         <div class="row">
             <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+                <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
         		<?php echo anchor(site_url('t97_saldoawal/excel'), 'Excel', 'class="btn btn-primary"'); ?>
         		<?php echo anchor(site_url('t97_saldoawal/word'), 'Word', 'class="btn btn-primary"'); ?>
     	    </div>

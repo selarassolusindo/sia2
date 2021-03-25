@@ -123,6 +123,14 @@
                 border-bottom-right-radius: 3px;
             }
         </style>
+
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/adminlte/plugins/select2/css/select2.min.css">
+
+        <!-- jQuery -->
+        <script src="<?php echo base_url(); ?>assets/adminlte/plugins/jquery/jquery.min.js"></script>
+        <!-- Select2 -->
+        <script src="<?php echo base_url(); ?>assets/adminlte/plugins/select2/js/select2.full.min.js"></script>
+
     </head>
 
     <body class="hold-transition sidebar-mini layout-fixed">
@@ -334,7 +342,7 @@
                     <div class="container-fluid">
                         <div class="row mb-2">
                             <div class="col-sm-6">
-                                <h1 class="m-0 text-dark"><?php echo $_caption; ?></h1>
+                                <h5 class="m-0 text-dark"><?php echo $_caption; ?></h5>
                             </div><!-- /.col -->
                             <div class="col-sm-6">
                                 <ol class="breadcrumb float-sm-right">
@@ -449,7 +457,7 @@
         <!-- ./wrapper -->
 
         <!-- jQuery -->
-        <script src="<?php echo base_url(); ?>assets/adminlte/plugins/jquery/jquery.min.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>assets/adminlte/plugins/jquery/jquery.min.js"></script> -->
         <!-- jQuery UI 1.11.4 -->
         <script src="<?php echo base_url(); ?>assets/adminlte/plugins/jquery-ui/jquery-ui.min.js"></script>
         <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -479,9 +487,9 @@
         <!-- AdminLTE App -->
         <script src="<?php echo base_url(); ?>assets/adminlte/dist/js/adminlte.js"></script>
         <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-        <script src="<?php echo base_url(); ?>assets/adminlte/dist/js/pages/dashboard.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>assets/adminlte/dist/js/pages/dashboard.js"></script> -->
         <!-- AdminLTE for demo purposes -->
-        <script src="<?php echo base_url(); ?>assets/adminlte/dist/js/demo.js"></script>
+        <!-- <script src="<?php echo base_url(); ?>assets/adminlte/dist/js/demo.js"></script> -->
 
         <script type="text/javascript">
             $(function () {

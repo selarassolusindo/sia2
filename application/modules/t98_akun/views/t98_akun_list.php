@@ -35,7 +35,7 @@
                                     <?php
                                 }
                             ?>
-                          <button class="btn btn-primary" type="submit">Search</button>
+                          <button class="btn btn-primary" type="submit">Cari</button>
                         </span>
                     </div>
                 </form>
@@ -44,14 +44,14 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <!-- <th>No</th> -->
-        		<th>No. Akun</th>
-        		<th>Nama</th>
+        		<th class="text-center">No. Akun</th>
+        		<th class="text-center">Nama</th>
         		<!-- <th>Induk</th> -->
         		<!-- <th>Urut</th> -->
         		<!-- <th>Idusers</th> -->
         		<!-- <th>Created At</th> -->
         		<!-- <th>Updated At</th> -->
-        		<th>Action</th>
+        		<th class="text-center">Action</th>
             </tr>
             <?php foreach ($t98_akun_data as $t98_akun) { ?>
             <tr>
@@ -79,7 +79,7 @@
         </table>
         <div class="row">
             <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+                <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
 		<?php echo anchor(site_url('t98_akun/excel'), 'Excel', 'class="btn btn-primary"'); ?>
 		<?php echo anchor(site_url('t98_akun/word'), 'Word', 'class="btn btn-primary"'); ?>
 	    </div>

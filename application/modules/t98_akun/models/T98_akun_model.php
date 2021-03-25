@@ -161,6 +161,38 @@ class T98_akun_model extends CI_Model
         return $sNextKode;
     }
 
+    /**
+     * ambil last level di tabel akun yang belum ada di tabel saldo awal
+     */
+    function getAllLastLevelNotExist()
+    {
+        $this->db->where('idakun not in (select induk from t98_akun)');
+        $this->db->where('idakun not in (select idakun from t97_saldoawal)');
+        $this->db->order_by('urut', 'asc');
+        return $this->db->get($this->table)->result();
+    }
+
+    /**
+     * untuk saldo awal
+     */
+    function getData($q)
+    {
+        $q = "
+            select * from (
+            select
+                idakun
+                , Kode
+                , Nama
+            from
+                t98_akun
+            where
+                idakun not in (select induk from t98_akun)
+                and idakun not in (select idakun from t97_saldoawal)
+            ) a where Kode like '%".$q."%' or Nama like '%".$q."%'
+        ";
+        return $this->db->query($q)->result();
+    }
+
 }
 
 /* End of file T98_akun_model.php */

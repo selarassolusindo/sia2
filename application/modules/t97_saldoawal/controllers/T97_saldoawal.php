@@ -61,7 +61,7 @@ class T97_saldoawal extends CI_Controller
         );
         // $this->load->view('t97_saldoawal/t97_saldoawal_list', $data);
         $data['_view'] = 't97_saldoawal/t97_saldoawal_list';
-        $data['_caption'] = 'Saldo Awal';
+        $data['_caption'] = 'Data Saldo Awal';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -70,17 +70,17 @@ class T97_saldoawal extends CI_Controller
         $row = $this->T97_saldoawal_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'idsa' => $row->idsa,
-		'idakun' => $row->idakun,
-		'Debit' => $row->Debit,
-		'Kredit' => $row->Kredit,
-		'idusers' => $row->idusers,
-		'created_at' => $row->created_at,
-		'updated_at' => $row->updated_at,
-	    );
+        		'idsa' => $row->idsa,
+        		'idakun' => $row->idakun,
+        		'Debit' => $row->Debit,
+        		'Kredit' => $row->Kredit,
+        		'idusers' => $row->idusers,
+        		'created_at' => $row->created_at,
+        		'updated_at' => $row->updated_at,
+    	    );
             // $this->load->view('t97_saldoawal/t97_saldoawal_read', $data);
             $data['_view'] = 't97_saldoawal/t97_saldoawal_read';
-            $data['_caption'] = 'Saldo Awal';
+            $data['_caption'] = 'Data Saldo Awal';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -90,20 +90,24 @@ class T97_saldoawal extends CI_Controller
 
     public function create()
     {
+        // $this->load->model('akun/Akun_model');
+        // $this->load->model('t98_akun/T98_akun_model');
+        // $akun = $this->T98_akun_model->getAllLastLevelNotExist();
         $data = array(
-            'button' => 'Create',
+            'button' => 'Simpan',
             'action' => site_url('t97_saldoawal/create_action'),
-	    'idsa' => set_value('idsa'),
-	    'idakun' => set_value('idakun'),
-	    'Debit' => set_value('Debit'),
-	    'Kredit' => set_value('Kredit'),
-	    'idusers' => set_value('idusers'),
-	    'created_at' => set_value('created_at'),
-	    'updated_at' => set_value('updated_at'),
-	);
+    	    'idsa' => set_value('idsa'),
+    	    // 'idakun' => set_value('idakun'),
+    	    'Debit' => set_value('Debit', 0),
+    	    'Kredit' => set_value('Kredit', 0),
+    	    // 'idusers' => set_value('idusers'),
+    	    // 'created_at' => set_value('created_at'),
+    	    // 'updated_at' => set_value('updated_at'),
+            // 'akun_data' => $akun,
+    	);
         // $this->load->view('t97_saldoawal/t97_saldoawal_form', $data);
         $data['_view'] = 't97_saldoawal/t97_saldoawal_form';
-        $data['_caption'] = 'Saldo Awal';
+        $data['_caption'] = 'Data Saldo Awal';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -135,7 +139,7 @@ class T97_saldoawal extends CI_Controller
 
         if ($row) {
             $data = array(
-                'button' => 'Update',
+                'button' => 'Simpan',
                 'action' => site_url('t97_saldoawal/update_action'),
 		'idsa' => set_value('idsa', $row->idsa),
 		'idakun' => set_value('idakun', $row->idakun),
@@ -147,7 +151,7 @@ class T97_saldoawal extends CI_Controller
 	    );
             // $this->load->view('t97_saldoawal/t97_saldoawal_form', $data);
             $data['_view'] = 't97_saldoawal/t97_saldoawal_form';
-            $data['_caption'] = 'Saldo Awal';
+            $data['_caption'] = 'Data Saldo Awal';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
