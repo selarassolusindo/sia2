@@ -136,18 +136,21 @@ class T98_akun extends CI_Controller
         $row = $this->T98_akun_model->get_by_id($id);
 
         if ($row) {
+            $rowInduk = $this->T98_akun_model->get_by_id($row->Induk);
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('t98_akun/update_action'),
-		'idakun' => set_value('idakun', $row->idakun),
-		'Kode' => set_value('Kode', $row->Kode),
-		'Nama' => set_value('Nama', $row->Nama),
-		'Induk' => set_value('Induk', $row->Induk),
-		'Urut' => set_value('Urut', $row->Urut),
-		'idusers' => set_value('idusers', $row->idusers),
-		'created_at' => set_value('created_at', $row->created_at),
-		'updated_at' => set_value('updated_at', $row->updated_at),
-	    );
+        		'idakun' => set_value('idakun', $row->idakun),
+        		'Kode' => set_value('Kode', $row->Kode),
+        		'Nama' => set_value('Nama', $row->Nama),
+        		'Induk' => set_value('Induk', $row->Induk),
+        		'Urut' => set_value('Urut', $row->Urut),
+        		'idusers' => set_value('idusers', $row->idusers),
+        		// 'created_at' => set_value('created_at', $row->created_at),
+        		// 'updated_at' => set_value('updated_at', $row->updated_at),
+                'KodeInduk' => $rowInduk->Kode,
+                'NamaInduk' => $rowInduk->Nama,
+    	    );
             // $this->load->view('t98_akun/t98_akun_form', $data);
             $data['_view'] = 't98_akun/t98_akun_form';
             $data['_caption'] = 'Akun';
@@ -169,10 +172,10 @@ class T98_akun extends CI_Controller
 		'Kode' => $this->input->post('Kode',TRUE),
 		'Nama' => $this->input->post('Nama',TRUE),
 		'Induk' => $this->input->post('Induk',TRUE),
-		'Urut' => $this->input->post('Urut',TRUE),
-		'idusers' => $this->input->post('idusers',TRUE),
-		'created_at' => $this->input->post('created_at',TRUE),
-		'updated_at' => $this->input->post('updated_at',TRUE),
+        'Urut' => substr(trim($this->input->post('Kode',TRUE)) . '0000000000000', 0, 13),
+        'idusers' => $this->session->userdata('user_id'),
+		// 'created_at' => $this->input->post('created_at',TRUE),
+		// 'updated_at' => $this->input->post('updated_at',TRUE),
 	    );
 
             $this->T98_akun_model->update($this->input->post('idakun', TRUE), $data);
