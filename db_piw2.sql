@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2021 at 02:16 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.15
+-- Generation Time: Mar 25, 2021 at 06:56 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -48,7 +48,8 @@ INSERT INTO `t97_saldoawal` (`idsa`, `idakun`, `Debit`, `Kredit`, `idusers`, `cr
 (6, 40, 2, 0, 0, '2020-10-19 22:44:13', '2020-10-19 22:44:13'),
 (7, 41, 3, 0, 0, '2020-10-19 22:44:29', '2020-10-19 22:44:29'),
 (8, 42, 4, 0, 0, '2020-10-19 22:45:03', '2020-10-19 22:45:03'),
-(9, 43, 5, 0, 0, '2020-10-19 22:45:18', '2020-10-19 22:45:18');
+(9, 43, 5, 0, 0, '2020-10-19 22:45:18', '2020-10-19 22:45:18'),
+(11, 5, 177000, 0, 1, '2021-03-25 11:48:17', '2021-03-25 11:51:07');
 
 -- --------------------------------------------------------
 
@@ -538,7 +539,7 @@ ALTER TABLE `t99_company`
 -- AUTO_INCREMENT for table `t97_saldoawal`
 --
 ALTER TABLE `t97_saldoawal`
-  MODIFY `idsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `t98_akun`
