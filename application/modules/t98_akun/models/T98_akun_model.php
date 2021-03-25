@@ -173,22 +173,21 @@ class T98_akun_model extends CI_Model
     }
 
     /**
-     * untuk saldo awal
+     * untuk saldo awal - tambah
      */
     function getData($q)
     {
         $q = "
             select * from (
             select
-                idakun
-                , Kode
-                , Nama
+                *
             from
                 t98_akun
             where
                 idakun not in (select induk from t98_akun)
                 and idakun not in (select idakun from t97_saldoawal)
             ) a where Kode like '%".$q."%' or Nama like '%".$q."%'
+            order by Urut
         ";
         return $this->db->query($q)->result();
     }

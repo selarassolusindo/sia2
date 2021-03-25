@@ -90,20 +90,12 @@ class T97_saldoawal extends CI_Controller
 
     public function create()
     {
-        // $this->load->model('akun/Akun_model');
-        // $this->load->model('t98_akun/T98_akun_model');
-        // $akun = $this->T98_akun_model->getAllLastLevelNotExist();
         $data = array(
             'button' => 'Simpan',
             'action' => site_url('t97_saldoawal/create_action'),
     	    'idsa' => set_value('idsa'),
-    	    // 'idakun' => set_value('idakun'),
     	    'Debit' => set_value('Debit', 0),
     	    'Kredit' => set_value('Kredit', 0),
-    	    // 'idusers' => set_value('idusers'),
-    	    // 'created_at' => set_value('created_at'),
-    	    // 'updated_at' => set_value('updated_at'),
-            // 'akun_data' => $akun,
     	);
         // $this->load->view('t97_saldoawal/t97_saldoawal_form', $data);
         $data['_view'] = 't97_saldoawal/t97_saldoawal_form';
@@ -119,13 +111,11 @@ class T97_saldoawal extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'idakun' => $this->input->post('idakun',TRUE),
-		'Debit' => $this->input->post('Debit',TRUE),
-		'Kredit' => $this->input->post('Kredit',TRUE),
-		'idusers' => $this->input->post('idusers',TRUE),
-		'created_at' => $this->input->post('created_at',TRUE),
-		'updated_at' => $this->input->post('updated_at',TRUE),
-	    );
+        		'idakun' => $this->input->post('idakun',TRUE),
+        		'Debit' => $this->input->post('Debit',TRUE),
+        		'Kredit' => $this->input->post('Kredit',TRUE),
+                'idusers' => $this->session->userdata('user_id'),
+    	    );
 
             $this->T97_saldoawal_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -138,17 +128,18 @@ class T97_saldoawal extends CI_Controller
         $row = $this->T97_saldoawal_model->get_by_id($id);
 
         if ($row) {
+            $this->load->model('t98_akun/T98_akun_model');
+            $akun = $this->T98_akun_model->get_by_id($row->idakun);
             $data = array(
                 'button' => 'Simpan',
                 'action' => site_url('t97_saldoawal/update_action'),
-		'idsa' => set_value('idsa', $row->idsa),
-		'idakun' => set_value('idakun', $row->idakun),
-		'Debit' => set_value('Debit', $row->Debit),
-		'Kredit' => set_value('Kredit', $row->Kredit),
-		'idusers' => set_value('idusers', $row->idusers),
-		'created_at' => set_value('created_at', $row->created_at),
-		'updated_at' => set_value('updated_at', $row->updated_at),
-	    );
+        		'idsa' => set_value('idsa', $row->idsa),
+        		'idakun' => set_value('idakun', $row->idakun),
+        		'Debit' => set_value('Debit', $row->Debit),
+        		'Kredit' => set_value('Kredit', $row->Kredit),
+                'Kode' => $akun->Kode,
+                'Nama' => $akun->Nama,
+    	    );
             // $this->load->view('t97_saldoawal/t97_saldoawal_form', $data);
             $data['_view'] = 't97_saldoawal/t97_saldoawal_form';
             $data['_caption'] = 'Data Saldo Awal';
@@ -167,13 +158,11 @@ class T97_saldoawal extends CI_Controller
             $this->update($this->input->post('idsa', TRUE));
         } else {
             $data = array(
-		'idakun' => $this->input->post('idakun',TRUE),
-		'Debit' => $this->input->post('Debit',TRUE),
-		'Kredit' => $this->input->post('Kredit',TRUE),
-		'idusers' => $this->input->post('idusers',TRUE),
-		'created_at' => $this->input->post('created_at',TRUE),
-		'updated_at' => $this->input->post('updated_at',TRUE),
-	    );
+        		'idakun' => $this->input->post('idakun',TRUE),
+        		'Debit' => $this->input->post('Debit',TRUE),
+        		'Kredit' => $this->input->post('Kredit',TRUE),
+        		'idusers' => $this->session->userdata('user_id'),
+    	    );
 
             $this->T97_saldoawal_model->update($this->input->post('idsa', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');

@@ -16,6 +16,7 @@
             <label for="int">Idakun <?php echo form_error('idakun') ?></label>
             <select name="idakun" class="form-control" id="akun">
 				<option value="">Akun</option>
+                <option value="<?php echo $idakun ?>" selected="selected"><?php echo $Kode . ' - ' . $Nama; ?></option>
 				<?php
 				// foreach($akun_data as $akun)
 				// {
