@@ -223,7 +223,7 @@
                                     case 't99_company':
                                     case 't98_akun':
                                     case 't97_saldoawal':
-                                    // case '_38_status':
+                                    case 't96_tglsa':
                                     // case '_39_pekerjaan':
                                     // case '_40_pendidikan':
                                     // case '_41_agama':
@@ -245,7 +245,7 @@
                                         case 't99_company':
                                         case 't98_akun':
                                         case 't97_saldoawal':
-                                        // case '_38_status':
+                                        case 't96_tglsa':
                                         // case '_39_pekerjaan':
                                         // case '_40_pendidikan':
                                         // case '_41_agama':
@@ -289,9 +289,16 @@
                                             <p>Akun</p>
                                         </a>
                                     </li>
-                                    <!-- saldo awal -->
-                                    <li class="nav-item">
+                                    <!-- direct saldo awal -->
+                                    <!-- <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t97_saldoawal" class="nav-link <?php echo $this->uri->segment(1) == 't97_saldoawal' ? 'active' : ''; ?>">
+                                            <i class="fas fa-sort-amount-down-alt nav-icon"></i>
+                                            <p>Saldo Awal</p>
+                                        </a>
+                                    </li> -->
+                                    <!-- tanggal saldo awal lalu saldo awal -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t96_tglsa" class="nav-link <?php echo ($this->uri->segment(1) == 't96_tglsa' or $this->uri->segment(1) == 't97_saldoawal') ? 'active' : ''; ?>">
                                             <i class="fas fa-sort-amount-down-alt nav-icon"></i>
                                             <p>Saldo Awal</p>
                                         </a>
