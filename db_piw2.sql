@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2021 at 06:56 PM
+-- Generation Time: Mar 27, 2021 at 01:56 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -20,6 +20,24 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_piw2`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t96_tglsa`
+--
+
+CREATE TABLE `t96_tglsa` (
+  `idtglsa` int(11) NOT NULL,
+  `TglSA` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t96_tglsa`
+--
+
+INSERT INTO `t96_tglsa` (`idtglsa`, `TglSA`) VALUES
+(1, '2021-03-01');
 
 -- --------------------------------------------------------
 
@@ -512,6 +530,12 @@ INSERT INTO `t99_company` (`idcompany`, `Nama`, `Alamat`, `Kota`, `idusers`, `cr
 --
 
 --
+-- Indexes for table `t96_tglsa`
+--
+ALTER TABLE `t96_tglsa`
+  ADD PRIMARY KEY (`idtglsa`);
+
+--
 -- Indexes for table `t97_saldoawal`
 --
 ALTER TABLE `t97_saldoawal`
@@ -534,6 +558,12 @@ ALTER TABLE `t99_company`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `t96_tglsa`
+--
+ALTER TABLE `t96_tglsa`
+  MODIFY `idtglsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `t97_saldoawal`
