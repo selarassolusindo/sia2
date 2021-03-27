@@ -224,13 +224,6 @@
                                     case 't98_akun':
                                     case 't97_saldoawal':
                                     case 't96_tglsa':
-                                    // case '_39_pekerjaan':
-                                    // case '_40_pendidikan':
-                                    // case '_41_agama':
-                                    // case '_42_provinsi':
-                                    // case '_43_kabupaten':
-                                    // case '_44_kecamatan':
-                                    // case '_45_desa':
                                         echo 'menu-open';
                                         break;
                                     default:
@@ -246,13 +239,6 @@
                                         case 't98_akun':
                                         case 't97_saldoawal':
                                         case 't96_tglsa':
-                                        // case '_39_pekerjaan':
-                                        // case '_40_pendidikan':
-                                        // case '_41_agama':
-                                        // case '_42_provinsi':
-                                        // case '_43_kabupaten':
-                                        // case '_44_kecamatan':
-                                        // case '_45_desa':
                                             echo 'active';
                                             break;
                                         default:
@@ -289,13 +275,6 @@
                                             <p>Akun</p>
                                         </a>
                                     </li>
-                                    <!-- direct saldo awal -->
-                                    <!-- <li class="nav-item">
-                                        <a href="<?php echo site_url(); ?>t97_saldoawal" class="nav-link <?php echo $this->uri->segment(1) == 't97_saldoawal' ? 'active' : ''; ?>">
-                                            <i class="fas fa-sort-amount-down-alt nav-icon"></i>
-                                            <p>Saldo Awal</p>
-                                        </a>
-                                    </li> -->
                                     <!-- tanggal saldo awal lalu saldo awal -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t96_tglsa" class="nav-link <?php echo ($this->uri->segment(1) == 't96_tglsa' or $this->uri->segment(1) == 't97_saldoawal') ? 'active' : ''; ?>">
@@ -308,6 +287,46 @@
                             </li>
 
                             <?php } ?>
+
+                            <!-- laporan -->
+                            <li class="nav-item has-treeview
+                                <?php
+                                switch ($this->uri->segment(1)) {
+                                    case 'v01_bukubesar':
+                                        echo 'menu-open';
+                                        break;
+                                    default:
+                                        echo '';
+                                }
+                                ?>
+                            ">
+                                <a href="#" class="nav-link
+                                    <?php
+                                    switch ($this->uri->segment(1)) {
+                                        case 'v01_bukubesar':
+                                            echo 'active';
+                                            break;
+                                        default:
+                                            echo '';
+                                    }
+                                    ?>
+                                ">
+                                    <i class="fas fa-scroll nav-icon"></i>
+                                    <p>
+                                    LAPORAN
+                                    <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <!-- buku besar -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>v01_bukubesar" class="nav-link <?php echo $this->uri->segment(1) == 'v01_bukubesar' ? 'active' : ''; ?>">
+                                            <i class="fab fa-accusoft nav-icon"></i>
+                                            <p>Buku Besar</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
                             <!-- login or logout -->
                             <?php if ($this->session->userdata('user_id') != "") { ?>
