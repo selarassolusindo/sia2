@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2021 at 06:57 PM
+-- Generation Time: Mar 27, 2021 at 11:10 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -54,8 +54,8 @@ CREATE TABLE `t90_users` (
 --
 
 INSERT INTO `t90_users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$m81wttkoRppVHTbsu0YGp.oYt7SkSzsygvzWabarod0NG8rDL5asq', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1616662284, 1, 'Admin', 'istrator', 'ADMIN', '0'),
-(2, '::1', 'dodo', '$2y$10$veojgW7Qz2kDYzTsoikwSeq2G25wjIWwqhi46C10du5mcKpMDTD3O', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1616389085, 1616515479, 1, 'Dodo', NULL, NULL, NULL);
+(1, '127.0.0.1', 'administrator', '$2y$12$m81wttkoRppVHTbsu0YGp.oYt7SkSzsygvzWabarod0NG8rDL5asq', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1616854517, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(2, '::1', 'dodo', '$2y$10$veojgW7Qz2kDYzTsoikwSeq2G25wjIWwqhi46C10du5mcKpMDTD3O', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1616389085, 1616785340, 1, 'Dodo', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -100,8 +100,7 @@ INSERT INTO `t92_users_groups` (`id`, `user_id`, `group_id`) VALUES
 (12, 1, 2),
 (13, 1, 3),
 (14, 1, 4),
-(9, 2, 3),
-(10, 2, 4);
+(15, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -172,7 +171,7 @@ ALTER TABLE `t91_groups`
 -- AUTO_INCREMENT for table `t92_users_groups`
 --
 ALTER TABLE `t92_users_groups`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `t93_login_attempts`

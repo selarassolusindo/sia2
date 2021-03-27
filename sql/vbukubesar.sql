@@ -1,3 +1,4 @@
+create view v01_bukubesar as
 SELECT
 	l.idakun AS idakun,
 	l.Kode AS Kode,

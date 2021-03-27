@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 27, 2021 at 01:56 AM
+-- Generation Time: Mar 27, 2021 at 11:10 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -524,6 +524,31 @@ CREATE TABLE `t99_company` (
 
 INSERT INTO `t99_company` (`idcompany`, `Nama`, `Alamat`, `Kota`, `idusers`, `created_at`, `updated_at`) VALUES
 (1, 'PT. PLENGKUNG INDAH WISATA', 'SURABAYA', 'SURABAYA', 1, '2021-03-22 19:18:38', '2021-03-22 19:18:38');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `v01_bukubesar`
+-- (See below for the actual view)
+--
+CREATE TABLE `v01_bukubesar` (
+`idakun` int(11)
+,`Kode` varchar(13)
+,`Nama` varchar(100)
+,`Induk` int(11)
+,`Urut` varchar(13)
+,`Debit` double
+,`Kredit` double
+);
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `v01_bukubesar`
+--
+DROP TABLE IF EXISTS `v01_bukubesar`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v01_bukubesar`  AS SELECT `l`.`idakun` AS `idakun`, `l`.`Kode` AS `Kode`, `l`.`Nama` AS `Nama`, `l`.`Induk` AS `Induk`, `l`.`Urut` AS `Urut`, CASE WHEN `m`.`debit` is null THEN 0 ELSE `m`.`debit` END AS `Debit`, CASE WHEN `m`.`kredit` is null THEN 0 ELSE `m`.`kredit` END AS `Kredit` FROM (`t98_akun` `l` left join (select `k`.`idakun` AS `idakun`,sum(`k`.`debit`) AS `debit`,sum(`k`.`kredit`) AS `kredit`,`k`.`induk` AS `induk` from (select `i`.`induk` AS `idakun`,sum(`i`.`debit`) AS `debit`,sum(`i`.`kredit`) AS `kredit`,`j`.`Induk` AS `induk` from ((select `g`.`induk` AS `idakun`,sum(`g`.`debit`) AS `debit`,sum(`g`.`kredit`) AS `kredit`,`h`.`Induk` AS `induk` from ((select `e`.`induk` AS `idakun`,sum(`e`.`debit`) AS `debit`,sum(`e`.`kredit`) AS `kredit`,`f`.`Induk` AS `induk` from ((select `c`.`induk` AS `idakun`,sum(`c`.`debit`) AS `debit`,sum(`c`.`kredit`) AS `kredit`,`d`.`Induk` AS `induk` from ((select `a`.`idakun` AS `idakun`,`a`.`Debit` AS `debit`,`a`.`Kredit` AS `kredit`,`b`.`Induk` AS `induk` from (`t97_saldoawal` `a` left join `t98_akun` `b` on(`a`.`idakun` = `b`.`idakun`))) `c` left join `t98_akun` `d` on(`c`.`induk` = `d`.`idakun`)) group by `c`.`induk`) `e` left join `t98_akun` `f` on(`e`.`induk` = `f`.`idakun`)) group by `e`.`induk`) `g` left join `t98_akun` `h` on(`g`.`induk` = `h`.`idakun`)) group by `g`.`induk`) `i` left join `t98_akun` `j` on(`i`.`induk` = `j`.`idakun`)) where `i`.`induk` <> 0 group by `i`.`induk` union select `g`.`induk` AS `idakun`,sum(`g`.`debit`) AS `debit`,sum(`g`.`kredit`) AS `kredit`,`h`.`Induk` AS `induk` from ((select `e`.`induk` AS `idakun`,sum(`e`.`debit`) AS `debit`,sum(`e`.`kredit`) AS `kredit`,`f`.`Induk` AS `induk` from ((select `c`.`induk` AS `idakun`,sum(`c`.`debit`) AS `debit`,sum(`c`.`kredit`) AS `kredit`,`d`.`Induk` AS `induk` from ((select `a`.`idakun` AS `idakun`,`a`.`Debit` AS `debit`,`a`.`Kredit` AS `kredit`,`b`.`Induk` AS `induk` from (`t97_saldoawal` `a` left join `t98_akun` `b` on(`a`.`idakun` = `b`.`idakun`))) `c` left join `t98_akun` `d` on(`c`.`induk` = `d`.`idakun`)) group by `c`.`induk`) `e` left join `t98_akun` `f` on(`e`.`induk` = `f`.`idakun`)) group by `e`.`induk`) `g` left join `t98_akun` `h` on(`g`.`induk` = `h`.`idakun`)) where `g`.`induk` <> 0 group by `g`.`induk` union select `e`.`induk` AS `idakun`,sum(`e`.`debit`) AS `debit`,sum(`e`.`kredit`) AS `kredit`,`f`.`Induk` AS `induk` from ((select `c`.`induk` AS `idakun`,sum(`c`.`debit`) AS `debit`,sum(`c`.`kredit`) AS `kredit`,`d`.`Induk` AS `induk` from ((select `a`.`idakun` AS `idakun`,`a`.`Debit` AS `debit`,`a`.`Kredit` AS `kredit`,`b`.`Induk` AS `induk` from (`t97_saldoawal` `a` left join `t98_akun` `b` on(`a`.`idakun` = `b`.`idakun`))) `c` left join `t98_akun` `d` on(`c`.`induk` = `d`.`idakun`)) group by `c`.`induk`) `e` left join `t98_akun` `f` on(`e`.`induk` = `f`.`idakun`)) where `e`.`induk` <> 0 group by `e`.`induk` union select `c`.`induk` AS `idakun`,sum(`c`.`debit`) AS `debit`,sum(`c`.`kredit`) AS `kredit`,`d`.`Induk` AS `induk` from ((select `a`.`idakun` AS `idakun`,`a`.`Debit` AS `debit`,`a`.`Kredit` AS `kredit`,`b`.`Induk` AS `induk` from (`t97_saldoawal` `a` left join `t98_akun` `b` on(`a`.`idakun` = `b`.`idakun`))) `c` left join `t98_akun` `d` on(`c`.`induk` = `d`.`idakun`)) where `c`.`induk` <> 0 group by `c`.`induk` union select `a`.`idakun` AS `idakun`,`a`.`Debit` AS `debit`,`a`.`Kredit` AS `kredit`,`b`.`Induk` AS `induk` from (`t97_saldoawal` `a` left join `t98_akun` `b` on(`a`.`idakun` = `b`.`idakun`)) where `b`.`Induk` <> 0) `k` group by `k`.`idakun`) `m` on(`l`.`idakun` = `m`.`idakun`)) ;
 
 --
 -- Indexes for dumped tables
