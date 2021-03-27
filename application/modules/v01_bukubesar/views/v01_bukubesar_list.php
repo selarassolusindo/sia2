@@ -53,6 +53,9 @@
             </div>
         </div>
 
+        <?php
+        if ($idakun <> '') {
+        ?>
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
@@ -91,15 +94,16 @@
             }
             ?>
         </table>
-        <div class="row">
+        <?php } ?>
+        <!-- <div class="row">
             <div class="col-md-6">
                 <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-		<?php echo anchor(site_url('v01_bukubesar/excel'), 'Excel', 'class="btn btn-primary"'); ?>
-		<?php echo anchor(site_url('v01_bukubesar/word'), 'Word', 'class="btn btn-primary"'); ?>
-	    </div>
+        		<?php echo anchor(site_url('v01_bukubesar/excel'), 'Excel', 'class="btn btn-primary"'); ?>
+        		<?php echo anchor(site_url('v01_bukubesar/word'), 'Word', 'class="btn btn-primary"'); ?>
+    	    </div>
             <div class="col-md-6 text-right">
                 <?php echo $pagination ?>
             </div>
-        </div>
+        </div> -->
     <!-- </body>
 </html> -->

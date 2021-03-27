@@ -14,6 +14,8 @@ class V01_bukubesar extends CI_Controller
 
     public function index()
     {
+        $idakun = $this->input->post('idakun', TRUE);
+
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
 
@@ -25,7 +27,7 @@ class V01_bukubesar extends CI_Controller
             $config['first_url'] = base_url() . 'v01_bukubesar/index.html';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 10000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->V01_bukubesar_model->total_rows($q);
         $v01_bukubesar = $this->V01_bukubesar_model->get_limit_data($config['per_page'], $start, $q);
@@ -39,6 +41,7 @@ class V01_bukubesar extends CI_Controller
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
+            'idakun' => $idakun,
         );
         // $this->load->view('v01_bukubesar/v01_bukubesar_list', $data);
         $data['_view'] = 'v01_bukubesar/v01_bukubesar_list';
