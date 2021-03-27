@@ -286,8 +286,6 @@
                                 </ul>
                             </li>
 
-                            <?php } ?>
-
                             <!-- laporan -->
                             <li class="nav-item has-treeview
                                 <?php
@@ -327,6 +325,8 @@
                                     </li>
                                 </ul>
                             </li>
+
+                            <?php } ?>
 
                             <!-- login or logout -->
                             <?php if ($this->session->userdata('user_id') != "") { ?>
