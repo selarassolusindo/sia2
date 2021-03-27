@@ -387,7 +387,10 @@
                                             <li class="breadcrumb-item active">
                                                 <?php //echo substr($this->uri->segment(1), 0, 1) == 't' ? ucfirst(substr($this->uri->segment(1), 4)) : ucfirst($this->uri->segment(1)); ?>
                                                 <?php
-                                                if (substr($this->uri->segment(1), 0, 1) == 't') {
+                                                if (
+                                                    substr($this->uri->segment(1), 0, 1) == 't'
+                                                    or substr($this->uri->segment(1), 0, 1) == 'v'
+                                                    ) {
                                                     switch (substr($this->uri->segment(1), 4)) {
                                                         case 'company':
                                                             echo 'Perusahaan';
@@ -409,7 +412,9 @@
                                                         <a href="<?php echo site_url().$this->uri->segment(1); ?>">
                                                             <?php //echo substr($this->uri->segment(1), 0, 1) == 't' ? ucfirst(substr($this->uri->segment(1), 4)) : ucfirst($this->uri->segment(1)); ?>
                                                             <?php
-                                                            if (substr($this->uri->segment(1), 0, 1) == 't') {
+                                                            if (substr($this->uri->segment(1), 0, 1) == 't'
+                                                                or substr($this->uri->segment(1), 0, 1) == 'v'
+                                                                ) {
                                                                 switch (substr($this->uri->segment(1), 4)) {
                                                                     case 'company':
                                                                         echo 'Perusahaan';
