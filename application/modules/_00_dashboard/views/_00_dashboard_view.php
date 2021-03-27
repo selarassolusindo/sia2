@@ -246,7 +246,7 @@
                                     }
                                     ?>
                                 ">
-                                    <i class="fas fa-cog nav-icon"></i>
+                                    <i class="fas fa-info-circle nav-icon"></i>
                                     <p>
                                     SETUP
                                     <i class="right fas fa-angle-left"></i>
@@ -257,7 +257,7 @@
                                     <!-- users & groups -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>auth" class="nav-link <?php echo $this->uri->segment(1) == 'auth' ? 'active' : ''; ?>">
-                                            <i class="fas fa-users-cog nav-icon"></i>
+                                            <i class="fas fa-user-friends nav-icon"></i>
                                             <p>Users & Groups</p>
                                         </a>
                                     </li>
