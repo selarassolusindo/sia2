@@ -53,46 +53,50 @@
             </div>
         </div>
 
-        <?php
-        if ($idakun <> '') {
-        ?>
+        <?php if ($idakun <> '') { ?>
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
-                <th>No</th>
-		<th>Idakun</th>
-		<th>Kode</th>
-		<th>Nama</th>
-		<th>Induk</th>
-		<th>Urut</th>
-		<th>Debit</th>
-		<th>Kredit</th>
-		<th>Action</th>
-            </tr><?php
-            foreach ($v01_bukubesar_data as $v01_bukubesar)
-            {
-                ?>
-                <tr>
-			<td width="80px"><?php echo ++$start ?></td>
-			<td><?php echo $v01_bukubesar->idakun ?></td>
-			<td><?php echo $v01_bukubesar->Kode ?></td>
-			<td><?php echo $v01_bukubesar->Nama ?></td>
-			<td><?php echo $v01_bukubesar->Induk ?></td>
-			<td><?php echo $v01_bukubesar->Urut ?></td>
-			<td><?php echo $v01_bukubesar->Debit ?></td>
-			<td><?php echo $v01_bukubesar->Kredit ?></td>
-			<td style="text-align:center" width="200px">
-				<?php
-				echo anchor(site_url('v01_bukubesar/read/'.$v01_bukubesar->idakun),'Read');
-				echo ' | ';
-				echo anchor(site_url('v01_bukubesar/update/'.$v01_bukubesar->idakun),'Update');
-				echo ' | ';
-				echo anchor(site_url('v01_bukubesar/delete/'.$v01_bukubesar->idakun),'Delete','onclick="javascript: return confirm(\'Are You Sure ?\')"');
-				?>
-			</td>
-		</tr>
-                <?php
-            }
+                <th>Tanggal</th>
+        		<th>No. Bukti</th>
+        		<th>Keterangan</th>
+        		<th>Debit</th>
+        		<th>Kredit</th>
+        		<th>Saldo</th>
+            </tr>
+            <?php
+            $saldo = 0;
+            $debit = 0;
+            $kredit = 0;
             ?>
+            <?php //foreach ($v01_bukubesar_data as $v01_bukubesar) { ?>
+            <tr>
+    			<td><?php echo shortDateIndo($tglSA[0]->TglSA) ?></td>
+    			<td>-</td>
+    			<td>Saldo Awal</td>
+    			<td align="right"><?php echo numIndo($v01_bukubesar_data->Debit) ?></td>
+    			<td align="right"><?php echo numIndo($v01_bukubesar_data->Kredit) ?></td>
+                <td align="right"><?php echo numIndo($v01_bukubesar_data->Debit - $v01_bukubesar_data->Kredit) ?></td>
+    		</tr>
+            <!-- <tr>
+    			<td width="80px"><?php echo ++$start ?></td>
+    			<td><?php echo $v01_bukubesar->idakun ?></td>
+    			<td><?php echo $v01_bukubesar->Kode ?></td>
+    			<td><?php echo $v01_bukubesar->Nama ?></td>
+    			<td><?php echo $v01_bukubesar->Induk ?></td>
+    			<td><?php echo $v01_bukubesar->Urut ?></td>
+    			<td><?php echo $v01_bukubesar->Debit ?></td>
+    			<td><?php echo $v01_bukubesar->Kredit ?></td>
+    			<td style="text-align:center" width="200px">
+    				<?php
+    				echo anchor(site_url('v01_bukubesar/read/'.$v01_bukubesar->idakun),'Read');
+    				echo ' | ';
+    				echo anchor(site_url('v01_bukubesar/update/'.$v01_bukubesar->idakun),'Update');
+    				echo ' | ';
+    				echo anchor(site_url('v01_bukubesar/delete/'.$v01_bukubesar->idakun),'Delete','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+    				?>
+    			</td>
+    		</tr> -->
+            <?php //} ?>
         </table>
         <?php } ?>
         <!-- <div class="row">

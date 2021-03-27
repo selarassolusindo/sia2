@@ -10,6 +10,7 @@ class V01_bukubesar extends CI_Controller
         parent::__construct();
         $this->load->model('V01_bukubesar_model');
         $this->load->library('form_validation');
+        $this->load->model('t96_tglsa/T96_tglsa_model');
     }
 
     public function index()
@@ -30,7 +31,16 @@ class V01_bukubesar extends CI_Controller
         $config['per_page'] = 10000;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->V01_bukubesar_model->total_rows($q);
-        $v01_bukubesar = $this->V01_bukubesar_model->get_limit_data($config['per_page'], $start, $q);
+        // $v01_bukubesar = $this->V01_bukubesar_model->get_limit_data($config['per_page'], $start, $q);
+
+        // ambil data dari view v01_bukubesar
+        $v01_bukubesar = $this->V01_bukubesar_model->get_by_id($idakun);
+
+        // ambil data dari view v01_bukubesar untuk select
+        $akun = $this->V01_bukubesar_model->get_all();
+
+        // ambil data tanggal saldo awal
+        $tglSA = $this->T96_tglsa_model->get_all();
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
@@ -42,6 +52,8 @@ class V01_bukubesar extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
             'idakun' => $idakun,
+            'akun_data' => $akun,
+            'tglSA' => $tglSA,
         );
         // $this->load->view('v01_bukubesar/v01_bukubesar_list', $data);
         $data['_view'] = 'v01_bukubesar/v01_bukubesar_list';
