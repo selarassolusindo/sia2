@@ -264,21 +264,21 @@
                                     <!-- company -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t99_company" class="nav-link <?php echo $this->uri->segment(1) == 't99_company' ? 'active' : ''; ?>">
-                                            <i class="fas fa-building nav-icon"></i>
+                                            <i class="fas fa-copyright nav-icon"></i>
                                             <p>Perusahaan</p>
                                         </a>
                                     </li>
                                     <!-- akun -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t98_akun" class="nav-link <?php echo $this->uri->segment(1) == 't98_akun' ? 'active' : ''; ?>">
-                                            <i class="fas fa-list-ol nav-icon"></i>
+                                            <i class="fas fa-list-alt nav-icon"></i>
                                             <p>Akun</p>
                                         </a>
                                     </li>
                                     <!-- tanggal saldo awal lalu saldo awal -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t96_tglsa" class="nav-link <?php echo ($this->uri->segment(1) == 't96_tglsa' or $this->uri->segment(1) == 't97_saldoawal') ? 'active' : ''; ?>">
-                                            <i class="fas fa-sort-amount-down-alt nav-icon"></i>
+                                            <i class="fas fa-clipboard-list nav-icon"></i>
                                             <p>Saldo Awal</p>
                                         </a>
                                     </li>
@@ -309,7 +309,7 @@
                                     }
                                     ?>
                                 ">
-                                    <i class="fas fa-scroll nav-icon"></i>
+                                    <i class="fas fa-pager nav-icon"></i>
                                     <p>
                                     LAPORAN
                                     <i class="right fas fa-angle-left"></i>
@@ -319,7 +319,7 @@
                                     <!-- buku besar -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>v01_bukubesar" class="nav-link <?php echo $this->uri->segment(1) == 'v01_bukubesar' ? 'active' : ''; ?>">
-                                            <i class="fab fa-accusoft nav-icon"></i>
+                                            <i class="fas fa-swatchbook nav-icon"></i>
                                             <p>Buku Besar</p>
                                         </a>
                                     </li>
