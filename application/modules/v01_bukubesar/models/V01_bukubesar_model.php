@@ -6,6 +6,7 @@ if (!defined('BASEPATH'))
 class V01_bukubesar_model extends CI_Model
 {
 
+    // public $table = 'v01_bukubesar';
     public $table = 'v01_bukubesar';
     public $id = 'idakun';
     public $order = 'DESC';
