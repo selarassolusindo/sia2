@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 28, 2021 at 09:17 PM
+-- Generation Time: Mar 31, 2021 at 06:28 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -655,7 +655,7 @@ CREATE TABLE `v01_bukubesar` (
 --
 DROP TABLE IF EXISTS `result1`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result1`  AS SELECT `sa`.`induk` AS `idakun`, sum(`sa`.`debit`) AS `debit`, sum(`sa`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`saldoawal` `sa` left join `t98_akun` `akun` on(`sa`.`induk` = `akun`.`idakun`)) GROUP BY `sa`.`induk` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `result1`  AS SELECT `sa`.`induk` AS `idakun`, sum(`sa`.`debit`) AS `debit`, sum(`sa`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`saldoawal` `sa` left join `t98_akun` `akun` on(`sa`.`induk` = `akun`.`idakun`)) GROUP BY `sa`.`induk` ;
 
 -- --------------------------------------------------------
 
@@ -664,7 +664,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result1`  AS SELECT `sa`.`
 --
 DROP TABLE IF EXISTS `result2`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result2`  AS SELECT `r1`.`induk` AS `idakun`, sum(`r1`.`debit`) AS `debit`, sum(`r1`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`result1` `r1` left join `t98_akun` `akun` on(`r1`.`induk` = `akun`.`idakun`)) GROUP BY `r1`.`induk` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `result2`  AS SELECT `r1`.`induk` AS `idakun`, sum(`r1`.`debit`) AS `debit`, sum(`r1`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`result1` `r1` left join `t98_akun` `akun` on(`r1`.`induk` = `akun`.`idakun`)) GROUP BY `r1`.`induk` ;
 
 -- --------------------------------------------------------
 
@@ -673,7 +673,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result2`  AS SELECT `r1`.`
 --
 DROP TABLE IF EXISTS `result3`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result3`  AS SELECT `r2`.`induk` AS `idakun`, sum(`r2`.`debit`) AS `debit`, sum(`r2`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`result2` `r2` left join `t98_akun` `akun` on(`r2`.`induk` = `akun`.`idakun`)) GROUP BY `r2`.`induk` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `result3`  AS SELECT `r2`.`induk` AS `idakun`, sum(`r2`.`debit`) AS `debit`, sum(`r2`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`result2` `r2` left join `t98_akun` `akun` on(`r2`.`induk` = `akun`.`idakun`)) GROUP BY `r2`.`induk` ;
 
 -- --------------------------------------------------------
 
@@ -682,7 +682,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result3`  AS SELECT `r2`.`
 --
 DROP TABLE IF EXISTS `result4`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result4`  AS SELECT `r3`.`induk` AS `idakun`, sum(`r3`.`debit`) AS `debit`, sum(`r3`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`result3` `r3` left join `t98_akun` `akun` on(`r3`.`induk` = `akun`.`idakun`)) GROUP BY `r3`.`induk` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `result4`  AS SELECT `r3`.`induk` AS `idakun`, sum(`r3`.`debit`) AS `debit`, sum(`r3`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`result3` `r3` left join `t98_akun` `akun` on(`r3`.`induk` = `akun`.`idakun`)) GROUP BY `r3`.`induk` ;
 
 -- --------------------------------------------------------
 
@@ -691,7 +691,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result4`  AS SELECT `r3`.`
 --
 DROP TABLE IF EXISTS `result5`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result5`  AS SELECT `r4`.`induk` AS `idakun`, sum(`r4`.`debit`) AS `debit`, sum(`r4`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`result4` `r4` left join `t98_akun` `akun` on(`r4`.`induk` = `akun`.`idakun`)) GROUP BY `r4`.`induk` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `result5`  AS SELECT `r4`.`induk` AS `idakun`, sum(`r4`.`debit`) AS `debit`, sum(`r4`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM (`result4` `r4` left join `t98_akun` `akun` on(`r4`.`induk` = `akun`.`idakun`)) GROUP BY `r4`.`induk` ;
 
 -- --------------------------------------------------------
 
@@ -700,7 +700,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result5`  AS SELECT `r4`.`
 --
 DROP TABLE IF EXISTS `result6`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result6`  AS SELECT `r`.`induk` AS `idakun`, sum(`r`.`debit`) AS `debit`, sum(`r`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM ((select `result5`.`idakun` AS `idakun`,`result5`.`debit` AS `debit`,`result5`.`kredit` AS `kredit`,`result5`.`induk` AS `induk` from `result5` union select `result4`.`idakun` AS `idakun`,`result4`.`debit` AS `debit`,`result4`.`kredit` AS `kredit`,`result4`.`induk` AS `induk` from `result4` union select `result3`.`idakun` AS `idakun`,`result3`.`debit` AS `debit`,`result3`.`kredit` AS `kredit`,`result3`.`induk` AS `induk` from `result3` union select `result2`.`idakun` AS `idakun`,`result2`.`debit` AS `debit`,`result2`.`kredit` AS `kredit`,`result2`.`induk` AS `induk` from `result2` union select `result1`.`idakun` AS `idakun`,`result1`.`debit` AS `debit`,`result1`.`kredit` AS `kredit`,`result1`.`induk` AS `induk` from `result1` union select `saldoawal`.`idakun` AS `idakun`,`saldoawal`.`debit` AS `debit`,`saldoawal`.`kredit` AS `kredit`,`saldoawal`.`induk` AS `induk` from `saldoawal`) `r` left join `t98_akun` `akun` on(`r`.`induk` = `akun`.`idakun`)) GROUP BY `r`.`induk` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `result6`  AS SELECT `r`.`induk` AS `idakun`, sum(`r`.`debit`) AS `debit`, sum(`r`.`kredit`) AS `kredit`, `akun`.`Induk` AS `induk` FROM ((select `result5`.`idakun` AS `idakun`,`result5`.`debit` AS `debit`,`result5`.`kredit` AS `kredit`,`result5`.`induk` AS `induk` from `result5` union select `result4`.`idakun` AS `idakun`,`result4`.`debit` AS `debit`,`result4`.`kredit` AS `kredit`,`result4`.`induk` AS `induk` from `result4` union select `result3`.`idakun` AS `idakun`,`result3`.`debit` AS `debit`,`result3`.`kredit` AS `kredit`,`result3`.`induk` AS `induk` from `result3` union select `result2`.`idakun` AS `idakun`,`result2`.`debit` AS `debit`,`result2`.`kredit` AS `kredit`,`result2`.`induk` AS `induk` from `result2` union select `result1`.`idakun` AS `idakun`,`result1`.`debit` AS `debit`,`result1`.`kredit` AS `kredit`,`result1`.`induk` AS `induk` from `result1` union select `saldoawal`.`idakun` AS `idakun`,`saldoawal`.`debit` AS `debit`,`saldoawal`.`kredit` AS `kredit`,`saldoawal`.`induk` AS `induk` from `saldoawal`) `r` left join `t98_akun` `akun` on(`r`.`induk` = `akun`.`idakun`)) GROUP BY `r`.`induk` ;
 
 -- --------------------------------------------------------
 
@@ -709,7 +709,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result6`  AS SELECT `r`.`i
 --
 DROP TABLE IF EXISTS `result7`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result7`  AS SELECT `result6`.`idakun` AS `idakun`, `result6`.`debit` AS `debit`, `result6`.`kredit` AS `kredit`, `result6`.`induk` AS `induk` FROM `result6` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `result7`  AS SELECT `result6`.`idakun` AS `idakun`, `result6`.`debit` AS `debit`, `result6`.`kredit` AS `kredit`, `result6`.`induk` AS `induk` FROM `result6` ;
 
 -- --------------------------------------------------------
 
@@ -718,7 +718,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `result7`  AS SELECT `resul
 --
 DROP TABLE IF EXISTS `saldoawal`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `saldoawal`  AS SELECT `sa`.`idakun` AS `idakun`, `sa`.`Debit` AS `debit`, `sa`.`Kredit` AS `kredit`, `akun`.`Induk` AS `induk` FROM (`t97_saldoawal` `sa` left join `t98_akun` `akun` on(`sa`.`idakun` = `akun`.`idakun`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `saldoawal`  AS SELECT `sa`.`idakun` AS `idakun`, `sa`.`Debit` AS `debit`, `sa`.`Kredit` AS `kredit`, `akun`.`Induk` AS `induk` FROM (`t97_saldoawal` `sa` left join `t98_akun` `akun` on(`sa`.`idakun` = `akun`.`idakun`)) ;
 
 -- --------------------------------------------------------
 
@@ -727,7 +727,7 @@ CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `saldoawal`  AS SELECT `sa`
 --
 DROP TABLE IF EXISTS `v01_bukubesar`;
 
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `v01_bukubesar`  AS SELECT `akun`.`idakun` AS `idakun`, `akun`.`Kode` AS `Kode`, `akun`.`Nama` AS `Nama`, `akun`.`Induk` AS `Induk`, `akun`.`Urut` AS `Urut`, `akun`.`idusers` AS `idusers`, `akun`.`created_at` AS `created_at`, `akun`.`updated_at` AS `updated_at`, CASE WHEN `r7`.`debit` is null THEN 0 ELSE `r7`.`debit` END AS `Debit`, CASE WHEN `r7`.`kredit` is null THEN 0 ELSE `r7`.`kredit` END AS `Kredit` FROM (`t98_akun` `akun` left join `result7` `r7` on(`akun`.`idakun` = `r7`.`idakun`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v01_bukubesar`  AS SELECT `akun`.`idakun` AS `idakun`, `akun`.`Kode` AS `Kode`, `akun`.`Nama` AS `Nama`, `akun`.`Induk` AS `Induk`, `akun`.`Urut` AS `Urut`, `akun`.`idusers` AS `idusers`, `akun`.`created_at` AS `created_at`, `akun`.`updated_at` AS `updated_at`, CASE WHEN `r7`.`debit` is null THEN 0 ELSE `r7`.`debit` END AS `Debit`, CASE WHEN `r7`.`kredit` is null THEN 0 ELSE `r7`.`kredit` END AS `Kredit` FROM (`t98_akun` `akun` left join `result7` `r7` on(`akun`.`idakun` = `r7`.`idakun`)) ;
 
 --
 -- Indexes for dumped tables
