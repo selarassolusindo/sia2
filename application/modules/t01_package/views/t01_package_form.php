@@ -14,11 +14,11 @@
         <form action="<?php echo $action; ?>" method="post">
     	    <div class="form-group">
                 <label for="varchar">Package Name <?php echo form_error('PackageName') ?></label>
-                <input type="text" class="form-control" name="PackageName" id="PackageName" placeholder="PackageName" value="<?php echo $PackageName; ?>" />
+                <input type="text" class="form-control" name="PackageName" id="PackageName" placeholder="Package Name" value="<?php echo $PackageName; ?>" />
             </div>
     	    <div class="form-group">
                 <label for="varchar">Package Code <?php echo form_error('PackageCode') ?></label>
-                <input type="text" class="form-control" name="PackageCode" id="PackageCode" placeholder="PackageCode" value="<?php echo $PackageCode; ?>" />
+                <input type="text" class="form-control" name="PackageCode" id="PackageCode" placeholder="Package Code" value="<?php echo $PackageCode; ?>" />
             </div>
     	    <div class="form-group">
                 <label for="double">SSW Price 3 Nights Luar Negeri (USD) <?php echo form_error('SN3LN') ?></label>

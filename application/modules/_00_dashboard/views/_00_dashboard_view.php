@@ -266,6 +266,9 @@
                                             <p>Users & Groups</p>
                                         </a>
                                     </li>
+
+                                    <div class="dropdown-divider"></div>
+
                                     <!-- company -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t99_company" class="nav-link <?php echo $this->uri->segment(1) == 't99_company' ? 'active' : ''; ?>">
@@ -273,6 +276,9 @@
                                             <p>Perusahaan</p>
                                         </a>
                                     </li>
+
+                                    <div class="dropdown-divider"></div>
+                                    
                                     <!-- akun -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t98_akun" class="nav-link <?php echo $this->uri->segment(1) == 't98_akun' ? 'active' : ''; ?>">
@@ -299,7 +305,7 @@
                                     </li>
 
                                     <div class="dropdown-divider"></div>
-                                    
+
                                     <?php } ?>
                                 </ul>
                             </li>

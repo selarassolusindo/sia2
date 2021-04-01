@@ -13,7 +13,7 @@
         <h2 style="margin-top:0px">T01_package List</h2> -->
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('t01_package/create'),'Create', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('t01_package/create'),'Tambah', 'class="btn btn-primary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -35,34 +35,35 @@
                                     <?php
                                 }
                             ?>
-                          <button class="btn btn-primary" type="submit">Search</button>
+                          <button class="btn btn-primary" type="submit">Cari</button>
                         </span>
                     </div>
                 </form>
             </div>
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px">
+        <!-- <table class="table" style="margin-bottom: 10px"> -->
             <tr>
                 <th rowspan="3">No</th>
         		<th colspan="2" rowspan="2">Package</th>
-                <th colspan="3">SSW Price</th>
-                <th colspan="2">PIW Price</th>
-                <th rowspan="3">Action</th>
+                <th colspan="3" class="text-center">SSW Price</th>
+                <th colspan="2" class="text-center">PIW Price</th>
+                <th rowspan="3" class="text-center">Action</th>
             </tr>
             <tr>
-                <th>3 Nights</th>
-                <th>6 Nights</th>
-                <th>Extend /night</th>
-                <th colspan="2">1 Night</th>
+                <th class="text-right">3 Nights</th>
+                <th class="text-right">6 Nights</th>
+                <th class="text-right">Extend /night</th>
+                <th class="text-center" colspan="2">1 Night</th>
             </tr>
             <tr>
         		<th>Name</th>
         		<th>Code</th>
-        		<th>LN</th>
-        		<th>LN</th>
-        		<th>LN</th>
-                <th>LN</th>
-                <th>DN</th>
+        		<th class="text-right">LN</th>
+        		<th class="text-right">LN</th>
+        		<th class="text-right">LN</th>
+                <th class="text-right">LN</th>
+                <th class="text-right">DN</th>
             </tr>
             <?php foreach ($t01_package_data as $t01_package) { ?>
             <tr>
@@ -76,11 +77,11 @@
     			<td align="right">IDR <?php echo numIndo($t01_package->PN1DN) ?></td>
     			<td style="text-align:center" width="200px">
     				<?php
-    				echo anchor(site_url('t01_package/read/'.$t01_package->idprice),'Read');
+    				// echo anchor(site_url('t01_package/read/'.$t01_package->idprice),'Read');
+    				// echo ' | ';
+    				echo anchor(site_url('t01_package/update/'.$t01_package->idprice),'Edit');
     				echo ' | ';
-    				echo anchor(site_url('t01_package/update/'.$t01_package->idprice),'Update');
-    				echo ' | ';
-    				echo anchor(site_url('t01_package/delete/'.$t01_package->idprice),'Delete','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+    				echo anchor(site_url('t01_package/delete/'.$t01_package->idprice),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
     				?>
     			</td>
     		</tr>
@@ -88,7 +89,7 @@
         </table>
         <div class="row">
             <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
+                <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
         		<?php echo anchor(site_url('t01_package/excel'), 'Excel', 'class="btn btn-primary"'); ?>
         		<?php echo anchor(site_url('t01_package/word'), 'Word', 'class="btn btn-primary"'); ?>
     	    </div>
