@@ -69,11 +69,11 @@
     			<td width="80px"><?php echo ++$start ?></td>
     			<td><?php echo $t01_package->PackageName ?></td>
     			<td><?php echo $t01_package->PackageCode ?></td>
-    			<td><?php echo $t01_package->SN3LN ?></td>
-    			<td><?php echo $t01_package->SN6LN ?></td>
-    			<td><?php echo $t01_package->SNELN ?></td>
-    			<td><?php echo $t01_package->PN1LN ?></td>
-    			<td><?php echo $t01_package->PN1DN ?></td>
+    			<td align="right">USD <?php echo numIndo($t01_package->SN3LN) ?></td>
+    			<td align="right">USD <?php echo numIndo($t01_package->SN6LN) ?></td>
+    			<td align="right">USD <?php echo numIndo($t01_package->SNELN) ?></td>
+    			<td align="right">USD <?php echo numIndo($t01_package->PN1LN) ?></td>
+    			<td align="right">IDR <?php echo numIndo($t01_package->PN1DN) ?></td>
     			<td style="text-align:center" width="200px">
     				<?php
     				echo anchor(site_url('t01_package/read/'.$t01_package->idprice),'Read');
