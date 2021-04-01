@@ -224,6 +224,7 @@
                                     case 't98_akun':
                                     case 't97_saldoawal':
                                     case 't96_tglsa':
+                                    case 't01_package':
                                         echo 'menu-open';
                                         break;
                                     default:
@@ -239,6 +240,7 @@
                                         case 't98_akun':
                                         case 't97_saldoawal':
                                         case 't96_tglsa':
+                                        case 't01_package':
                                             echo 'active';
                                             break;
                                         default:
@@ -254,6 +256,9 @@
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <?php if ($this->ion_auth->is_admin()) { ?>
+
+                                    <div class="dropdown-divider"></div>
+
                                     <!-- users & groups -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>auth" class="nav-link <?php echo $this->uri->segment(1) == 'auth' ? 'active' : ''; ?>">
@@ -282,6 +287,19 @@
                                             <p>Saldo Awal</p>
                                         </a>
                                     </li>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <!-- package -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t01_package" class="nav-link <?php echo $this->uri->segment(1) == 't01_package' ? 'active' : ''; ?>">
+                                            <i class="fas fa-suitcase nav-icon"></i>
+                                            <p>Package</p>
+                                        </a>
+                                    </li>
+
+                                    <div class="dropdown-divider"></div>
+                                    
                                     <?php } ?>
                                 </ul>
                             </li>
