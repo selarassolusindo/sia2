@@ -85,7 +85,7 @@ class T01_package extends CI_Controller
     public function create()
     {
         $data = array(
-            'button' => 'Create',
+            'button' => 'Simpan',
             'action' => site_url('t01_package/create_action'),
     	    'idprice' => set_value('idprice'),
     	    'PackageName' => set_value('PackageName'),
@@ -156,7 +156,7 @@ class T01_package extends CI_Controller
 
         if ($row) {
             $data = array(
-                'button' => 'Update',
+                'button' => 'Simpan',
                 'action' => site_url('t01_package/update_action'),
         		'idprice' => set_value('idprice', $row->idprice),
         		'PackageName' => set_value('PackageName', $row->PackageName),

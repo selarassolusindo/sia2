@@ -98,7 +98,7 @@
             </div> -->
     	    <input type="hidden" name="idprice" value="<?php echo $idprice; ?>" />
     	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-    	    <a href="<?php echo site_url('t01_package') ?>" class="btn btn-default">Cancel</a>
+    	    <a href="<?php echo site_url('t01_package') ?>" class="btn btn-default">Batal</a>
     	</form>
     <!-- </body>
 </html> -->
