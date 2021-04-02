@@ -43,24 +43,28 @@
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
-                <th>No</th>
-				<th>TripNo</th>
-				<th>TripTgl</th>
-				<th>Nama</th>
-				<th>MFC</th>
-				<th>Country</th>
-				<th>PackageNight</th>
-				<th>PackageType</th>
-				<th>CheckIn</th>
-				<th>CheckOut</th>
-				<th>Agent</th>
-				<th>Status</th>
-				<th>DaysStay</th>
-				<th>Price</th>
+                <th rowspan="2">No.</th>
+				<th colspan="2">Trip</th>
+				<th rowspan="2">Name</th>
+				<th rowspan="2">MFC</th>
+				<th rowspan="2">Country</th>
+				<th colspan="2">Package</th>
+				<th rowspan="2">Check-In</th>
+				<th rowspan="2">Check-Out</th>
+				<th rowspan="2">Agent</th>
+				<th rowspan="2">Status</th>
+				<th rowspan="2">Days Stay</th>
+				<th rowspan="2">Price</th>
 				<!-- <th>Idusers</th>
 				<th>Created At</th>
 				<th>Updated At</th> -->
-				<th>Proses</th>
+				<th rowspan="2">Proses</th>
+            </tr>
+            <tr>
+                <th>No.</th>
+                <th>Date</th>
+                <th>Night</th>
+                <th>Type</th>
             </tr>
 			<?php foreach ($t02_tamu_data as $t02_tamu) { ?>
             <tr>
