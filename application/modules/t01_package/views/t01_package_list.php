@@ -48,7 +48,7 @@
         		<th colspan="2" rowspan="2">Package</th>
                 <th colspan="3" class="text-center">SSW Price</th>
                 <th colspan="2" class="text-center">PIW Price</th>
-                <th rowspan="3" class="text-center">Action</th>
+                <th rowspan="3" class="text-center">Proses</th>
             </tr>
             <tr>
                 <th class="text-right">3 Nights</th>

@@ -47,23 +47,20 @@ $string = "<!doctype html>
             <tr>
                 <th>No</th>";
 foreach ($non_pk as $row) {
-    $string .= "\n\t\t<th>" . label($row['column_name']) . "</th>";
+    $string .= "\n\t\t\t\t<th>" . label($row['column_name']) . "</th>";
 }
-$string .= "\n\t\t<th>Action</th>
+$string .= "\n\t\t\t\t<th>Proses</th>
             </tr>";
-$string .= "<?php
-            foreach ($" . $c_url . "_data as \$$c_url)
-            {
-                ?>
-                <tr>";
+$string .= "\n\t\t\t<?php foreach ($" . $c_url . "_data as \$$c_url) { ?>
+            <tr>";
 
-$string .= "\n\t\t\t<td width=\"80px\"><?php echo ++\$start ?></td>";
+$string .= "\n\t\t\t\t<td width=\"80px\"><?php echo ++\$start ?></td>";
 foreach ($non_pk as $row) {
-    $string .= "\n\t\t\t<td><?php echo $" . $c_url ."->". $row['column_name'] . " ?></td>";
+    $string .= "\n\t\t\t\t<td><?php echo $" . $c_url ."->". $row['column_name'] . " ?></td>";
 }
 
 
-$string .= "\n\t\t\t<td style=\"text-align:center\" width=\"200px\">"
+$string .= "\n\t\t\t\t<td style=\"text-align:center\" width=\"200px\">"
         . "\n\t\t\t\t<?php "
         . "\n\t\t\t\t//echo anchor(site_url('".$c_url."/read/'.$".$c_url."->".$pk."),'Read'); "
         . "\n\t\t\t\t//echo ' | '; "
@@ -71,26 +68,24 @@ $string .= "\n\t\t\t<td style=\"text-align:center\" width=\"200px\">"
         . "\n\t\t\t\techo ' | '; "
         . "\n\t\t\t\techo anchor(site_url('".$c_url."/delete/'.$".$c_url."->".$pk."),'Hapus','onclick=\"javascript: return confirm(\\'Are You Sure ?\\')\"'); "
         . "\n\t\t\t\t?>"
-        . "\n\t\t\t</td>";
+        . "\n\t\t\t\t</td>";
 
-$string .=  "\n\t\t</tr>
-                <?php
-            }
-            ?>
+$string .=  "\n\t\t\t</tr>
+            <?php } ?>
         </table>
         <div class=\"row\">
             <div class=\"col-md-6\">
                 <a href=\"#\" class=\"btn btn-primary\">Total Data : <?php echo \$total_rows ?></a>";
 if ($export_excel == '1') {
-    $string .= "\n\t\t<?php echo anchor(site_url('".$c_url."/excel'), 'Excel', 'class=\"btn btn-primary\"'); ?>";
+    $string .= "\n\t\t\t\t<?php echo anchor(site_url('".$c_url."/excel'), 'Excel', 'class=\"btn btn-primary\"'); ?>";
 }
 if ($export_word == '1') {
-    $string .= "\n\t\t<?php echo anchor(site_url('".$c_url."/word'), 'Word', 'class=\"btn btn-primary\"'); ?>";
+    $string .= "\n\t\t\t\t<?php echo anchor(site_url('".$c_url."/word'), 'Word', 'class=\"btn btn-primary\"'); ?>";
 }
 if ($export_pdf == '1') {
-    $string .= "\n\t\t<?php echo anchor(site_url('".$c_url."/pdf'), 'PDF', 'class=\"btn btn-primary\"'); ?>";
+    $string .= "\n\t\t\t\t<?php echo anchor(site_url('".$c_url."/pdf'), 'PDF', 'class=\"btn btn-primary\"'); ?>";
 }
-$string .= "\n\t    </div>
+$string .= "\n\t\t\t</div>
             <div class=\"col-md-6 text-right\">
                 <?php echo \$pagination ?>
             </div>

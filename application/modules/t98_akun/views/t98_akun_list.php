@@ -51,7 +51,7 @@
         		<!-- <th>Idusers</th> -->
         		<!-- <th>Created At</th> -->
         		<!-- <th>Updated At</th> -->
-        		<th class="text-center">Action</th>
+        		<th class="text-center">Proses</th>
             </tr>
             <?php foreach ($t98_akun_data as $t98_akun) { ?>
             <tr>

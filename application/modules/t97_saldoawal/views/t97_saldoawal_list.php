@@ -47,7 +47,7 @@
                 <th class="text-center">Nama</th>
         		<th class="text-center">Debit</th>
         		<th class="text-center">Kredit</th>
-        		<th class="text-center">Action</th>
+        		<th class="text-center">Proses</th>
             </tr>
             <?php
             $totalDebit = 0;

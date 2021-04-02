@@ -225,6 +225,7 @@
                                     case 't97_saldoawal':
                                     case 't96_tglsa':
                                     case 't01_package':
+                                    case 't02_tamu':
                                         echo 'menu-open';
                                         break;
                                     default:
@@ -241,6 +242,7 @@
                                         case 't97_saldoawal':
                                         case 't96_tglsa':
                                         case 't01_package':
+                                        case 't02_tamu':
                                             echo 'active';
                                             break;
                                         default:
@@ -278,7 +280,7 @@
                                     </li>
 
                                     <div class="dropdown-divider"></div>
-                                    
+
                                     <!-- akun -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t98_akun" class="nav-link <?php echo $this->uri->segment(1) == 't98_akun' ? 'active' : ''; ?>">
@@ -301,6 +303,13 @@
                                         <a href="<?php echo site_url(); ?>t01_package" class="nav-link <?php echo $this->uri->segment(1) == 't01_package' ? 'active' : ''; ?>">
                                             <i class="fas fa-suitcase nav-icon"></i>
                                             <p>Package</p>
+                                        </a>
+                                    </li>
+                                    <!-- tamu -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t02_tamu" class="nav-link <?php echo $this->uri->segment(1) == 't02_tamu' ? 'active' : ''; ?>">
+                                            <i class="fas fa-user-plus nav-icon"></i>
+                                            <p>Tamu</p>
                                         </a>
                                     </li>
 
