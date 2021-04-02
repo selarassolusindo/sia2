@@ -206,7 +206,7 @@
                             with font-awesome or any other icon font library -->
                             <li class="nav-item">
                                 <a href="<?php echo site_url(); ?>" class="nav-link <?php echo ($this->uri->segment(1) == '' ? 'active' : ''); ?>">
-                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <i class="far fa-window-maximize nav-icon"></i>
                                     <p>
                                     DASHBOARD
                                     </p>
@@ -248,7 +248,7 @@
                                     }
                                     ?>
                                 ">
-                                    <i class="fas fa-info-circle nav-icon"></i>
+                                    <i class="far fa-window-maximize nav-icon"></i>
                                     <p>
                                     SETUP
                                     <i class="right fas fa-angle-left"></i>
@@ -262,7 +262,7 @@
                                     <!-- users & groups -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>auth" class="nav-link <?php echo $this->uri->segment(1) == 'auth' ? 'active' : ''; ?>">
-                                            <i class="fas fa-user-friends nav-icon"></i>
+                                            <i class="far fa-window-restore nav-icon"></i>
                                             <p>Users & Groups</p>
                                         </a>
                                     </li>
@@ -272,7 +272,7 @@
                                     <!-- company -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t99_company" class="nav-link <?php echo $this->uri->segment(1) == 't99_company' ? 'active' : ''; ?>">
-                                            <i class="fas fa-copyright nav-icon"></i>
+                                            <i class="far fa-window-restore nav-icon"></i>
                                             <p>Perusahaan</p>
                                         </a>
                                     </li>
@@ -282,14 +282,14 @@
                                     <!-- akun -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t98_akun" class="nav-link <?php echo $this->uri->segment(1) == 't98_akun' ? 'active' : ''; ?>">
-                                            <i class="fas fa-list-alt nav-icon"></i>
+                                            <i class="far fa-window-restore nav-icon"></i>
                                             <p>Akun</p>
                                         </a>
                                     </li>
                                     <!-- tanggal saldo awal lalu saldo awal -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t96_tglsa" class="nav-link <?php echo ($this->uri->segment(1) == 't96_tglsa' or $this->uri->segment(1) == 't97_saldoawal') ? 'active' : ''; ?>">
-                                            <i class="fas fa-clipboard-list nav-icon"></i>
+                                            <i class="far fa-window-restore nav-icon"></i>
                                             <p>Saldo Awal</p>
                                         </a>
                                     </li>
@@ -299,7 +299,7 @@
                                     <!-- package -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t01_package" class="nav-link <?php echo $this->uri->segment(1) == 't01_package' ? 'active' : ''; ?>">
-                                            <i class="fas fa-suitcase nav-icon"></i>
+                                            <i class="far fa-window-restore nav-icon"></i>
                                             <p>Package</p>
                                         </a>
                                     </li>
@@ -333,7 +333,7 @@
                                     }
                                     ?>
                                 ">
-                                    <i class="fab fa-product-hunt nav-icon"></i>
+                                    <i class="far fa-window-maximize nav-icon"></i>
                                     <p>
                                     PROSES
                                     <i class="right fas fa-angle-left"></i>
@@ -346,7 +346,7 @@
                                     <!-- tamu -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t02_tamu" class="nav-link <?php echo $this->uri->segment(1) == 't02_tamu' ? 'active' : ''; ?>">
-                                            <i class="fas fa-user-plus nav-icon"></i>
+                                            <i class="far fa-window-restore nav-icon"></i>
                                             <p>Tamu</p>
                                         </a>
                                     </li>
@@ -379,7 +379,7 @@
                                     }
                                     ?>
                                 ">
-                                    <i class="fas fa-registered nav-icon"></i>
+                                    <i class="far fa-window-maximize nav-icon"></i>
                                     <p>
                                     LAPORAN
                                     <i class="right fas fa-angle-left"></i>
@@ -392,13 +392,13 @@
                                     <!-- buku besar -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>v01_bukubesar" class="nav-link <?php echo $this->uri->segment(1) == 'v01_bukubesar' ? 'active' : ''; ?>">
-                                            <i class="fas fa-swatchbook nav-icon"></i>
+                                            <i class="far fa-window-restore nav-icon"></i>
                                             <p>Buku Besar</p>
                                         </a>
                                     </li>
 
                                     <div class="dropdown-divider"></div>
-                                    
+
                                 </ul>
                             </li>
 
@@ -601,14 +601,18 @@
         <script type="text/javascript">
             $(function () {
                 $('body').addClass('text-xs');
+                // $('body').addClass('text-sm');
+                $('a').addClass('text-xs');
                 // $('a').addClass('text-sm');
                 $('.btn').addClass('btn-sm');
                 $('.table').addClass('table-sm');
                 $('.form-control').addClass('form-control-sm');
                 $('.input-group').addClass('input-group-sm');
-                $('.main-header').addClass('text-xs');
+                // $('.main-header').addClass('text-xs');
+                // $('.main-header').addClass('text-sm');
                 $('.main-sidebar').removeClass('sidebar-dark-primary');
                 $('.main-sidebar').addClass('sidebar-light-lightblue text-xs');
+                // $('.main-sidebar').addClass('sidebar-light-lightblue text-sm');
                 $('.nav').addClass('nav-child-indent nav-compact');
             })
         </script>
