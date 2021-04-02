@@ -225,7 +225,6 @@
                                     case 't97_saldoawal':
                                     case 't96_tglsa':
                                     case 't01_package':
-                                    case 't02_tamu':
                                         echo 'menu-open';
                                         break;
                                     default:
@@ -242,7 +241,6 @@
                                         case 't97_saldoawal':
                                         case 't96_tglsa':
                                         case 't01_package':
-                                        case 't02_tamu':
                                             echo 'active';
                                             break;
                                         default:
@@ -305,6 +303,46 @@
                                             <p>Package</p>
                                         </a>
                                     </li>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <?php } ?>
+                                </ul>
+                            </li>
+
+                            <!-- proses -->
+                            <li class="nav-item has-treeview
+                                <?php
+                                switch ($this->uri->segment(1)) {
+                                    case 't02_tamu':
+                                        echo 'menu-open';
+                                        break;
+                                    default:
+                                        echo '';
+                                }
+                                ?>
+                            ">
+                                <a href="#" class="nav-link
+                                    <?php
+                                    switch ($this->uri->segment(1)) {
+                                        case 't02_tamu':
+                                            echo 'active';
+                                            break;
+                                        default:
+                                            echo '';
+                                    }
+                                    ?>
+                                ">
+                                    <i class="fab fa-product-hunt nav-icon"></i>
+                                    <p>
+                                    PROSES
+                                    <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+
+                                    <div class="dropdown-divider"></div>
+
                                     <!-- tamu -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t02_tamu" class="nav-link <?php echo $this->uri->segment(1) == 't02_tamu' ? 'active' : ''; ?>">
@@ -315,7 +353,6 @@
 
                                     <div class="dropdown-divider"></div>
 
-                                    <?php } ?>
                                 </ul>
                             </li>
 
@@ -342,13 +379,16 @@
                                     }
                                     ?>
                                 ">
-                                    <i class="fas fa-pager nav-icon"></i>
+                                    <i class="fas fa-registered nav-icon"></i>
                                     <p>
                                     LAPORAN
                                     <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
+
+                                    <div class="dropdown-divider"></div>
+
                                     <!-- buku besar -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>v01_bukubesar" class="nav-link <?php echo $this->uri->segment(1) == 'v01_bukubesar' ? 'active' : ''; ?>">
@@ -356,6 +396,9 @@
                                             <p>Buku Besar</p>
                                         </a>
                                     </li>
+
+                                    <div class="dropdown-divider"></div>
+                                    
                                 </ul>
                             </li>
 
