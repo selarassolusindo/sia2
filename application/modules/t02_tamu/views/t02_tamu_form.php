@@ -78,7 +78,7 @@
         	</div> -->
 			<input type="hidden" name="idtamu" value="<?php echo $idtamu; ?>" />
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-			<a href="<?php echo site_url('t02_tamu') ?>" class="btn btn-default">Batal</a>
+			<a href="<?php echo site_url('t02_tamu') ?>" class="btn btn-secondary">Batal</a>
 		</form>
     <!-- </body>
 </html> -->
