@@ -55,7 +55,7 @@
 				<th rowspan="2">Agent</th>
 				<th rowspan="2">Status</th>
 				<th rowspan="2">Days Stay</th>
-				<th rowspan="2">Price</th>
+				<th rowspan="2" class="text-right">Price</th>
 				<!-- <th>Idusers</th>
 				<th>Created At</th>
 				<th>Updated At</th> -->
@@ -82,7 +82,7 @@
 				<td><?php echo $t02_tamu->Agent ?></td>
 				<td><?php echo $t02_tamu->Status ?></td>
 				<td><?php echo $t02_tamu->DaysStay ?></td>
-				<td><?php echo $t02_tamu->Price ?></td>
+				<td class="text-right"><?php echo numIndo($t02_tamu->Price) ?></td>
 				<!-- <td><?php echo $t02_tamu->idusers ?></td>
 				<td><?php echo $t02_tamu->created_at ?></td>
 				<td><?php echo $t02_tamu->updated_at ?></td> -->
