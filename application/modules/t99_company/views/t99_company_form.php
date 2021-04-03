@@ -38,7 +38,7 @@
         </div> -->
 	    <input type="hidden" name="idcompany" value="<?php echo $idcompany; ?>" />
 	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-	    <a href="<?php echo site_url('t99_company') ?>" class="btn btn-default">Batal</a>
+	    <a href="<?php echo site_url('t99_company') ?>" class="btn btn-secondary">Batal</a>
 	</form>
     <!-- </body>
 </html> -->
