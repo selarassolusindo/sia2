@@ -71,14 +71,14 @@
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
 				<td><?php echo $t02_tamu->TripNo ?></td>
-				<td><?php echo $t02_tamu->TripTgl ?></td>
+				<td><?php echo date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') ?></td>
 				<td><?php echo $t02_tamu->Nama ?></td>
 				<td><?php echo $t02_tamu->MFC ?></td>
 				<td><?php echo $t02_tamu->Country ?></td>
 				<td><?php echo $t02_tamu->PackageNight ?></td>
 				<td><?php echo $t02_tamu->PackageType ?></td>
-				<td><?php echo $t02_tamu->CheckIn ?></td>
-				<td><?php echo $t02_tamu->CheckOut ?></td>
+				<td><?php echo date_format(date_create($t02_tamu->CheckIn), 'd-m-Y') ?></td>
+				<td><?php echo date_format(date_create($t02_tamu->CheckOut), 'd-m-Y') ?></td>
 				<td><?php echo $t02_tamu->Agent ?></td>
 				<td><?php echo $t02_tamu->Status ?></td>
 				<td><?php echo $t02_tamu->DaysStay ?></td>
