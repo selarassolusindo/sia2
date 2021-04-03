@@ -602,7 +602,7 @@
             $(function () {
                 $('body').addClass('text-xs');
                 $('a').addClass('text-xs');
-                $('.btn').addClass('btn-sm');
+                $('.btn').addClass('btn-xs');
                 $('.table').addClass('table-sm');
                 $('.form-control').addClass('form-control-sm');
                 $('.input-group').addClass('input-group-sm');
