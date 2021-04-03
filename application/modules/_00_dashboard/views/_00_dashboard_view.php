@@ -600,14 +600,14 @@
 
         <script type="text/javascript">
             $(function () {
-                $('body').addClass('text-xs');
-                $('a').addClass('text-xs');
-                $('.btn').addClass('btn-xs');
+                $('body').addClass('text-sm'); //$('body').addClass('text-xs');
+                $('a').addClass('text-sm'); //$('a').addClass('text-xs');
+                $('.btn').addClass('btn-sm'); //$('.btn').addClass('btn-xs');
                 $('.table').addClass('table-sm');
                 $('.form-control').addClass('form-control-sm');
                 $('.input-group').addClass('input-group-sm');
                 $('.main-sidebar').removeClass('sidebar-dark-primary');
-                $('.main-sidebar').addClass('sidebar-light-lightblue text-xs');
+                $('.main-sidebar').addClass('sidebar-light-lightblue text-sm'); //$('.main-sidebar').addClass('sidebar-light-lightblue text-xs');
                 $('.nav').addClass('nav-child-indent nav-compact');
             })
         </script>

@@ -33,7 +33,7 @@ $string = "<!doctype html>
                                 if (\$q <> '')
                                 {
                                     ?>
-                                    <a href=\"<?php echo site_url('$c_url'); ?>\" class=\"btn btn-default\">Reset</a>
+                                    <a href=\"<?php echo site_url('$c_url'); ?>\" class=\"btn btn-secondary\">Reset</a>
                                     <?php
                                 }
                             ?>

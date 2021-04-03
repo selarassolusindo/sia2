@@ -31,7 +31,7 @@ foreach ($non_pk as $row) {
 }
 $string .= "\n\t\t\t<input type=\"hidden\" name=\"".$pk."\" value=\"<?php echo $".$pk."; ?>\" /> ";
 $string .= "\n\t\t\t<button type=\"submit\" class=\"btn btn-primary\"><?php echo \$button ?></button> ";
-$string .= "\n\t\t\t<a href=\"<?php echo site_url('".$c_url."') ?>\" class=\"btn btn-default\">Batal</a>";
+$string .= "\n\t\t\t<a href=\"<?php echo site_url('".$c_url."') ?>\" class=\"btn btn-secondary\">Batal</a>";
 $string .= "\n\t\t</form>
     </body>
 </html>";
