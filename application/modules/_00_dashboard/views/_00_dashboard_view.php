@@ -601,18 +601,13 @@
         <script type="text/javascript">
             $(function () {
                 $('body').addClass('text-xs');
-                // $('body').addClass('text-sm');
                 $('a').addClass('text-xs');
-                // $('a').addClass('text-sm');
                 $('.btn').addClass('btn-sm');
                 $('.table').addClass('table-sm');
                 $('.form-control').addClass('form-control-sm');
                 $('.input-group').addClass('input-group-sm');
-                // $('.main-header').addClass('text-xs');
-                // $('.main-header').addClass('text-sm');
                 $('.main-sidebar').removeClass('sidebar-dark-primary');
                 $('.main-sidebar').addClass('sidebar-light-lightblue text-xs');
-                // $('.main-sidebar').addClass('sidebar-light-lightblue text-sm');
                 $('.nav').addClass('nav-child-indent nav-compact');
             })
         </script>

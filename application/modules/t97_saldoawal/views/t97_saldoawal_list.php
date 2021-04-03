@@ -31,7 +31,7 @@
                                 if ($q <> '')
                                 {
                                     ?>
-                                    <a href="<?php echo site_url('t97_saldoawal'); ?>" class="btn btn-default">Reset</a>
+                                    <a href="<?php echo site_url('t97_saldoawal'); ?>" class="btn btn-primary">Reset</a>
                                     <?php
                                 }
                             ?>
