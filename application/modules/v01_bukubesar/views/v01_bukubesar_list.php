@@ -42,7 +42,7 @@
             			</select>
                     </div>
                     <button class="btn btn-primary" type="submit">Proses</button>
-                    <a href="<?php echo site_url('v01_bukubesar'); ?>" class="btn btn-default">Reset</a>
+                    <a href="<?php echo site_url('v01_bukubesar'); ?>" class="btn btn-secondary">Reset</a>
                 </form>
             </div>
         </div>
