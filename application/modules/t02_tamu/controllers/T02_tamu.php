@@ -389,6 +389,7 @@ class T02_tamu extends CI_Controller
                 		'Status'       => $row['L'],
                 		'DaysStay'     => $row['M'],
                 		'Price'        => $row['N'],
+                        'idusers'      => $this->session->userdata('user_id'),
                         // 'a' => $format->toFormattedString($row['C'], 'yyyy-mm-dd'),
                         // 'b' =>
                         // 'c' => strtotime(PHPExcel_Shared_Date::ExcelToPHP($row['C'])),
