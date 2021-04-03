@@ -31,7 +31,7 @@
                                 if ($q <> '')
                                 {
                                     ?>
-                                    <a href="<?php echo site_url('t01_package'); ?>" class="btn btn-default">Reset</a>
+                                    <a href="<?php echo site_url('t01_package'); ?>" class="btn btn-secondary">Reset</a>
                                     <?php
                                 }
                             ?>
