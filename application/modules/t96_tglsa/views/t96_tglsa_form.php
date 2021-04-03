@@ -25,7 +25,7 @@
         </div>
 	    <input type="hidden" name="idtglsa" value="<?php echo $idtglsa; ?>" />
 	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-	    <a href="<?php echo site_url('t96_tglsa') ?>" class="btn btn-default">Batal</a>
+	    <a href="<?php echo site_url('t96_tglsa') ?>" class="btn btn-secondary">Batal</a>
 	</form>
 
     <script>
