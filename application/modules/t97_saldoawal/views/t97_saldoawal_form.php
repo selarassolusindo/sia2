@@ -36,7 +36,7 @@
         </div>
 	    <input type="hidden" name="idsa" value="<?php echo $idsa; ?>" />
 	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-	    <a href="<?php echo site_url('t97_saldoawal') ?>" class="btn btn-default">Batal</a>
+	    <a href="<?php echo site_url('t97_saldoawal') ?>" class="btn btn-secondary">Batal</a>
 	</form>
 
     <script type="text/javascript">

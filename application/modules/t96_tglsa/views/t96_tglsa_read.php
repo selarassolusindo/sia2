@@ -13,7 +13,7 @@
         <h2 style="margin-top:0px">T96_tglsa Read</h2> -->
     <table class="table">
 	    <tr><td>TglSA</td><td><?php echo $TglSA; ?></td></tr>
-	    <tr><td></td><td><a href="<?php echo site_url('t96_tglsa') ?>" class="btn btn-default">Cancel</a></td></tr>
+	    <tr><td></td><td><a href="<?php echo site_url('t96_tglsa') ?>" class="btn btn-secondary">Cancel</a></td></tr>
 	</table>
         <!-- </body>
 </html> -->
