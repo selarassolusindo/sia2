@@ -45,7 +45,7 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th rowspan="2">No.</th>
-				<th colspan="2">Trip</th>
+				<!-- <th colspan="2">Trip</th> -->
 				<th rowspan="2">Name</th>
 				<th rowspan="2">MFC</th>
 				<th rowspan="2">Country</th>
@@ -62,16 +62,51 @@
 				<th rowspan="2">Proses</th>
             </tr>
             <tr>
-                <th>No.</th>
-                <th>Date</th>
+                <!-- <th>No.</th> -->
+                <!-- <th>Date</th> -->
                 <th>Night</th>
                 <th>Type</th>
             </tr>
+            <?php
+                $awal = 1;
+                $recordPertama = 1;
+            ?>
 			<?php foreach ($t02_tamu_data as $t02_tamu) { ?>
+                <?php
+                if ($recordPertama == 1) {
+                    $tripNo = $t02_tamu->TripNo;
+                    $recordPertama = 0;
+                    // cetak header
+                ?>
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td colspan="14">
+                            <?php echo 'Trip No. <b>' . $t02_tamu->TripNo . '</b>'?>
+                            <?php echo ' @ ' ?>
+                            <?php echo '<b>' . date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') . '</b>' ?>
+                        </td>
+                    </tr>
+                <?php
+                } else {
+                    if ($tripNo != $t02_tamu->TripNo) {
+                ?>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td colspan="14">
+                                <?php echo 'Trip No. <b>' . $t02_tamu->TripNo . '</b>'?>
+                                <?php echo ' @ ' ?>
+                                <?php echo '<b>' . date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') . '</b>' ?>
+                            </td>
+                        </tr>
+                <?php
+                        $tripNo = $t02_tamu->TripNo;
+                    }
+                }
+                ?>
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
-				<td><?php echo $t02_tamu->TripNo ?></td>
-				<td><?php echo date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') ?></td>
+				<!-- <td><?php echo $t02_tamu->TripNo ?></td> -->
+				<!-- <td><?php echo date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') ?></td> -->
 				<td><?php echo $t02_tamu->Nama ?></td>
 				<td><?php echo $t02_tamu->MFC ?></td>
 				<td><?php echo $t02_tamu->Country ?></td>
