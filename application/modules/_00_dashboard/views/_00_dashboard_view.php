@@ -335,7 +335,7 @@
                                 ">
                                     <i class="far fa-window-maximize nav-icon"></i>
                                     <p>
-                                    PROSES
+                                    TAMU
                                     <i class="right fas fa-angle-left"></i>
                                     </p>
                                 </a>
@@ -347,7 +347,7 @@
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t02_tamu" class="nav-link <?php echo $this->uri->segment(1) == 't02_tamu' ? 'active' : ''; ?>">
                                             <i class="far fa-window-restore nav-icon"></i>
-                                            <p>Data Tamu</p>
+                                            <p>Input</p>
                                         </a>
                                     </li>
 
