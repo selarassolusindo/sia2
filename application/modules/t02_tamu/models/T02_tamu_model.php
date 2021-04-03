@@ -97,6 +97,14 @@ class T02_tamu_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+    /**
+     * modif function insert, untuk save hasil import
+     */
+    function insert_import($data)
+    {
+        $this->db->insert_batch($this->table, $data);
+    }
+
 }
 
 /* End of file T02_tamu_model.php */

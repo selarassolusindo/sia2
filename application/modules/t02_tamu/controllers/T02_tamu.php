@@ -193,6 +193,7 @@ class T02_tamu extends CI_Controller
 				'Status' => $this->input->post('Status',TRUE),
 				'DaysStay' => $this->input->post('DaysStay',TRUE),
 				'Price' => $this->input->post('Price',TRUE),
+                'idusers' => $this->session->userdata('user_id'),
 				// 'idusers' => $this->input->post('idusers',TRUE),
 				// 'created_at' => $this->input->post('created_at',TRUE),
 				// 'updated_at' => $this->input->post('updated_at',TRUE),
@@ -311,6 +312,98 @@ class T02_tamu extends CI_Controller
             'start' => 0
         );
         $this->load->view('t02_tamu/t02_tamu_doc',$data);
+    }
+
+    /**
+     * import file excel
+     */
+    public function import()
+    {
+        $data = array(
+            'button' => 'Proses',
+            'action' => site_url('t02_tamu/import_action'),
+			// 'idtamu' => set_value('idtamu'),
+			// 'TripNo' => set_value('TripNo'),
+			// 'TripTgl' => set_value('TripTgl'),
+			// 'Nama' => set_value('Nama'),
+			// 'MFC' => set_value('MFC'),
+			// 'Country' => set_value('Country'),
+			// 'PackageNight' => set_value('PackageNight'),
+			// 'PackageType' => set_value('PackageType'),
+			// 'CheckIn' => set_value('CheckIn'),
+			// 'CheckOut' => set_value('CheckOut'),
+			// 'Agent' => set_value('Agent'),
+			// 'Status' => set_value('Status'),
+			// 'DaysStay' => set_value('DaysStay'),
+			// 'Price' => set_value('Price'),
+			// 'idusers' => set_value('idusers'),
+			// 'created_at' => set_value('created_at'),
+			// 'updated_at' => set_value('updated_at'),
+		);
+        $data['_view'] = 't02_tamu/t02_tamu_import';
+        $data['_caption'] = 'Data Tamu';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+    }
+
+    /**
+     * handling proses import
+     */
+    public function import_action()
+    {
+        include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+        $config['upload_path'] = realpath('excel');
+        $config['allowed_types'] = 'xlsx|xls|csv';
+        $config['max_size'] = '10000';
+        $config['encrypt_name'] = true;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload()) {
+            $this->session->set_flashdata('notif', '<div class="alert alert-danger"><b>Proses import data gagal !</b> ' . $this->upload->display_errors() . '</div>');
+            redirect('t02_tamu/import');
+        } else {
+            $data_upload = $this->upload->data();
+
+            $excelreader = new PHPExcel_Reader_Excel2007();
+            // $format = new PHPExcel_Style_NumberFormat();
+            $loadexcel = $excelreader->load('excel/' . $data_upload['file_name']);
+            $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+            $data = array();
+            $startRow = 2;
+            $numRow = 1;
+            foreach ($sheet as $row) {
+                // echo pre($row);
+                if ($numRow >= $startRow) {
+                    array_push($data, array(
+                        'TripNo'       => $row['B'],
+                        'TripTgl'      => date_format(date_create($row['C']), 'Y-m-d'),
+                        'Nama'         => $row['D'],
+                		'MFC'          => $row['E'],
+                		'Country'      => $row['F'],
+                		'PackageNight' => $row['G'],
+                		'PackageType'  => $row['H'],
+                		'CheckIn'      => date_format(date_create($row['I']), 'Y-m-d'),
+                		'CheckOut'     => date_format(date_create($row['J']), 'Y-m-d'),
+                		'Agent'        => $row['K'],
+                		'Status'       => $row['L'],
+                		'DaysStay'     => $row['M'],
+                		'Price'        => $row['N'],
+                        // 'a' => $format->toFormattedString($row['C'], 'yyyy-mm-dd'),
+                        // 'b' =>
+                        // 'c' => strtotime(PHPExcel_Shared_Date::ExcelToPHP($row['C'])),
+                        )
+                    );
+                }
+                $numRow++;
+            }
+            // echo pre($data);
+            $this->T02_tamu_model->insert_import($data);
+            unlink(realpath('excel/' . $data_upload['file_name']));
+
+            $this->session->set_flashdata('notif', '<div class="alert alert-success"><b>Proses import berhasil !</b> Data berhasil diimport !</div>');
+            redirect('t02_tamu');
+        }
     }
 
 }

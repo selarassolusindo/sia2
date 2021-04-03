@@ -13,7 +13,8 @@
         <h2 style="margin-top:0px">T02_tamu List</h2> -->
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('t02_tamu/create'),'Tambah', 'class="btn btn-primary"'); ?>
+                <?php // echo anchor(site_url('t02_tamu/create'),'Tambah', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('t02_tamu/import'),'Import', 'class="btn btn-primary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
