@@ -68,15 +68,23 @@
                 <th>Type</th>
             </tr>
             <?php
-                $awal = 1;
                 $recordPertama = 1;
+                $cetakHeader = 0;
             ?>
 			<?php foreach ($t02_tamu_data as $t02_tamu) { ?>
                 <?php
                 if ($recordPertama == 1) {
                     $tripNo = $t02_tamu->TripNo;
                     $recordPertama = 0;
-                    // cetak header
+                    $cetakHeader = 1;
+                } else {
+                    if ($tripNo != $t02_tamu->TripNo) {
+                        $tripNo = $t02_tamu->TripNo;
+                        $cetakHeader = 1;
+                    }
+                }
+                if ($cetakHeader == 1) {
+                    $cetakHeader = 0;
                 ?>
                     <tr>
                         <td>&nbsp;</td>
@@ -87,20 +95,6 @@
                         </td>
                     </tr>
                 <?php
-                } else {
-                    if ($tripNo != $t02_tamu->TripNo) {
-                ?>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td colspan="14">
-                                <?php echo 'Trip No. <b>' . $t02_tamu->TripNo . '</b>'?>
-                                <?php echo ' @ ' ?>
-                                <?php echo '<b>' . date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') . '</b>' ?>
-                            </td>
-                        </tr>
-                <?php
-                        $tripNo = $t02_tamu->TripNo;
-                    }
                 }
                 ?>
             <tr>
