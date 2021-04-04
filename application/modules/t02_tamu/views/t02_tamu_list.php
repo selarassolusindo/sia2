@@ -24,7 +24,7 @@
             <div class="col-md-1 text-right">
             </div>
             <div class="col-md-3 text-right">
-                <form action="<?php echo site_url('t02_tamu/index'); ?>" class="form-inline" method="get">
+                <form action="<?php echo site_url('t02_tamu'); ?>" class="form-inline" method="get">
                     <div class="input-group">
                         <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
                         <span class="input-group-btn">
@@ -42,83 +42,57 @@
                 </form>
             </div>
         </div>
-        <!-- <table class="table table-bordered" style="margin-bottom: 10px"> -->
-            <!-- <tr>
-                <th rowspan="2">No.</th>
-				<th rowspan="2">Name</th>
-				<th rowspan="2">MFC</th>
-				<th rowspan="2">Country</th>
-				<th colspan="2">Package</th>
-				<th rowspan="2">Check-In</th>
-				<th rowspan="2">Check-Out</th>
-				<th rowspan="2">Agent</th>
-				<th rowspan="2">Status</th>
-				<th rowspan="2">Days Stay</th>
-				<th rowspan="2" class="text-right">Price</th>
-				<th rowspan="2">Proses</th>
-            </tr>
-            <tr>
-                <th>Night</th>
-                <th>Type</th>
-            </tr> -->
-            <?php
-                $recordPertama = 1;
-                $cetakHeader = 0;
-            ?>
-			<?php foreach ($t02_tamu_data as $t02_tamu) { ?>
-                <?php
-                if ($recordPertama == 1) {
+        <?php
+        $recordPertama = 1;
+        $cetakHeader = 0;
+        ?>
+		<?php
+        foreach ($t02_tamu_data as $t02_tamu) {
+            if ($recordPertama == 1) {
+                $tripNo = $t02_tamu->TripNo;
+                $recordPertama = 0;
+                $cetakHeader = 1;
+            } else {
+                if ($tripNo != $t02_tamu->TripNo) {
                     $tripNo = $t02_tamu->TripNo;
-                    $recordPertama = 0;
-                    $cetakHeader = 1;
-                } else {
-                    if ($tripNo != $t02_tamu->TripNo) {
-                        $tripNo = $t02_tamu->TripNo;
-                        // close table pertama
-                        echo '</table>';
-                        echo '<p>&nbsp;</p>';
-                        $cetakHeader = 1;
-                    }
-                }
-                if ($cetakHeader == 1) {
-                    $cetakHeader = 0;
-                ?>
-                    <!-- <tr>
-                        <td>&nbsp;</td>
-                        <td colspan="14">
-                            <?php echo 'Trip No. <b>' . $t02_tamu->TripNo . '</b>'?>
-                            <?php echo ' @ ' ?>
-                            <?php echo '<b>' . date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') . '</b>' ?>
-                        </td>
-                    </tr> -->
 
-                    <?php
-                    echo 'Trip No. <b>' . $t02_tamu->TripNo . '</b>';
-                    echo ' @ ';
-                    echo '<b>' . date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') . '</b>';
-                    ?>
-                    <table class="table table-bordered" style="margin-bottom: 10px">
-                    <tr>
-                        <th rowspan="2">No.</th>
-        				<th rowspan="2">Name</th>
-        				<th rowspan="2">MFC</th>
-        				<th rowspan="2">Country</th>
-        				<th colspan="2">Package</th>
-        				<th rowspan="2">Check-In</th>
-        				<th rowspan="2">Check-Out</th>
-        				<th rowspan="2">Agent</th>
-        				<th rowspan="2">Status</th>
-        				<th rowspan="2">Days Stay</th>
-        				<th rowspan="2" class="text-right">Price</th>
-        				<th rowspan="2">Proses</th>
-                    </tr>
-                    <tr>
-                        <th>Night</th>
-                        <th>Type</th>
-                    </tr>
-                <?php
+                    // close table pertama
+                    echo '</table>';
+                    echo '<p>&nbsp;</p>';
+
+                    $cetakHeader = 1;
                 }
-                ?>
+            }
+
+            if ($cetakHeader == 1) {
+                $cetakHeader = 0;
+
+                echo 'Trip No. <b>' . $t02_tamu->TripNo . '</b>';
+                echo ' @ ';
+                echo '<b>' . date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') . '</b>';
+        ?>
+                <table class="table table-bordered" style="margin-bottom: 10px">
+                <tr>
+                    <th rowspan="2">No.</th>
+    				<th rowspan="2">Name</th>
+    				<th rowspan="2">MFC</th>
+    				<th rowspan="2">Country</th>
+    				<th colspan="2">Package</th>
+    				<th rowspan="2">Check-In</th>
+    				<th rowspan="2">Check-Out</th>
+    				<th rowspan="2">Agent</th>
+    				<th rowspan="2">Status</th>
+    				<th rowspan="2">Days Stay</th>
+    				<th rowspan="2" class="text-right">Price</th>
+    				<th rowspan="2">Proses</th>
+                </tr>
+                <tr>
+                    <th>Night</th>
+                    <th>Type</th>
+                </tr>
+        <?php
+            }
+        ?>
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
 				<!-- <td><?php echo $t02_tamu->TripNo ?></td> -->
@@ -147,7 +121,7 @@
 				?>
 				</td>
 			</tr>
-            <?php } ?>
+        <?php } ?>
         </table>
         <div class="row">
             <div class="col-md-6">
