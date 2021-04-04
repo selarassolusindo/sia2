@@ -310,7 +310,7 @@
                                 </ul>
                             </li>
 
-                            <!-- proses -->
+                            <!-- tamu -->
                             <li class="nav-item has-treeview
                                 <?php
                                 switch ($this->uri->segment(1)) {
@@ -343,11 +343,19 @@
 
                                     <div class="dropdown-divider"></div>
 
-                                    <!-- data tamu -->
+                                    <!-- input data -->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t02_tamu" class="nav-link <?php echo $this->uri->segment(1) == 't02_tamu' ? 'active' : ''; ?>">
                                             <i class="far fa-window-restore nav-icon"></i>
-                                            <p>Input</p>
+                                            <p>Input Data</p>
+                                        </a>
+                                    </li>
+
+                                    <!-- pembayaran -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t02_tamu" class="nav-link <?php echo $this->uri->segment(1) == 't02_tamu' ? 'active' : ''; ?>">
+                                            <i class="far fa-window-restore nav-icon"></i>
+                                            <p>Pembayaran</p>
                                         </a>
                                     </li>
 
