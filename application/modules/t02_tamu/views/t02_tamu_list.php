@@ -42,10 +42,9 @@
                 </form>
             </div>
         </div>
-        <table class="table table-bordered" style="margin-bottom: 10px">
-            <tr>
+        <!-- <table class="table table-bordered" style="margin-bottom: 10px"> -->
+            <!-- <tr>
                 <th rowspan="2">No.</th>
-				<!-- <th colspan="2">Trip</th> -->
 				<th rowspan="2">Name</th>
 				<th rowspan="2">MFC</th>
 				<th rowspan="2">Country</th>
@@ -56,17 +55,12 @@
 				<th rowspan="2">Status</th>
 				<th rowspan="2">Days Stay</th>
 				<th rowspan="2" class="text-right">Price</th>
-				<!-- <th>Idusers</th>
-				<th>Created At</th>
-				<th>Updated At</th> -->
 				<th rowspan="2">Proses</th>
             </tr>
             <tr>
-                <!-- <th>No.</th> -->
-                <!-- <th>Date</th> -->
                 <th>Night</th>
                 <th>Type</th>
-            </tr>
+            </tr> -->
             <?php
                 $recordPertama = 1;
                 $cetakHeader = 0;
@@ -80,19 +74,47 @@
                 } else {
                     if ($tripNo != $t02_tamu->TripNo) {
                         $tripNo = $t02_tamu->TripNo;
+                        // close table pertama
+                        echo '</table>';
+                        echo '<p>&nbsp;</p>';
                         $cetakHeader = 1;
                     }
                 }
                 if ($cetakHeader == 1) {
                     $cetakHeader = 0;
                 ?>
-                    <tr>
+                    <!-- <tr>
                         <td>&nbsp;</td>
                         <td colspan="14">
                             <?php echo 'Trip No. <b>' . $t02_tamu->TripNo . '</b>'?>
                             <?php echo ' @ ' ?>
                             <?php echo '<b>' . date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') . '</b>' ?>
                         </td>
+                    </tr> -->
+
+                    <?php
+                    echo 'Trip No. <b>' . $t02_tamu->TripNo . '</b>';
+                    echo ' @ ';
+                    echo '<b>' . date_format(date_create($t02_tamu->TripTgl), 'd-m-Y') . '</b>';
+                    ?>
+                    <table class="table table-bordered" style="margin-bottom: 10px">
+                    <tr>
+                        <th rowspan="2">No.</th>
+        				<th rowspan="2">Name</th>
+        				<th rowspan="2">MFC</th>
+        				<th rowspan="2">Country</th>
+        				<th colspan="2">Package</th>
+        				<th rowspan="2">Check-In</th>
+        				<th rowspan="2">Check-Out</th>
+        				<th rowspan="2">Agent</th>
+        				<th rowspan="2">Status</th>
+        				<th rowspan="2">Days Stay</th>
+        				<th rowspan="2" class="text-right">Price</th>
+        				<th rowspan="2">Proses</th>
+                    </tr>
+                    <tr>
+                        <th>Night</th>
+                        <th>Type</th>
                     </tr>
                 <?php
                 }
