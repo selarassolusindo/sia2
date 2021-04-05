@@ -42,7 +42,7 @@ class T03_bayar extends CI_Controller
         );
         // $this->load->view('t03_bayar/t03_bayar_list', $data);
         $data['_view'] = 't03_bayar/t03_bayar_list';
-        $data['_caption'] = 'Pembayaran Tamu';
+        $data['_caption'] = 'Pembayaran';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -87,7 +87,7 @@ class T03_bayar extends CI_Controller
 		);
         // $this->load->view('t03_bayar/t03_bayar_form', $data);
         $data['_view'] = 't03_bayar/t03_bayar_form';
-        $data['_caption'] = 'Pembayaran Tamu';
+        $data['_caption'] = 'Pembayaran';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -136,7 +136,7 @@ class T03_bayar extends CI_Controller
 			);
             // $this->load->view('t03_bayar/t03_bayar_form', $data);
             $data['_view'] = 't03_bayar/t03_bayar_form';
-            $data['_caption'] = 'Pembayaran Tamu';
+            $data['_caption'] = 'Pembayaran';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
