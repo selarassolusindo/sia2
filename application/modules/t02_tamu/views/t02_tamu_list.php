@@ -84,7 +84,7 @@
     				<th rowspan="2">Status</th>
     				<th rowspan="2">Days Stay</th>
     				<th rowspan="2" class="text-right">Price</th>
-    				<th rowspan="2">Proses</th>
+    				<th rowspan="2" class="text-center">Proses</th>
                 </tr>
                 <tr>
                     <th>Night</th>

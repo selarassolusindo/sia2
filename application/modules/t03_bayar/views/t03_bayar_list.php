@@ -53,7 +53,7 @@
 				<!-- <th>Idusers</th> -->
 				<!-- <th>Created At</th> -->
 				<!-- <th>Updated At</th> -->
-				<th>Proses</th>
+				<th class="text-center">Proses</th>
             </tr>
 			<?php foreach ($t03_bayar_data as $t03_bayar) { ?>
             <tr>
