@@ -44,29 +44,17 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-				<th>Tamu</th>
-				<th>PT</th>
-				<th>Kurs</th>
-				<th>Mata Uang</th>
-				<th>Jumlah</th>
-				<th>Paid By</th>
-				<!-- <th>Idusers</th> -->
-				<!-- <th>Created At</th> -->
-				<!-- <th>Updated At</th> -->
+				<th>TripNo</th>
+				<th>TripTgl</th>
+				<th>Total</th>
 				<th class="text-center">Proses</th>
             </tr>
 			<?php foreach ($t03_bayar_data as $t03_bayar) { ?>
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
-				<td><?php echo $t03_bayar->Tamu ?></td>
-				<td><?php echo $t03_bayar->PT ?></td>
-				<td><?php echo $t03_bayar->Kurs ?></td>
-				<td><?php echo $t03_bayar->Mata_Uang ?></td>
-				<td><?php echo $t03_bayar->Jumlah ?></td>
-				<td><?php echo $t03_bayar->Paid_By ?></td>
-				<!-- <td><?php echo $t03_bayar->idusers ?></td> -->
-				<!-- <td><?php echo $t03_bayar->created_at ?></td> -->
-				<!-- <td><?php echo $t03_bayar->updated_at ?></td> -->
+				<td><?php echo $t03_bayar->TripNo ?></td>
+				<td><?php echo $t03_bayar->TripTgl ?></td>
+				<td><?php echo $t03_bayar->Total ?></td>
 				<td style="text-align:center" width="200px">
 				<?php
 				//echo anchor(site_url('t03_bayar/read/'.$t03_bayar->idbayar),'Read');

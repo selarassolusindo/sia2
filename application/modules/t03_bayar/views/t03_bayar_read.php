@@ -12,12 +12,9 @@
     <body>
         <h2 style="margin-top:0px">T03_bayar Read</h2>
         <table class="table">
-	    <tr><td>Tamu</td><td><?php echo $Tamu; ?></td></tr>
-	    <tr><td>PT</td><td><?php echo $PT; ?></td></tr>
-	    <tr><td>Kurs</td><td><?php echo $Kurs; ?></td></tr>
-	    <tr><td>Mata Uang</td><td><?php echo $Mata_Uang; ?></td></tr>
-	    <tr><td>Jumlah</td><td><?php echo $Jumlah; ?></td></tr>
-	    <tr><td>Paid By</td><td><?php echo $Paid_By; ?></td></tr>
+	    <tr><td>TripNo</td><td><?php echo $TripNo; ?></td></tr>
+	    <tr><td>TripTgl</td><td><?php echo $TripTgl; ?></td></tr>
+	    <tr><td>Total</td><td><?php echo $Total; ?></td></tr>
 	    <tr><td>Idusers</td><td><?php echo $idusers; ?></td></tr>
 	    <tr><td>Created At</td><td><?php echo $created_at; ?></td></tr>
 	    <tr><td>Updated At</td><td><?php echo $updated_at; ?></td></tr>

@@ -20,12 +20,9 @@
         <table class="word-table" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-		<th>Tamu</th>
-		<th>PT</th>
-		<th>Kurs</th>
-		<th>Mata Uang</th>
-		<th>Jumlah</th>
-		<th>Paid By</th>
+		<th>TripNo</th>
+		<th>TripTgl</th>
+		<th>Total</th>
 		<th>Idusers</th>
 		<th>Created At</th>
 		<th>Updated At</th>
@@ -36,12 +33,9 @@
                 ?>
                 <tr>
 		      <td><?php echo ++$start ?></td>
-		      <td><?php echo $t03_bayar->Tamu ?></td>
-		      <td><?php echo $t03_bayar->PT ?></td>
-		      <td><?php echo $t03_bayar->Kurs ?></td>
-		      <td><?php echo $t03_bayar->Mata_Uang ?></td>
-		      <td><?php echo $t03_bayar->Jumlah ?></td>
-		      <td><?php echo $t03_bayar->Paid_By ?></td>
+		      <td><?php echo $t03_bayar->TripNo ?></td>
+		      <td><?php echo $t03_bayar->TripTgl ?></td>
+		      <td><?php echo $t03_bayar->Total ?></td>
 		      <td><?php echo $t03_bayar->idusers ?></td>
 		      <td><?php echo $t03_bayar->created_at ?></td>
 		      <td><?php echo $t03_bayar->updated_at ?></td>	

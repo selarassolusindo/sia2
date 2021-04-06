@@ -13,28 +13,16 @@
         <h2 style="margin-top:0px">T03_bayar <?php echo $button ?></h2> -->
         <form action="<?php echo $action; ?>" method="post">
 			<div class="form-group">
-            	<label for="int">Tamu <?php echo form_error('Tamu') ?></label>
-            	<input type="text" class="form-control" name="Tamu" id="Tamu" placeholder="Tamu" value="<?php echo $Tamu; ?>" />
+            	<label for="varchar">TripNo <?php echo form_error('TripNo') ?></label>
+            	<input type="text" class="form-control" name="TripNo" id="TripNo" placeholder="TripNo" value="<?php echo $TripNo; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="tinyint">PT <?php echo form_error('PT') ?></label>
-            	<input type="text" class="form-control" name="PT" id="PT" placeholder="PT" value="<?php echo $PT; ?>" />
+            	<label for="date">TripTgl <?php echo form_error('TripTgl') ?></label>
+            	<input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="tinyint">Kurs <?php echo form_error('Kurs') ?></label>
-            	<input type="text" class="form-control" name="Kurs" id="Kurs" placeholder="Kurs" value="<?php echo $Kurs; ?>" />
-        	</div>
-			<div class="form-group">
-            	<label for="tinyint">Mata Uang <?php echo form_error('Mata_Uang') ?></label>
-            	<input type="text" class="form-control" name="Mata_Uang" id="Mata_Uang" placeholder="Mata Uang" value="<?php echo $Mata_Uang; ?>" />
-        	</div>
-			<div class="form-group">
-            	<label for="double">Jumlah <?php echo form_error('Jumlah') ?></label>
-            	<input type="text" class="form-control" name="Jumlah" id="Jumlah" placeholder="Jumlah" value="<?php echo $Jumlah; ?>" />
-        	</div>
-			<div class="form-group">
-            	<label for="int">Paid By <?php echo form_error('Paid_By') ?></label>
-            	<input type="text" class="form-control" name="Paid_By" id="Paid_By" placeholder="Paid By" value="<?php echo $Paid_By; ?>" />
+            	<label for="double">Total <?php echo form_error('Total') ?></label>
+            	<input type="text" class="form-control" name="Total" id="Total" placeholder="Total" value="<?php echo $Total; ?>" />
         	</div>
 			<!-- <div class="form-group">
             	<label for="tinyint">Idusers <?php echo form_error('idusers') ?></label>
