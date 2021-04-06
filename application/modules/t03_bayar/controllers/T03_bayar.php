@@ -69,7 +69,7 @@ class T03_bayar extends CI_Controller
     public function create()
     {
         $data = array(
-            'button' => 'Simpan',
+            'button' => 'Proses',
             'action' => site_url('t03_bayar/create_action'),
 			'idbayar' => set_value('idbayar'),
 			'TripNo' => set_value('TripNo'),

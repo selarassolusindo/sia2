@@ -105,6 +105,16 @@ class T02_tamu_model extends CI_Model
         $this->db->insert_batch($this->table, $data);
     }
 
+    /**
+     * untuk combo pada menu tamu - pembayaran
+     */
+    function getData($q)
+    {
+        $this->db->like('TripNo', $q);
+        $this->db->group_by('TripNo');
+        return $this->db->get($this->table)->result();
+    }
+
 }
 
 /* End of file T02_tamu_model.php */
