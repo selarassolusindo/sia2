@@ -40,10 +40,7 @@ class T03_bayar extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        // $this->load->view('t03_bayar/t03_bayar_list', $data);
-        $data['_view'] = 't03_bayar/t03_bayar_list';
-        $data['_caption'] = 'Pembayaran';
-        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+        $this->load->view('t03_bayar/t03_bayar_list', $data);
     }
 
     public function read($id)
@@ -52,12 +49,9 @@ class T03_bayar extends CI_Controller
         if ($row) {
             $data = array(
 				'idbayar' => $row->idbayar,
-				'Tamu' => $row->Tamu,
-				'PT' => $row->PT,
-				'Kurs' => $row->Kurs,
-				'Mata_Uang' => $row->Mata_Uang,
-				'Jumlah' => $row->Jumlah,
-				'Paid_By' => $row->Paid_By,
+				'TripNo' => $row->TripNo,
+				'TripTgl' => $row->TripTgl,
+				'Total' => $row->Total,
 				'idusers' => $row->idusers,
 				'created_at' => $row->created_at,
 				'updated_at' => $row->updated_at,
@@ -75,20 +69,14 @@ class T03_bayar extends CI_Controller
             'button' => 'Simpan',
             'action' => site_url('t03_bayar/create_action'),
 			'idbayar' => set_value('idbayar'),
-			'Tamu' => set_value('Tamu'),
-			'PT' => set_value('PT'),
-			'Kurs' => set_value('Kurs'),
-			'Mata_Uang' => set_value('Mata_Uang'),
-			'Jumlah' => set_value('Jumlah'),
-			'Paid_By' => set_value('Paid_By'),
-			// 'idusers' => set_value('idusers'),
-			// 'created_at' => set_value('created_at'),
-			// 'updated_at' => set_value('updated_at'),
+			'TripNo' => set_value('TripNo'),
+			'TripTgl' => set_value('TripTgl'),
+			'Total' => set_value('Total'),
+			'idusers' => set_value('idusers'),
+			'created_at' => set_value('created_at'),
+			'updated_at' => set_value('updated_at'),
 		);
-        // $this->load->view('t03_bayar/t03_bayar_form', $data);
-        $data['_view'] = 't03_bayar/t03_bayar_form';
-        $data['_caption'] = 'Pembayaran';
-        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+        $this->load->view('t03_bayar/t03_bayar_form', $data);
     }
 
     public function create_action()
@@ -99,15 +87,12 @@ class T03_bayar extends CI_Controller
             $this->create();
         } else {
             $data = array(
-				'Tamu' => $this->input->post('Tamu',TRUE),
-				'PT' => $this->input->post('PT',TRUE),
-				'Kurs' => $this->input->post('Kurs',TRUE),
-				'Mata_Uang' => $this->input->post('Mata_Uang',TRUE),
-				'Jumlah' => $this->input->post('Jumlah',TRUE),
-				'Paid_By' => $this->input->post('Paid_By',TRUE),
-				'idusers' => $this->session->userdata('user_id'),
-				// 'created_at' => $this->input->post('created_at',TRUE),
-				// 'updated_at' => $this->input->post('updated_at',TRUE),
+				'TripNo' => $this->input->post('TripNo',TRUE),
+				'TripTgl' => $this->input->post('TripTgl',TRUE),
+				'Total' => $this->input->post('Total',TRUE),
+				'idusers' => $this->input->post('idusers',TRUE),
+				'created_at' => $this->input->post('created_at',TRUE),
+				'updated_at' => $this->input->post('updated_at',TRUE),
 			);
             $this->T03_bayar_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -124,20 +109,14 @@ class T03_bayar extends CI_Controller
                 'button' => 'Simpan',
                 'action' => site_url('t03_bayar/update_action'),
 				'idbayar' => set_value('idbayar', $row->idbayar),
-				'Tamu' => set_value('Tamu', $row->Tamu),
-				'PT' => set_value('PT', $row->PT),
-				'Kurs' => set_value('Kurs', $row->Kurs),
-				'Mata_Uang' => set_value('Mata_Uang', $row->Mata_Uang),
-				'Jumlah' => set_value('Jumlah', $row->Jumlah),
-				'Paid_By' => set_value('Paid_By', $row->Paid_By),
-				// 'idusers' => set_value('idusers', $row->idusers),
-				// 'created_at' => set_value('created_at', $row->created_at),
-				// 'updated_at' => set_value('updated_at', $row->updated_at),
+				'TripNo' => set_value('TripNo', $row->TripNo),
+				'TripTgl' => set_value('TripTgl', $row->TripTgl),
+				'Total' => set_value('Total', $row->Total),
+				'idusers' => set_value('idusers', $row->idusers),
+				'created_at' => set_value('created_at', $row->created_at),
+				'updated_at' => set_value('updated_at', $row->updated_at),
 			);
-            // $this->load->view('t03_bayar/t03_bayar_form', $data);
-            $data['_view'] = 't03_bayar/t03_bayar_form';
-            $data['_caption'] = 'Pembayaran';
-            $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+            $this->load->view('t03_bayar/t03_bayar_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('t03_bayar'));
@@ -152,15 +131,12 @@ class T03_bayar extends CI_Controller
             $this->update($this->input->post('idbayar', TRUE));
         } else {
             $data = array(
-				'Tamu' => $this->input->post('Tamu',TRUE),
-				'PT' => $this->input->post('PT',TRUE),
-				'Kurs' => $this->input->post('Kurs',TRUE),
-				'Mata_Uang' => $this->input->post('Mata_Uang',TRUE),
-				'Jumlah' => $this->input->post('Jumlah',TRUE),
-				'Paid_By' => $this->input->post('Paid_By',TRUE),
-                'idusers' => $this->session->userdata('user_id'),
-				// 'created_at' => $this->input->post('created_at',TRUE),
-				// 'updated_at' => $this->input->post('updated_at',TRUE),
+				'TripNo' => $this->input->post('TripNo',TRUE),
+				'TripTgl' => $this->input->post('TripTgl',TRUE),
+				'Total' => $this->input->post('Total',TRUE),
+				'idusers' => $this->input->post('idusers',TRUE),
+				'created_at' => $this->input->post('created_at',TRUE),
+				'updated_at' => $this->input->post('updated_at',TRUE),
 			);
             $this->T03_bayar_model->update($this->input->post('idbayar', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -184,15 +160,12 @@ class T03_bayar extends CI_Controller
 
     public function _rules()
     {
-		$this->form_validation->set_rules('Tamu', 'tamu', 'trim|required');
-		$this->form_validation->set_rules('PT', 'pt', 'trim|required');
-		$this->form_validation->set_rules('Kurs', 'kurs', 'trim|required');
-		$this->form_validation->set_rules('Mata_Uang', 'mata uang', 'trim|required');
-		$this->form_validation->set_rules('Jumlah', 'jumlah', 'trim|required|numeric');
-		$this->form_validation->set_rules('Paid_By', 'paid by', 'trim|required');
-		// $this->form_validation->set_rules('idusers', 'idusers', 'trim|required');
-		// $this->form_validation->set_rules('created_at', 'created at', 'trim|required');
-		// $this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
+		$this->form_validation->set_rules('TripNo', 'tripno', 'trim|required');
+		$this->form_validation->set_rules('TripTgl', 'triptgl', 'trim|required');
+		$this->form_validation->set_rules('Total', 'total', 'trim|required|numeric');
+		$this->form_validation->set_rules('idusers', 'idusers', 'trim|required');
+		$this->form_validation->set_rules('created_at', 'created at', 'trim|required');
+		$this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
 		$this->form_validation->set_rules('idbayar', 'idbayar', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
@@ -217,12 +190,9 @@ class T03_bayar extends CI_Controller
         xlsBOF();
         $kolomhead = 0;
         xlsWriteLabel($tablehead, $kolomhead++, "No");
-		xlsWriteLabel($tablehead, $kolomhead++, "Tamu");
-		xlsWriteLabel($tablehead, $kolomhead++, "PT");
-		xlsWriteLabel($tablehead, $kolomhead++, "Kurs");
-		xlsWriteLabel($tablehead, $kolomhead++, "Mata Uang");
-		xlsWriteLabel($tablehead, $kolomhead++, "Jumlah");
-		xlsWriteLabel($tablehead, $kolomhead++, "Paid By");
+		xlsWriteLabel($tablehead, $kolomhead++, "TripNo");
+		xlsWriteLabel($tablehead, $kolomhead++, "TripTgl");
+		xlsWriteLabel($tablehead, $kolomhead++, "Total");
 		xlsWriteLabel($tablehead, $kolomhead++, "Idusers");
 		xlsWriteLabel($tablehead, $kolomhead++, "Created At");
 		xlsWriteLabel($tablehead, $kolomhead++, "Updated At");
@@ -230,12 +200,9 @@ class T03_bayar extends CI_Controller
             $kolombody = 0;
             //ubah xlsWriteLabel menjadi xlsWriteNumber untuk kolom numeric
             xlsWriteNumber($tablebody, $kolombody++, $nourut);
-			xlsWriteNumber($tablebody, $kolombody++, $data->Tamu);
-			xlsWriteLabel($tablebody, $kolombody++, $data->PT);
-			xlsWriteLabel($tablebody, $kolombody++, $data->Kurs);
-			xlsWriteLabel($tablebody, $kolombody++, $data->Mata_Uang);
-			xlsWriteNumber($tablebody, $kolombody++, $data->Jumlah);
-			xlsWriteNumber($tablebody, $kolombody++, $data->Paid_By);
+			xlsWriteLabel($tablebody, $kolombody++, $data->TripNo);
+			xlsWriteLabel($tablebody, $kolombody++, $data->TripTgl);
+			xlsWriteNumber($tablebody, $kolombody++, $data->Total);
 			xlsWriteLabel($tablebody, $kolombody++, $data->idusers);
 			xlsWriteLabel($tablebody, $kolombody++, $data->created_at);
 			xlsWriteLabel($tablebody, $kolombody++, $data->updated_at);
@@ -262,5 +229,5 @@ class T03_bayar extends CI_Controller
 /* End of file T03_bayar.php */
 /* Location: ./application/controllers/T03_bayar.php */
 /* Please DO NOT modify this information : */
-/* Generated by Harviacode Codeigniter CRUD Generator 2021-04-05 17:58:51 */
+/* Generated by Harviacode Codeigniter CRUD Generator 2021-04-06 10:11:15 */
 /* http://harviacode.com */
