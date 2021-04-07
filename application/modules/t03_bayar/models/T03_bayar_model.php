@@ -77,6 +77,12 @@ class T03_bayar_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+    // ambil idbayar
+    function getInsertId()
+    {
+        return $this->db->insert_id();
+    }
+
 }
 
 /* End of file T03_bayar_model.php */

@@ -316,6 +316,7 @@
                                 switch ($this->uri->segment(1)) {
                                     case 't02_tamu':
                                     case 't03_bayar':
+                                    case 't04_bayard':
                                         echo 'menu-open';
                                         break;
                                     default:
@@ -328,6 +329,7 @@
                                     switch ($this->uri->segment(1)) {
                                         case 't02_tamu':
                                         case 't03_bayar':
+                                        case 't04_bayard':
                                             echo 'active';
                                             break;
                                         default:
@@ -355,7 +357,7 @@
 
                                     <!-- pembayaran -->
                                     <li class="nav-item">
-                                        <a href="<?php echo site_url(); ?>t03_bayar" class="nav-link <?php echo $this->uri->segment(1) == 't03_bayar' ? 'active' : ''; ?>">
+                                        <a href="<?php echo site_url(); ?>t03_bayar" class="nav-link <?php echo ($this->uri->segment(1) == 't03_bayar' or $this->uri->segment(1) == 't04_bayard')  ? 'active' : ''; ?>">
                                             <i class="far fa-window-restore nav-icon"></i>
                                             <p>Pembayaran</p>
                                         </a>

@@ -12,6 +12,7 @@ class T03_bayar extends CI_Controller
         $this->load->library('form_validation');
 
         $this->load->model('t02_tamu/T02_tamu_model');
+        $this->load->model('t04_bayard/T04_bayard_model');
     }
 
     public function index()
@@ -114,12 +115,26 @@ class T03_bayar extends CI_Controller
                 $this->T03_bayar_model->insert($data);
 
                 /**
-                 * simpan data detail bayar
+                 * simpan id master bayar terbaru
                  */
-                
+                $insert_id = $this->T03_bayar_model->getInsertId();
 
-                $this->session->set_flashdata('message', 'Create Record Success');
-                redirect(site_url('t03_bayar'));
+                /**
+                 * simpan data setiap tamu ke tabel detail
+                */
+                $data = $this->T02_tamu_model->getAllByTripNo($this->input->post('TripNo',TRUE));
+                foreach ($data as $row) {
+                    $detail = [
+                        'idbayar' => $insert_id,
+                        'tamu' => $row->idtamu,
+                        'idusers' => $this->session->userdata('user_id'),
+                        ];
+                    $this->T04_bayard_model->insert($detail);
+                }
+
+                // $this->session->set_flashdata('message', 'Create Record Success');
+                // redirect(site_url('t03_bayar'));
+                redirect(site_url('t04_bayard?q=' . $insert_id));
             } else {
                 $this->session->set_flashdata('message', 'Tanggal Trip Ditemukan');
                 redirect(site_url('t03_bayar'));

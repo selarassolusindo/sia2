@@ -40,7 +40,10 @@ class T04_bayard extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        $this->load->view('t04_bayard/t04_bayard_list', $data);
+        // $this->load->view('t04_bayard/t04_bayard_list', $data);
+        $data['_view'] = 't04_bayard/t04_bayard_list';
+        $data['_caption'] = 'Pembayaran';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
     public function read($id)
@@ -114,7 +117,10 @@ class T04_bayard extends CI_Controller
 			'created_at' => set_value('created_at'),
 			'updated_at' => set_value('updated_at'),
 		);
-        $this->load->view('t04_bayard/t04_bayard_form', $data);
+        // $this->load->view('t04_bayard/t04_bayard_form', $data);
+        $data['_view'] = 't04_bayard/t04_bayard_form';
+        $data['_caption'] = 'Pembayaran';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
     public function create_action()
@@ -192,7 +198,10 @@ class T04_bayard extends CI_Controller
 				'created_at' => set_value('created_at', $row->created_at),
 				'updated_at' => set_value('updated_at', $row->updated_at),
 			);
-            $this->load->view('t04_bayard/t04_bayard_form', $data);
+            // $this->load->view('t04_bayard/t04_bayard_form', $data);
+            $data['_view'] = 't04_bayard/t04_bayard_form';
+            $data['_caption'] = 'Pembayaran';
+            $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('t04_bayard'));

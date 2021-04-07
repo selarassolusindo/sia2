@@ -138,6 +138,13 @@ class T02_tamu_model extends CI_Model
         return $this->db->get($this->table)->row();
     }
 
+    // get all data by TripNo
+    function getAllByTripNo($TripNo)
+    {
+        $this->db->where('TripNo', $TripNo);
+        return $this->db->get($this->table)->result();
+    }
+
 }
 
 /* End of file T02_tamu_model.php */

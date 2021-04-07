@@ -115,7 +115,7 @@
 				<?php
 				//echo anchor(site_url('t02_tamu/read/'.$t02_tamu->idtamu),'Read');
 				//echo ' | ';
-				echo anchor(site_url('t02_tamu/update/'.$t02_tamu->idtamu),'Edit');
+				echo anchor(site_url('t02_tamu/update/'.$t02_tamu->idtamu),'Ubah');
 				echo ' | ';
 				echo anchor(site_url('t02_tamu/delete/'.$t02_tamu->idtamu),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
 				?>

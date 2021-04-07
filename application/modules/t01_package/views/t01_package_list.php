@@ -79,7 +79,7 @@
     				<?php
     				// echo anchor(site_url('t01_package/read/'.$t01_package->idprice),'Read');
     				// echo ' | ';
-    				echo anchor(site_url('t01_package/update/'.$t01_package->idprice),'Edit');
+    				echo anchor(site_url('t01_package/update/'.$t01_package->idprice),'Ubah');
     				echo ' | ';
     				echo anchor(site_url('t01_package/delete/'.$t01_package->idprice),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
     				?>

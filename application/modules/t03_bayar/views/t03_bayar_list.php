@@ -59,9 +59,10 @@
 				<?php
 				//echo anchor(site_url('t03_bayar/read/'.$t03_bayar->idbayar),'Read');
 				//echo ' | ';
-				echo anchor(site_url('t03_bayar/update/'.$t03_bayar->idbayar),'Edit');
-				echo ' | ';
-				echo anchor(site_url('t03_bayar/delete/'.$t03_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+				// echo anchor(site_url('t03_bayar/update/'.$t03_bayar->idbayar),'Edit');
+				// echo ' | ';
+				// echo anchor(site_url('t03_bayar/delete/'.$t03_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+                echo anchor(site_url('t04_bayard?q='.$t03_bayar->idbayar),'Proses');
 				?>
 				</td>
 			</tr>
