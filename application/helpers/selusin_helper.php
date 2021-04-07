@@ -310,3 +310,8 @@ function longDateIndo($tgl)
     }
     return $nama2 . ', ' . $tanggal . ' ' . $bulan2 . ' ' . $tahun;
 }
+
+function dateIndo($value)
+{
+    return date_format(date_create($value), 'd-m-Y');
+}

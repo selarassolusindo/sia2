@@ -269,6 +269,46 @@ class T03_bayar extends CI_Controller
         $this->load->view('t03_bayar/t03_bayar_doc',$data);
     }
 
+    /**
+     * proses pembayaran yang menyertakan detail data
+     */
+    public function proses($id)
+    {
+        $row = $this->T03_bayar_model->get_by_id($id);
+
+        if ($row) {
+
+            /**
+             * ambil data master
+             */
+            $data = array(
+                'button' => 'Simpan',
+                'action' => site_url('t03_bayar/proses_action'),
+				'idbayar' => set_value('idbayar', $row->idbayar),
+				'TripNo' => set_value('TripNo', $row->TripNo),
+				'TripTgl' => set_value('TripTgl', $row->TripTgl),
+				'Total' => set_value('Total', $row->Total),
+				// 'idusers' => set_value('idusers', $row->idusers),
+				// 'created_at' => set_value('created_at', $row->created_at),
+				// 'updated_at' => set_value('updated_at', $row->updated_at),
+			);
+
+            /**
+             * ambil data detail
+             */
+            $dataTamu = $this->T04_bayard_model->get_limit_data(1000, 0, $row->idbayar);
+            $data['dataTamu'] = $dataTamu;
+
+            // $this->load->view('t03_bayar/t03_bayar_form', $data);
+            $data['_view'] = 't03_bayar/t03_bayar_proses';
+            $data['_caption'] = 'Pembayaran';
+            $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+        } else {
+            $this->session->set_flashdata('message', 'Record Not Found');
+            redirect(site_url('t03_bayar'));
+        }
+    }
+
 }
 
 /* End of file T03_bayar.php */
