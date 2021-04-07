@@ -62,13 +62,13 @@
                             <div class="col">&nbsp;</div>
                         </div>
                     </div>
-                    <div class="col-2 hx">KURS
+                    <div class="col-3 hx">KURS
                         <div class="row">
                             <div class="col">USD</div>
                             <div class="col">AUD</div>
                         </div>
                     </div>
-                    <div class="col-8 hx">PAYMENT
+                    <div class="col-10 hx">PAYMENT
                         <div class="row">
                             <div class="col">USD</div>
                             <div class="col">AUD</div>
@@ -80,12 +80,12 @@
                             <div class="col">TOTAL RP</div>
                         </div>
                     </div>
-                    <div class="col-1 hx">SELISIH
+                    <div class="col-2 hx">SELISIH
                         <div class="row">
                             <div class="col">&nbsp;</div>
                         </div>
                     </div>
-                    <div class="col-5 hx">SELISIH
+                    <div class="col-7 hx">SELISIH
                         <div class="row">
                             <div class="col">BLM BAYAR</div>
                             <div class="col">KRG BAYAR</div>
@@ -94,7 +94,7 @@
                             <div class="col">SLSH KURS</div>
                         </div>
                     </div>
-                    <div class="col-2 hx">SHARE INCOME
+                    <div class="col-3 hx">SHARE INCOME
                         <div class="row">
                             <div class="col">PIW</div>
                             <div class="col">SSW</div>
@@ -115,6 +115,7 @@
 
                         <!-- tamu -->
                         <div class="col-1">
+                            <input type="hidden" name="tamu[]" value="<?php echo $d->tamu ?>">
                             <?php echo $d->Nama ?>
                         </div>
 
@@ -122,13 +123,13 @@
                         <div class="col-1">
                             <select class="form-control" name="pt_ci[]" required>
                                 <option value=""></option>
-                                <option value="3">PIW</option>
-                                <option value="4">SSW</option>
+                                <option value="3" selected="<?php echo $d->pt_ci == 3 ? 'selected' : '' ?>">PIW</option>
+                                <option value="4" selected="<?php echo $d->pt_ci == 4 ? 'selected' : '' ?>">SSW</option>
                             </select>
                         </div>
 
                         <!-- kurs -->
-                        <div class="col-2">
+                        <div class="col-3">
                             <div class="row">
                                 <div class="col">
                                     <input type="number" name="kurs_usd_ci[]" class="form-control" placeholder="" value="<?= $d->kurs_usd_ci ?>" required>
@@ -140,7 +141,7 @@
                         </div>
 
                         <!-- payment ci -->
-                        <div class="col-8">
+                        <div class="col-10">
                             <div class="row">
                                 <div class="col">
                                     <input type="number" name="usd_ci[]" class="form-control" placeholder="" value="<?= $d->usd_ci ?>" required></td>
@@ -170,12 +171,12 @@
                         </div>
 
                         <!-- selisih -->
-                        <div class="col-1">
+                        <div class="col-2">
                             <input type="number" name="slsh_ci[]" class="form-control" placeholder="" value="<?= $d->slsh_ci ?>" required></td>
                         </div>
 
                         <!-- selisih breakdown -->
-                        <div class="col-5">
+                        <div class="col-7">
                             <div class="row">
                                 <div class="col">
                                     <input type="number" name="slsh_blm_ci[]" class="form-control" placeholder="" value="<?= $d->slsh_blm_ci ?>" required></td>
@@ -196,7 +197,7 @@
                         </div>
 
                         <!-- share income -->
-                        <div class="col-2">
+                        <div class="col-3">
                             <div class="row">
                                 <div class="col">
                                     <input type="number" name="sha_inc_piw[]" class="form-control" placeholder="" value="<?= $d->sha_inc_piw ?>" required></td>
@@ -242,7 +243,7 @@
             <p>&nbsp;</p>
 			<input type="hidden" name="idbayar" value="<?php echo $idbayar; ?>" />
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-			<a href="<?php echo site_url('t03_bayar') ?>" class="btn btn-secondary">Batal</a>
+			<a href="<?php echo site_url('t03_bayar') ?>" class="btn btn-secondary">Kembali</a>
 		</form>
 
         <script type="text/javascript">

@@ -8,7 +8,7 @@ class T04_bayard_model extends CI_Model
 
     public $table = 't04_bayard';
     public $id = 'idbayard';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
@@ -115,6 +115,13 @@ class T04_bayard_model extends CI_Model
     function delete($id)
     {
         $this->db->where($this->id, $id);
+        $this->db->delete($this->table);
+    }
+
+    // delete by idbayar
+    function deleteByIdbayar($idbayar)
+    {
+        $this->db->where('idbayar', $idbayar);
         $this->db->delete($this->table);
     }
 
