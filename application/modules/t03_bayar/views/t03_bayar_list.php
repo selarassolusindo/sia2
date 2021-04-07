@@ -43,18 +43,18 @@
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
-                <th>No</th>
-				<th>TripNo</th>
-				<th>TripTgl</th>
-				<th>Total</th>
+                <th>No.</th>
+				<th>Trip No.</th>
+				<th>Trip Tgl.</th>
+				<th class="text-right">Total</th>
 				<th class="text-center">Proses</th>
             </tr>
 			<?php foreach ($t03_bayar_data as $t03_bayar) { ?>
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
 				<td><?php echo $t03_bayar->TripNo ?></td>
-				<td><?php echo $t03_bayar->TripTgl ?></td>
-				<td><?php echo $t03_bayar->Total ?></td>
+				<td><?php echo date_format(date_create($t03_bayar->TripTgl), 'd-m-Y') ?></td>
+				<td class="text-right"><?php echo numIndo($t03_bayar->Total) ?></td>
 				<td style="text-align:center" width="200px">
 				<?php
 				//echo anchor(site_url('t03_bayar/read/'.$t03_bayar->idbayar),'Read');

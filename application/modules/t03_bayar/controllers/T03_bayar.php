@@ -10,6 +10,8 @@ class T03_bayar extends CI_Controller
         parent::__construct();
         $this->load->model('T03_bayar_model');
         $this->load->library('form_validation');
+
+        $this->load->model('t02_tamu/T02_tamu_model');
     }
 
     public function index()
@@ -92,17 +94,36 @@ class T03_bayar extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
-            $data = array(
-				'TripNo' => $this->input->post('TripNo',TRUE),
-				'TripTgl' => $this->input->post('TripTgl',TRUE),
-				'Total' => $this->input->post('Total',TRUE),
-				'idusers' => $this->session->userdata('user_id'),
-				// 'created_at' => $this->input->post('created_at',TRUE),
-				// 'updated_at' => $this->input->post('updated_at',TRUE),
-			);
-            $this->T03_bayar_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('t03_bayar'));
+            /**
+             * cari data tanggal trip berdasarkan nomor trip
+             */
+            $row = $this->T02_tamu_model->getByTripNo($this->input->post('TripNo',TRUE));
+            if ($row) {
+
+                /**
+                 * simpan data master bayar
+                 */
+                $data = array(
+    				'TripNo' => $this->input->post('TripNo',TRUE),
+    				'TripTgl' => $row->TripTgl,
+    				'Total' => 0,
+    				'idusers' => $this->session->userdata('user_id'),
+    				// 'created_at' => $this->input->post('created_at',TRUE),
+    				// 'updated_at' => $this->input->post('updated_at',TRUE),
+    			);
+                $this->T03_bayar_model->insert($data);
+
+                /**
+                 * simpan data detail bayar
+                 */
+                
+
+                $this->session->set_flashdata('message', 'Create Record Success');
+                redirect(site_url('t03_bayar'));
+            } else {
+                $this->session->set_flashdata('message', 'Tanggal Trip Ditemukan');
+                redirect(site_url('t03_bayar'));
+            }
         }
     }
 
@@ -170,8 +191,8 @@ class T03_bayar extends CI_Controller
     public function _rules()
     {
 		$this->form_validation->set_rules('TripNo', 'tripno', 'trim|required');
-		$this->form_validation->set_rules('TripTgl', 'triptgl', 'trim|required');
-		$this->form_validation->set_rules('Total', 'total', 'trim|required|numeric');
+		// $this->form_validation->set_rules('TripTgl', 'triptgl', 'trim|required');
+		// $this->form_validation->set_rules('Total', 'total', 'trim|required|numeric');
 		// $this->form_validation->set_rules('idusers', 'idusers', 'trim|required');
 		// $this->form_validation->set_rules('created_at', 'created at', 'trim|required');
 		// $this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');

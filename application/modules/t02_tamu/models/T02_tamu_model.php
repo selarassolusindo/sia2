@@ -110,9 +110,32 @@ class T02_tamu_model extends CI_Model
      */
     function getData($q)
     {
-        $this->db->like('TripNo', $q);
-        $this->db->group_by('TripNo');
-        return $this->db->get($this->table)->result();
+        $q = "
+            select
+                *
+            from
+                (select
+                    *
+                from
+                    t02_tamu
+                where
+                    TripNo not in (select TripNo from t03_bayar)
+                ) a
+            where
+                TripNo like '%".$q."%'
+            group by
+                TripNo
+            order by
+                TripNo
+        ";
+        return $this->db->query($q)->result();
+    }
+
+    // get data by TripNo
+    function getByTripNo($TripNo)
+    {
+        $this->db->where('TripNo', $TripNo);
+        return $this->db->get($this->table)->row();
     }
 
 }

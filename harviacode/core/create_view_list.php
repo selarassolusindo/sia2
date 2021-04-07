@@ -45,7 +45,7 @@ $string = "<!doctype html>
         </div>
         <table class=\"table table-bordered\" style=\"margin-bottom: 10px\">
             <tr>
-                <th>No</th>";
+                <th>No.</th>";
 foreach ($non_pk as $row) {
     $string .= "\n\t\t\t\t<th>" . label($row['column_name']) . "</th>";
 }

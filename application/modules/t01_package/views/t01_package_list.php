@@ -44,7 +44,7 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
         <!-- <table class="table" style="margin-bottom: 10px"> -->
             <tr>
-                <th rowspan="3">No</th>
+                <th rowspan="3">No.</th>
         		<th colspan="2" rowspan="2">Package</th>
                 <th colspan="3" class="text-center">SSW Price</th>
                 <th colspan="2" class="text-center">PIW Price</th>

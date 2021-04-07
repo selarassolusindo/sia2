@@ -417,7 +417,7 @@ class T02_tamu extends CI_Controller
             $list = array();
             $key = 0;
             foreach($result as $row) {
-                $list[$key]['id'] = $row->idtamu;
+                $list[$key]['id'] = $row->TripNo;
                 $list[$key]['text'] = $row->TripNo;
                 $key++;
             }
