@@ -10,6 +10,8 @@ class T04_bayard extends CI_Controller
         parent::__construct();
         $this->load->model('T04_bayard_model');
         $this->load->library('form_validation');
+
+        $this->load->model('t03_bayar/T03_bayar_model');
     }
 
     public function index()
@@ -33,12 +35,18 @@ class T04_bayard extends CI_Controller
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
+        /**
+         * ambil data trip no dan trip tgl
+         */
+        $dataTrip = $this->T03_bayar_model->get_by_id($q);
+
         $data = array(
             't04_bayard_data' => $t04_bayard,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
+            'dataTrip' => $dataTrip,
         );
         // $this->load->view('t04_bayard/t04_bayard_list', $data);
         $data['_view'] = 't04_bayard/t04_bayard_list';

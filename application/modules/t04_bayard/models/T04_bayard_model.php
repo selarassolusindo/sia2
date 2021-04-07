@@ -92,7 +92,10 @@ class T04_bayard_model extends CI_Model
 		// $this->db->or_like('created_at', $q);
 		// $this->db->or_like('updated_at', $q);
 		$this->db->limit($limit, $start);
-        return $this->db->get($this->table)->result();
+        $this->db->select($this->table.'.*, t02_tamu.Nama');
+        $this->db->from($this->table);
+        $this->db->join('t02_tamu', 't02_tamu.idtamu = t04_bayard.tamu');
+        return $this->db->get()->result();
     }
 
     // insert data

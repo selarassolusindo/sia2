@@ -14,7 +14,7 @@
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <!-- <?php echo anchor(site_url('t04_bayard/create'),'Tambah', 'class="btn btn-primary"'); ?> -->
-                <p>Trip No. </p>
+                <p>Trip No. <?php echo $dataTrip->TripNo . ' @ ' . date_format(date_create($dataTrip->TripTgl), 'd-m-Y') ?></p>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -44,39 +44,40 @@
         </div>
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
-                <th>No.</th>
-				<!-- <th>Idbayar</th> -->
-				<th>Tamu</th>
-				<th>Pt Ci</th>
-				<th>Kurs Usd Ci</th>
-				<th>Kurs Aud Ci</th>
-				<th>Usd Ci</th>
-				<th>Aud Ci</th>
-				<th>Paypal Ci</th>
-				<th>Bca D Ci</th>
-				<th>Rp Ci</th>
-				<th>Cc Bca Ci</th>
-				<th>Cc Mdr Ci</th>
-				<th>Tot Rp Ci</th>
-				<th>Slsh Ci</th>
-				<th>Slsh Blm Ci</th>
-				<th>Slsh Krg Ci</th>
-				<th>Slsh Disc Ci</th>
-				<th>Slsh Chrg Ci</th>
-				<th>Slsh Kurs Ci</th>
-				<th>Sha Inc Piw</th>
-				<th>Sha Inc Ssw</th>
-				<th>Paid By</th>
-				<!-- <th>Idusers</th> -->
-				<!-- <th>Created At</th> -->
-				<!-- <th>Updated At</th> -->
-				<th class="text-center">Proses</th>
+                <th rowspan="2" class="text-center">NO.</th>
+				<th rowspan="2" class="text-center">TAMU</th>
+				<th rowspan="2" class="text-center">PT</th>
+                <th colspan="2" class="text-center">KURS</th>
+                <th colspan="7" class="text-center">PAYMENT C/I</th>
+				<th rowspan="2" class="text-center">TOTAL Rp</th>
+				<th rowspan="2" class="text-center">SELISIH</th>
+                <th colspan="5" class="text-center">SELISIH</th>
+                <th colspan="2" class="text-center">SHARE INCOME</th>
+				<th rowspan="2" class="text-center">PAID BY</th>
+				<th rowspan="2" class="text-center">PROSES</th>
+            </tr>
+            <tr>
+                <th>USD</th>
+				<th>AUD</th>
+                <th>USD</th>
+				<th>AUD</th>
+				<th>Paypal</th>
+				<th>BCA $</th>
+				<th>Rp</th>
+				<th>CC BCA</th>
+				<th>CC MDR</th>
+                <th>Belum Bayar</th>
+				<th>Kurang Bayar</th>
+				<th>Discount</th>
+				<th>Charge CC</th>
+				<th>Slsh. Kurs</th>
+                <th>PIW</th>
+				<th>SSW</th>
             </tr>
 			<?php foreach ($t04_bayard_data as $t04_bayard) { ?>
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
-				<!-- <td><?php echo $t04_bayard->idbayar ?></td> -->
-				<td><?php echo $t04_bayard->tamu ?></td>
+				<td><?php echo $t04_bayard->Nama ?></td>
 				<td><?php echo $t04_bayard->pt_ci ?></td>
 				<td><?php echo $t04_bayard->kurs_usd_ci ?></td>
 				<td><?php echo $t04_bayard->kurs_aud_ci ?></td>
@@ -97,9 +98,6 @@
 				<td><?php echo $t04_bayard->sha_inc_piw ?></td>
 				<td><?php echo $t04_bayard->sha_inc_ssw ?></td>
 				<td><?php echo $t04_bayard->paid_by ?></td>
-				<!-- <td><?php echo $t04_bayard->idusers ?></td> -->
-				<!-- <td><?php echo $t04_bayard->created_at ?></td> -->
-				<!-- <td><?php echo $t04_bayard->updated_at ?></td> -->
 				<td style="text-align:center" width="200px">
 				<?php
 				//echo anchor(site_url('t04_bayard/read/'.$t04_bayard->idbayard),'Read');
