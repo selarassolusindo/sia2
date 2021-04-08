@@ -315,7 +315,7 @@
                                 <?php
                                 switch ($this->uri->segment(1)) {
                                     case 't02_top':
-                                    case 't02_tamu':
+                                    case 't30_tamu':
                                     case 't03_bayar':
                                     case 't04_bayard':
                                         echo 'menu-open';
@@ -329,7 +329,7 @@
                                     <?php
                                     switch ($this->uri->segment(1)) {
                                         case 't02_top':
-                                        case 't02_tamu':
+                                        case 't30_tamu':
                                         case 't03_bayar':
                                         case 't04_bayard':
                                             echo 'active';
@@ -361,7 +361,7 @@
 
                                     <!-- input data -->
                                     <li class="nav-item">
-                                        <a href="<?php echo site_url(); ?>t02_tamu" class="nav-link <?php echo $this->uri->segment(1) == 't02_tamu' ? 'active' : ''; ?>">
+                                        <a href="<?php echo site_url(); ?>t30_tamu" class="nav-link <?php echo $this->uri->segment(1) == 't30_tamu' ? 'active' : ''; ?>">
                                             <i class="far fa-window-restore nav-icon"></i>
                                             <p>Input Data</p>
                                         </a>
