@@ -105,6 +105,46 @@ class T30_tamu_model extends CI_Model
         $this->db->insert_batch($this->table, $data);
     }
 
+    /**
+     * untuk combo pada menu tamu - pembayaran
+     */
+    function getData($q)
+    {
+        $q = "
+            select
+                *
+            from
+                (select
+                    *
+                from
+                    t30_tamu
+                where
+                    TripNo not in (select TripNo from t31_bayar)
+                ) a
+            where
+                TripNo like '%".$q."%'
+            group by
+                TripNo
+            order by
+                TripNo
+        ";
+        return $this->db->query($q)->result();
+    }
+
+    // get data by TripNo
+    function getByTripNo($TripNo)
+    {
+        $this->db->where('TripNo', $TripNo);
+        return $this->db->get($this->table)->row();
+    }
+
+    // get all data by TripNo
+    function getAllByTripNo($TripNo)
+    {
+        $this->db->where('TripNo', $TripNo);
+        return $this->db->get($this->table)->result();
+    }
+
 }
 
 /* End of file T30_tamu_model.php */

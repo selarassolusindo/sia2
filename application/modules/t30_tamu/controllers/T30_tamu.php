@@ -393,6 +393,26 @@ class T30_tamu extends CI_Controller
         }
     }
 
+    /**
+     * untuk combo pada menu tamu - pembayaran
+     */
+    public function getData()
+    {
+        $result = $this->T30_tamu_model->getData($this->input->get("search"));
+        if ($result) {
+            $list = array();
+            $key = 0;
+            foreach($result as $row) {
+                $list[$key]['id'] = $row->TripNo;
+                $list[$key]['text'] = $row->TripNo;
+                $key++;
+            }
+            echo json_encode($list);
+        } else {
+            echo "Tidak ada data";
+        }
+    }
+
 }
 
 /* End of file T30_tamu.php */
