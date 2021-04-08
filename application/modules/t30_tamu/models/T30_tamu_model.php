@@ -8,7 +8,7 @@ class T30_tamu_model extends CI_Model
 
     public $table = 't30_tamu';
     public $id = 'idtamu';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
@@ -95,6 +95,14 @@ class T30_tamu_model extends CI_Model
     {
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
+    }
+
+    /**
+     * modif function insert, untuk save hasil import
+     */
+    function insert_import($data)
+    {
+        $this->db->insert_batch($this->table, $data);
     }
 
 }
