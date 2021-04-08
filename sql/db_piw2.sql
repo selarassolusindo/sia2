@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 01, 2021 at 01:33 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.15
+-- Generation Time: Apr 08, 2021 at 09:26 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -141,7 +141,7 @@ CREATE TABLE `t96_tglsa` (
 --
 
 INSERT INTO `t96_tglsa` (`idtglsa`, `TglSA`) VALUES
-(1, '2021-03-01');
+(1, '2021-04-03');
 
 -- --------------------------------------------------------
 
@@ -164,14 +164,15 @@ CREATE TABLE `t97_saldoawal` (
 --
 
 INSERT INTO `t97_saldoawal` (`idsa`, `idakun`, `Debit`, `Kredit`, `idusers`, `created_at`, `updated_at`) VALUES
-(1, 4, 1000250, 0, 0, '2020-10-14 23:55:48', '2020-10-15 10:41:03'),
+(1, 4, 1000250.25, 0, 0, '2020-10-14 23:55:48', '2021-04-05 03:37:41'),
 (3, 410, 1144, 0, 0, '2020-10-19 08:12:19', '2020-10-19 09:44:47'),
 (5, 39, 1, 0, 0, '2020-10-19 22:43:45', '2020-10-19 22:43:45'),
 (6, 40, 2, 0, 0, '2020-10-19 22:44:13', '2020-10-19 22:44:13'),
 (7, 41, 3, 0, 0, '2020-10-19 22:44:29', '2020-10-19 22:44:29'),
 (8, 42, 4, 0, 0, '2020-10-19 22:45:03', '2020-10-19 22:45:03'),
 (9, 43, 5, 0, 0, '2020-10-19 22:45:18', '2020-10-19 22:45:18'),
-(11, 5, 177000, 0, 1, '2021-03-25 11:48:17', '2021-03-25 11:51:07');
+(11, 5, 177000, 0, 1, '2021-03-25 11:48:17', '2021-03-25 11:51:07'),
+(12, 401, 0, 1178409, 1, '2021-04-03 12:45:37', '2021-04-03 12:45:51');
 
 -- --------------------------------------------------------
 
@@ -773,7 +774,7 @@ ALTER TABLE `t96_tglsa`
 -- AUTO_INCREMENT for table `t97_saldoawal`
 --
 ALTER TABLE `t97_saldoawal`
-  MODIFY `idsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `idsa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `t98_akun`
