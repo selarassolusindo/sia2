@@ -54,15 +54,19 @@
                             <div class="col">AUD</div>
                         </div>
                     </div>
-                    <div class="col-10 hx">PAYMENT
+                    <div class="col-<?php echo $dataTopCount + 3 ?> hx">PAYMENT
                         <div class="row">
-                            <div class="col">USD</div>
+                            <!-- <div class="col">USD</div>
                             <div class="col">AUD</div>
                             <div class="col">PAYPAL</div>
                             <div class="col">BCA $</div>
                             <div class="col">RP</div>
                             <div class="col">CC BCA</div>
                             <div class="col">CC MDR</div>
+                            <div class="col">TOTAL RP</div> -->
+                            <?php foreach($dataTop as $d) { ?>
+                                <div class="col"><?php echo $d->Type ?></div>
+                            <?php } ?>
                             <div class="col">TOTAL RP</div>
                         </div>
                     </div>
@@ -101,6 +105,7 @@
 
                         <!-- tamu -->
                         <div class="col-1">
+                            <input type="hidden" name="idbayard[]" value="<?php echo $d->idbayard ?>">
                             <input type="hidden" name="tamu[]" value="<?php echo $d->tamu ?>">
                             <?php echo $d->Nama ?>
                         </div>
@@ -127,9 +132,14 @@
                         </div>
 
                         <!-- payment ci -->
-                        <div class="col-10">
+                        <div class="col-<?php echo $dataTopCount + 3 ?>">
                             <div class="row">
-                                <div class="col">
+                                <?php foreach($dataTop as $dTop) { ?>
+                                    <div class="col">
+                                        <input type="number" name="_<?php echo $dTop->idtop ?>[]" class="form-control" placeholder="" value="<?= $d->usd_ci ?>" required></td>
+                                    </div>
+                                <?php } ?>
+                                <!-- <div class="col">
                                     <input type="number" name="usd_ci[]" class="form-control" placeholder="" value="<?= $d->usd_ci ?>" required></td>
                                 </div>
                                 <div class="col">
@@ -149,7 +159,7 @@
                                 </div>
                                 <div class="col">
                                     <input type="number" name="cc_mdr_ci[]" class="form-control" placeholder="" value="<?= $d->cc_mdr_ci ?>" required></td>
-                                </div>
+                                </div> -->
                                 <div class="col">
                                     <input type="number" name="tot_rp_ci[]" class="form-control" placeholder="" value="<?= $d->tot_rp_ci ?>" required></td>
                                 </div>

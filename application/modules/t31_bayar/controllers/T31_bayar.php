@@ -13,6 +13,7 @@ class T31_bayar extends CI_Controller
 
         $this->load->model('t30_tamu/T30_tamu_model');
         $this->load->model('t32_bayard/T32_bayard_model');
+        $this->load->model('t02_top/T02_top_model');
     }
 
     public function index()
@@ -294,6 +295,14 @@ class T31_bayar extends CI_Controller
             $dataTamu = $this->T32_bayard_model->get_limit_data(1000, 0, $row->idbayar);
             $data['dataTamu'] = $dataTamu;
 
+            /**
+             * ambil data top :: type of payment (jenis pembayaran)
+             */
+            $dataTop = $this->T02_top_model->get_all();
+            $data['dataTop'] = $dataTop;
+            $dataTopCount = $this->T02_top_model->total_rows();
+            $data['dataTopCount'] = $dataTopCount;
+
             // $this->load->view('t03_bayar/t03_bayar_form', $data);
             $data['_view'] = 't31_bayar/t31_bayar_proses';
             $data['_caption'] = 'Pembayaran';
@@ -306,68 +315,55 @@ class T31_bayar extends CI_Controller
 
     public function proses_action()
     {
-        // $this->_rules();
+        $data = array(
+            'idusers' => $this->session->userdata('user_id'),
+		);
+        $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
 
-        // if ($this->form_validation->run() == FALSE) {
-            // $this->update($this->input->post('idbayar', TRUE));
-        // } else {
-            $data = array(
-				// 'TripNo' => $this->input->post('TripNo',TRUE),
-				// 'TripTgl' => $this->input->post('TripTgl',TRUE),
-				// 'Total' => $this->input->post('Total',TRUE),
-                'idusers' => $this->session->userdata('user_id'),
-				// 'created_at' => $this->input->post('created_at',TRUE),
-				// 'updated_at' => $this->input->post('updated_at',TRUE),
-			);
-            $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
+        /**
+         * simpan id data yang akan diupdate dari tabel master
+         */
+        $idbayar = $this->input->post('idbayar', TRUE);
+
+        /**
+         * simpan data di tabel detail
+         */
+        $totalJumlah = 0;
+        $data = $this->input->post();
+        foreach ($data['pt_ci'] as $key => $item) {
+			$detail = [
+				'idbayar' => $idbayar,
+                'tamu' => $data['tamu'][$key],
+				'pt_ci' => $item,
+                'kurs_usd_ci' => $data['kurs_usd_ci'][$key],
+                'kurs_aud_ci' => $data['kurs_aud_ci'][$key],
+                // 'usd_ci' => $data['usd_ci'][$key],
+                // 'aud_ci' => $data['aud_ci'][$key],
+                // 'paypal_ci' => $data['paypal_ci'][$key],
+                // 'bca_d_ci' => $data['bca_d_ci'][$key],
+                // 'rp_ci' => $data['rp_ci'][$key],
+                // 'cc_bca_ci' => $data['cc_bca_ci'][$key],
+                // 'cc_mdr_ci' => $data['cc_mdr_ci'][$key],
+                'tot_rp_ci' => $data['tot_rp_ci'][$key],
+                'slsh_ci' => $data['slsh_ci'][$key],
+                'slsh_blm_ci' => $data['slsh_blm_ci'][$key],
+                'slsh_krg_ci' => $data['slsh_krg_ci'][$key],
+                'slsh_disc_ci' => $data['slsh_disc_ci'][$key],
+                'slsh_chrg_ci' => $data['slsh_chrg_ci'][$key],
+                'slsh_kurs_ci' => $data['slsh_kurs_ci'][$key],
+                'sha_inc_piw' => $data['sha_inc_piw'][$key],
+                'sha_inc_ssw' => $data['sha_inc_ssw'][$key],
+                'paid_by' => $data['paid_by'][$key],
+			];
+            // $totalJumlah += $data['jumlah'][$key];
+            $this->T32_bayard_model->update($data['idbayard'][$key], $detail);
 
             /**
-             * simpan id data yang akan diupdate dari tabel master
+             * simpan di tabel detail kedua
              */
-            $idbayar = $this->input->post('idbayar', TRUE);
+		}
 
-            /**
-             * hapus dulu data lama di tabel detail
-             */
-            $this->T32_bayard_model->deleteByIdbayar($idbayar);
-
-            /**
-             * simpan data di tabel detail
-             */
-            $totalJumlah = 0;
-            $data = $this->input->post();
-            foreach ($data['pt_ci'] as $key => $item) {
-  				$detail = [
-  					'idbayar' => $idbayar,
-                    'tamu' => $data['tamu'][$key],
-  					'pt_ci' => $item,
-                    'kurs_usd_ci' => $data['kurs_usd_ci'][$key],
-                    'kurs_aud_ci' => $data['kurs_aud_ci'][$key],
-                    'usd_ci' => $data['usd_ci'][$key],
-                    'aud_ci' => $data['aud_ci'][$key],
-                    'paypal_ci' => $data['paypal_ci'][$key],
-                    'bca_d_ci' => $data['bca_d_ci'][$key],
-                    'rp_ci' => $data['rp_ci'][$key],
-                    'cc_bca_ci' => $data['cc_bca_ci'][$key],
-                    'cc_mdr_ci' => $data['cc_mdr_ci'][$key],
-                    'tot_rp_ci' => $data['tot_rp_ci'][$key],
-                    'slsh_ci' => $data['slsh_ci'][$key],
-                    'slsh_blm_ci' => $data['slsh_blm_ci'][$key],
-                    'slsh_krg_ci' => $data['slsh_krg_ci'][$key],
-                    'slsh_disc_ci' => $data['slsh_disc_ci'][$key],
-                    'slsh_chrg_ci' => $data['slsh_chrg_ci'][$key],
-                    'slsh_kurs_ci' => $data['slsh_kurs_ci'][$key],
-                    'sha_inc_piw' => $data['sha_inc_piw'][$key],
-                    'sha_inc_ssw' => $data['sha_inc_ssw'][$key],
-                    'paid_by' => $data['paid_by'][$key],
-  				];
-                // $totalJumlah += $data['jumlah'][$key];
-                $this->T32_bayard_model->insert($detail);
-  			}
-
-            // $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('t31_bayar'));
-        // }
+        redirect(site_url('t31_bayar'));
     }
 
 }
