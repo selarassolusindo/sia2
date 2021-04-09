@@ -325,6 +325,14 @@ class T31_bayar extends CI_Controller
 
     public function proses_action()
     {
+        /**
+         * ambil data top :: type of payment (jenis pembayaran)
+         */
+        $dataTop = $this->T02_top_model->get_all();
+
+        /**
+         * simpan master bayar
+         */
         $data = array(
             'idusers' => $this->session->userdata('user_id'),
 		);
@@ -364,9 +372,35 @@ class T31_bayar extends CI_Controller
                 'sha_inc_piw' => $data['sha_inc_piw'][$key],
                 'sha_inc_ssw' => $data['sha_inc_ssw'][$key],
                 'paid_by' => $data['paid_by'][$key],
+                'idusers' => $this->session->userdata('user_id'),
 			];
             // $totalJumlah += $data['jumlah'][$key];
             $this->T32_bayard_model->update($data['idbayard'][$key], $detail);
+
+            /**
+             * hapus detail pembayaran per tamu
+             */
+            $this->T33_bayard2_model->deleteByIdbayard($data['idbayard'][$key]);
+
+            /**
+             * looping berdasarkan banyaknya TOP
+             * lalu dicheck apakah ada yang 0 atau tidak 0
+             * yang tidak nol :: disimpan
+             */
+            foreach($dataTop as $dTop) {
+                if ($data['_'.$data['idbayard'][$key].$dTop->idtop] <> 0) {
+                    /**
+                     * simpan data detail pembayaran berdasarkan tamu dan multipayment
+                     */
+                    $detailTop = [
+                        'idbayard' => $data['idbayard'][$key],
+                        'idtop' => $dTop->idtop,
+                        'Jumlah' => $data['_'.$data['idbayard'][$key].$dTop->idtop],
+                        'idusers' => $this->session->userdata('user_id'),
+                    ];
+                    $this->T33_bayard2_model->insert($detailTop);
+                }
+            }
 
             /**
              * simpan di tabel detail kedua

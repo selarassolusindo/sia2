@@ -129,7 +129,7 @@
                                 <?php foreach($dataTop as $dTop) { ?>
                                     <?php $key = array_search($d->idbayard.$dTop->idtop, array_column($dataPembayaranTamu, 'idbayard_idtop'), true) ?>
                                     <div class="col">
-                                        <input type="number" name="_<?php echo $dTop->idtop ?>[]" class="form-control" placeholder="" value="<?= (FALSE !== $key) ? $dataPembayaranTamu[$key]['Jumlah'] : '0' ?>" required></td>
+                                        <input type="number" name="_<?php echo $d->idbayard.$dTop->idtop ?>" class="form-control" placeholder="" value="<?= (FALSE !== $key) ? $dataPembayaranTamu[$key]['Jumlah'] : '0' ?>" required></td>
                                     </div>
                                 <?php } ?>
                                 <div class="col">

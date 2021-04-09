@@ -98,6 +98,12 @@ class T33_bayard2_model extends CI_Model
         return $this->db->query($q)->result_array();
     }
 
+    function deleteByIdbayard($idbayard)
+    {
+        $this->db->where('idbayard', $idbayard);
+        $this->db->delete($this->table);
+    }
+
 }
 
 /* End of file T33_bayard2_model.php */
