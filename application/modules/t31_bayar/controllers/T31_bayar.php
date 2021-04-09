@@ -407,7 +407,7 @@ class T31_bayar extends CI_Controller
              */
 		}
 
-        redirect(site_url('t31_bayar'));
+        redirect(site_url('t31_bayar/proses/'.$idbayar));
     }
 
 }
