@@ -59,6 +59,8 @@ class T32_bayard_model extends CI_Model
 		// $this->db->or_like('created_at', $q);
 		// $this->db->or_like('updated_at', $q);
 		$this->db->from($this->table);
+        $this->db->join('t30_tamu', 't30_tamu.idtamu = t32_bayard.tamu');
+        // $this->db->join('t33_bayard2', 't33_bayard2.idbayard = t32_bayard.idbayard', 'left');
         return $this->db->count_all_results();
     }
 
@@ -92,9 +94,15 @@ class T32_bayard_model extends CI_Model
 		// $this->db->or_like('created_at', $q);
 		// $this->db->or_like('updated_at', $q);
 		$this->db->limit($limit, $start);
-        $this->db->select($this->table.'.*, t30_tamu.Nama');
+        $this->db->select(
+            $this->table.'.*,
+            t30_tamu.Nama,
+            '
+        );
         $this->db->from($this->table);
         $this->db->join('t30_tamu', 't30_tamu.idtamu = t32_bayard.tamu');
+        // $this->db->join('t33_bayard2', 't33_bayard2.idbayard = t32_bayard.idbayard', 'left');
+        // echo $this->db->get_compiled_select();
         return $this->db->get()->result();
     }
 

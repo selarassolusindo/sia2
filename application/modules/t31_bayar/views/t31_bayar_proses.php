@@ -56,16 +56,8 @@
                     </div>
                     <div class="col-<?php echo $dataTopCount + 3 ?> hx">PAYMENT
                         <div class="row">
-                            <!-- <div class="col">USD</div>
-                            <div class="col">AUD</div>
-                            <div class="col">PAYPAL</div>
-                            <div class="col">BCA $</div>
-                            <div class="col">RP</div>
-                            <div class="col">CC BCA</div>
-                            <div class="col">CC MDR</div>
-                            <div class="col">TOTAL RP</div> -->
-                            <?php foreach($dataTop as $d) { ?>
-                                <div class="col"><?php echo $d->Type ?></div>
+                            <?php foreach($dataTop as $dTop) { ?>
+                                <div class="col"><?php echo $dTop->Type ?></div>
                             <?php } ?>
                             <div class="col">TOTAL RP</div>
                         </div>
@@ -135,31 +127,11 @@
                         <div class="col-<?php echo $dataTopCount + 3 ?>">
                             <div class="row">
                                 <?php foreach($dataTop as $dTop) { ?>
+                                    <?php $key = array_search($d->idbayard.$dTop->idtop, array_column($dataPembayaranTamu, 'idbayard_idtop'), true) ?>
                                     <div class="col">
-                                        <input type="number" name="_<?php echo $dTop->idtop ?>[]" class="form-control" placeholder="" value="<?= $d->usd_ci ?>" required></td>
+                                        <input type="number" name="_<?php echo $dTop->idtop ?>[]" class="form-control" placeholder="" value="<?= (FALSE !== $key) ? $dataPembayaranTamu[$key]['Jumlah'] : '0' ?>" required></td>
                                     </div>
                                 <?php } ?>
-                                <!-- <div class="col">
-                                    <input type="number" name="usd_ci[]" class="form-control" placeholder="" value="<?= $d->usd_ci ?>" required></td>
-                                </div>
-                                <div class="col">
-                                    <input type="number" name="aud_ci[]" class="form-control" placeholder="" value="<?= $d->aud_ci ?>" required></td>
-                                </div>
-                                <div class="col">
-                                    <input type="number" name="paypal_ci[]" class="form-control" placeholder="" value="<?= $d->paypal_ci ?>" required></td>
-                                </div>
-                                <div class="col">
-                                    <input type="number" name="bca_d_ci[]" class="form-control" placeholder="" value="<?= $d->bca_d_ci ?>" required></td>
-                                </div>
-                                <div class="col">
-                                    <input type="number" name="rp_ci[]" class="form-control" placeholder="" value="<?= $d->rp_ci ?>" required></td>
-                                </div>
-                                <div class="col">
-                                    <input type="number" name="cc_bca_ci[]" class="form-control" placeholder="" value="<?= $d->cc_bca_ci ?>" required></td>
-                                </div>
-                                <div class="col">
-                                    <input type="number" name="cc_mdr_ci[]" class="form-control" placeholder="" value="<?= $d->cc_mdr_ci ?>" required></td>
-                                </div> -->
                                 <div class="col">
                                     <input type="number" name="tot_rp_ci[]" class="form-control" placeholder="" value="<?= $d->tot_rp_ci ?>" required></td>
                                 </div>

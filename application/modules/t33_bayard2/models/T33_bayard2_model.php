@@ -77,6 +77,27 @@ class T33_bayard2_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+    function getJumlah($idbayard, $idtop)
+    {
+        $this->db->where('idbayard', $idbayard);
+        $this->db->where('idtop', $idtop);
+        return $this->db->get($this->table)->row();
+    }
+
+    function getPembayaran($idbayar)
+    {
+        $q = '
+            select
+                d2.*,
+                concat(d2.idbayard, d2.idtop) as idbayard_idtop
+            from
+                t33_bayard2 d2
+            where
+                idbayard in (select idbayard from t32_bayard where idbayar = '.$idbayar.')
+        ';
+        return $this->db->query($q)->result_array();
+    }
+
 }
 
 /* End of file T33_bayard2_model.php */

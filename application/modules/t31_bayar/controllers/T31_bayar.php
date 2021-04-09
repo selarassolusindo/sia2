@@ -14,6 +14,7 @@ class T31_bayar extends CI_Controller
         $this->load->model('t30_tamu/T30_tamu_model');
         $this->load->model('t32_bayard/T32_bayard_model');
         $this->load->model('t02_top/T02_top_model');
+        $this->load->model('t33_bayard2/T33_bayard2_model');
     }
 
     public function index()
@@ -294,6 +295,15 @@ class T31_bayar extends CI_Controller
              */
             $dataTamu = $this->T32_bayard_model->get_limit_data(1000, 0, $row->idbayar);
             $data['dataTamu'] = $dataTamu;
+
+            /**
+             * ambil data detail pembayaran berdasarkan jenis top (type of payment)
+             */
+            $dataPembayaranTamu = $this->T33_bayard2_model->getPembayaran($row->idbayar);
+            $data['dataPembayaranTamu'] = $dataPembayaranTamu;
+
+
+            // echo pre($dataPembayaranTamu);
 
             /**
              * ambil data top :: type of payment (jenis pembayaran)
