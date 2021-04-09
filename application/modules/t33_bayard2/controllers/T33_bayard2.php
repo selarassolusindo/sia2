@@ -223,12 +223,7 @@ class T33_bayard2 extends CI_Controller
         );
         $this->load->view('t33_bayard2/t33_bayard2_doc',$data);
     }
-
-    public function getJumlah($idbayard, $idtop)
-    {
-        echo $this->T33_bayard2_model->getJumlah($idbayard, $idtop)->Jumlah;
-    }
-
+    
 }
 
 /* End of file T33_bayard2.php */
