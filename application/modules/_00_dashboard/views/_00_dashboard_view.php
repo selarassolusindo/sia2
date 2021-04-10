@@ -225,6 +225,8 @@
                                     case 't97_saldoawal':
                                     case 't96_tglsa':
                                     case 't01_package':
+                                    case 't02_top':
+                                    case 't03_agent':
                                         echo 'menu-open';
                                         break;
                                     default:
@@ -241,6 +243,8 @@
                                         case 't97_saldoawal':
                                         case 't96_tglsa':
                                         case 't01_package':
+                                        case 't02_top':
+                                        case 't03_agent':
                                             echo 'active';
                                             break;
                                         default:
@@ -304,6 +308,22 @@
                                         </a>
                                     </li>
 
+                                    <!-- jenis pembayaran -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t02_top" class="nav-link <?php echo $this->uri->segment(1) == 't02_top' ? 'active' : ''; ?>">
+                                            <i class="far fa-window-restore nav-icon"></i>
+                                            <p>Jenis Pembayaran</p>
+                                        </a>
+                                    </li>
+
+                                    <!-- agent -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t03_agent" class="nav-link <?php echo $this->uri->segment(1) == 't03_agent' ? 'active' : ''; ?>">
+                                            <i class="far fa-window-restore nav-icon"></i>
+                                            <p>Agent</p>
+                                        </a>
+                                    </li>
+
                                     <div class="dropdown-divider"></div>
 
                                     <?php } ?>
@@ -314,7 +334,6 @@
                             <li class="nav-item has-treeview
                                 <?php
                                 switch ($this->uri->segment(1)) {
-                                    case 't02_top':
                                     case 't30_tamu':
                                     case 't31_bayar':
                                     case 't32_bayard':
@@ -328,7 +347,6 @@
                                 <a href="#" class="nav-link
                                     <?php
                                     switch ($this->uri->segment(1)) {
-                                        case 't02_top':
                                         case 't30_tamu':
                                         case 't31_bayar':
                                         case 't32_bayard':
@@ -346,16 +364,6 @@
                                     </p>
                                 </a>
                                 <ul class="nav nav-treeview">
-
-                                    <div class="dropdown-divider"></div>
-
-                                    <!-- jenis pembayaran -->
-                                    <li class="nav-item">
-                                        <a href="<?php echo site_url(); ?>t02_top" class="nav-link <?php echo $this->uri->segment(1) == 't02_top' ? 'active' : ''; ?>">
-                                            <i class="far fa-window-restore nav-icon"></i>
-                                            <p>Jenis Pembayaran</p>
-                                        </a>
-                                    </li>
 
                                     <div class="dropdown-divider"></div>
 
