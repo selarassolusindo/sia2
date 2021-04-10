@@ -356,7 +356,8 @@ class T30_tamu extends CI_Controller
             $loadexcel = $excelreader->load('excel/' . $data_upload['file_name']);
             $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
             $data = array();
-            $startRow = 2;
+            $dataBayar = array();
+            $startRow = 3;
             $numRow = 1;
             foreach ($sheet as $row) {
                 // echo pre($row);
@@ -365,20 +366,29 @@ class T30_tamu extends CI_Controller
                         'TripNo'       => $row['B'],
                         'TripTgl'      => date_format(date_create($row['C']), 'Y-m-d'),
                         'Nama'         => $row['D'],
-                		'MFC'          => $row['E'],
-                		'Country'      => $row['F'],
-                		'PackageNight' => $row['G'],
-                		'PackageType'  => $row['H'],
-                		'CheckIn'      => date_format(date_create($row['I']), 'Y-m-d'),
-                		'CheckOut'     => date_format(date_create($row['J']), 'Y-m-d'),
-                		'Agent'        => $row['K'],
-                		'Status'       => $row['L'],
-                		'DaysStay'     => $row['M'],
-                		'Price'        => $row['N'],
+                        'Facility'     => $row['E'],
+                		'MFC'          => $row['F'],
+                		'Country'      => $row['G'],
+                        'IDNo'         => $row['H'],
+                		'PackageNight' => $row['I'],
+                		'PackageType'  => $row['J'],
+                		'CheckIn'      => date_format(date_create($row['K']), 'Y-m-d'),
+                		'CheckOut'     => date_format(date_create($row['L']), 'Y-m-d'),
+                		'Agent'        => $row['M'],
+                		'Status'       => $row['N'],
+                		'DaysStay'     => $row['O'],
+                		'Price'        => $row['P'],
+                        'FeeTaNas'     => $row['Q'],
+                        'Price2'       => $row['R'],
+                        'Remarks'      => $row['S'],
                         'idusers'      => $this->session->userdata('user_id'),
                         // 'a' => $format->toFormattedString($row['C'], 'yyyy-mm-dd'),
                         // 'b' =>
                         // 'c' => strtotime(PHPExcel_Shared_Date::ExcelToPHP($row['C'])),
+                        )
+                    );
+                    array_push($dataBayar, array(
+
                         )
                     );
                 }

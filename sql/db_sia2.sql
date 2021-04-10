@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 08, 2021 at 09:26 PM
+-- Generation Time: Apr 10, 2021 at 09:36 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -20,22 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_sia2`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `t33_bayard2`
---
-
-CREATE TABLE `t33_bayard2` (
-  `idbayard2` int(11) NOT NULL,
-  `idbayard` int(11) NOT NULL,
-  `idtop` tinyint(4) NOT NULL,
-  `Jumlah` double NOT NULL,
-  `idusers` tinyint(4) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -70,7 +54,7 @@ CREATE TABLE `t90_users` (
 --
 
 INSERT INTO `t90_users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$m81wttkoRppVHTbsu0YGp.oYt7SkSzsygvzWabarod0NG8rDL5asq', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1617877875, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2y$12$m81wttkoRppVHTbsu0YGp.oYt7SkSzsygvzWabarod0NG8rDL5asq', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1618055334, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', 'dodo', '$2y$10$veojgW7Qz2kDYzTsoikwSeq2G25wjIWwqhi46C10du5mcKpMDTD3O', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1616389085, 1616785340, 1, 'Dodo', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -136,12 +120,6 @@ CREATE TABLE `t93_login_attempts` (
 --
 
 --
--- Indexes for table `t33_bayard2`
---
-ALTER TABLE `t33_bayard2`
-  ADD PRIMARY KEY (`idbayard2`);
-
---
 -- Indexes for table `t90_users`
 --
 ALTER TABLE `t90_users`
@@ -176,12 +154,6 @@ ALTER TABLE `t93_login_attempts`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `t33_bayard2`
---
-ALTER TABLE `t33_bayard2`
-  MODIFY `idbayard2` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `t90_users`
