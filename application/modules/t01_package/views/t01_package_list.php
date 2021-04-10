@@ -41,7 +41,7 @@
                 </form>
             </div>
         </div>
-        <table class="table table-bordered" style="margin-bottom: 10px">
+        <table class="table table-bordered text-nowrap" style="margin-bottom: 10px; ">
         <!-- <table class="table" style="margin-bottom: 10px"> -->
             <tr>
                 <th rowspan="3">No.</th>
@@ -49,12 +49,20 @@
                 <th colspan="3" class="text-center">SSW Price</th>
                 <th colspan="2" class="text-center">PIW Price</th>
                 <th rowspan="3" class="text-center">Proses</th>
+                <th colspan="6" class="text-center">SSW Price</th>
+                <th colspan="6" class="text-center">PIW Price</th>
             </tr>
             <tr>
                 <th class="text-right">3 Nights</th>
                 <th class="text-right">6 Nights</th>
                 <th class="text-right">Extend /night</th>
                 <th class="text-center" colspan="2">1 Night</th>
+                <th colspan="2" class="text-right">3 Nights</th>
+                <th colspan="2" class="text-right">6 Nights</th>
+                <th colspan="2" class="text-right">Extend /Night</th>
+                <th colspan="2" class="text-right">3 Nights</th>
+                <th colspan="2" class="text-right">6 Nights</th>
+                <th colspan="2" class="text-right">Extend /Night</th>
             </tr>
             <tr>
         		<th>Name</th>
@@ -64,6 +72,18 @@
         		<th class="text-right">LN</th>
                 <th class="text-right">LN</th>
                 <th class="text-right">DN</th>
+                <th class="text-right">Cost</th>
+                <th class="text-right">%</th>
+                <th class="text-right">Cost</th>
+                <th class="text-right">%</th>
+                <th class="text-right">Cost</th>
+                <th class="text-right">%</th>
+                <th class="text-right">Cost</th>
+                <th class="text-right">%</th>
+                <th class="text-right">Cost</th>
+                <th class="text-right">%</th>
+                <th class="text-right">Cost</th>
+                <th class="text-right">%</th>
             </tr>
             <?php foreach ($t01_package_data as $t01_package) { ?>
             <tr>
@@ -84,6 +104,18 @@
     				echo anchor(site_url('t01_package/delete/'.$t01_package->idprice),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
     				?>
     			</td>
+                <td align="right">USD <?php echo numIndo($t01_package->SN3C) ?></td>
+                <td align="right"><?php echo numIndo($t01_package->SN3CP*100) ?></td>
+                <td align="right">USD <?php echo numIndo($t01_package->SN6C) ?></td>
+                <td align="right"><?php echo numIndo($t01_package->SN6CP*100) ?></td>
+                <td align="right">USD <?php echo numIndo($t01_package->SNEC) ?></td>
+                <td align="right"><?php echo numIndo($t01_package->SNECP) ?></td>
+                <td align="right">USD <?php echo numIndo($t01_package->PN3C) ?></td>
+                <td align="right"><?php echo numIndo($t01_package->PN3CP) ?></td>
+                <td align="right">USD <?php echo numIndo($t01_package->PN6C) ?></td>
+                <td align="right"><?php echo numIndo($t01_package->PN6CP) ?></td>
+                <td align="right">USD <?php echo numIndo($t01_package->PNEC) ?></td>
+                <td align="right"><?php echo numIndo($t01_package->PNECP) ?></td>
     		</tr>
             <?php } ?>
         </table>

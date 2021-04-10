@@ -129,18 +129,18 @@ class T01_package extends CI_Controller
         		'SNELN' => $this->input->post('SNELN',TRUE),
         		'PN1LN' => $this->input->post('PN1LN',TRUE),
         		'PN1DN' => $this->input->post('PN1DN',TRUE),
-        		// 'SN3C' => $this->input->post('SN3C',TRUE),
-        		// 'SN3CP' => $this->input->post('SN3CP',TRUE),
-        		// 'SN6C' => $this->input->post('SN6C',TRUE),
-        		// 'SN6CP' => $this->input->post('SN6CP',TRUE),
-        		// 'SNEC' => $this->input->post('SNEC',TRUE),
-        		// 'SNECP' => $this->input->post('SNECP',TRUE),
-        		// 'PN3C' => $this->input->post('PN3C',TRUE),
-        		// 'PN3CP' => $this->input->post('PN3CP',TRUE),
-        		// 'PN6C' => $this->input->post('PN6C',TRUE),
-        		// 'PN6CP' => $this->input->post('PN6CP',TRUE),
-        		// 'PNEC' => $this->input->post('PNEC',TRUE),
-        		// 'PNECP' => $this->input->post('PNECP',TRUE),
+        		'SN3C' => $this->input->post('SN3C',TRUE),
+        		'SN3CP' => $this->input->post('SN3CP',TRUE),
+        		'SN6C' => $this->input->post('SN6C',TRUE),
+        		'SN6CP' => $this->input->post('SN6CP',TRUE),
+        		'SNEC' => $this->input->post('SNEC',TRUE),
+        		'SNECP' => $this->input->post('SNECP',TRUE),
+        		'PN3C' => $this->input->post('PN3C',TRUE),
+        		'PN3CP' => $this->input->post('PN3CP',TRUE),
+        		'PN6C' => $this->input->post('PN6C',TRUE),
+        		'PN6CP' => $this->input->post('PN6CP',TRUE),
+        		'PNEC' => $this->input->post('PNEC',TRUE),
+        		'PNECP' => $this->input->post('PNECP',TRUE),
         		'idusers' => $this->session->userdata('user_id'),
     	    );
 
@@ -166,18 +166,18 @@ class T01_package extends CI_Controller
         		'SNELN' => set_value('SNELN', $row->SNELN),
         		'PN1LN' => set_value('PN1LN', $row->PN1LN),
         		'PN1DN' => set_value('PN1DN', $row->PN1DN),
-        		// 'SN3C' => set_value('SN3C', $row->SN3C),
-        		// 'SN3CP' => set_value('SN3CP', $row->SN3CP),
-        		// 'SN6C' => set_value('SN6C', $row->SN6C),
-        		// 'SN6CP' => set_value('SN6CP', $row->SN6CP),
-        		// 'SNEC' => set_value('SNEC', $row->SNEC),
-        		// 'SNECP' => set_value('SNECP', $row->SNECP),
-        		// 'PN3C' => set_value('PN3C', $row->PN3C),
-        		// 'PN3CP' => set_value('PN3CP', $row->PN3CP),
-        		// 'PN6C' => set_value('PN6C', $row->PN6C),
-        		// 'PN6CP' => set_value('PN6CP', $row->PN6CP),
-        		// 'PNEC' => set_value('PNEC', $row->PNEC),
-        		// 'PNECP' => set_value('PNECP', $row->PNECP),
+        		'SN3C' => set_value('SN3C', $row->SN3C),
+        		'SN3CP' => set_value('SN3CP', $row->SN3CP),
+        		'SN6C' => set_value('SN6C', $row->SN6C),
+        		'SN6CP' => set_value('SN6CP', $row->SN6CP),
+        		'SNEC' => set_value('SNEC', $row->SNEC),
+        		'SNECP' => set_value('SNECP', $row->SNECP),
+        		'PN3C' => set_value('PN3C', $row->PN3C),
+        		'PN3CP' => set_value('PN3CP', $row->PN3CP),
+        		'PN6C' => set_value('PN6C', $row->PN6C),
+        		'PN6CP' => set_value('PN6CP', $row->PN6CP),
+        		'PNEC' => set_value('PNEC', $row->PNEC),
+        		'PNECP' => set_value('PNECP', $row->PNECP),
     	    );
             // $this->load->view('t01_package/t01_package_form', $data);
             $data['_view'] = 't01_package/t01_package_form';
@@ -204,18 +204,18 @@ class T01_package extends CI_Controller
         		'SNELN' => $this->input->post('SNELN',TRUE),
         		'PN1LN' => $this->input->post('PN1LN',TRUE),
         		'PN1DN' => $this->input->post('PN1DN',TRUE),
-        		// 'SN3C' => $this->input->post('SN3C',TRUE),
-        		// 'SN3CP' => $this->input->post('SN3CP',TRUE),
-        		// 'SN6C' => $this->input->post('SN6C',TRUE),
-        		// 'SN6CP' => $this->input->post('SN6CP',TRUE),
-        		// 'SNEC' => $this->input->post('SNEC',TRUE),
-        		// 'SNECP' => $this->input->post('SNECP',TRUE),
-        		// 'PN3C' => $this->input->post('PN3C',TRUE),
-        		// 'PN3CP' => $this->input->post('PN3CP',TRUE),
-        		// 'PN6C' => $this->input->post('PN6C',TRUE),
-        		// 'PN6CP' => $this->input->post('PN6CP',TRUE),
-        		// 'PNEC' => $this->input->post('PNEC',TRUE),
-        		// 'PNECP' => $this->input->post('PNECP',TRUE),
+        		'SN3C' => $this->input->post('SN3C',TRUE),
+        		'SN3CP' => $this->input->post('SN3CP',TRUE),
+        		'SN6C' => $this->input->post('SN6C',TRUE),
+        		'SN6CP' => $this->input->post('SN6CP',TRUE),
+        		'SNEC' => $this->input->post('SNEC',TRUE),
+        		'SNECP' => $this->input->post('SNECP',TRUE),
+        		'PN3C' => $this->input->post('PN3C',TRUE),
+        		'PN3CP' => $this->input->post('PN3CP',TRUE),
+        		'PN6C' => $this->input->post('PN6C',TRUE),
+        		'PN6CP' => $this->input->post('PN6CP',TRUE),
+        		'PNEC' => $this->input->post('PNEC',TRUE),
+        		'PNECP' => $this->input->post('PNECP',TRUE),
                 'idusers' => $this->session->userdata('user_id'),
     	    );
 
@@ -248,18 +248,18 @@ class T01_package extends CI_Controller
     	$this->form_validation->set_rules('SNELN', 'sneln', 'trim|required|numeric');
     	$this->form_validation->set_rules('PN1LN', 'pn1ln', 'trim|required|numeric');
     	$this->form_validation->set_rules('PN1DN', 'pn1dn', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('SN3C', 'sn3c', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('SN3CP', 'sn3cp', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('SN6C', 'sn6c', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('SN6CP', 'sn6cp', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('SNEC', 'snec', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('SNECP', 'snecp', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('PN3C', 'pn3c', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('PN3CP', 'pn3cp', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('PN6C', 'pn6c', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('PN6CP', 'pn6cp', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('PNEC', 'pnec', 'trim|required|numeric');
-    	// $this->form_validation->set_rules('PNECP', 'pnecp', 'trim|required|numeric');
+    	$this->form_validation->set_rules('SN3C', 'sn3c', 'trim|required|numeric');
+    	$this->form_validation->set_rules('SN3CP', 'sn3cp', 'trim|required|numeric');
+    	$this->form_validation->set_rules('SN6C', 'sn6c', 'trim|required|numeric');
+    	$this->form_validation->set_rules('SN6CP', 'sn6cp', 'trim|required|numeric');
+    	$this->form_validation->set_rules('SNEC', 'snec', 'trim|required|numeric');
+    	$this->form_validation->set_rules('SNECP', 'snecp', 'trim|required|numeric');
+    	$this->form_validation->set_rules('PN3C', 'pn3c', 'trim|required|numeric');
+    	$this->form_validation->set_rules('PN3CP', 'pn3cp', 'trim|required|numeric');
+    	$this->form_validation->set_rules('PN6C', 'pn6c', 'trim|required|numeric');
+    	$this->form_validation->set_rules('PN6CP', 'pn6cp', 'trim|required|numeric');
+    	$this->form_validation->set_rules('PNEC', 'pnec', 'trim|required|numeric');
+    	$this->form_validation->set_rules('PNECP', 'pnecp', 'trim|required|numeric');
     	// $this->form_validation->set_rules('created_at', 'created at', 'trim|required');
     	// $this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
 
