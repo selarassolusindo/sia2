@@ -20,7 +20,9 @@
         <table class="word-table" style="margin-bottom: 10px">
             <tr>
                 <th>No</th>
-		<th>Idtamu</th>
+		<th>TripNo</th>
+		<th>TripTgl</th>
+		<th>Total</th>
 		<th>Idusers</th>
 		<th>Created At</th>
 		<th>Updated At</th>
@@ -31,7 +33,9 @@
                 ?>
                 <tr>
 		      <td><?php echo ++$start ?></td>
-		      <td><?php echo $t31_bayar->idtamu ?></td>
+		      <td><?php echo $t31_bayar->TripNo ?></td>
+		      <td><?php echo $t31_bayar->TripTgl ?></td>
+		      <td><?php echo $t31_bayar->Total ?></td>
 		      <td><?php echo $t31_bayar->idusers ?></td>
 		      <td><?php echo $t31_bayar->created_at ?></td>
 		      <td><?php echo $t31_bayar->updated_at ?></td>	

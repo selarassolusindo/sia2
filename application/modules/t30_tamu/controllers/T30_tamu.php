@@ -10,6 +10,8 @@ class T30_tamu extends CI_Controller
         parent::__construct();
         $this->load->model('T30_tamu_model');
         $this->load->library('form_validation');
+
+        $this->load->model('t31_bayar/T31_bayar_model');
     }
 
     public function index()
@@ -362,7 +364,33 @@ class T30_tamu extends CI_Controller
             foreach ($sheet as $row) {
                 // echo pre($row);
                 if ($numRow >= $startRow) {
-                    array_push($data, array(
+                    // array_push($data, array(
+                    //     'TripNo'       => $row['B'],
+                    //     'TripTgl'      => date_format(date_create($row['C']), 'Y-m-d'),
+                    //     'Nama'         => $row['D'],
+                    //     'Facility'     => $row['E'],
+                	// 	'MFC'          => $row['F'],
+                	// 	'Country'      => $row['G'],
+                    //     'IDNo'         => $row['H'],
+                	// 	'PackageNight' => $row['I'],
+                	// 	'PackageType'  => $row['J'],
+                	// 	'CheckIn'      => date_format(date_create($row['K']), 'Y-m-d'),
+                	// 	'CheckOut'     => date_format(date_create($row['L']), 'Y-m-d'),
+                	// 	'Agent'        => $row['M'],
+                	// 	'Status'       => $row['N'],
+                	// 	'DaysStay'     => $row['O'],
+                	// 	'Price'        => $row['P'],
+                    //     'FeeTaNas'     => $row['Q'],
+                    //     'Price2'       => $row['R'],
+                    //     'Remarks'      => $row['S'],
+                    //     'idusers'      => $this->session->userdata('user_id'),
+                    //     )
+                    // );
+
+                    /**
+                     * simpan ke tabel tamu
+                     */
+                    $dataTamu = [
                         'TripNo'       => $row['B'],
                         'TripTgl'      => date_format(date_create($row['C']), 'Y-m-d'),
                         'Nama'         => $row['D'],
@@ -382,20 +410,28 @@ class T30_tamu extends CI_Controller
                         'Price2'       => $row['R'],
                         'Remarks'      => $row['S'],
                         'idusers'      => $this->session->userdata('user_id'),
-                        // 'a' => $format->toFormattedString($row['C'], 'yyyy-mm-dd'),
-                        // 'b' =>
-                        // 'c' => strtotime(PHPExcel_Shared_Date::ExcelToPHP($row['C'])),
-                        )
-                    );
-                    array_push($dataBayar, array(
+                    ];
+                    $this->T30_tamu_model->insert($dataTamu);
 
-                        )
-                    );
+                    /**
+                     * ambil idtamu
+                     */
+                    $idtamu = $this->T30_tamu_model->getInsertId();
+
+                    /**
+                     * simpan ke tabel bayar
+                     */
+                    $dataBayar = [
+                        'idtamu' => $idtamu,
+                        'idusers' => $this->session->userdata('user_id'),
+                    ];
+                    $this->T31_bayar_model->insert($dataBayar);
+
                 }
                 $numRow++;
             }
             // echo pre($data);
-            $this->T30_tamu_model->insert_import($data);
+            // $this->T30_tamu_model->insert_import($data);
             unlink(realpath('excel/' . $data_upload['file_name']));
 
             $this->session->set_flashdata('notif', '<div class="alert alert-success"><b>Proses import berhasil !</b> Data berhasil diimport !</div>');

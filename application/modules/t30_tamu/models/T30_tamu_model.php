@@ -145,6 +145,12 @@ class T30_tamu_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    // ambil idtamu
+    function getInsertId()
+    {
+        return $this->db->insert_id();
+    }
+
 }
 
 /* End of file T30_tamu_model.php */

@@ -13,7 +13,7 @@
         <h2 style="margin-top:0px">T31_bayar List</h2> -->
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
-                <?php echo anchor(site_url('t31_bayar/create'),'Tambah', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('t31_bayar/create'),'Bayar', 'class="btn btn-primary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -44,21 +44,25 @@
         <table class="table table-bordered" style="margin-bottom: 10px">
             <tr>
                 <th>No.</th>
-				<th>Tamu</th>
-                
+				<th>TripNo</th>
+				<th>TripTgl</th>
+				<th class="text-right">Total</th>
 				<th class="text-center">Proses</th>
             </tr>
 			<?php foreach ($t31_bayar_data as $t31_bayar) { ?>
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
-				<td><?php echo $t31_bayar->idtamu ?></td>
+				<td><?php echo $t31_bayar->TripNo ?></td>
+				<td><?php echo dateIndo($t31_bayar->TripTgl) ?></td>
+				<td><?php echo numIndo($t31_bayar->Total) ?></td>
 				<td style="text-align:center" width="200px">
 				<?php
 				//echo anchor(site_url('t31_bayar/read/'.$t31_bayar->idbayar),'Read');
 				//echo ' | ';
-				echo anchor(site_url('t31_bayar/update/'.$t31_bayar->idbayar),'Ubah');
-				echo ' | ';
-				echo anchor(site_url('t31_bayar/delete/'.$t31_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+				// echo anchor(site_url('t31_bayar/update/'.$t31_bayar->idbayar),'Ubah');
+				// echo ' | ';
+				// echo anchor(site_url('t31_bayar/delete/'.$t31_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+                echo anchor(site_url('t31_bayar/proses/'.$t31_bayar->idbayar), 'Proses');
 				?>
 				</td>
 			</tr>

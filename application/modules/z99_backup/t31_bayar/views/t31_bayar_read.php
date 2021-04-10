@@ -12,7 +12,9 @@
     <body>
         <h2 style="margin-top:0px">T31_bayar Read</h2>
         <table class="table">
-	    <tr><td>Idtamu</td><td><?php echo $idtamu; ?></td></tr>
+	    <tr><td>TripNo</td><td><?php echo $TripNo; ?></td></tr>
+	    <tr><td>TripTgl</td><td><?php echo $TripTgl; ?></td></tr>
+	    <tr><td>Total</td><td><?php echo $Total; ?></td></tr>
 	    <tr><td>Idusers</td><td><?php echo $idusers; ?></td></tr>
 	    <tr><td>Created At</td><td><?php echo $created_at; ?></td></tr>
 	    <tr><td>Updated At</td><td><?php echo $updated_at; ?></td></tr>
