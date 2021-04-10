@@ -40,7 +40,7 @@
                 <label for="double">PIW Price 1 Night Dalam Negeri (IDR) <?php echo form_error('PN1DN') ?></label>
                 <input type="text" class="form-control" name="PN1DN" id="PN1DN" placeholder="0" value="<?php echo $PN1DN; ?>" />
             </div>
-    	    <div class="form-group">
+    	    <!-- <div class="form-group">
                 <label for="double">SN3C <?php echo form_error('SN3C') ?></label>
                 <input type="text" class="form-control" name="SN3C" id="SN3C" placeholder="SN3C" value="<?php echo $SN3C; ?>" />
             </div>
@@ -87,7 +87,7 @@
     	    <div class="form-group">
                 <label for="decimal">PNECP <?php echo form_error('PNECP') ?></label>
                 <input type="text" class="form-control" name="PNECP" id="PNECP" placeholder="PNECP" value="<?php echo $PNECP; ?>" />
-            </div>
+            </div> -->
     	    <input type="hidden" name="idprice" value="<?php echo $idprice; ?>" />
     	    <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
     	    <a href="<?php echo site_url('t01_package') ?>" class="btn btn-secondary">Batal</a>

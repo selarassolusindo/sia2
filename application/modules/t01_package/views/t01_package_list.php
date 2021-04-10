@@ -90,11 +90,11 @@
     			<td width="80px"><?php echo ++$start ?></td>
     			<td><?php echo $t01_package->PackageName ?></td>
     			<td><?php echo $t01_package->PackageCode ?></td>
-    			<td align="right">USD <?php echo numIndo($t01_package->SN3LN) ?></td>
-    			<td align="right">USD <?php echo numIndo($t01_package->SN6LN) ?></td>
-    			<td align="right">USD <?php echo numIndo($t01_package->SNELN) ?></td>
-    			<td align="right">USD <?php echo numIndo($t01_package->PN1LN) ?></td>
-    			<td align="right">IDR <?php echo numIndo($t01_package->PN1DN) ?></td>
+    			<td align="right">$ <?php echo numIndo($t01_package->SN3LN) ?></td>
+    			<td align="right">$ <?php echo numIndo($t01_package->SN6LN) ?></td>
+    			<td align="right">$ <?php echo numIndo($t01_package->SNELN) ?></td>
+    			<td align="right">$ <?php echo numIndo($t01_package->PN1LN) ?></td>
+    			<td align="right">Rp <?php echo numIndo($t01_package->PN1DN) ?></td>
     			<td style="text-align:center" width="200px">
     				<?php
     				// echo anchor(site_url('t01_package/read/'.$t01_package->idprice),'Read');
@@ -104,18 +104,18 @@
     				echo anchor(site_url('t01_package/delete/'.$t01_package->idprice),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
     				?>
     			</td>
-                <td align="right">USD <?php echo numIndo($t01_package->SN3C) ?></td>
-                <td align="right"><?php echo numIndo($t01_package->SN3CP*100) ?></td>
-                <td align="right">USD <?php echo numIndo($t01_package->SN6C) ?></td>
-                <td align="right"><?php echo numIndo($t01_package->SN6CP*100) ?></td>
-                <td align="right">USD <?php echo numIndo($t01_package->SNEC) ?></td>
-                <td align="right"><?php echo numIndo($t01_package->SNECP) ?></td>
-                <td align="right">USD <?php echo numIndo($t01_package->PN3C) ?></td>
-                <td align="right"><?php echo numIndo($t01_package->PN3CP) ?></td>
-                <td align="right">USD <?php echo numIndo($t01_package->PN6C) ?></td>
-                <td align="right"><?php echo numIndo($t01_package->PN6CP) ?></td>
-                <td align="right">USD <?php echo numIndo($t01_package->PNEC) ?></td>
-                <td align="right"><?php echo numIndo($t01_package->PNECP) ?></td>
+                <td align="right">$ <?php echo numIndo($t01_package->SN3C) ?></td>
+                <td align="right"><?php echo ($t01_package->SN3CP*100) ?>%</td>
+                <td align="right">$ <?php echo numIndo($t01_package->SN6C) ?></td>
+                <td align="right"><?php echo ($t01_package->SN6CP*100) ?>%</td>
+                <td align="right">$ <?php echo numIndo($t01_package->SNEC) ?></td>
+                <td align="right"><?php echo ($t01_package->SNECP*100) ?>%</td>
+                <td align="right">$ <?php echo numIndo($t01_package->PN3C) ?></td>
+                <td align="right"><?php echo ($t01_package->PN3CP*100) ?>%</td>
+                <td align="right">$ <?php echo numIndo($t01_package->PN6C) ?></td>
+                <td align="right"><?php echo ($t01_package->PN6CP*100) ?>%</td>
+                <td align="right">$ <?php echo numIndo($t01_package->PNEC) ?></td>
+                <td align="right"><?php echo ($t01_package->PNECP*100) ?>%</td>
     		</tr>
             <?php } ?>
         </table>
