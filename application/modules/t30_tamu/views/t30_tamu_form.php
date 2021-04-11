@@ -31,8 +31,13 @@
             	<input type="text" class="form-control" name="Nama" id="Nama" placeholder="Nama" value="<?php echo $Nama; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="varchar">MFC <?php echo form_error('MFC') ?></label>
-            	<input type="text" class="form-control" name="MFC" id="MFC" placeholder="MFC" value="<?php echo $MFC; ?>" />
+            	<label for="varchar">Male / Female / Child <?php echo form_error('MFC') ?></label>
+            	<!-- <input type="text" class="form-control" name="MFC" id="MFC" placeholder="MFC" value="<?php echo $MFC; ?>" /> -->
+                <select class="form-control" name="MFC">
+                    <option value="M" <?php echo $MFC == 'M' ? 'selected' : '' ?>>Male</option>
+                    <option value="F" <?php echo $MFC == 'F' ? 'selected' : '' ?>>Female</option>
+                    <option value="C" <?php echo $MFC == 'C' ? 'selected' : '' ?>>Child</option>
+                </select>
         	</div>
 			<div class="form-group">
             	<label for="varchar">Country <?php echo form_error('Country') ?></label>
@@ -46,7 +51,7 @@
             	<label for="varchar">Package Type <?php echo form_error('PackageType') ?></label>
             	<input type="text" class="form-control" name="PackageType" id="PackageType" placeholder="PackageType" value="<?php echo $PackageType; ?>" />
         	</div>
-			<div class="form-group">
+			<div class="form-group col-2">
             	<label for="date">Check-In <?php echo form_error('CheckIn') ?></label>
             	<!-- <input type="text" class="form-control" name="CheckIn" id="CheckIn" placeholder="CheckIn" value="<?php echo $CheckIn; ?>" /> -->
                 <div class="input-group date" id="CheckIn" data-target-input="nearest">
@@ -56,7 +61,7 @@
                     <input placeholder="Check-In" type="text" name="CheckIn" value="<?php echo $CheckIn; ?>" class="form-control datetimepicker-input" data-target="#CheckIn"/>
                 </div>
         	</div>
-			<div class="form-group">
+			<div class="form-group col-2">
             	<label for="date">Check-Out <?php echo form_error('CheckOut') ?></label>
             	<!-- <input type="text" class="form-control" name="CheckOut" id="CheckOut" placeholder="CheckOut" value="<?php echo $CheckOut; ?>" /> -->
                 <div class="input-group date" id="CheckOut" data-target-input="nearest">
