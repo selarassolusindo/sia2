@@ -62,8 +62,8 @@
 				//echo anchor(site_url('t02_top/read/'.$t02_top->idtop),'Read');
 				//echo ' | ';
 				echo anchor(site_url('t02_top/update/'.$t02_top->idtop),'Ubah');
-				echo ' | ';
-				echo anchor(site_url('t02_top/delete/'.$t02_top->idtop),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+				// echo ' | ';
+				// echo anchor(site_url('t02_top/delete/'.$t02_top->idtop),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
 				?>
 				</td>
 			</tr>
