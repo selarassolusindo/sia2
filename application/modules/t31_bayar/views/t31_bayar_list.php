@@ -73,7 +73,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Name</th>
-                        <th>Pembayaran</th>
+                        <!-- <th>Pembayaran</th> -->
                         <?php foreach($dataTop as $dTop) { ?>
                             <th><?php echo $dTop->Type ?></th>
                         <?php } ?>
@@ -85,9 +85,11 @@
                     <tr>
         				<td width="80px"><?php echo ++$start ?></td>
         				<td><?php echo $t31_bayar->Nama ?></td>
-                        <td><?php echo $t31_bayar->idtop . ' - ' . $t31_bayar->Jumlah ?></td>
+                        <!-- <td><?php echo $t31_bayar->idtop . ' - ' . $t31_bayar->Jumlah ?></td> -->
                         <?php foreach($dataTop as $dTop) { ?>
-                            <td><?php echo $dTop->Type ?></td>
+                            <?php $key = array_search($t31_bayar->idbayar.$dTop->idtop, array_column($dataBayard, 'idbayar_idtop'), true) ?>
+                            <!-- <td><?php //echo $dTop->Type ?></td> -->
+                            <td><?= (FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0' ?></td>
                         <?php } ?>
         				<td style="text-align:center" width="200px">
         				<?php
