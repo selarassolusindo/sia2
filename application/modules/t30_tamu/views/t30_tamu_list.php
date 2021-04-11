@@ -15,6 +15,7 @@
             <div class="col-md-4">
                 <!-- <?php echo anchor(site_url('t30_tamu/create'),'Tambah', 'class="btn btn-primary"'); ?> -->
                 <?php echo anchor(site_url('t30_tamu/import'),'Import', 'class="btn btn-primary"'); ?>
+                <?php echo anchor(site_url('import/import_template.xlsx'),'Download Template', 'class="btn btn-secondary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
