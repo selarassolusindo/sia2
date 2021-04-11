@@ -45,13 +45,12 @@
             <tr>
                 <th>No.</th>
 				<th>Tamu</th>
-                
 				<th class="text-center">Proses</th>
             </tr>
 			<?php foreach ($t31_bayar_data as $t31_bayar) { ?>
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
-				<td><?php echo $t31_bayar->idtamu ?></td>
+				<td><?php echo $t31_bayar->idtamu . $t31_bayar->TripNo . $t31_bayar->TripTgl ?></td>
 				<td style="text-align:center" width="200px">
 				<?php
 				//echo anchor(site_url('t31_bayar/read/'.$t31_bayar->idbayar),'Read');

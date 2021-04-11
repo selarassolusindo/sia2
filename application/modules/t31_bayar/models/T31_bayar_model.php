@@ -32,25 +32,26 @@ class T31_bayar_model extends CI_Model
 
     // get total rows
     function total_rows($q = NULL) {
-        $this->db->like('idbayar', $q);
-		$this->db->or_like('idtamu', $q);
-		$this->db->or_like('idusers', $q);
-		$this->db->or_like('created_at', $q);
-		$this->db->or_like('updated_at', $q);
-		$this->db->from($this->table);
+        $this->db->like('t30_tamu.Nama');
+        $this->db->or_like('t30_tamu.TripNo');
+        $this->db->or_like('t30_tamu.TripTgl');
+        $this->db->select($this->table.'.*, t30_tamu.TripNo, t30_tamu.TripTgl');
+        $this->db->from($this->table);
+        $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');
         return $this->db->count_all_results();
     }
 
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('idbayar', $q);
-		$this->db->or_like('idtamu', $q);
-		$this->db->or_like('idusers', $q);
-		$this->db->or_like('created_at', $q);
-		$this->db->or_like('updated_at', $q);
+        $this->db->like('t30_tamu.Nama');
+        $this->db->or_like('t30_tamu.TripNo');
+        $this->db->or_like('t30_tamu.TripTgl');
 		$this->db->limit($limit, $start);
-        return $this->db->get($this->table)->result();
+        $this->db->select($this->table.'.*, t30_tamu.TripNo, t30_tamu.TripTgl');
+        $this->db->from($this->table);
+        $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');
+        return $this->db->get()->result();
     }
 
     // insert data
