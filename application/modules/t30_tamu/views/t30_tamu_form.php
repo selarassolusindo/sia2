@@ -13,12 +13,18 @@
         <h2 style="margin-top:0px">T30_tamu <?php echo $button ?></h2> -->
         <form action="<?php echo $action; ?>" method="post">
 			<div class="form-group">
-            	<label for="varchar">TripNo <?php echo form_error('TripNo') ?></label>
+            	<label for="varchar">Trip No. <?php echo form_error('TripNo') ?></label>
             	<input type="text" class="form-control" name="TripNo" id="TripNo" placeholder="TripNo" value="<?php echo $TripNo; ?>" />
         	</div>
-			<div class="form-group">
-            	<label for="date">TripTgl <?php echo form_error('TripTgl') ?></label>
-            	<input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" />
+			<div class="form-group col-2">
+            	<label for="date">Trip Tgl. <?php echo form_error('TripTgl') ?></label>
+            	<!-- <input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" /> -->
+                <div class="input-group date" id="TripTgl" data-target-input="nearest">
+                    <div class="input-group-append" data-target="#TripTgl" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                    <input placeholder="Trip Tgl." type="text" name="TripTgl" value="<?php echo $TripTgl; ?>" class="form-control datetimepicker-input" data-target="#TripTgl"/>
+                </div>
         	</div>
 			<div class="form-group">
             	<label for="varchar">Nama <?php echo form_error('Nama') ?></label>
@@ -41,12 +47,24 @@
             	<input type="text" class="form-control" name="PackageType" id="PackageType" placeholder="PackageType" value="<?php echo $PackageType; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="date">CheckIn <?php echo form_error('CheckIn') ?></label>
-            	<input type="text" class="form-control" name="CheckIn" id="CheckIn" placeholder="CheckIn" value="<?php echo $CheckIn; ?>" />
+            	<label for="date">Check-In <?php echo form_error('CheckIn') ?></label>
+            	<!-- <input type="text" class="form-control" name="CheckIn" id="CheckIn" placeholder="CheckIn" value="<?php echo $CheckIn; ?>" /> -->
+                <div class="input-group date" id="CheckIn" data-target-input="nearest">
+                    <div class="input-group-append" data-target="#CheckIn" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                    <input placeholder="Check-In" type="text" name="CheckIn" value="<?php echo $CheckIn; ?>" class="form-control datetimepicker-input" data-target="#CheckIn"/>
+                </div>
         	</div>
 			<div class="form-group">
-            	<label for="date">CheckOut <?php echo form_error('CheckOut') ?></label>
-            	<input type="text" class="form-control" name="CheckOut" id="CheckOut" placeholder="CheckOut" value="<?php echo $CheckOut; ?>" />
+            	<label for="date">Check-Out <?php echo form_error('CheckOut') ?></label>
+            	<!-- <input type="text" class="form-control" name="CheckOut" id="CheckOut" placeholder="CheckOut" value="<?php echo $CheckOut; ?>" /> -->
+                <div class="input-group date" id="CheckOut" data-target-input="nearest">
+                    <div class="input-group-append" data-target="#CheckOut" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                    <input placeholder="Check-Out" type="text" name="CheckOut" value="<?php echo $CheckOut; ?>" class="form-control datetimepicker-input" data-target="#CheckOut"/>
+                </div>
         	</div>
 			<div class="form-group">
             	<label for="varchar">Agent <?php echo form_error('Agent') ?></label>
@@ -80,5 +98,26 @@
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
 			<a href="<?php echo site_url('t30_tamu') ?>" class="btn btn-secondary">Batal</a>
 		</form>
+
+        <script>
+            $(document).ready(function () {
+                //Date range picker
+                $('#TripTgl').datetimepicker({
+                    format: 'DD-MM-YYYY'
+                });
+                $('#CheckIn').datetimepicker({
+                    format: 'DD-MM-YYYY'
+                });
+                $('#CheckOut').datetimepicker({
+                    format: 'DD-MM-YYYY'
+                });
+            })
+            // $(function () {
+            //     //Date range picker
+            //     $('#reservationdate').datetimepicker({
+            //         format: 'DD-MM-YYYY'
+            //     })
+            // })
+        </script>
     <!-- </body>
 </html> -->
