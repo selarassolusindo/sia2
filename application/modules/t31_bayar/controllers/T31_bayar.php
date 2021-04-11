@@ -127,7 +127,7 @@ class T31_bayar extends CI_Controller
             /**
              * ambil data pembayaran detail
              */
-            $dataBayar = $this->T32_bayard_model->getDataByIdbayar($row->idbayar);
+            $dataBayard = $this->T32_bayard_model->getDataByIdbayar($row->idbayar);
 
             $data = array(
                 'button' => 'Simpan',
@@ -135,7 +135,7 @@ class T31_bayar extends CI_Controller
 				'idbayar' => set_value('idbayar', $row->idbayar),
 				'idtamu' => set_value('idtamu', $row->idtamu),
                 'dataTop' => $dataTop,
-                'dataBayar' => $dataBayar,
+                'dataBayard' => $dataBayard,
 			);
             // $this->load->view('t31_bayar/t31_bayar_form', $data);
             $data['_view'] = 't31_bayar/t31_bayar_form';

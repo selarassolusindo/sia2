@@ -19,7 +19,8 @@
             <?php foreach($dataTop as $dTop) { ?>
             <div class="form-group">
                 <label for="int"><?php echo $dTop->Type ?></label>
-                <input type="text" name="_<?php echo $dTop->idtop?>" value="">
+                <?php $key = array_search($dTop->idtop, array_column($dataBayard, 'idtop'), true) ?>
+                <input type="text" class="form-control" name="_<?php echo $dTop->idtop?>" value="<?= (FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0' ?>" />
             </div>
             <?php } ?>
 			<input type="hidden" name="idbayar" value="<?php echo $idbayar; ?>" />
