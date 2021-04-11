@@ -12,6 +12,8 @@ class T30_tamu extends CI_Controller
         $this->load->library('form_validation');
 
         $this->load->model('t31_bayar/T31_bayar_model');
+        $this->load->model('t32_bayard/T32_bayard_model');
+        $this->load->model('t02_top/T02_top_model');
     }
 
     public function index()
@@ -351,6 +353,11 @@ class T30_tamu extends CI_Controller
             $this->session->set_flashdata('notif', '<div class="alert alert-danger"><b>Proses import data gagal !</b> ' . $this->upload->display_errors() . '</div>');
             redirect('t30_tamu/import');
         } else {
+            /**
+             * ambil data TOP (type of payment)
+             */
+            $dataTop = $this->T02_top_model->get_all();
+
             $data_upload = $this->upload->data();
 
             $excelreader = new PHPExcel_Reader_Excel2007();
@@ -364,28 +371,6 @@ class T30_tamu extends CI_Controller
             foreach ($sheet as $row) {
                 // echo pre($row);
                 if ($numRow >= $startRow) {
-                    // array_push($data, array(
-                    //     'TripNo'       => $row['B'],
-                    //     'TripTgl'      => date_format(date_create($row['C']), 'Y-m-d'),
-                    //     'Nama'         => $row['D'],
-                    //     'Facility'     => $row['E'],
-                	// 	'MFC'          => $row['F'],
-                	// 	'Country'      => $row['G'],
-                    //     'IDNo'         => $row['H'],
-                	// 	'PackageNight' => $row['I'],
-                	// 	'PackageType'  => $row['J'],
-                	// 	'CheckIn'      => date_format(date_create($row['K']), 'Y-m-d'),
-                	// 	'CheckOut'     => date_format(date_create($row['L']), 'Y-m-d'),
-                	// 	'Agent'        => $row['M'],
-                	// 	'Status'       => $row['N'],
-                	// 	'DaysStay'     => $row['O'],
-                	// 	'Price'        => $row['P'],
-                    //     'FeeTaNas'     => $row['Q'],
-                    //     'Price2'       => $row['R'],
-                    //     'Remarks'      => $row['S'],
-                    //     'idusers'      => $this->session->userdata('user_id'),
-                    //     )
-                    // );
 
                     /**
                      * simpan ke tabel tamu
@@ -426,6 +411,29 @@ class T30_tamu extends CI_Controller
                         'idusers' => $this->session->userdata('user_id'),
                     ];
                     $this->T31_bayar_model->insert($dataBayar);
+
+                    /**
+                     * ambil idbayar
+                     */
+                    $idbayar = $this->T31_bayar_model->getInsertId();
+
+                    $chr = 84; // start kolom T, kode ascii T adalah 84
+                    foreach($dataTop as $dTop) {
+                        $jumlahBayar = $row[chr($chr)];
+                        if ($jumlahBayar <> 0) {
+                            /**
+                             * simpan ke tabel bayar detail
+                             */
+                            $dataBayarDetail = [
+                                'idbayar' => $idbayar,
+                                'idtop' => $dTop->idtop,
+                                'Jumlah' => $jumlahBayar,
+                                'idusers' => $this->session->userdata('user_id'),
+                            ];
+                            $this->T32_bayard_model->insert($dataBayarDetail);
+                        }
+                        $chr++;
+                    }
 
                 }
                 $numRow++;
