@@ -76,11 +76,11 @@
                     <th rowspan="2">Name</th>
                     <th rowspan="2">MFC</th>
                     <th rowspan="2">Country</th>
+                    <th rowspan="2">ID No.</th>
                     <th colspan="2">Package</th>
                     <th rowspan="2">Check-In</th>
                     <th rowspan="2">Check-Out</th>
                     <th rowspan="2">Agent</th>
-                    <th rowspan="2">Status</th>
                     <th rowspan="2">Days Stay</th>
                     <th rowspan="2" class="text-right">Price</th>
                     <th rowspan="2" class="text-center">Proses</th>
@@ -99,12 +99,12 @@
                 <td><?php echo $t30_tamu->Nama ?></td>
                 <td><?php echo $t30_tamu->MFC ?></td>
                 <td><?php echo $t30_tamu->Country ?></td>
+                <td><?php echo $t30_tamu->IDNo ?></td>
                 <td><?php echo $t30_tamu->PackageNight ?></td>
                 <td><?php echo $t30_tamu->PackageType ?></td>
                 <td><?php echo date_format(date_create($t30_tamu->CheckIn), 'd-m-Y') ?></td>
                 <td><?php echo date_format(date_create($t30_tamu->CheckOut), 'd-m-Y') ?></td>
                 <td><?php echo $t30_tamu->Agent ?></td>
-                <td><?php echo $t30_tamu->Status ?></td>
                 <td><?php echo $t30_tamu->DaysStay ?></td>
                 <td class="text-right"><?php echo numIndo($t30_tamu->Price) ?></td>
                 <!-- <td><?php echo $t30_tamu->idusers ?></td>

@@ -8,7 +8,7 @@ class T30_tamu_model extends CI_Model
 
     public $table = 't30_tamu';
     public $id = 'idtamu';
-    public $order = 'ASC';
+    public $order = 'DESC';
 
     function __construct()
     {
