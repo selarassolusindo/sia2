@@ -39,11 +39,11 @@
             	<input type="text" class="form-control" name="Country" id="Country" placeholder="Country" value="<?php echo $Country; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="varchar">PackageNight <?php echo form_error('PackageNight') ?></label>
+            	<label for="varchar">Package Night <?php echo form_error('PackageNight') ?></label>
             	<input type="text" class="form-control" name="PackageNight" id="PackageNight" placeholder="PackageNight" value="<?php echo $PackageNight; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="varchar">PackageType <?php echo form_error('PackageType') ?></label>
+            	<label for="varchar">Package Type <?php echo form_error('PackageType') ?></label>
             	<input type="text" class="form-control" name="PackageType" id="PackageType" placeholder="PackageType" value="<?php echo $PackageType; ?>" />
         	</div>
 			<div class="form-group">
@@ -75,7 +75,7 @@
             	<input type="text" class="form-control" name="Status" id="Status" placeholder="Status" value="<?php echo $Status; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="tinyint">DaysStay <?php echo form_error('DaysStay') ?></label>
+            	<label for="tinyint">Days Stay <?php echo form_error('DaysStay') ?></label>
             	<input type="text" class="form-control" name="DaysStay" id="DaysStay" placeholder="DaysStay" value="<?php echo $DaysStay; ?>" />
         	</div>
 			<div class="form-group">
