@@ -77,6 +77,16 @@ class T32_bayard_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+    /**
+     * ambil data pembayaran detail berdasarkan idbayar
+     */
+    function getDataByIdbayar($idbayar)
+    {
+        $this->db->where('idbayar', $idbayar);
+        $this->db->order_by('idtop', 'ASC');
+        return $this->db->get($this->table)->result();
+    }
+
 }
 
 /* End of file T32_bayard_model.php */

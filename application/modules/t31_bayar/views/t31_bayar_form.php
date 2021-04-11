@@ -16,6 +16,12 @@
             	<label for="int">Idtamu <?php echo form_error('idtamu') ?></label>
             	<input type="text" class="form-control" name="idtamu" id="idtamu" placeholder="Idtamu" value="<?php echo $idtamu; ?>" />
         	</div>
+            <?php foreach($dataTop as $dTop) { ?>
+            <div class="form-group">
+                <label for="int"><?php echo $dTop->Type ?></label>
+                <input type="text" name="_<?php echo $dTop->idtop?>" value="">
+            </div>
+            <?php } ?>
 			<input type="hidden" name="idbayar" value="<?php echo $idbayar; ?>" />
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
 			<a href="<?php echo site_url('t31_bayar') ?>" class="btn btn-secondary">Batal</a>

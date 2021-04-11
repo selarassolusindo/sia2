@@ -12,6 +12,7 @@ class T31_bayar extends CI_Controller
         $this->load->library('form_validation');
 
         $this->load->model('t02_top/T02_top_model');
+        $this->load->model('t32_bayard/T32_bayard_model');
     }
 
     public function index()
@@ -117,11 +118,24 @@ class T31_bayar extends CI_Controller
         $row = $this->T31_bayar_model->get_by_id($id);
 
         if ($row) {
+
+            /**
+             * ambil data top (type of payment)
+             */
+            $dataTop = $this->T02_top_model->get_all();
+
+            /**
+             * ambil data pembayaran detail
+             */
+            $dataBayar = $this->T32_bayard_model->getDataByIdbayar($row->idbayar);
+
             $data = array(
                 'button' => 'Simpan',
                 'action' => site_url('t31_bayar/update_action'),
 				'idbayar' => set_value('idbayar', $row->idbayar),
 				'idtamu' => set_value('idtamu', $row->idtamu),
+                'dataTop' => $dataTop,
+                'dataBayar' => $dataBayar,
 			);
             // $this->load->view('t31_bayar/t31_bayar_form', $data);
             $data['_view'] = 't31_bayar/t31_bayar_form';
