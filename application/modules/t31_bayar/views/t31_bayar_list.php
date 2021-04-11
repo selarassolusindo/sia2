@@ -41,27 +41,58 @@
                 </form>
             </div>
         </div>
-        <table class="table table-bordered" style="margin-bottom: 10px">
-            <tr>
-                <th>No.</th>
-				<th>Tamu</th>
-				<th class="text-center">Proses</th>
-            </tr>
-			<?php foreach ($t31_bayar_data as $t31_bayar) { ?>
-            <tr>
-				<td width="80px"><?php echo ++$start ?></td>
-				<td><?php echo $t31_bayar->idtamu . $t31_bayar->TripNo . $t31_bayar->TripTgl ?></td>
-				<td style="text-align:center" width="200px">
-				<?php
-				//echo anchor(site_url('t31_bayar/read/'.$t31_bayar->idbayar),'Read');
-				//echo ' | ';
-				echo anchor(site_url('t31_bayar/update/'.$t31_bayar->idbayar),'Ubah');
-				echo ' | ';
-				echo anchor(site_url('t31_bayar/delete/'.$t31_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
-				?>
-				</td>
-			</tr>
-            <?php } ?>
+
+		<?php
+        $recordPertama = 1;
+        $cetakHeader = 0;
+        foreach ($t31_bayar_data as $t31_bayar) {
+
+            if ($recordPertama == 1) {
+                $tripNo = $t31_bayar->TripNo;
+                $recordPertama = 0;
+                $cetakHeader = 1;
+            } else {
+                if ($tripNo != $t31_bayar->TripNo) {
+                    $tripNo = $t31_bayar->TripNo;
+
+                    // close table pertama
+                    echo '</table>';
+                    echo '<p>&nbsp;</p>';
+
+                    $cetakHeader = 1;
+                }
+            }
+
+            if ($cetakHeader == 1) {
+                $cetakHeader = 0;
+
+                echo 'Trip No. <b>' . $t31_bayar->TripNo . '</b>';
+                echo ' @ ';
+                echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b>';
+        ?>
+                <table class="table table-bordered" style="margin-bottom: 10px">
+                    <tr>
+                        <th>No.</th>
+                        <th>Name</th>
+                        <th class="text-center">Proses</th>
+                    </tr>
+        <?php
+            }
+        ?>
+                    <tr>
+        				<td width="80px"><?php echo ++$start ?></td>
+        				<td><?php echo $t31_bayar->Nama ?></td>
+        				<td style="text-align:center" width="200px">
+        				<?php
+        				//echo anchor(site_url('t31_bayar/read/'.$t31_bayar->idbayar),'Read');
+        				//echo ' | ';
+        				echo anchor(site_url('t31_bayar/update/'.$t31_bayar->idbayar),'Ubah');
+        				echo ' | ';
+        				echo anchor(site_url('t31_bayar/delete/'.$t31_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+        				?>
+        				</td>
+        			</tr>
+        <?php } ?>
         </table>
         <div class="row">
             <div class="col-md-6">
