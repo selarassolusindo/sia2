@@ -41,7 +41,6 @@
                 </form>
             </div>
         </div>
-
 		<?php
         $recordPertama = 1;
         $cetakHeader = 0;
@@ -74,6 +73,10 @@
                     <tr>
                         <th>No.</th>
                         <th>Name</th>
+                        <th>Pembayaran</th>
+                        <?php foreach($dataTop as $dTop) { ?>
+                            <th><?php echo $dTop->Type ?></th>
+                        <?php } ?>
                         <th class="text-center">Proses</th>
                     </tr>
         <?php
@@ -82,6 +85,10 @@
                     <tr>
         				<td width="80px"><?php echo ++$start ?></td>
         				<td><?php echo $t31_bayar->Nama ?></td>
+                        <td><?php echo $t31_bayar->idtop . ' - ' . $t31_bayar->Jumlah ?></td>
+                        <?php foreach($dataTop as $dTop) { ?>
+                            <td><?php echo $dTop->Type ?></td>
+                        <?php } ?>
         				<td style="text-align:center" width="200px">
         				<?php
         				//echo anchor(site_url('t31_bayar/read/'.$t31_bayar->idbayar),'Read');

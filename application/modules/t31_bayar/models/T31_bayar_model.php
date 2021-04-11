@@ -35,9 +35,10 @@ class T31_bayar_model extends CI_Model
         $this->db->like('t30_tamu.Nama');
         $this->db->or_like('t30_tamu.TripNo');
         $this->db->or_like('t30_tamu.TripTgl');
-        $this->db->select($this->table.'.*, t30_tamu.TripNo, t30_tamu.TripTgl, t30_tamu.Nama');
+        $this->db->select($this->table.'.*');
         $this->db->from($this->table);
         $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');
+        $this->db->join('t32_bayard', 't32_bayard.idbayar = '.$this->table.'.idbayar');
         return $this->db->count_all_results();
     }
 
@@ -48,9 +49,12 @@ class T31_bayar_model extends CI_Model
         $this->db->or_like('t30_tamu.TripNo');
         $this->db->or_like('t30_tamu.TripTgl');
 		$this->db->limit($limit, $start);
-        $this->db->select($this->table.'.*, t30_tamu.TripNo, t30_tamu.TripTgl, t30_tamu.Nama');
+        $this->db->select($this->table.'.*');
+        $this->db->select('t30_tamu.TripNo, t30_tamu.TripTgl, t30_tamu.Nama');
+        $this->db->select('t32_bayard.idtop, t32_bayard.Jumlah');
         $this->db->from($this->table);
         $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');
+        $this->db->join('t32_bayard', 't32_bayard.idbayar = '.$this->table.'.idbayar');
         return $this->db->get()->result();
     }
 

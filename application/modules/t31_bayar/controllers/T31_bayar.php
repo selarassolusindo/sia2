@@ -10,6 +10,8 @@ class T31_bayar extends CI_Controller
         parent::__construct();
         $this->load->model('T31_bayar_model');
         $this->load->library('form_validation');
+
+        $this->load->model('t02_top/T02_top_model');
     }
 
     public function index()
@@ -33,12 +35,18 @@ class T31_bayar extends CI_Controller
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
+        /**
+         * ambil data top (type of payment)
+         */
+        $dataTop = $this->T02_top_model->get_all();
+
         $data = array(
             't31_bayar_data' => $t31_bayar,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
+            'dataTop' => $dataTop,
         );
         // $this->load->view('t31_bayar/t31_bayar_list', $data);
         $data['_view'] = 't31_bayar/t31_bayar_list';
