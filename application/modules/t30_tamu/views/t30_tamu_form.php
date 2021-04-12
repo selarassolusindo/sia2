@@ -85,10 +85,10 @@
                 <?php } ?>
                 </select>
         	</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
             	<label for="varchar">Status <?php echo form_error('Status') ?></label>
             	<input type="text" class="form-control" name="Status" id="Status" placeholder="Status" value="<?php echo $Status; ?>" />
-        	</div>
+        	</div> -->
 			<div class="form-group">
             	<label for="tinyint">Days Stay <?php echo form_error('DaysStay') ?></label>
             	<input type="text" class="form-control" name="DaysStay" id="DaysStay" placeholder="DaysStay" value="<?php echo $DaysStay; ?>" />
