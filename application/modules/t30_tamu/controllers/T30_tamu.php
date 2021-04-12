@@ -40,7 +40,9 @@ class T30_tamu extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        $this->load->view('t30_tamu/t30_tamu_list', $data);
+        $data['_view'] = 't30_tamu/t30_tamu_list';
+        $data['_caption'] = 'Input Tamu';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
     public function read($id)
@@ -90,11 +92,10 @@ class T30_tamu extends CI_Controller
 			'FeeTanas' => set_value('FeeTanas'),
 			'PricePay' => set_value('PricePay'),
 			'Remarks' => set_value('Remarks'),
-			'idusers' => set_value('idusers'),
-			'created_at' => set_value('created_at'),
-			'updated_at' => set_value('updated_at'),
 		);
-        $this->load->view('t30_tamu/t30_tamu_form', $data);
+        $data['_view'] = 't30_tamu/t30_tamu_form';
+        $data['_caption'] = 'Input Tamu';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
     public function create_action()
@@ -117,9 +118,7 @@ class T30_tamu extends CI_Controller
 				'FeeTanas' => $this->input->post('FeeTanas',TRUE),
 				'PricePay' => $this->input->post('PricePay',TRUE),
 				'Remarks' => $this->input->post('Remarks',TRUE),
-				'idusers' => $this->input->post('idusers',TRUE),
-				'created_at' => $this->input->post('created_at',TRUE),
-				'updated_at' => $this->input->post('updated_at',TRUE),
+				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T30_tamu_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -148,11 +147,10 @@ class T30_tamu extends CI_Controller
 				'FeeTanas' => set_value('FeeTanas', $row->FeeTanas),
 				'PricePay' => set_value('PricePay', $row->PricePay),
 				'Remarks' => set_value('Remarks', $row->Remarks),
-				'idusers' => set_value('idusers', $row->idusers),
-				'created_at' => set_value('created_at', $row->created_at),
-				'updated_at' => set_value('updated_at', $row->updated_at),
 			);
-            $this->load->view('t30_tamu/t30_tamu_form', $data);
+            $data['_view'] = 't30_tamu/t30_tamu_form';
+            $data['_caption'] = 'Input Tamu';
+            $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('t30_tamu'));
@@ -179,9 +177,7 @@ class T30_tamu extends CI_Controller
 				'FeeTanas' => $this->input->post('FeeTanas',TRUE),
 				'PricePay' => $this->input->post('PricePay',TRUE),
 				'Remarks' => $this->input->post('Remarks',TRUE),
-				'idusers' => $this->input->post('idusers',TRUE),
-				'created_at' => $this->input->post('created_at',TRUE),
-				'updated_at' => $this->input->post('updated_at',TRUE),
+				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T30_tamu_model->update($this->input->post('idtamu', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -217,9 +213,6 @@ class T30_tamu extends CI_Controller
 		$this->form_validation->set_rules('FeeTanas', 'feetanas', 'trim|required|numeric');
 		$this->form_validation->set_rules('PricePay', 'pricepay', 'trim|required|numeric');
 		$this->form_validation->set_rules('Remarks', 'remarks', 'trim|required');
-		$this->form_validation->set_rules('idusers', 'idusers', 'trim|required');
-		$this->form_validation->set_rules('created_at', 'created at', 'trim|required');
-		$this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
 		$this->form_validation->set_rules('idtamu', 'idtamu', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
