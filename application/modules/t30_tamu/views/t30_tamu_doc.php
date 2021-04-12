@@ -22,17 +22,16 @@
                 <th>No</th>
 		<th>TripNo</th>
 		<th>TripTgl</th>
-		<th>Nama</th>
-		<th>MFC</th>
-		<th>Country</th>
-		<th>PackageNight</th>
-		<th>PackageType</th>
+		<th>Name</th>
+		<th>PackageName</th>
+		<th>Night</th>
 		<th>CheckIn</th>
 		<th>CheckOut</th>
 		<th>Agent</th>
-		<th>Status</th>
-		<th>DaysStay</th>
-		<th>Price</th>
+		<th>PriceList</th>
+		<th>FeeTanas</th>
+		<th>PricePay</th>
+		<th>Remarks</th>
 		<th>Idusers</th>
 		<th>Created At</th>
 		<th>Updated At</th>
@@ -45,17 +44,16 @@
 		      <td><?php echo ++$start ?></td>
 		      <td><?php echo $t30_tamu->TripNo ?></td>
 		      <td><?php echo $t30_tamu->TripTgl ?></td>
-		      <td><?php echo $t30_tamu->Nama ?></td>
-		      <td><?php echo $t30_tamu->MFC ?></td>
-		      <td><?php echo $t30_tamu->Country ?></td>
-		      <td><?php echo $t30_tamu->PackageNight ?></td>
-		      <td><?php echo $t30_tamu->PackageType ?></td>
+		      <td><?php echo $t30_tamu->Name ?></td>
+		      <td><?php echo $t30_tamu->PackageName ?></td>
+		      <td><?php echo $t30_tamu->Night ?></td>
 		      <td><?php echo $t30_tamu->CheckIn ?></td>
 		      <td><?php echo $t30_tamu->CheckOut ?></td>
 		      <td><?php echo $t30_tamu->Agent ?></td>
-		      <td><?php echo $t30_tamu->Status ?></td>
-		      <td><?php echo $t30_tamu->DaysStay ?></td>
-		      <td><?php echo $t30_tamu->Price ?></td>
+		      <td><?php echo $t30_tamu->PriceList ?></td>
+		      <td><?php echo $t30_tamu->FeeTanas ?></td>
+		      <td><?php echo $t30_tamu->PricePay ?></td>
+		      <td><?php echo $t30_tamu->Remarks ?></td>
 		      <td><?php echo $t30_tamu->idusers ?></td>
 		      <td><?php echo $t30_tamu->created_at ?></td>
 		      <td><?php echo $t30_tamu->updated_at ?></td>	
