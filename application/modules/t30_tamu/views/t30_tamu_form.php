@@ -49,7 +49,12 @@
         	</div>
 			<div class="form-group">
             	<label for="varchar">Package Type <?php echo form_error('PackageType') ?></label>
-            	<input type="text" class="form-control" name="PackageType" id="PackageType" placeholder="PackageType" value="<?php echo $PackageType; ?>" />
+            	<!-- <input type="text" class="form-control" name="PackageType" id="PackageType" placeholder="PackageType" value="<?php echo $PackageType; ?>" /> -->
+                <select class="form-control" name="PackageType">
+                <?php foreach($dataPackage as $dPackage) { ?>
+                    <option value="<?php echo $dPackage->PackageCode ?>" <?php echo $dPackage->PackageCode == $PackageType ? 'selected' : '' ?>><?php echo $dPackage->PackageCode ?></option>
+                <?php } ?>
+                </select>
         	</div>
 			<div class="form-group col-2">
             	<label for="date">Check-In <?php echo form_error('CheckIn') ?></label>
