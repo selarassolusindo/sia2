@@ -315,3 +315,17 @@ function dateIndo($value)
 {
     return date_format(date_create($value), 'd-m-Y');
 }
+
+function dateMysql($value)
+{
+    return date('Y-m-d', strtotime(str_replace('/', '-', $value)));
+}
+
+function dateAdd($value, $add)
+{
+    // echo pre($value);
+    // echo pre($add);
+    $date = date_create($value);
+    date_add($date, date_interval_create_from_date_string($add . " days"));
+    return date_format($date,"Y-m-d");
+}

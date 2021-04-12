@@ -15,7 +15,7 @@
             <div class="col-md-4">
                 <!-- <?php echo anchor(site_url('t30_tamu/create'),'Tambah', 'class="btn btn-primary"'); ?> -->
                 <?php echo anchor(site_url('t30_tamu/import'),'Import', 'class="btn btn-primary"'); ?>
-                <?php echo anchor(site_url('import/import_template.xls'),'Download Template', 'class="btn btn-secondary"'); ?>
+                <?php echo anchor(site_url('import/import_template.xlsx'),'Download Template', 'class="btn btn-secondary"'); ?>
             </div>
             <div class="col-md-4 text-center">
                 <div style="margin-top: 8px" id="message">
@@ -43,6 +43,7 @@
                 </form>
             </div>
         </div>
+        <div class="table-responsive">
         <?php
         $recordPertama = 1;
         $cetakHeader = 0;
@@ -66,24 +67,22 @@
             if ($cetakHeader == 1) {
                 $cetakHeader = 0;
 
-                echo 'TRIP';
+                echo '<h6>TRIP ';
                 echo 'NO. <b>' . $t30_tamu->TripNo . '</b>';
-                echo ' @ ';
-                echo '<b>' . date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') . '</b>';
+                echo ' TGL. ';
+                echo '<b>' . date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') . '</b> ';
+                echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Are You Sure ?\')"');
+                echo '</h6>';
         ?>
-                <table class="table table-bordered">
+                <!-- <table>
                     <tr>
                         <th colspan="2">TRIP</th>
-                    </tr>
-                    <tr>
                         <th>NO.</th>
-                        <th>TGL. (DD-MM-YYYY)</th>
-                    </tr>
-                    <tr>
                         <td><?php echo $t30_tamu->TripNo ?></td>
+                        <th>TGL.</th>
                         <td><?php echo dateIndo($t30_tamu->TripTgl) ?></td>
                     </tr>
-                </table>
+                </table> -->
                 <table class="table table-bordered" style="margin-bottom: 10px">
                     <tr>
                         <th rowspan="2">NO.</th>
@@ -106,34 +105,35 @@
             }
         ?>
             <tr>
-				<td width="80px"><?php echo ++$start ?></td>
+				<td><?php echo ++$start ?></td>
 				<td><?php echo $t30_tamu->Name ?></td>
 				<td><?php echo $t30_tamu->PackageName ?></td>
 				<td><?php echo $t30_tamu->Night ?></td>
-				<td><?php echo $t30_tamu->CheckIn ?></td>
-				<td><?php echo $t30_tamu->CheckOut ?></td>
+				<td><?php echo dateIndo($t30_tamu->CheckIn) ?></td>
+				<td><?php echo dateIndo($t30_tamu->CheckOut) ?></td>
 				<td><?php echo $t30_tamu->Agent ?></td>
 				<td><?php echo $t30_tamu->PriceList ?></td>
 				<td><?php echo $t30_tamu->FeeTanas ?></td>
 				<td><?php echo $t30_tamu->PricePay ?></td>
 				<td><?php echo $t30_tamu->Remarks ?></td>
-				<td style="text-align:center" width="200px">
+				<td style="text-align:center">
 				<?php
 				//echo anchor(site_url('t30_tamu/read/'.$t30_tamu->idtamu),'Read');
 				//echo ' | ';
 				echo anchor(site_url('t30_tamu/update/'.$t30_tamu->idtamu),'Ubah');
-				echo ' | ';
-				echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->idtamu),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+				// echo ' | ';
+				// echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->idtamu),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
 				?>
 				</td>
 			</tr>
             <?php } ?>
         </table>
+        </div>
         <div class="row">
             <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
+                <!-- <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
 				<?php echo anchor(site_url('t30_tamu/excel'), 'Excel', 'class="btn btn-primary"'); ?>
-				<?php echo anchor(site_url('t30_tamu/word'), 'Word', 'class="btn btn-primary"'); ?>
+				<?php echo anchor(site_url('t30_tamu/word'), 'Word', 'class="btn btn-primary"'); ?> -->
 			</div>
             <div class="col-md-6 text-right">
                 <?php echo $pagination ?>

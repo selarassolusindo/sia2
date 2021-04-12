@@ -10,6 +10,8 @@ class T30_tamu extends CI_Controller
         parent::__construct();
         $this->load->model('T30_tamu_model');
         $this->load->library('form_validation');
+
+        $this->load->model('t02_top/T02_top_model');
     }
 
     public function index()
@@ -41,7 +43,7 @@ class T30_tamu extends CI_Controller
             'start' => $start,
         );
         $data['_view'] = 't30_tamu/t30_tamu_list';
-        $data['_caption'] = 'Input Tamu';
+        $data['_caption'] = 'Data Tamu';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -94,7 +96,7 @@ class T30_tamu extends CI_Controller
 			'Remarks' => set_value('Remarks'),
 		);
         $data['_view'] = 't30_tamu/t30_tamu_form';
-        $data['_caption'] = 'Input Tamu';
+        $data['_caption'] = 'Data Tamu';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -149,7 +151,7 @@ class T30_tamu extends CI_Controller
 				'Remarks' => set_value('Remarks', $row->Remarks),
 			);
             $data['_view'] = 't30_tamu/t30_tamu_form';
-            $data['_caption'] = 'Input Tamu';
+            $data['_caption'] = 'Data Tamu';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -287,6 +289,134 @@ class T30_tamu extends CI_Controller
             'start' => 0
         );
         $this->load->view('t30_tamu/t30_tamu_doc',$data);
+    }
+
+    /**
+     * import file excel
+     */
+    public function import()
+    {
+        $data = array(
+            'button' => 'Proses',
+            'action' => site_url('t30_tamu/import_action'),
+		);
+        $data['_view'] = 't30_tamu/t30_tamu_import';
+        $data['_caption'] = 'Data Tamu';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
+    }
+
+    /**
+     * handling proses import
+     */
+    public function import_action()
+    {
+        include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
+
+        $config['upload_path'] = realpath('excel');
+        $config['allowed_types'] = 'xlsx|xls|csv';
+        $config['max_size'] = '10000';
+        $config['encrypt_name'] = true;
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload()) {
+            $this->session->set_flashdata('notif', '<div class="alert alert-danger"><b>Proses import data gagal !</b> ' . $this->upload->display_errors() . '</div>');
+            redirect('t30_tamu/import');
+        } else {
+            /**
+             * ambil data TOP (type of payment)
+             */
+            $dataTop = $this->T02_top_model->get_all();
+
+            $data_upload = $this->upload->data();
+
+            $excelreader = new PHPExcel_Reader_Excel2007();
+            // $format = new PHPExcel_Style_NumberFormat();
+            $loadexcel = $excelreader->load('excel/' . $data_upload['file_name']);
+            $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true, true);
+            // echo pre(dateMysql($sheet[4]['C'])); exit;
+            // echo pre($sheet); exit;
+            $data = array();
+            $dataBayar = array();
+            $startRow = 8;
+            $numRow = 1;
+
+            /**
+             * ambil paksa tripno dan triptgl
+             */
+            $TripNo  = $sheet[4]['B'];
+            $TripTgl = dateMysql($sheet[4]['C']);
+            foreach ($sheet as $row) {
+                // echo pre($row);
+                if ($numRow >= $startRow) {
+
+                    /**
+                     * simpan ke tabel tamu
+                     */
+                    $dataTamu = [
+                        'TripNo'       => $TripNo,
+                        'TripTgl'      => $TripTgl,
+                        'Name'         => $row['B'],
+                        'PackageName'  => $row['C'],
+                		'Night'        => $row['D'],
+                		'CheckIn'      => dateMysql($row['E']),
+                        'CheckOut'     => dateAdd(dateMysql($row['E']), $row['D']),
+                		'Agent'        => $row['F'],
+                		'PriceList'    => $row['G'],
+                        'FeeTaNas'     => $row['H'],
+                        'PricePay'     => $row['I'],
+                        'Remarks'      => $row['J'],
+                        'idusers'      => $this->session->userdata('user_id'),
+                    ];
+                    $this->T30_tamu_model->insert($dataTamu);
+
+                    /**
+                     * ambil idtamu
+                     */
+//                    $idtamu = $this->T30_tamu_model->getInsertId();
+
+                    /**
+                     * simpan ke tabel bayar
+                     */
+//                    $dataBayar = [
+                    //     'idtamu' => $idtamu,
+                    //     'idusers' => $this->session->userdata('user_id'),
+                    // ];
+                    // $this->T31_bayar_model->insert($dataBayar);
+
+                    /**
+                     * ambil idbayar
+                     */
+//                    $idbayar = $this->T31_bayar_model->getInsertId();
+
+                    // $chr = 84; // start kolom T, kode ascii T adalah 84
+                    // foreach($dataTop as $dTop) {
+                    //     $jumlahBayar = $row[chr($chr)];
+                    //     if ($jumlahBayar <> 0) {
+                    //         /**
+                    //          * simpan ke tabel bayar detail
+                    //          */
+                    //         $dataBayarDetail = [
+                    //             'idbayar' => $idbayar,
+                    //             'idtop' => $dTop->idtop,
+                    //             'Jumlah' => $jumlahBayar,
+                    //             'idusers' => $this->session->userdata('user_id'),
+                    //         ];
+                    //         $this->T32_bayard_model->insert($dataBayarDetail);
+                    //     }
+                    //     $chr++;
+                    // }
+
+                }
+                $numRow++;
+            }
+            // echo pre($data);
+            // $this->T30_tamu_model->insert_import($data);
+            unlink(realpath('excel/' . $data_upload['file_name']));
+
+            $this->session->set_flashdata('notif', '<div class="alert alert-success"><b>Proses import berhasil !</b> Data berhasil diimport !</div>');
+            redirect('t30_tamu');
+        }
     }
 
 }
