@@ -78,7 +78,12 @@
         	</div>
 			<div class="form-group">
             	<label for="varchar">Agent <?php echo form_error('Agent') ?></label>
-            	<input type="text" class="form-control" name="Agent" id="Agent" placeholder="Agent" value="<?php echo $Agent; ?>" />
+            	<!-- <input type="text" class="form-control" name="Agent" id="Agent" placeholder="Agent" value="<?php echo $Agent; ?>" /> -->
+                <select class="form-control" name="Agent">
+                <?php foreach($dataAgent as $dAgent) { ?>
+                    <option value="<?php echo $dAgent->Agent ?>" <?php echo $dAgent->Agent == $Agent ? 'selected' : '' ?>><?php echo $dAgent->Agent ?></option>
+                <?php } ?>
+                </select>
         	</div>
 			<div class="form-group">
             	<label for="varchar">Status <?php echo form_error('Status') ?></label>

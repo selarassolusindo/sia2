@@ -15,6 +15,7 @@ class T30_tamu extends CI_Controller
         $this->load->model('t32_bayard/T32_bayard_model');
         $this->load->model('t02_top/T02_top_model');
         $this->load->model('t01_package/T01_package_model');
+        $this->load->model('t03_agent/T03_agent_model');
     }
 
     public function index()
@@ -147,6 +148,11 @@ class T30_tamu extends CI_Controller
              */
             $dataPackage = $this->T01_package_model->get_all();
 
+            /**
+             * ambil data agent
+             */
+            $dataAgent = $this->T03_agent_model->get_all();
+
             $data = array(
                 'button' => 'Simpan',
                 'action' => site_url('t30_tamu/update_action'),
@@ -165,6 +171,7 @@ class T30_tamu extends CI_Controller
 				'DaysStay' => set_value('DaysStay', $row->DaysStay),
 				'Price' => set_value('Price', $row->Price),
                 'dataPackage' => $dataPackage,
+                'dataAgent' => $dataAgent,
 			);
             // $this->load->view('t30_tamu/t30_tamu_form', $data);
             $data['_view'] = 't30_tamu/t30_tamu_form';
