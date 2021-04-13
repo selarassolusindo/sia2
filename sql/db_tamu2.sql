@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 10, 2021 at 09:37 PM
+-- Generation Time: Apr 14, 2021 at 05:22 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -82,14 +82,13 @@ CREATE TABLE `t02_top` (
 --
 
 INSERT INTO `t02_top` (`idtop`, `Type`, `idusers`, `created_at`, `updated_at`) VALUES
-(1, 'USD', 1, '2021-04-08 02:13:01', '2021-04-08 02:13:01'),
-(2, 'AUD', 1, '2021-04-08 02:13:11', '2021-04-08 02:13:11'),
-(3, 'PAYPAL', 1, '2021-04-08 02:13:25', '2021-04-08 02:13:25'),
-(4, 'BCA$', 1, '2021-04-08 02:13:36', '2021-04-08 02:13:36'),
-(5, 'RP', 1, '2021-04-08 02:13:46', '2021-04-08 02:13:46'),
-(6, 'CC BCA', 1, '2021-04-08 02:13:54', '2021-04-08 02:13:54'),
-(7, 'CC MDR', 1, '2021-04-08 02:14:00', '2021-04-08 02:14:00'),
-(8, 'CC BNI', 1, '2021-04-08 12:18:00', '2021-04-08 12:18:00');
+(1, 'USD', 1, '2021-04-11 09:31:01', '2021-04-11 09:31:01'),
+(2, 'AUD', 1, '2021-04-11 09:31:10', '2021-04-11 09:31:10'),
+(3, 'PAYPAL', 1, '2021-04-11 09:31:25', '2021-04-11 09:31:25'),
+(4, 'BCA$', 1, '2021-04-11 09:31:47', '2021-04-13 20:05:03'),
+(5, 'RP', 1, '2021-04-11 09:31:59', '2021-04-13 20:05:13'),
+(6, 'CC BCA', 1, '2021-04-11 09:32:13', '2021-04-13 20:05:20'),
+(7, 'CC MDR', 1, '2021-04-13 20:05:36', '2021-04-13 20:05:36');
 
 -- --------------------------------------------------------
 
@@ -127,6 +126,38 @@ CREATE TABLE `t30_tamu` (
   `idtamu` int(11) NOT NULL,
   `TripNo` varchar(10) NOT NULL,
   `TripTgl` date NOT NULL,
+  `Name` varchar(50) NOT NULL,
+  `PackageName` varchar(10) NOT NULL,
+  `Night` tinyint(4) NOT NULL,
+  `CheckIn` date NOT NULL,
+  `CheckOut` date NOT NULL,
+  `Agent` varchar(50) NOT NULL,
+  `PriceList` double NOT NULL,
+  `FeeTanas` double NOT NULL,
+  `PricePay` double NOT NULL,
+  `Remarks` text NOT NULL,
+  `idusers` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `t30_tamu`
+--
+
+INSERT INTO `t30_tamu` (`idtamu`, `TripNo`, `TripTgl`, `Name`, `PackageName`, `Night`, `CheckIn`, `CheckOut`, `Agent`, `PriceList`, `FeeTanas`, `PricePay`, `Remarks`, `idusers`, `created_at`, `updated_at`) VALUES
+(1, 'T-45', '2021-04-12', 'GERALDINE', 'VIP', 3, '2021-04-12', '2021-04-15', 'NICK CHONG', 1000, 1000, 1000, '.', 1, '2021-04-13 20:07:07', '2021-04-13 20:07:07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t30_tamu_old`
+--
+
+CREATE TABLE `t30_tamu_old` (
+  `idtamu` int(11) NOT NULL,
+  `TripNo` varchar(10) NOT NULL,
+  `TripTgl` date NOT NULL,
   `Nama` varchar(100) NOT NULL,
   `Facility` varchar(25) NOT NULL,
   `MFC` varchar(1) NOT NULL,
@@ -140,22 +171,21 @@ CREATE TABLE `t30_tamu` (
   `Status` varchar(25) NOT NULL,
   `DaysStay` tinyint(4) NOT NULL,
   `Price` double NOT NULL DEFAULT 0,
-  `FeeTaNas` double NOT NULL,
+  `FeeTaNas` double NOT NULL DEFAULT 0,
+  `Price2` double NOT NULL DEFAULT 0,
+  `Remarks` text NOT NULL DEFAULT '-',
   `idusers` tinyint(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `t30_tamu`
+-- Dumping data for table `t30_tamu_old`
 --
 
-INSERT INTO `t30_tamu` (`idtamu`, `TripNo`, `TripTgl`, `Nama`, `Facility`, `MFC`, `Country`, `IDNo`, `PackageNight`, `PackageType`, `CheckIn`, `CheckOut`, `Agent`, `Status`, `DaysStay`, `Price`, `FeeTaNas`, `idusers`, `created_at`, `updated_at`) VALUES
-(1, 'T-43', '2020-12-26', 'Maulana', '', 'F', 'ID', '', '9N', 'SUP', '2020-12-26', '2020-12-26', 'WS', '1', 6, 8000700, 0, 1, '2021-04-08 03:44:11', '2021-04-08 03:44:11'),
-(2, 'T-43', '2020-12-26', 'Nani', '', 'F', 'ID', '', '6N', 'SUP', '2020-12-26', '2020-12-26', 'WS', '1', 3, 9000800, 0, 1, '2021-04-08 03:44:11', '2021-04-08 03:44:11'),
-(3, 'T-43', '2020-12-26', 'Ombudsman', '', 'F', 'ID', '', '3N', 'SUP', '2020-12-26', '2020-12-26', 'WS', '1', 3, 10000900, 0, 1, '2021-04-08 03:44:11', '2021-04-08 03:44:11'),
-(4, 'T-44', '2021-04-04', 'Meilani', '', 'F', 'ID', '', '9N', 'SUP', '2021-04-04', '2021-04-13', 'WS', '1', 9, 10000800, 0, 1, '2021-04-08 03:59:15', '2021-04-08 03:59:15'),
-(5, 'T-44', '2021-04-04', 'Nina', '', 'F', 'ID', '', '6N', 'SUP', '2021-04-04', '2021-04-10', 'WS', '1', 6, 7000600, 0, 1, '2021-04-08 03:59:15', '2021-04-08 03:59:15');
+INSERT INTO `t30_tamu_old` (`idtamu`, `TripNo`, `TripTgl`, `Nama`, `Facility`, `MFC`, `Country`, `IDNo`, `PackageNight`, `PackageType`, `CheckIn`, `CheckOut`, `Agent`, `Status`, `DaysStay`, `Price`, `FeeTaNas`, `Price2`, `Remarks`, `idusers`, `created_at`, `updated_at`) VALUES
+(1, 'T-38', '2019-07-19', 'ANTHONY PARIS', 'AC', 'M', 'OZ', '3515112412740001', '6N', 'SUP', '2019-07-19', '2019-07-25', 'Fotografer', '', 6, 0, 0, 0, '.', 1, '2021-04-11 15:17:31', '2021-04-11 15:17:31'),
+(2, 'T-45', '2021-04-11', 'GERALDINE', 'AC', 'F', 'OZ', '3515112412740001', '3N', 'VIP', '2021-04-11', '2021-04-14', 'Fotografer', '', 3, 0, 0, 0, '.', 1, '2021-04-11 15:17:52', '2021-04-11 15:17:52');
 
 -- --------------------------------------------------------
 
@@ -165,11 +195,9 @@ INSERT INTO `t30_tamu` (`idtamu`, `TripNo`, `TripTgl`, `Nama`, `Facility`, `MFC`
 
 CREATE TABLE `t31_bayar` (
   `idbayar` int(11) NOT NULL,
-  `TripNo` varchar(10) NOT NULL,
-  `TripTgl` date NOT NULL,
-  `Total` double NOT NULL,
+  `idtamu` int(11) NOT NULL,
   `idusers` tinyint(4) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -177,8 +205,8 @@ CREATE TABLE `t31_bayar` (
 -- Dumping data for table `t31_bayar`
 --
 
-INSERT INTO `t31_bayar` (`idbayar`, `TripNo`, `TripTgl`, `Total`, `idusers`, `created_at`, `updated_at`) VALUES
-(1, 'T-43', '2020-12-26', 0, 0, '2021-04-08 10:31:53', '2021-04-09 13:49:52');
+INSERT INTO `t31_bayar` (`idbayar`, `idtamu`, `idusers`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2021-04-13 20:07:07', '2021-04-13 20:07:07');
 
 -- --------------------------------------------------------
 
@@ -189,27 +217,8 @@ INSERT INTO `t31_bayar` (`idbayar`, `TripNo`, `TripTgl`, `Total`, `idusers`, `cr
 CREATE TABLE `t32_bayard` (
   `idbayard` int(11) NOT NULL,
   `idbayar` int(11) NOT NULL,
-  `tamu` int(11) NOT NULL,
-  `pt_ci` int(4) NOT NULL,
-  `kurs_usd_ci` double NOT NULL DEFAULT 0,
-  `kurs_aud_ci` double NOT NULL DEFAULT 0,
-  `usd_ci` double NOT NULL DEFAULT 0,
-  `aud_ci` double NOT NULL DEFAULT 0,
-  `paypal_ci` double NOT NULL DEFAULT 0,
-  `bca_d_ci` double NOT NULL DEFAULT 0,
-  `rp_ci` double NOT NULL DEFAULT 0,
-  `cc_bca_ci` double NOT NULL DEFAULT 0,
-  `cc_mdr_ci` double NOT NULL DEFAULT 0,
-  `tot_rp_ci` double NOT NULL DEFAULT 0,
-  `slsh_ci` double NOT NULL DEFAULT 0,
-  `slsh_blm_ci` double NOT NULL DEFAULT 0,
-  `slsh_krg_ci` double NOT NULL DEFAULT 0,
-  `slsh_disc_ci` double NOT NULL DEFAULT 0,
-  `slsh_chrg_ci` double NOT NULL DEFAULT 0,
-  `slsh_kurs_ci` double NOT NULL DEFAULT 0,
-  `sha_inc_piw` double NOT NULL DEFAULT 0,
-  `sha_inc_ssw` double NOT NULL DEFAULT 0,
-  `paid_by` int(11) NOT NULL,
+  `idtop` int(11) NOT NULL,
+  `Jumlah` int(11) NOT NULL,
   `idusers` tinyint(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -219,33 +228,8 @@ CREATE TABLE `t32_bayard` (
 -- Dumping data for table `t32_bayard`
 --
 
-INSERT INTO `t32_bayard` (`idbayard`, `idbayar`, `tamu`, `pt_ci`, `kurs_usd_ci`, `kurs_aud_ci`, `usd_ci`, `aud_ci`, `paypal_ci`, `bca_d_ci`, `rp_ci`, `cc_bca_ci`, `cc_mdr_ci`, `tot_rp_ci`, `slsh_ci`, `slsh_blm_ci`, `slsh_krg_ci`, `slsh_disc_ci`, `slsh_chrg_ci`, `slsh_kurs_ci`, `sha_inc_piw`, `sha_inc_ssw`, `paid_by`, `idusers`, `created_at`, `updated_at`) VALUES
-(7, 1, 1, 4, 13800, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '2021-04-08 10:57:37', '2021-04-09 13:49:52'),
-(8, 1, 2, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2021-04-08 10:57:37', '2021-04-09 10:55:55'),
-(9, 1, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '2021-04-08 10:57:37', '2021-04-09 10:55:55');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `t33_bayard2`
---
-
-CREATE TABLE `t33_bayard2` (
-  `idbayard2` int(11) NOT NULL,
-  `idbayard` int(11) NOT NULL,
-  `idtop` tinyint(4) NOT NULL,
-  `Jumlah` double NOT NULL,
-  `idusers` tinyint(4) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `t33_bayard2`
---
-
-INSERT INTO `t33_bayard2` (`idbayard2`, `idbayard`, `idtop`, `Jumlah`, `idusers`, `created_at`, `updated_at`) VALUES
-(3, 9, 2, 1250, 1, '2021-04-09 10:56:10', '2021-04-09 10:56:10');
+INSERT INTO `t32_bayard` (`idbayard`, `idbayar`, `idtop`, `Jumlah`, `idusers`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 1000, 1, '2021-04-13 20:07:07', '2021-04-13 20:07:07');
 
 --
 -- Indexes for dumped tables
@@ -276,6 +260,12 @@ ALTER TABLE `t30_tamu`
   ADD PRIMARY KEY (`idtamu`);
 
 --
+-- Indexes for table `t30_tamu_old`
+--
+ALTER TABLE `t30_tamu_old`
+  ADD PRIMARY KEY (`idtamu`);
+
+--
 -- Indexes for table `t31_bayar`
 --
 ALTER TABLE `t31_bayar`
@@ -286,12 +276,6 @@ ALTER TABLE `t31_bayar`
 --
 ALTER TABLE `t32_bayard`
   ADD PRIMARY KEY (`idbayard`);
-
---
--- Indexes for table `t33_bayard2`
---
-ALTER TABLE `t33_bayard2`
-  ADD PRIMARY KEY (`idbayard2`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -307,7 +291,7 @@ ALTER TABLE `t01_package`
 -- AUTO_INCREMENT for table `t02_top`
 --
 ALTER TABLE `t02_top`
-  MODIFY `idtop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idtop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `t03_agent`
@@ -319,7 +303,13 @@ ALTER TABLE `t03_agent`
 -- AUTO_INCREMENT for table `t30_tamu`
 --
 ALTER TABLE `t30_tamu`
-  MODIFY `idtamu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idtamu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `t30_tamu_old`
+--
+ALTER TABLE `t30_tamu_old`
+  MODIFY `idtamu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `t31_bayar`
@@ -331,13 +321,7 @@ ALTER TABLE `t31_bayar`
 -- AUTO_INCREMENT for table `t32_bayard`
 --
 ALTER TABLE `t32_bayard`
-  MODIFY `idbayard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT for table `t33_bayard2`
---
-ALTER TABLE `t33_bayard2`
-  MODIFY `idbayard2` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idbayard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
