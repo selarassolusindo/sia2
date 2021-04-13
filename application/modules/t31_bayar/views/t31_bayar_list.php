@@ -65,9 +65,15 @@
             if ($cetakHeader == 1) {
                 $cetakHeader = 0;
 
-                echo 'Trip No. <b>' . $t31_bayar->TripNo . '</b>';
-                echo ' @ ';
-                echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b>';
+                // echo 'Trip No. <b>' . $t31_bayar->TripNo . '</b>';
+                // echo ' @ ';
+                // echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b>';
+                echo '<h6>';
+                echo 'TRIP ';
+                echo 'NO. <b>' . $t31_bayar->TripNo . '</b>';
+                echo ' TGL. ';
+                echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> ';
+                echo '</h6>';
         ?>
                 <table class="table table-bordered" style="margin-bottom: 10px">
                     <tr>
@@ -84,7 +90,7 @@
         ?>
                     <tr>
         				<td width="80px"><?php echo ++$start ?></td>
-        				<td><?php echo $t31_bayar->Nama ?></td>
+        				<td><?php echo $t31_bayar->Name ?></td>
                         <!-- <td><?php echo $t31_bayar->idtop . ' - ' . $t31_bayar->Jumlah ?></td> -->
                         <?php foreach($dataTop as $dTop) { ?>
                             <?php $key = array_search($t31_bayar->idbayar.$dTop->idtop, array_column($dataBayard, 'idbayar_idtop'), true) ?>

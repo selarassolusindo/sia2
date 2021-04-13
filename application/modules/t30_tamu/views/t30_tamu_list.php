@@ -67,7 +67,8 @@
             if ($cetakHeader == 1) {
                 $cetakHeader = 0;
 
-                echo '<h6>TRIP ';
+                echo '<h6>';
+                echo 'TRIP ';
                 echo 'NO. <b>' . $t30_tamu->TripNo . '</b>';
                 echo ' TGL. ';
                 echo '<b>' . date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') . '</b> ';
