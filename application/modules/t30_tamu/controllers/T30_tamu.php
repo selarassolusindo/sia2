@@ -12,6 +12,8 @@ class T30_tamu extends CI_Controller
         $this->load->library('form_validation');
 
         $this->load->model('t02_top/T02_top_model');
+        $this->load->model('t31_bayar/T31_bayar_model');
+        $this->load->model('t32_bayard/T32_bayard_model');
     }
 
     public function index()
@@ -373,39 +375,39 @@ class T30_tamu extends CI_Controller
                     /**
                      * ambil idtamu
                      */
-//                    $idtamu = $this->T30_tamu_model->getInsertId();
+                    $idtamu = $this->T30_tamu_model->getInsertId();
 
                     /**
                      * simpan ke tabel bayar
                      */
-//                    $dataBayar = [
-                    //     'idtamu' => $idtamu,
-                    //     'idusers' => $this->session->userdata('user_id'),
-                    // ];
-                    // $this->T31_bayar_model->insert($dataBayar);
+                    $dataBayar = [
+                        'idtamu' => $idtamu,
+                        'idusers' => $this->session->userdata('user_id'),
+                    ];
+                    $this->T31_bayar_model->insert($dataBayar);
 
                     /**
                      * ambil idbayar
                      */
-//                    $idbayar = $this->T31_bayar_model->getInsertId();
+                    $idbayar = $this->T31_bayar_model->getInsertId();
 
-                    // $chr = 84; // start kolom T, kode ascii T adalah 84
-                    // foreach($dataTop as $dTop) {
-                    //     $jumlahBayar = $row[chr($chr)];
-                    //     if ($jumlahBayar <> 0) {
-                    //         /**
-                    //          * simpan ke tabel bayar detail
-                    //          */
-                    //         $dataBayarDetail = [
-                    //             'idbayar' => $idbayar,
-                    //             'idtop' => $dTop->idtop,
-                    //             'Jumlah' => $jumlahBayar,
-                    //             'idusers' => $this->session->userdata('user_id'),
-                    //         ];
-                    //         $this->T32_bayard_model->insert($dataBayarDetail);
-                    //     }
-                    //     $chr++;
-                    // }
+                    $chr = 75; // start kolom K, kode ascii K adalah 75
+                    foreach($dataTop as $dTop) {
+                        $jumlahBayar = $row[chr($chr)];
+                        if ($jumlahBayar <> 0) {
+                            /**
+                             * simpan ke tabel bayar detail
+                             */
+                            $dataBayarDetail = [
+                                'idbayar' => $idbayar,
+                                'idtop' => $dTop->idtop,
+                                'Jumlah' => $jumlahBayar,
+                                'idusers' => $this->session->userdata('user_id'),
+                            ];
+                            $this->T32_bayard_model->insert($dataBayarDetail);
+                        }
+                        $chr++;
+                    }
 
                 }
                 $numRow++;
