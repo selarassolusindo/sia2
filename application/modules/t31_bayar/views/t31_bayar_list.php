@@ -77,13 +77,13 @@
         ?>
                 <table class="table table-bordered" style="margin-bottom: 10px">
                     <tr>
-                        <th>No.</th>
-                        <th>Name</th>
+                        <th class="text-center">NO.</th>
+                        <th class="text-center">NAME</th>
                         <!-- <th>Pembayaran</th> -->
                         <?php foreach($dataTop as $dTop) { ?>
-                            <th><?php echo $dTop->Type ?></th>
+                            <th class="text-right"><?php echo $dTop->Type ?></th>
                         <?php } ?>
-                        <th class="text-center">Proses</th>
+                        <th class="text-center">PROSES</th>
                     </tr>
         <?php
             }
@@ -95,7 +95,7 @@
                         <?php foreach($dataTop as $dTop) { ?>
                             <?php $key = array_search($t31_bayar->idbayar.$dTop->idtop, array_column($dataBayard, 'idbayar_idtop'), true) ?>
                             <!-- <td><?php //echo $dTop->Type ?></td> -->
-                            <td><?= (FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0' ?></td>
+                            <td class="text-right"><?= (FALSE !== $key) ? numIndo($dataBayard[$key]->Jumlah) : '0' ?></td>
                         <?php } ?>
         				<td style="text-align:center" width="200px">
         				<?php
