@@ -83,6 +83,9 @@
                         <?php foreach($dataTop as $dTop) { ?>
                             <th class="text-right"><?php echo $dTop->Type ?></th>
                         <?php } ?>
+                        <?php foreach($dataTos as $dTos) { ?>
+                            <th class="text-right"><?php echo $dTos->Type ?></th>
+                        <?php } ?>
                         <th class="text-center">PROSES</th>
                     </tr>
         <?php
@@ -91,12 +94,22 @@
                     <tr>
         				<td width="80px"><?php echo ++$start ?></td>
         				<td><?php echo $t31_bayar->Name ?></td>
+
+                        <!-- data type of payment -->
                         <!-- <td><?php echo $t31_bayar->idtop . ' - ' . $t31_bayar->Jumlah ?></td> -->
                         <?php foreach($dataTop as $dTop) { ?>
                             <?php $key = array_search($t31_bayar->idbayar.$dTop->idtop, array_column($dataBayard, 'idbayar_idtop'), true) ?>
                             <!-- <td><?php //echo $dTop->Type ?></td> -->
                             <td class="text-right"><?= (FALSE !== $key) ? numIndo($dataBayard[$key]->Jumlah) : '0' ?></td>
                         <?php } ?>
+
+                        <!-- data type of selisih -->
+                        <?php foreach($dataTos as $dTos) { ?>
+                            <?php $key = array_search($t31_bayar->idbayar.$dTos->idtos, array_column($dataBayard, 'idbayar_idtos'), true) ?>
+                            <!-- <td><?php //echo $dTop->Type ?></td> -->
+                            <td class="text-right"><?= (FALSE !== $key) ? numIndo($dataBayars[$key]->Jumlah) : '0' ?></td>
+                        <?php } ?>
+
         				<td style="text-align:center" width="200px">
         				<?php
         				//echo anchor(site_url('t31_bayar/read/'.$t31_bayar->idbayar),'Read');

@@ -13,6 +13,7 @@ class T31_bayar extends CI_Controller
 
         $this->load->model('t02_top/T02_top_model');
         $this->load->model('t32_bayard/T32_bayard_model');
+        $this->load->model('t04_tos/T04_tos_model');
     }
 
     public function index()
@@ -46,6 +47,16 @@ class T31_bayar extends CI_Controller
          */
         $dataBayard = $this->T31_bayar_model->get_limit_data_bayard($q); //$config['per_page'], $start, $q);
 
+        /**
+         * ambil data tos (type of selisih)
+         */
+        $dataTos = $this->T04_tos_model->get_all();
+
+        /**
+         * ambil data detail selisih
+         */
+        $dataBayars = $this->T31_bayar_model->get_limit_data_bayars($q); //$config['per_page'], $start, $q);
+
         // echo pre($t31_bayar);
         // echo pre($dataBayard);
 
@@ -57,6 +68,8 @@ class T31_bayar extends CI_Controller
             'start' => $start,
             'dataTop' => $dataTop,
             'dataBayard' => $dataBayard,
+            'dataTos' => $dataTos,
+            'dataBayars' => $dataBayars,
         );
         // $this->load->view('t31_bayar/t31_bayar_list', $data);
         $data['_view'] = 't31_bayar/t31_bayar_list';

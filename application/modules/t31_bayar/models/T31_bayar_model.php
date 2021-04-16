@@ -59,7 +59,6 @@ class T31_bayar_model extends CI_Model
     /**
      * ambil data tamu sesuai trip plus data detail pembayaran
      */
-    // function get_limit_data_bayard($limit, $start = 0, $q = NULL) {
     function get_limit_data_bayard($q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('t30_tamu.Name');
@@ -72,6 +71,24 @@ class T31_bayar_model extends CI_Model
         $this->db->from($this->table);
         $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');
         $this->db->join('t32_bayard', 't32_bayard.idbayar = '.$this->table.'.idbayar');
+        return $this->db->get()->result();
+    }
+
+    /**
+     * ambil data tamu sesuai trip plus data detail pembayaran
+     */
+    function get_limit_data_bayars($q = NULL) {
+        $this->db->order_by($this->id, $this->order);
+        $this->db->like('t30_tamu.Name');
+        $this->db->or_like('t30_tamu.TripNo');
+        $this->db->or_like('t30_tamu.TripTgl');
+        $this->db->limit($limit, $start);
+        $this->db->select($this->table.'.*');
+        $this->db->select('t30_tamu.TripNo, t30_tamu.TripTgl, t30_tamu.Name');
+        $this->db->select('t33_bayars.idtos, t33_bayars.Jumlah, concat(t33_bayars.idbayar, t33_bayars.idtos) as idbayar_idtos');
+        $this->db->from($this->table);
+        $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');
+        $this->db->join('t33_bayars', 't33_bayars.idbayar = '.$this->table.'.idbayar');
         return $this->db->get()->result();
     }
 
