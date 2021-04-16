@@ -102,8 +102,8 @@
         				//echo anchor(site_url('t31_bayar/read/'.$t31_bayar->idbayar),'Read');
         				//echo ' | ';
         				echo anchor(site_url('t31_bayar/update/'.$t31_bayar->idbayar),'Ubah');
-        				echo ' | ';
-        				echo anchor(site_url('t31_bayar/delete/'.$t31_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
+        				// echo ' | ';
+        				// echo anchor(site_url('t31_bayar/delete/'.$t31_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
         				?>
         				</td>
         			</tr>
