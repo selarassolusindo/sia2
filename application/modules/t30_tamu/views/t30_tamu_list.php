@@ -110,8 +110,8 @@
 				<td><?php echo $t30_tamu->Name ?></td>
 				<td class="text-center"><?php echo $t30_tamu->PackageName ?></td>
 				<td class="text-center"><?php echo $t30_tamu->Night ?></td>
-				<td><?php echo dateIndo($t30_tamu->CheckIn) ?></td>
-				<td><?php echo dateIndo($t30_tamu->CheckOut) ?></td>
+				<td class="text-center"><?php echo dateIndo($t30_tamu->CheckIn) ?></td>
+				<td class="text-center"><?php echo dateIndo($t30_tamu->CheckOut) ?></td>
 				<td><?php echo $t30_tamu->Agent ?></td>
 				<td class="text-right"><?php echo numIndo($t30_tamu->PriceList) ?></td>
 				<td class="text-right"><?php echo numIndo($t30_tamu->FeeTanas) ?></td>
