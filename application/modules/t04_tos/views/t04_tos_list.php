@@ -1,4 +1,4 @@
-<!doctype html>
+<!-- <!doctype html>
 <html>
     <head>
         <title>harviacode.com - codeigniter crud generator</title>
@@ -10,7 +10,7 @@
         </style>
     </head>
     <body>
-        <h2 style="margin-top:0px">T04_tos List</h2>
+        <h2 style="margin-top:0px">T04_tos List</h2> -->
         <div class="row" style="margin-bottom: 10px">
             <div class="col-md-4">
                 <?php echo anchor(site_url('t04_tos/create'),'Tambah', 'class="btn btn-primary"'); ?>
@@ -45,25 +45,19 @@
             <tr>
                 <th>No.</th>
 				<th>Type</th>
-				<th>Idusers</th>
-				<th>Created At</th>
-				<th>Updated At</th>
 				<th class="text-center">Proses</th>
             </tr>
 			<?php foreach ($t04_tos_data as $t04_tos) { ?>
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
 				<td><?php echo $t04_tos->Type ?></td>
-				<td><?php echo $t04_tos->idusers ?></td>
-				<td><?php echo $t04_tos->created_at ?></td>
-				<td><?php echo $t04_tos->updated_at ?></td>
 				<td style="text-align:center" width="200px">
-				<?php 
-				//echo anchor(site_url('t04_tos/read/'.$t04_tos->idtos),'Read'); 
-				//echo ' | '; 
-				echo anchor(site_url('t04_tos/update/'.$t04_tos->idtos),'Ubah'); 
-				echo ' | '; 
-				echo anchor(site_url('t04_tos/delete/'.$t04_tos->idtos),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"'); 
+				<?php
+				//echo anchor(site_url('t04_tos/read/'.$t04_tos->idtos),'Read');
+				//echo ' | ';
+				echo anchor(site_url('t04_tos/update/'.$t04_tos->idtos),'Ubah');
+				echo ' | ';
+				echo anchor(site_url('t04_tos/delete/'.$t04_tos->idtos),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
 				?>
 				</td>
 			</tr>
@@ -79,5 +73,5 @@
                 <?php echo $pagination ?>
             </div>
         </div>
-    </body>
-</html>
+    <!-- </body>
+</html> -->

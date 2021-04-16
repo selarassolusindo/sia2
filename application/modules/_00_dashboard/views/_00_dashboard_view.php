@@ -227,6 +227,7 @@
                                     case 't01_package':
                                     case 't02_top':
                                     case 't03_agent':
+                                    case 't04_tos':
                                         echo 'menu-open';
                                         break;
                                     default:
@@ -245,6 +246,7 @@
                                         case 't01_package':
                                         case 't02_top':
                                         case 't03_agent':
+                                        case 't04_tos':
                                             echo 'active';
                                             break;
                                         default:
@@ -313,6 +315,14 @@
                                         <a href="<?php echo site_url(); ?>t02_top" class="nav-link <?php echo $this->uri->segment(1) == 't02_top' ? 'active' : ''; ?>">
                                             <i class="far fa-window-restore nav-icon"></i>
                                             <p>Jenis Pembayaran</p>
+                                        </a>
+                                    </li>
+
+                                    <!-- jenis selisih -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t04_tos" class="nav-link <?php echo $this->uri->segment(1) == 't04_tos' ? 'active' : ''; ?>">
+                                            <i class="far fa-window-restore nav-icon"></i>
+                                            <p>Jenis Selisih</p>
                                         </a>
                                     </li>
 

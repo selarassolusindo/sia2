@@ -40,7 +40,10 @@ class T04_tos extends CI_Controller
             'total_rows' => $config['total_rows'],
             'start' => $start,
         );
-        $this->load->view('t04_tos/t04_tos_list', $data);
+        // $this->load->view('t04_tos/t04_tos_list', $data);
+        $data['_view'] = 't04_tos/t04_tos_list';
+        $data['_caption'] = 'Jenis Selisih';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
     public function read($id)
@@ -68,11 +71,11 @@ class T04_tos extends CI_Controller
             'action' => site_url('t04_tos/create_action'),
 			'idtos' => set_value('idtos'),
 			'Type' => set_value('Type'),
-			'idusers' => set_value('idusers'),
-			'created_at' => set_value('created_at'),
-			'updated_at' => set_value('updated_at'),
 		);
-        $this->load->view('t04_tos/t04_tos_form', $data);
+        // $this->load->view('t04_tos/t04_tos_form', $data);
+        $data['_view'] = 't04_tos/t04_tos_form';
+        $data['_caption'] = 'Jenis Selisih';
+        $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
     public function create_action()
@@ -84,9 +87,7 @@ class T04_tos extends CI_Controller
         } else {
             $data = array(
 				'Type' => $this->input->post('Type',TRUE),
-				'idusers' => $this->input->post('idusers',TRUE),
-				'created_at' => $this->input->post('created_at',TRUE),
-				'updated_at' => $this->input->post('updated_at',TRUE),
+				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T04_tos_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
@@ -104,11 +105,11 @@ class T04_tos extends CI_Controller
                 'action' => site_url('t04_tos/update_action'),
 				'idtos' => set_value('idtos', $row->idtos),
 				'Type' => set_value('Type', $row->Type),
-				'idusers' => set_value('idusers', $row->idusers),
-				'created_at' => set_value('created_at', $row->created_at),
-				'updated_at' => set_value('updated_at', $row->updated_at),
 			);
-            $this->load->view('t04_tos/t04_tos_form', $data);
+            // $this->load->view('t04_tos/t04_tos_form', $data);
+            $data['_view'] = 't04_tos/t04_tos_form';
+            $data['_caption'] = 'Jenis Selisih';
+            $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('t04_tos'));
@@ -124,9 +125,7 @@ class T04_tos extends CI_Controller
         } else {
             $data = array(
 				'Type' => $this->input->post('Type',TRUE),
-				'idusers' => $this->input->post('idusers',TRUE),
-				'created_at' => $this->input->post('created_at',TRUE),
-				'updated_at' => $this->input->post('updated_at',TRUE),
+				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T04_tos_model->update($this->input->post('idtos', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
@@ -151,9 +150,6 @@ class T04_tos extends CI_Controller
     public function _rules()
     {
 		$this->form_validation->set_rules('Type', 'type', 'trim|required');
-		$this->form_validation->set_rules('idusers', 'idusers', 'trim|required');
-		$this->form_validation->set_rules('created_at', 'created at', 'trim|required');
-		$this->form_validation->set_rules('updated_at', 'updated at', 'trim|required');
 		$this->form_validation->set_rules('idtos', 'idtos', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
