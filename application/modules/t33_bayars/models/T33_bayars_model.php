@@ -77,6 +77,38 @@ class T33_bayars_model extends CI_Model
         $this->db->delete($this->table);
     }
 
+    /**
+     * ambil data pembayaran selisih berdasarkan idbayar
+     */
+    function getDataByIdbayar($idbayar)
+    {
+        $this->db->where('idbayar', $idbayar);
+        $this->db->order_by('idtos', 'ASC');
+        return $this->db->get($this->table)->result();
+    }
+
+    /**
+     * hapus data berdasarkan Trip No.
+     */
+    function deleteTripNo($TripNo)
+    {
+        $q = "
+        delete
+        from
+            t33_bayars
+        where
+            idbayar in (
+                select
+                    idbayar
+                from
+                    t31_bayar
+                where
+                    idtamu in (select idtamu from t30_tamu where TripNo = '".$TripNo."')
+                    )
+        ";
+        $this->db->query($q);
+    }
+
 }
 
 /* End of file T33_bayars_model.php */

@@ -195,6 +195,12 @@ class T30_tamu extends CI_Controller
         $row = $this->T30_tamu_model->get_by_TripNo($TripNo);
 
         if ($row) {
+
+            /**
+             * hapus data detail pembayaran selisih
+             */
+            $this->T33_bayars_model->deleteTripNo($TripNo);
+
             /**
              * hapus data detail pembayaran
              */
