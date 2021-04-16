@@ -13,13 +13,13 @@
         <h2 style="margin-top:0px">T30_tamu <?php echo $button ?></h2> -->
         <form action="<?php echo $action; ?>" method="post">
 			<div class="form-group">
-            	<label for="varchar">TripNo <?php echo form_error('TripNo') ?></label>
+            	<label for="varchar">Trip No. <?php echo form_error('TripNo') ?></label>
             	<input type="text" class="form-control" name="TripNo" id="TripNo" placeholder="TripNo" value="<?php echo $TripNo; ?>" />
         	</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
             	<label for="date">TripTgl <?php echo form_error('TripTgl') ?></label>
             	<input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" />
-        	</div>
+        	</div> -->
             <div class="form-group col-2">
             	<label for="date">Trip Tgl. <?php echo form_error('TripTgl') ?></label>
             	<!-- <input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" /> -->
@@ -35,20 +35,30 @@
             	<input type="text" class="form-control" name="Name" id="Name" placeholder="Name" value="<?php echo $Name; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="varchar">PackageName <?php echo form_error('PackageName') ?></label>
+            	<label for="varchar">Package Name <?php echo form_error('PackageName') ?></label>
             	<input type="text" class="form-control" name="PackageName" id="PackageName" placeholder="PackageName" value="<?php echo $PackageName; ?>" />
         	</div>
 			<div class="form-group">
-            	<label for="tinyint">Night <?php echo form_error('Night') ?></label>
+            	<label for="tinyint">Package Night <?php echo form_error('Night') ?></label>
             	<input type="text" class="form-control" name="Night" id="Night" placeholder="Night" value="<?php echo $Night; ?>" />
         	</div>
-			<div class="form-group">
+			<!-- <div class="form-group">
             	<label for="date">CheckIn <?php echo form_error('CheckIn') ?></label>
             	<input type="text" class="form-control" name="CheckIn" id="CheckIn" placeholder="CheckIn" value="<?php echo $CheckIn; ?>" />
+        	</div> -->
+            <div class="form-group col-2">
+            	<label for="date">Check-In <?php echo form_error('CheckIn') ?></label>
+            	<!-- <input type="text" class="form-control" name="CheckIn" id="CheckIn" placeholder="CheckIn" value="<?php echo $CheckIn; ?>" /> -->
+                <div class="input-group date" id="CheckIn" data-target-input="nearest">
+                    <div class="input-group-append" data-target="#CheckIn" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                    <input placeholder="Check-In" type="text" name="CheckIn" value="<?php echo $CheckIn; ?>" class="form-control datetimepicker-input" data-target="#CheckIn"/>
+                </div>
         	</div>
 			<div class="form-group">
             	<label for="date">CheckOut <?php echo form_error('CheckOut') ?></label>
-            	<input type="text" class="form-control" name="CheckOut" id="CheckOut" placeholder="CheckOut" value="<?php echo $CheckOut; ?>" />
+            	<input readonly type="text" class="form-control" name="CheckOut" id="CheckOut" placeholder="CheckOut" value="<?php echo $CheckOut; ?>" />
         	</div>
 			<div class="form-group">
             	<label for="varchar">Agent <?php echo form_error('Agent') ?></label>
