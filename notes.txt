@@ -1,0 +1,10 @@
+12:43 AM 4/17/2021
+- buat tabel baru, yaitu t04_tos -> type of selisih
+- struktur tabel sama dengan t02_top -> type of payment
+- maksud dari t04_tos adalah sebagai komponen dari SELISIH, antara lain :
+  - BELUM BAYAR
+  - KURANG BAYAR
+  - DISCOUNT
+  - CHARGE CC
+  - SELISIH KURS
+
