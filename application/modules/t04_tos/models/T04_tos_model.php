@@ -8,7 +8,7 @@ class T04_tos_model extends CI_Model
 
     public $table = 't04_tos';
     public $id = 'idtos';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
