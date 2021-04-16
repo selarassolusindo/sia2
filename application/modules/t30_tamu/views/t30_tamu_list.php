@@ -86,21 +86,21 @@
                 </table> -->
                 <table class="table table-bordered" style="margin-bottom: 10px">
                     <tr>
-                        <th rowspan="2">NO.</th>
-        				<th rowspan="2">NAME</th>
-        				<th colspan="4">PACKAGE</th>
-                        <th rowspan="2">AGENT</th>
-                        <th rowspan="2">PRICE LIST</th>
-        				<th rowspan="2">FEE TANAS</th>
-        				<th rowspan="2">PRICE TO PAY</th>
-        				<th rowspan="2">REMARKS</th>
+                        <th rowspan="2" class="text-center">NO.</th>
+        				<th rowspan="2" class="text-center">NAME</th>
+        				<th colspan="4" class="text-center">PACKAGE</th>
+                        <th rowspan="2" class="text-center">AGENT</th>
+                        <th rowspan="2" class="text-center">PRICE LIST</th>
+        				<th rowspan="2" class="text-center">FEE TANAS</th>
+        				<th rowspan="2" class="text-center">PRICE TO PAY</th>
+        				<th rowspan="2" class="text-center">REMARKS</th>
         				<th rowspan="2" class="text-center">PROSES</th>
                     </tr>
                     <tr>
-        				<th>NAME</th>
-                        <th>NIGHT</th>
-        				<th>CHECK IN</th>
-        				<th>CHECK OUT</th>
+        				<th class="text-center">NAME</th>
+                        <th class="text-center">NIGHT</th>
+        				<th class="text-center">CHECK IN</th>
+        				<th class="text-center">CHECK OUT</th>
                     </tr>
         <?php
             }
@@ -108,14 +108,14 @@
             <tr>
 				<td><?php echo ++$start ?></td>
 				<td><?php echo $t30_tamu->Name ?></td>
-				<td><?php echo $t30_tamu->PackageName ?></td>
-				<td><?php echo $t30_tamu->Night ?></td>
+				<td class="text-center"><?php echo $t30_tamu->PackageName ?></td>
+				<td class="text-center"><?php echo $t30_tamu->Night ?></td>
 				<td><?php echo dateIndo($t30_tamu->CheckIn) ?></td>
 				<td><?php echo dateIndo($t30_tamu->CheckOut) ?></td>
 				<td><?php echo $t30_tamu->Agent ?></td>
-				<td><?php echo $t30_tamu->PriceList ?></td>
-				<td><?php echo $t30_tamu->FeeTanas ?></td>
-				<td><?php echo $t30_tamu->PricePay ?></td>
+				<td class="text-right"><?php echo numIndo($t30_tamu->PriceList) ?></td>
+				<td class="text-right"><?php echo numIndo($t30_tamu->FeeTanas) ?></td>
+				<td class="text-right"><?php echo numIndo($t30_tamu->PricePay) ?></td>
 				<td><?php echo $t30_tamu->Remarks ?></td>
 				<td style="text-align:center">
 				<?php
