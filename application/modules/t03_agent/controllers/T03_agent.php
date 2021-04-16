@@ -42,7 +42,7 @@ class T03_agent extends CI_Controller
         );
         // $this->load->view('t03_agent/t03_agent_list', $data);
         $data['_view'] = 't03_agent/t03_agent_list';
-        $data['_caption'] = 'Agent';
+        $data['_caption'] = 'Data Agent';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -77,7 +77,7 @@ class T03_agent extends CI_Controller
 		);
         // $this->load->view('t03_agent/t03_agent_form', $data);
         $data['_view'] = 't03_agent/t03_agent_form';
-        $data['_caption'] = 'Agent';
+        $data['_caption'] = 'Data Agent';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -116,7 +116,7 @@ class T03_agent extends CI_Controller
 			);
             // $this->load->view('t03_agent/t03_agent_form', $data);
             $data['_view'] = 't03_agent/t03_agent_form';
-            $data['_caption'] = 'Agent';
+            $data['_caption'] = 'Data Agent';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

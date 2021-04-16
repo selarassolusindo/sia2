@@ -42,7 +42,7 @@ class T04_tos extends CI_Controller
         );
         // $this->load->view('t04_tos/t04_tos_list', $data);
         $data['_view'] = 't04_tos/t04_tos_list';
-        $data['_caption'] = 'Jenis Selisih';
+        $data['_caption'] = 'Data Jenis Selisih';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -74,7 +74,7 @@ class T04_tos extends CI_Controller
 		);
         // $this->load->view('t04_tos/t04_tos_form', $data);
         $data['_view'] = 't04_tos/t04_tos_form';
-        $data['_caption'] = 'Jenis Selisih';
+        $data['_caption'] = 'Data Jenis Selisih';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -108,7 +108,7 @@ class T04_tos extends CI_Controller
 			);
             // $this->load->view('t04_tos/t04_tos_form', $data);
             $data['_view'] = 't04_tos/t04_tos_form';
-            $data['_caption'] = 'Jenis Selisih';
+            $data['_caption'] = 'Data Jenis Selisih';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

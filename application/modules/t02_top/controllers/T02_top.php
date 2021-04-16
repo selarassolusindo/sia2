@@ -42,7 +42,7 @@ class T02_top extends CI_Controller
         );
         // $this->load->view('t02_top/t02_top_list', $data);
         $data['_view'] = 't02_top/t02_top_list';
-        $data['_caption'] = 'Jenis Pembayaran';
+        $data['_caption'] = 'Data Jenis Pembayaran';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -77,7 +77,7 @@ class T02_top extends CI_Controller
 		);
         // $this->load->view('t02_top/t02_top_form', $data);
         $data['_view'] = 't02_top/t02_top_form';
-        $data['_caption'] = 'Jenis Pembayaran';
+        $data['_caption'] = 'Data Jenis Pembayaran';
         $this->load->view('_00_dashboard/_00_dashboard_view', $data);
     }
 
@@ -116,7 +116,7 @@ class T02_top extends CI_Controller
 			);
             // $this->load->view('t02_top/t02_top_form', $data);
             $data['_view'] = 't02_top/t02_top_form';
-            $data['_caption'] = 'Jenis Pembayaran';
+            $data['_caption'] = 'Data Jenis Pembayaran';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
