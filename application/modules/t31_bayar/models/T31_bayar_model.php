@@ -59,7 +59,8 @@ class T31_bayar_model extends CI_Model
     /**
      * ambil data tamu sesuai trip plus data detail pembayaran
      */
-    function get_limit_data_bayard($limit, $start = 0, $q = NULL) {
+    // function get_limit_data_bayard($limit, $start = 0, $q = NULL) {
+    function get_limit_data_bayard($q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('t30_tamu.Name');
         $this->db->or_like('t30_tamu.TripNo');

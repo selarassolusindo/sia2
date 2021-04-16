@@ -44,7 +44,7 @@ class T31_bayar extends CI_Controller
         /**
          * ambil data detail pembayaran
          */
-        $dataBayard = $this->T31_bayar_model->get_limit_data_bayard($config['per_page'], $start, $q);
+        $dataBayard = $this->T31_bayar_model->get_limit_data_bayard($q); //$config['per_page'], $start, $q);
 
         // echo pre($t31_bayar);
         // echo pre($dataBayard);
