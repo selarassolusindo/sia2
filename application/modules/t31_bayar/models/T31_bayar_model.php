@@ -8,7 +8,7 @@ class T31_bayar_model extends CI_Model
 
     public $table = 't31_bayar';
     public $id = 'idbayar';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {

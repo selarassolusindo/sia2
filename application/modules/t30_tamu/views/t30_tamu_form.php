@@ -20,6 +20,16 @@
             	<label for="date">TripTgl <?php echo form_error('TripTgl') ?></label>
             	<input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" />
         	</div>
+            <div class="form-group col-2">
+            	<label for="date">Trip Tgl. <?php echo form_error('TripTgl') ?></label>
+            	<!-- <input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" /> -->
+                <div class="input-group date" id="TripTgl" data-target-input="nearest">
+                    <div class="input-group-append" data-target="#TripTgl" data-toggle="datetimepicker">
+                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                    </div>
+                    <input placeholder="Trip Tgl." type="text" name="TripTgl" value="<?php echo $TripTgl; ?>" class="form-control datetimepicker-input" data-target="#TripTgl"/>
+                </div>
+        	</div>
 			<div class="form-group">
             	<label for="varchar">Name <?php echo form_error('Name') ?></label>
             	<input type="text" class="form-control" name="Name" id="Name" placeholder="Name" value="<?php echo $Name; ?>" />
@@ -64,5 +74,26 @@
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
 			<a href="<?php echo site_url('t30_tamu') ?>" class="btn btn-secondary">Batal</a>
 		</form>
+
+        <script>
+            $(document).ready(function () {
+                //Date range picker
+                $('#TripTgl').datetimepicker({
+                    format: 'DD-MM-YYYY'
+                });
+                $('#CheckIn').datetimepicker({
+                    format: 'DD-MM-YYYY'
+                });
+                $('#CheckOut').datetimepicker({
+                    format: 'DD-MM-YYYY'
+                });
+            })
+            // $(function () {
+            //     //Date range picker
+            //     $('#reservationdate').datetimepicker({
+            //         format: 'DD-MM-YYYY'
+            //     })
+            // })
+        </script>
     <!-- </body>
 </html> -->
