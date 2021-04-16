@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 16, 2021 at 08:01 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 7.4.15
+-- Generation Time: Apr 17, 2021 at 04:42 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -130,6 +130,17 @@ CREATE TABLE `t04_tos` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `t04_tos`
+--
+
+INSERT INTO `t04_tos` (`idtos`, `Type`, `idusers`, `created_at`, `updated_at`) VALUES
+(1, 'BELUM BAYAR', 1, '2021-04-16 18:14:00', '2021-04-16 18:14:00'),
+(2, 'KURANG BAYAR', 1, '2021-04-16 18:14:06', '2021-04-16 18:14:06'),
+(3, 'DISCOUNT', 1, '2021-04-16 18:14:13', '2021-04-16 18:14:13'),
+(4, 'CHARGE CC', 1, '2021-04-16 18:14:23', '2021-04-16 18:14:23'),
+(5, 'SELISIH KURS', 1, '2021-04-16 18:14:35', '2021-04-16 18:14:35');
+
 -- --------------------------------------------------------
 
 --
@@ -160,22 +171,22 @@ CREATE TABLE `t30_tamu` (
 --
 
 INSERT INTO `t30_tamu` (`idtamu`, `TripNo`, `TripTgl`, `Name`, `PackageName`, `Night`, `CheckIn`, `CheckOut`, `Agent`, `PriceList`, `FeeTanas`, `PricePay`, `Remarks`, `idusers`, `created_at`, `updated_at`) VALUES
-(1, 'T-03', '2020-02-08', 'Peter Geofry ', 'SUP', 3, '2020-02-08', '2020-02-11', 'Direct', 725, 100, 1500000, 'AC, special price Rp500000 / night', 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(2, 'T-03', '2020-02-08', 'Todd Gisondi', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, 100, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(3, 'T-03', '2020-02-08', 'Xenia Maria', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, 100, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(4, 'T-03', '2020-02-08', 'Ace Will (4thn)', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, 100, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(5, 'T-03', '2020-02-08', 'Brad Buckle', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(6, 'T-03', '2020-02-08', 'Kiana Buckle (3 thn)', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(7, 'T-03', '2020-02-08', 'Rahma Kristin', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(8, 'T-03', '2020-02-08', 'Nick Chonge', 'SUP', 6, '2020-02-08', '2020-02-14', 'FREE', 800, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(9, 'T-03', '2020-02-08', 'Alisa Chonge (anak 6 thn)', 'SUP', 6, '2020-02-08', '2020-02-14', 'FREE', 800, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(10, 'T-03', '2020-02-08', 'Evgeni Ivkov', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(11, 'T-03', '2020-02-08', 'Salmon Aidan John', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(12, 'T-03', '2020-02-08', 'Joao Machado ', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 625, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(13, 'T-03', '2020-02-08', 'Karolina  Hajova', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 625, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(14, 'T-03', '2020-02-08', 'Svetlanna', 'SUP', 6, '2020-02-08', '2020-02-14', 'Direct', 800, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(15, 'T-03', '2020-02-08', 'Ilya Vasilyev', 'SUP', 6, '2020-02-08', '2020-02-14', 'Direct', 800, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(16, 'T-03', '2020-02-08', 'Jarrod Moore', 'SUP', 4, '2020-02-08', '2020-02-12', 'Direct', 800, NULL, NULL, NULL, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31');
+(1, 'T-03', '2020-02-08', 'Peter Geofry ', 'SUP', 3, '2020-02-08', '2020-02-11', 'Direct', 725, 100, 1500000, 'AC, special price Rp500000 / night', 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(2, 'T-03', '2020-02-08', 'Todd Gisondi', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, 100, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(3, 'T-03', '2020-02-08', 'Xenia Maria', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, 100, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(4, 'T-03', '2020-02-08', 'Ace Will (4thn)', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, 100, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(5, 'T-03', '2020-02-08', 'Brad Buckle', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(6, 'T-03', '2020-02-08', 'Kiana Buckle (3 thn)', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, 3000000, 'AC, special price Rp500000 / night', 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(7, 'T-03', '2020-02-08', 'Rahma Kristin', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(8, 'T-03', '2020-02-08', 'Nick Chonge', 'SUP', 6, '2020-02-08', '2020-02-14', 'FREE', 800, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(9, 'T-03', '2020-02-08', 'Alisa Chonge (anak 6 thn)', 'SUP', 6, '2020-02-08', '2020-02-14', 'FREE', 800, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(10, 'T-03', '2020-02-08', 'Evgeni Ivkov', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(11, 'T-03', '2020-02-08', 'Salmon Aidan John', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(12, 'T-03', '2020-02-08', 'Joao Machado ', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 625, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(13, 'T-03', '2020-02-08', 'Karolina  Hajova', 'SUP', 6, '2020-02-08', '2020-02-14', 'Nic Chong', 625, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(14, 'T-03', '2020-02-08', 'Svetlanna', 'SUP', 6, '2020-02-08', '2020-02-14', 'Direct', 800, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(15, 'T-03', '2020-02-08', 'Ilya Vasilyev', 'SUP', 6, '2020-02-08', '2020-02-14', 'Direct', 800, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(16, 'T-03', '2020-02-08', 'Jarrod Moore', 'SUP', 4, '2020-02-08', '2020-02-12', 'Direct', 800, NULL, NULL, NULL, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37');
 
 -- --------------------------------------------------------
 
@@ -196,22 +207,22 @@ CREATE TABLE `t31_bayar` (
 --
 
 INSERT INTO `t31_bayar` (`idbayar`, `idtamu`, `idusers`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(2, 2, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(3, 3, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(4, 4, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(5, 5, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(6, 6, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(7, 7, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(8, 8, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(9, 9, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(10, 10, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(11, 11, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(12, 12, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(13, 13, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(14, 14, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(15, 15, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(16, 16, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31');
+(1, 1, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(2, 2, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(3, 3, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(4, 4, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(5, 5, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(6, 6, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(7, 7, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(8, 8, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(9, 9, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(10, 10, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(11, 11, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(12, 12, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(13, 13, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(14, 14, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(15, 15, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(16, 16, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37');
 
 -- --------------------------------------------------------
 
@@ -223,7 +234,7 @@ CREATE TABLE `t32_bayard` (
   `idbayard` int(11) NOT NULL,
   `idbayar` int(11) NOT NULL,
   `idtop` int(11) NOT NULL,
-  `Jumlah` int(11) NOT NULL,
+  `Jumlah` double NOT NULL,
   `idusers` tinyint(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -234,8 +245,24 @@ CREATE TABLE `t32_bayard` (
 --
 
 INSERT INTO `t32_bayard` (`idbayard`, `idbayar`, `idtop`, `Jumlah`, `idusers`, `created_at`, `updated_at`) VALUES
-(1, 1, 5, 4500000, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31'),
-(2, 2, 5, 4500000, 1, '2021-04-16 15:47:31', '2021-04-16 15:47:31');
+(1, 1, 5, 4500000, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37'),
+(2, 2, 5, 4500000, 1, '2021-04-16 20:48:37', '2021-04-16 20:48:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t33_bayars`
+--
+
+CREATE TABLE `t33_bayars` (
+  `idbayars` int(11) NOT NULL,
+  `idbayar` int(11) NOT NULL,
+  `idtos` int(11) NOT NULL,
+  `Jumlah` double NOT NULL,
+  `idusers` tinyint(4) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -284,6 +311,12 @@ ALTER TABLE `t32_bayard`
   ADD PRIMARY KEY (`idbayard`);
 
 --
+-- Indexes for table `t33_bayars`
+--
+ALTER TABLE `t33_bayars`
+  ADD PRIMARY KEY (`idbayars`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -309,7 +342,7 @@ ALTER TABLE `t03_agent`
 -- AUTO_INCREMENT for table `t04_tos`
 --
 ALTER TABLE `t04_tos`
-  MODIFY `idtos` tinyint(4) NOT NULL AUTO_INCREMENT;
+  MODIFY `idtos` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `t30_tamu`
@@ -328,6 +361,12 @@ ALTER TABLE `t31_bayar`
 --
 ALTER TABLE `t32_bayard`
   MODIFY `idbayard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `t33_bayars`
+--
+ALTER TABLE `t33_bayars`
+  MODIFY `idbayars` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
