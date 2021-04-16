@@ -87,6 +87,28 @@ class T32_bayard_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    /**
+     * hapus data berdasarkan Trip No.
+     */
+    function deleteTripNo($TripNo)
+    {
+        $q = "
+        delete
+        from
+            t32_bayard
+        where
+            idbayar in (
+                select
+                    idbayar
+                from
+                    t31_bayar
+                where
+                    idtamu in (select idtamu from t30_tamu where TripNo = '".$TripNo."')
+                    )
+        ";
+        $this->db->query($q);
+    }
+
 }
 
 /* End of file T32_bayard_model.php */

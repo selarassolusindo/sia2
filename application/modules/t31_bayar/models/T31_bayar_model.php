@@ -101,6 +101,21 @@ class T31_bayar_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    /**
+     * hapus data berdasarkan Trip No.
+     */
+    function deleteTripNo($TripNo)
+    {
+        $q = "
+            delete
+            from
+                t31_bayar
+            where
+                idtamu in (select idtamu from t30_tamu where TripNo = '".$TripNo."')
+        ";
+        $this->db->query($q);
+    }
+
 }
 
 /* End of file T31_bayar_model.php */

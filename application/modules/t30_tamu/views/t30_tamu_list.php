@@ -72,7 +72,7 @@
                 echo 'NO. <b>' . $t30_tamu->TripNo . '</b>';
                 echo ' TGL. ';
                 echo '<b>' . date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') . '</b> ';
-                echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Are You Sure ?\')"');
+                echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah TRIP NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"');
                 echo '</h6>';
         ?>
                 <!-- <table>

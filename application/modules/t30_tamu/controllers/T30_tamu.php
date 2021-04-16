@@ -189,12 +189,28 @@ class T30_tamu extends CI_Controller
         }
     }
 
-    public function delete($id)
+    public function delete($TripNo)
     {
-        $row = $this->T30_tamu_model->get_by_id($id);
+        // $row = $this->T30_tamu_model->get_by_id($id);
+        $row = $this->T30_tamu_model->get_by_TripNo($TripNo);
 
         if ($row) {
-            $this->T30_tamu_model->delete($id);
+            /**
+             * hapus data detail pembayaran
+             */
+            $this->T32_bayard_model->deleteTripNo($TripNo);
+
+            /**
+             * hapus data master pembayaran
+             */
+            $this->T31_bayar_model->deleteTripNo($TripNo);
+
+            /**
+             * hapus data berdasarkan Trip No. di tabel t30_tamu
+             */
+            $this->T30_tamu_model->deleteTripNo($TripNo);
+
+
             $this->session->set_flashdata('message', 'Delete Record Success');
             redirect(site_url('t30_tamu'));
         } else {

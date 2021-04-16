@@ -101,6 +101,28 @@ class T30_tamu_model extends CI_Model
         return $this->db->insert_id();
     }
 
+    // get data by trip no.
+    function get_by_TripNo($TripNo)
+    {
+        $this->db->where('TripNo', $TripNo);
+        return $this->db->get($this->table)->row();
+    }
+
+    /**
+     * hapus data berdasarkan Trip No.
+     */
+    function deleteTripNo($TripNo)
+    {
+        $q = "
+            delete
+            from
+                t30_tamu
+            where
+                TripNo = '".$TripNo."'
+        ";
+        $this->db->query($q);
+    }
+
 }
 
 /* End of file T30_tamu_model.php */
