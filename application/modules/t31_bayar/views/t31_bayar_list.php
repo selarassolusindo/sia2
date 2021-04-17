@@ -105,7 +105,7 @@
 
                         <!-- data type of selisih -->
                         <?php foreach($dataTos as $dTos) { ?>
-                            <?php $key = array_search($t31_bayar->idbayar.$dTos->idtos, array_column($dataBayard, 'idbayar_idtos'), true) ?>
+                            <?php $key = array_search($t31_bayar->idbayar.$dTos->idtos, array_column($dataBayars, 'idbayar_idtos'), true) ?>
                             <!-- <td><?php //echo $dTop->Type ?></td> -->
                             <td class="text-right"><?= (FALSE !== $key) ? numIndo($dataBayars[$key]->Jumlah) : '0' ?></td>
                         <?php } ?>

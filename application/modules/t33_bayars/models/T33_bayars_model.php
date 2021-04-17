@@ -109,6 +109,15 @@ class T33_bayars_model extends CI_Model
         $this->db->query($q);
     }
 
+    /**
+     * delete data berdasarkan idbayar
+     */
+    function deleteByIdbayar($idbayar)
+    {
+        $this->db->where('idbayar', $idbayar);
+        $this->db->delete($this->table);
+    }
+
 }
 
 /* End of file T33_bayars_model.php */

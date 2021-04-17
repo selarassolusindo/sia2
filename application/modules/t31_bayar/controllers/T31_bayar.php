@@ -180,11 +180,66 @@ class T31_bayar extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('idbayar', TRUE));
         } else {
+
+            /**
+             * simpan data master pembayaran
+             */
             $data = array(
 				'idtamu' => $this->input->post('idtamu',TRUE),
 				'idusers' => $this->session->userdata('user_id'),
 			);
-            $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
+            // $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
+
+            /**
+             * hapus terlebih dahulu data yang sudah ada di tabel t32_bayard berdasarkan idbayar
+             */
+            $this->T32_bayard_model->deleteByIdbayar($this->input->post('idbayar', TRUE));
+
+            /**
+             * ambil data TOP (type of payment)
+             */
+            $dataTop = $this->T02_top_model->get_all();
+
+            /**
+             * simpan data detail pembayaran
+             */
+            foreach($dataTop as $dTop) {
+                if ($this->input->post('_'.$dTop->idtop, TRUE) <> 0) {
+                    $data = array(
+                        'idbayar' => $this->input->post('idbayar', TRUE),
+                        'idtop' => $dTop->idtop,
+                        'Jumlah' => $this->input->post('_'.$dTop->idtop, TRUE),
+                        'idusers' => $this->session->userdata('user_id'),
+                    );
+                    $this->T32_bayard_model->insert($data);
+                }
+            }
+
+            /**
+             * hapus terlebih dahulu data yang sudah ada di tabel t33_bayars berdasarkan idbayar
+             */
+            $this->T33_bayars_model->deleteByIdbayar($this->input->post('idbayar', TRUE));
+
+            /**
+             * ambil data TOS (type of selisih)
+             */
+            $dataTos = $this->T04_tos_model->get_all();
+
+            /**
+             * simpan data detail selisih
+             */
+            foreach($dataTos as $dTos) {
+                if ($this->input->post('__'.$dTos->idtos, TRUE) <> 0) {
+                    $data = array(
+                        'idbayar' => $this->input->post('idbayar', TRUE),
+                        'idtos' => $dTos->idtos,
+                        'Jumlah' => $this->input->post('__'.$dTos->idtos, TRUE),
+                        'idusers' => $this->session->userdata('user_id'),
+                    );
+                    $this->T33_bayars_model->insert($data);
+                }
+            }
+
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('t31_bayar'));
         }

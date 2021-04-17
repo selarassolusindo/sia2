@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label for="int"><?php echo $dTos->Type ?></label>
                 <?php $key = array_search($dTos->idtos, array_column($dataBayars, 'idtos'), true) ?>
-                <input type="text" class="form-control" name="_<?php echo $dTos->idtos?>" value="<?= (FALSE !== $key) ? $dataBayars[$key]->Jumlah : '0' ?>" />
+                <input type="text" class="form-control" name="__<?php echo $dTos->idtos?>" value="<?= (FALSE !== $key) ? $dataBayars[$key]->Jumlah : '0' ?>" />
             </div>
             <?php } ?>
 			<input type="hidden" name="idbayar" value="<?php echo $idbayar; ?>" />
