@@ -42,12 +42,6 @@
             </div>
         </div>
 
-        <style media="screen">
-            .wsnw {
-                white-space: nowrap;
-            }
-        </style>
-
 		<?php
         $recordPertama = 1;
         $cetakHeader = 0;
@@ -82,19 +76,35 @@
                 echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> ';
                 echo '</h6>';
         ?>
-                <table class="table table-bordered wsnw" style="margin-bottom: 10px">
+                <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
                     <tr>
-                        <th class="text-center">NO.</th>
-                        <th class="text-center">NAME</th>
-                        <th class="text-center">PAID-BY</th>
-                        <!-- <th>Pembayaran</th> -->
+                        <th rowspan="2" class="text-center">NO.</th>
+                        <th rowspan="2" class="text-center">NAME</th>
+                        <th rowspan="2" class="text-center">PAID-BY</th>
+
+                        <!-- pembayaran detail -->
                         <?php foreach($dataTop as $dTop) { ?>
-                            <th class="text-right"><?php echo $dTop->Type ?></th>
+                            <th rowspan="2" class="text-right"><?php echo $dTop->Type ?></th>
                         <?php } ?>
+
+                        <!-- total pembayaran -->
+                        <th rowspan="2" class="text-center">TOTAL</th>
+
+                        <!-- total selisih -->
+                        <th rowspan="2" class="text-center">SELISIH</th>
+
+                        <!-- selisih detail -->
                         <?php foreach($dataTos as $dTos) { ?>
-                            <th class="text-right"><?php echo $dTos->Type ?></th>
+                            <th rowspan="2" class="text-right"><?php echo $dTos->Type ?></th>
                         <?php } ?>
-                        <th class="text-center">PROSES</th>
+
+                        <!-- sharing income -->
+                        <th colspan="2">SHARING INCOME</th>
+                        <th rowspan="2" class="text-center">PROSES</th>
+                    </tr>
+                    <tr>
+                        <th class="text-right">PIW</th>
+                        <th class="text-right">SSW</th>
                     </tr>
         <?php
             }
@@ -103,6 +113,7 @@
         				<td width="80px"><?php echo ++$start ?></td>
         				<td><?php echo $t31_bayar->Name ?></td>
                         <td><?php echo $t31_bayar->NamePaidBy ?></td>
+
                         <!-- data type of payment -->
                         <!-- <td><?php echo $t31_bayar->idtop . ' - ' . $t31_bayar->Jumlah ?></td> -->
                         <?php foreach($dataTop as $dTop) { ?>
@@ -111,12 +122,22 @@
                             <td class="text-right"><?= (FALSE !== $key) ? numIndo($dataBayard[$key]->Jumlah) : '0' ?></td>
                         <?php } ?>
 
+                        <!-- total pembayaran -->
+                        <td class="text-right"><?php echo numIndo(0) ?></td>
+
+                        <!-- total selisih -->
+                        <td class="text-right"><?php echo numIndo(0) ?></td>
+
                         <!-- data type of selisih -->
                         <?php foreach($dataTos as $dTos) { ?>
                             <?php $key = array_search($t31_bayar->idbayar.$dTos->idtos, array_column($dataBayars, 'idbayar_idtos'), true) ?>
                             <!-- <td><?php //echo $dTop->Type ?></td> -->
                             <td class="text-right"><?= (FALSE !== $key) ? numIndo($dataBayars[$key]->Jumlah) : '0' ?></td>
                         <?php } ?>
+
+                        <!-- sharing income -->
+                        <td class="text-right"><?php echo numIndo(0) ?></td>
+                        <td class="text-right"><?php echo numIndo(0) ?></td>
 
         				<td style="text-align:center" width="200px">
         				<?php
