@@ -19,6 +19,16 @@
         	</div>
 
             <div class="form-group">
+            	<label for="int">PRICE TO PAY <?php echo form_error('PricePay') ?></label>
+            	<input type="text" class="form-control" name="PricePay" id="PricePay" placeholder="PRICE TO PAY" value="<?php echo $PricePay; ?>" />
+        	</div>
+
+            <div class="form-group">
+            	<label for="int">KURS <?php echo form_error('Kurs') ?></label>
+            	<input type="text" class="form-control" name="Kurs" id="Kurs" placeholder="KURS" value="<?php echo $Kurs; ?>" />
+        	</div>
+
+            <div class="form-group">
             	<label for="int">PAID BY <?php echo form_error('PaidBy') ?></label>
             	<!-- <input type="text" class="form-control" name="idtamu" id="idtamu" placeholder="Idtamu" value="<?php echo $idtamu; ?>" /> -->
                 <select class="form-control" name="PaidBy">

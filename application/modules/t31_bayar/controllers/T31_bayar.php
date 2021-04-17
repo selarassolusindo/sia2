@@ -199,6 +199,8 @@ class T31_bayar extends CI_Controller
             $data = array(
 				// 'idtamu' => $this->input->post('idtamu',TRUE),
                 'PaidBy' => $this->input->post('PaidBy',TRUE),
+                'PricePay' => $this->input->post('PricePay',TRUE),
+                'Kurs' => $this->input->post('Kurs',TRUE),
 				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
