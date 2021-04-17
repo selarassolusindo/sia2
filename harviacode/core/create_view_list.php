@@ -45,7 +45,7 @@ $string = "<!doctype html>
         </div>
         <table class=\"table table-bordered\" style=\"margin-bottom: 10px\">
             <tr>
-                <th>No.</th>";
+                <th class=\"text-right\">No.</th>";
 foreach ($non_pk as $row) {
     $string .= "\n\t\t\t\t<th>" . label($row['column_name']) . "</th>";
 }
@@ -54,7 +54,7 @@ $string .= "\n\t\t\t\t<th class=\"text-center\">Proses</th>
 $string .= "\n\t\t\t<?php foreach ($" . $c_url . "_data as \$$c_url) { ?>
             <tr>";
 
-$string .= "\n\t\t\t\t<td width=\"80px\"><?php echo ++\$start ?></td>";
+$string .= "\n\t\t\t\t<td width=\"80px\" class=\"text-right\"><?php echo ++\$start ?></td>";
 foreach ($non_pk as $row) {
     $string .= "\n\t\t\t\t<td><?php echo $" . $c_url ."->". $row['column_name'] . " ?></td>";
 }
