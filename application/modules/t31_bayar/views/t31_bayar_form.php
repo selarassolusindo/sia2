@@ -41,7 +41,22 @@
                 <?php foreach($dataTop as $dTop) { ?>
                     <tr>
                         <td><?php echo $dTop->Type ?></td>
-                        <td>TGL. BAYAR</td>
+                        <td>
+                            <div class="input-group date" id="_tglbayar<?php echo $dTop->idtop?>" data-target-input="nearest">
+                                <div class="input-group-append" data-target="#_tglbayar<?php echo $dTop->idtop?>" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <?php $key = array_search($dTop->idtop, array_column($dataBayard, 'idtop'), true) ?>
+                                <input placeholder="TGL. BAYAR" type="text" name="_tglbayar<?php echo $dTop->idtop?>" value="<?= (FALSE !== $key) ? dateIndo($dataBayard[$key]->TglBayar) : '' ?>" class="form-control datetimepicker-input" data-target="#_tglbayar<?php echo $dTop->idtop?>"/>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    $('#_tglbayar<?php echo $dTop->idtop?>').datetimepicker({
+                                        format: 'DD-MM-YYYY'
+                                    });
+                                })
+                            </script>
+                        </td>
                         <?php $key = array_search($dTop->idtop, array_column($dataBayard, 'idtop'), true) ?>
                         <td><input type="text" class="form-control" name="_<?php echo $dTop->idtop?>" value="<?= (FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0' ?>" /></td>
                     </tr>
