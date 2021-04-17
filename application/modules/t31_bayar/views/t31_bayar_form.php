@@ -29,22 +29,60 @@
         	</div>
 
             <!-- data pembayaran detail -->
-            <?php foreach($dataTop as $dTop) { ?>
-            <div class="form-group">
+            <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
+                <tr>
+                    <th colspan="3">PAYMENT</th>
+                </tr>
+                <tr>
+                    <th>TYPE</th>
+                    <th>TGL. BAYAR</th>
+                    <th>JUMLAH</th>
+                </tr>
+                <?php foreach($dataTop as $dTop) { ?>
+                    <tr>
+                        <td><?php echo $dTop->Type ?></td>
+                        <td>TGL. BAYAR</td>
+                        <?php $key = array_search($dTop->idtop, array_column($dataBayard, 'idtop'), true) ?>
+                        <td><input type="text" class="form-control" name="_<?php echo $dTop->idtop?>" value="<?= (FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0' ?>" /></td>
+                    </tr>
+                <?php } ?>
+            </table>
+
+            <!-- data pembayaran detail -->
+            <?php //foreach($dataTop as $dTop) { ?>
+            <!-- <div class="form-group">
                 <label for="int"><?php echo $dTop->Type ?></label>
                 <?php $key = array_search($dTop->idtop, array_column($dataBayard, 'idtop'), true) ?>
                 <input type="text" class="form-control" name="_<?php echo $dTop->idtop?>" value="<?= (FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0' ?>" />
-            </div>
-            <?php } ?>
+            </div> -->
+            <?php //} ?>
 
             <!-- data pembayaran selisih -->
-            <?php foreach($dataTos as $dTos) { ?>
-            <div class="form-group">
+            <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
+                <tr>
+                    <th colspan="3">SELISIH</th>
+                </tr>
+                <tr>
+                    <th>TYPE</th>
+                    <th>JUMLAH</th>
+                </tr>
+                <?php foreach($dataTos as $dTos) { ?>
+                    <tr>
+                        <td><?php echo $dTos->Type ?></td>
+                        <?php $key = array_search($dTos->idtos, array_column($dataBayars, 'idtos'), true) ?>
+                        <td><input type="text" class="form-control" name="__<?php echo $dTos->idtos?>" value="<?= (FALSE !== $key) ? $dataBayars[$key]->Jumlah : '0' ?>" /></td>
+                    </tr>
+                <?php } ?>
+            </table>
+
+            <?php //foreach($dataTos as $dTos) { ?>
+            <!-- <div class="form-group">
                 <label for="int"><?php echo $dTos->Type ?></label>
                 <?php $key = array_search($dTos->idtos, array_column($dataBayars, 'idtos'), true) ?>
                 <input type="text" class="form-control" name="__<?php echo $dTos->idtos?>" value="<?= (FALSE !== $key) ? $dataBayars[$key]->Jumlah : '0' ?>" />
-            </div>
-            <?php } ?>
+            </div> -->
+            <?php //} ?>
+
 			<input type="hidden" name="idbayar" value="<?php echo $idbayar; ?>" />
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
 			<a href="<?php echo site_url('t31_bayar') ?>" class="btn btn-secondary">Batal</a>
