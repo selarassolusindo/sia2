@@ -371,6 +371,7 @@ class T30_tamu extends CI_Controller
              */
             $TripNo  = $sheet[4]['B'];
             $TripTgl = dateMysql($sheet[4]['C']);
+            $Kurs    = $sheet[4]['F'];
             foreach ($sheet as $row) {
                 // echo pre($row);
                 if ($numRow >= $startRow) {
@@ -414,6 +415,7 @@ class T30_tamu extends CI_Controller
                         'idtamu' => $idtamu,
                         'PaidBy' => $idtamu,
                         'PricePay' => $row['I'],
+                        'Kurs' => $Kurs,
                         'idusers' => $this->session->userdata('user_id'),
                     ];
                     $this->T31_bayar_model->insert($dataBayar);
