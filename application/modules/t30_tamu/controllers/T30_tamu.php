@@ -435,6 +435,7 @@ class T30_tamu extends CI_Controller
                             $dataBayarDetail = [
                                 'idbayar' => $idbayar,
                                 'idtop' => $dTop->idtop,
+                                'TglBayar' => $TripTgl,
                                 'Jumlah' => $jumlahBayar,
                                 'idusers' => $this->session->userdata('user_id'),
                             ];
