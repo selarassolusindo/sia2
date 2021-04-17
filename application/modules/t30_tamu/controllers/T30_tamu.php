@@ -14,6 +14,7 @@ class T30_tamu extends CI_Controller
         $this->load->model('t02_top/T02_top_model');
         $this->load->model('t31_bayar/T31_bayar_model');
         $this->load->model('t32_bayard/T32_bayard_model');
+        $this->load->model('t33_bayars/T33_bayars_model');
     }
 
     public function index()
@@ -373,6 +374,13 @@ class T30_tamu extends CI_Controller
             foreach ($sheet as $row) {
                 // echo pre($row);
                 if ($numRow >= $startRow) {
+
+                    /**
+                     * check jika kolom A bertanda * berarti sudah akhir baris
+                     */
+                    if ($row['A'] == '*') {
+                        break;
+                    }
 
                     /**
                      * simpan ke tabel tamu
