@@ -8,7 +8,7 @@ class T01_package_model extends CI_Model
 
     public $table = 't01_package';
     public $id = 'idprice';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
