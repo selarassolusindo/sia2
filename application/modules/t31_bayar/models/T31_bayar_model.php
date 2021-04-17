@@ -51,7 +51,7 @@ class T31_bayar_model extends CI_Model
         $this->db->or_like('pb.Name');
 		$this->db->limit($limit, $start);
         $this->db->select($this->table.'.*');
-        $this->db->select('t30_tamu.TripNo, t30_tamu.TripTgl, t30_tamu.Name');
+        $this->db->select('t30_tamu.TripNo, t30_tamu.TripTgl, t30_tamu.Name, t30_tamu.PricePay');
         $this->db->select('pb.Name as NamePaidBy');
         $this->db->from($this->table);
         $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');

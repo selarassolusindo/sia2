@@ -80,6 +80,7 @@
                     <tr>
                         <th rowspan="2" class="text-center">NO.</th>
                         <th rowspan="2" class="text-center">NAME</th>
+                        <th rowspan="2" class="text-center">PRICE TO PAY</th>
                         <th rowspan="2" class="text-center">PAID-BY</th>
 
                         <!-- pembayaran detail -->
@@ -112,6 +113,8 @@
                     <tr>
         				<td width="80px"><?php echo ++$start ?></td>
         				<td><?php echo $t31_bayar->Name ?></td>
+                        <!-- price to pay -->
+                        <td class="text-right"><?php echo numIndo($t31_bayar->PricePay) ?></td>
                         <td><?php echo $t31_bayar->NamePaidBy ?></td>
 
                         <!-- data type of payment -->
