@@ -41,6 +41,13 @@
                 </form>
             </div>
         </div>
+
+        <style media="screen">
+            .wsnw {
+                white-space: nowrap;
+            }
+        </style>
+
 		<?php
         $recordPertama = 1;
         $cetakHeader = 0;
@@ -75,10 +82,11 @@
                 echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> ';
                 echo '</h6>';
         ?>
-                <table class="table table-bordered" style="margin-bottom: 10px">
+                <table class="table table-bordered wsnw" style="margin-bottom: 10px">
                     <tr>
                         <th class="text-center">NO.</th>
                         <th class="text-center">NAME</th>
+                        <th class="text-center">PAID-BY</th>
                         <!-- <th>Pembayaran</th> -->
                         <?php foreach($dataTop as $dTop) { ?>
                             <th class="text-right"><?php echo $dTop->Type ?></th>
@@ -94,7 +102,7 @@
                     <tr>
         				<td width="80px"><?php echo ++$start ?></td>
         				<td><?php echo $t31_bayar->Name ?></td>
-
+                        <td><?php echo $t31_bayar->NamePaidBy ?></td>
                         <!-- data type of payment -->
                         <!-- <td><?php echo $t31_bayar->idtop . ' - ' . $t31_bayar->Jumlah ?></td> -->
                         <?php foreach($dataTop as $dTop) { ?>
