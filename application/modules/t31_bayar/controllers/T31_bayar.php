@@ -219,6 +219,7 @@ class T31_bayar extends CI_Controller
                     $data = array(
                         'idbayar' => $this->input->post('idbayar', TRUE),
                         'idtop' => $dTop->idtop,
+                        'TglBayar' => dateMysql($this->input->post('_tglbayar'.$dTop->idtop, TRUE)),
                         'Jumlah' => $this->input->post('_'.$dTop->idtop, TRUE),
                         'idusers' => $this->session->userdata('user_id'),
                     );
