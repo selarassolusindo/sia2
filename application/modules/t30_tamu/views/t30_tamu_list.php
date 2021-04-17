@@ -84,7 +84,7 @@
                         <td><?php echo dateIndo($t30_tamu->TripTgl) ?></td>
                     </tr>
                 </table> -->
-                <table class="table table-bordered" style="margin-bottom: 10px">
+                <table class="table table-bordered table-striped" style="margin-bottom: 10px">
                     <tr>
                         <th rowspan="2" class="text-center">NO.</th>
         				<th rowspan="2" class="text-center">NAME</th>

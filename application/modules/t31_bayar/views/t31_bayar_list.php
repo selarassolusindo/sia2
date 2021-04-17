@@ -83,7 +83,7 @@
                 echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> ';
                 echo '</h6>';
         ?>
-                <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
+                <table class="table table-bordered table-striped" style="margin-bottom: 10px; white-space: nowrap;">
                     <tr>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NO.</th>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NAME</th>
