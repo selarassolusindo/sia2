@@ -413,6 +413,7 @@ class T30_tamu extends CI_Controller
                     $dataBayar = [
                         'idtamu' => $idtamu,
                         'PaidBy' => $idtamu,
+                        'PricePay' => $row['I'],
                         'idusers' => $this->session->userdata('user_id'),
                     ];
                     $this->T31_bayar_model->insert($dataBayar);
