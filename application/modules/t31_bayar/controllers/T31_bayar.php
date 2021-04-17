@@ -165,6 +165,8 @@ class T31_bayar extends CI_Controller
                 'action' => site_url('t31_bayar/update_action'),
 				'idbayar' => set_value('idbayar', $row->idbayar),
 				'idtamu' => set_value('idtamu', $row->idtamu),
+                'PricePay' => set_value('idtamu', $row->PricePay),
+                'Kurs' => set_value('idtamu', $row->Kurs),
                 'PaidBy' => set_value('idtamu', $row->PaidBy),
                 'Name' => $row->Name,
                 'dataTop' => $dataTop,
