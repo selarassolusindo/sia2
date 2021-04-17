@@ -123,6 +123,17 @@ class T30_tamu_model extends CI_Model
         $this->db->query($q);
     }
 
+    /**
+     * get all by trip no and trip tgl
+     */
+    function getAllByTrip($TripNo, $TripTgl)
+    {
+        $this->db->order_by($this->id, $this->order);
+        $this->db->where('TripNo', $TripNo);
+        $this->db->where('TripTgl', $TripTgl);
+        return $this->db->get($this->table)->result();
+    }
+
 }
 
 /* End of file T30_tamu_model.php */

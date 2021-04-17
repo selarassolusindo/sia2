@@ -13,8 +13,19 @@
         <h2 style="margin-top:0px">T31_bayar <?php echo $button ?></h2> -->
         <form action="<?php echo $action; ?>" method="post">
 			<div class="form-group">
-            	<label for="int">Idtamu <?php echo form_error('idtamu') ?></label>
-            	<input type="text" class="form-control" name="idtamu" id="idtamu" placeholder="Idtamu" value="<?php echo $idtamu; ?>" />
+            	<label for="int">NAME <?php echo form_error('idtamu') ?></label>
+                <input type="hidden" name="idtamu" value="<?php echo $idtamu; ?>" />
+            	<input type="text" class="form-control" value="<?php echo $Name; ?>" readonly />
+        	</div>
+
+            <div class="form-group">
+            	<label for="int">PAID BY <?php echo form_error('PaidBy') ?></label>
+            	<!-- <input type="text" class="form-control" name="idtamu" id="idtamu" placeholder="Idtamu" value="<?php echo $idtamu; ?>" /> -->
+                <select class="form-control" name="PaidBy">
+                    <?php foreach($dataTamu as $dTamu) { ?>
+                        <option value="<?php echo $dTamu->idtamu ?>" <?php echo ($dTamu->idtamu == $PaidBy) ? "selected" : "" ?>><?php echo $dTamu->Name ?></option>
+                    <?php } ?>
+                </select>
         	</div>
 
             <!-- data pembayaran detail -->

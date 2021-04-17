@@ -15,6 +15,7 @@ class T31_bayar extends CI_Controller
         $this->load->model('t32_bayard/T32_bayard_model');
         $this->load->model('t04_tos/T04_tos_model');
         $this->load->model('t33_bayars/T33_bayars_model');
+        $this->load->model('t30_tamu/T30_tamu_model');
     }
 
     public function index()
@@ -127,11 +128,17 @@ class T31_bayar extends CI_Controller
         }
     }
 
-    public function update($id)
+    public function update($id, $TripNo, $TripTgl)
     {
         $row = $this->T31_bayar_model->get_by_id($id);
 
         if ($row) {
+
+            /**
+             * ambil data tamu sesuai dengan trip no.
+             */
+            $dataTamu = $this->T30_tamu_model->getAllByTrip($TripNo, $TripTgl);
+            // echo pre($dataTamu);
 
             /**
              * ambil data top (type of payment)
@@ -158,10 +165,13 @@ class T31_bayar extends CI_Controller
                 'action' => site_url('t31_bayar/update_action'),
 				'idbayar' => set_value('idbayar', $row->idbayar),
 				'idtamu' => set_value('idtamu', $row->idtamu),
+                'PaidBy' => set_value('idtamu', $row->PaidBy),
+                'Name' => $row->Name,
                 'dataTop' => $dataTop,
                 'dataBayard' => $dataBayard,
                 'dataTos' => $dataTos,
                 'dataBayars' => $dataBayars,
+                'dataTamu' => $dataTamu,
 			);
             // $this->load->view('t31_bayar/t31_bayar_form', $data);
             $data['_view'] = 't31_bayar/t31_bayar_form';
@@ -185,10 +195,11 @@ class T31_bayar extends CI_Controller
              * simpan data master pembayaran
              */
             $data = array(
-				'idtamu' => $this->input->post('idtamu',TRUE),
+				// 'idtamu' => $this->input->post('idtamu',TRUE),
+                'PaidBy' => $this->input->post('PaidBy',TRUE),
 				'idusers' => $this->session->userdata('user_id'),
 			);
-            // $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
+            $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
 
             /**
              * hapus terlebih dahulu data yang sudah ada di tabel t32_bayard berdasarkan idbayar

@@ -146,7 +146,7 @@
         				<?php
         				//echo anchor(site_url('t31_bayar/read/'.$t31_bayar->idbayar),'Read');
         				//echo ' | ';
-        				echo anchor(site_url('t31_bayar/update/'.$t31_bayar->idbayar),'Ubah');
+        				echo anchor(site_url('t31_bayar/update/'.$t31_bayar->idbayar.'/'.$t31_bayar->TripNo.'/'.dateMysql($t31_bayar->TripTgl)),'Ubah');
         				// echo ' | ';
         				// echo anchor(site_url('t31_bayar/delete/'.$t31_bayar->idbayar),'Hapus','onclick="javascript: return confirm(\'Are You Sure ?\')"');
         				?>

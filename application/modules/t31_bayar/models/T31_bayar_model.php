@@ -26,8 +26,12 @@ class T31_bayar_model extends CI_Model
     // get data by id
     function get_by_id($id)
     {
+        $this->db->select($this->table.'.*');
+        $this->db->select('t30_tamu.Name');
+        $this->db->from($this->table);
         $this->db->where($this->id, $id);
-        return $this->db->get($this->table)->row();
+        $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu', 'left');
+        return $this->db->get()->row();
     }
 
     // get total rows
