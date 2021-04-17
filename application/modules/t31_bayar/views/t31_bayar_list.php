@@ -42,6 +42,13 @@
             </div>
         </div>
 
+        <!-- table -->
+        <div style="
+            /* width: 500px; */
+            /* height: 300px; */
+            overflow: auto;
+            ">
+
 		<?php
         $recordPertama = 1;
         $cetakHeader = 0;
@@ -78,8 +85,8 @@
         ?>
                 <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
                     <tr>
-                        <th rowspan="2" class="text-center">NO.</th>
-                        <th rowspan="2" class="text-center">NAME</th>
+                        <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NO.</th>
+                        <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NAME</th>
                         <th rowspan="2" class="text-center">PRICE TO PAY</th>
                         <th rowspan="2" class="text-center">KURS</th>
                         <th rowspan="2" class="text-center">PAID-BY</th>
@@ -112,8 +119,8 @@
             }
         ?>
                     <tr>
-        				<td width="80px"><?php echo ++$start ?></td>
-        				<td><?php echo $t31_bayar->Name ?></td>
+        				<td style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo ++$start ?></td>
+        				<td style="left: 0; position: sticky; background-color: white;"><?php echo $t31_bayar->Name ?></td>
                         <!-- price to pay -->
                         <td class="text-right"><?php echo numIndo($t31_bayar->PricePay) ?></td>
                         <td class="text-right"><?php echo numIndo($t31_bayar->Kurs) ?></td>
@@ -128,10 +135,10 @@
                         <?php } ?>
 
                         <!-- total pembayaran -->
-                        <td class="text-right"><?php echo numIndo(0) ?></td>
+                        <td class="text-right"><?php echo numIndo($t31_bayar->Total) ?></td>
 
                         <!-- total selisih -->
-                        <td class="text-right"><?php echo numIndo(0) ?></td>
+                        <td class="text-right"><?php echo numIndo($t31_bayar->Selisih) ?></td>
 
                         <!-- data type of selisih -->
                         <?php foreach($dataTos as $dTos) { ?>
@@ -141,8 +148,8 @@
                         <?php } ?>
 
                         <!-- sharing income -->
-                        <td class="text-right"><?php echo numIndo(0) ?></td>
-                        <td class="text-right"><?php echo numIndo(0) ?></td>
+                        <td class="text-right"><?php echo numIndo($t31_bayar->ShareP) ?></td>
+                        <td class="text-right"><?php echo numIndo($t31_bayar->ShareS) ?></td>
 
         				<td style="text-align:center" width="200px">
         				<?php
@@ -156,6 +163,10 @@
         			</tr>
         <?php } ?>
         </table>
+
+        </div>
+        <!-- ./table -->
+
         <div class="row">
             <div class="col-md-6">
                 <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
