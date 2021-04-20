@@ -57,6 +57,7 @@
             </table>
 
             <div class="form-group">
+                <input type="hidden" name="PaidByExisting" value="<?php echo $PaidBy ?>">
             	<label for="int">PAID BY <?php echo form_error('PaidBy') ?></label>
             	<!-- <input type="text" class="form-control" name="idtamu" id="idtamu" placeholder="Idtamu" value="<?php echo $idtamu; ?>" /> -->
                 <select class="form-control" name="PaidBy">

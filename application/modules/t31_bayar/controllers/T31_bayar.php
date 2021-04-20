@@ -347,45 +347,55 @@ class T31_bayar extends CI_Controller
             /**
              * check paid by
              */
-            if ($this->input->post('PaidBy',TRUE) <> $this->input->post('idtamu',TRUE)) {
-
-                // simpan data sebelum di-0-kan, untuk diakumulasikan ke tamu yang terbebani
-                $priceList = $this->input->post('PriceList',TRUE);
-                $pricePay = $this->input->post('PricePay',TRUE);
-                $selisihPL = $this->input->post('SelisihPL',TRUE);
-                $total = $this->input->post('Total',TRUE);
-                $selisih = $this->input->post('Selisih',TRUE);
-                $shareP = $this->input->post('ShareP',TRUE);
-                $shareS = $this->input->post('ShareS',TRUE);
-
-                // meng-0-kan data yang membebani tamu lain
-                $data = array(
-                    'PriceList' => 0,
-                    'PricePay' => 0,
-                    'SelisihPL' => 0,
-                    'Total' => 0,
-                    'Selisih' => 0,
-                    'ShareP' => 0,
-                    'ShareS' => 0,
-                );
-                $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
+            if ($this->input->post('PaidBy',TRUE) <> $this->input->post('PaidByExisting',TRUE)) {
 
                 /**
-                 * ambil data dari tamu yang terbebani untuk ditambahkan dengan tamu yang membebani
+                 * step 1
+                 * ambil nilai price list dan price pay milik idtamu di data tamu
                  */
-                $dataTamuTerbebani = $this->T31_bayar_model->getByIdtamu($this->input->post('PaidBy', TRUE));
+                $dataByIdtamu = $this->T30_tamu_model->get_by_id($this->input->post('idtamu', TRUE));
+                $priceList = $dataByIdtamu->PriceList;
+                $pricePay = $dataByIdtamu->PricePay;
 
-                // mengakumulasikan data pada tamu yang terbebani
+                /**
+                 * step 2
+                 * nilai price list dan price pay milik tamu existing dikurangi
+                 */
+                $dataPaidByExisting = $this->T31_bayar_model->getByIdtamu($this->input->post('PaidByExisting', TRUE));
                 $data = array(
-                    'PriceList' => $dataTamuTerbebani->PriceList + $this->input->post('PriceList', TRUE),
-                    'PricePay' => $dataTamuTerbebani->PricePay + $this->input->post('PricePay', TRUE),
-                    'SelisihPL' => $dataTamuTerbebani->SelisihPL + $this->input->post('SelisihPL', TRUE),
-                    'Total' => $dataTamuTerbebani->Total + $this->input->post('Total', TRUE),
-                    'Selisih' => $dataTamuTerbebani->Selisih + $this->input->post('Selisih', TRUE),
-                    'ShareP' => $dataTamuTerbebani->ShareP + $this->input->post('ShareP', TRUE),
-                    'ShareS' => $dataTamuTerbebani->ShareS + $this->input->post('ShareS', TRUE),
+                    'PriceList' => $dataPaidByExisting->PriceList - $priceList,
+                    'PricePay' => $dataPaidByExisting->PricePay - $pricePay,
+                );
+                $this->T31_bayar_model->updateByParam('idtamu', $this->input->post('PaidByExisting', TRUE), $data);
+
+                /**
+                 * step 3
+                 * nilai price list dan price pay milik tamu paid by ditambah
+                 */
+                $dataPaidBy = $this->T31_bayar_model->getByIdtamu($this->input->post('PaidBy', TRUE));
+                $data = array(
+                    'PriceList' => $dataPaidBy->PriceList + $priceList,
+                    'PricePay' => $dataPaidBy->PricePay + $pricePay,
                 );
                 $this->T31_bayar_model->updateByParam('idtamu', $this->input->post('PaidBy', TRUE), $data);
+
+                /**
+                 * step 4
+                 * nilai price list dan price pay milik tamu yang bersangkutan di nol kan
+                 */
+                if ($this->input->post('idtamu', TRUE) == $this->input->post('PaidBy', TRUE)) {
+                    $data = array(
+                        'PriceList' => $priceList,
+                        'PricePay' => $pricePay,
+                    );
+                    $this->T31_bayar_model->updateByParam('idtamu', $this->input->post('idtamu', TRUE), $data);
+                } else {
+                    $data = array(
+                        'PriceList' => 0,
+                        'PricePay' => 0,
+                    );
+                    $this->T31_bayar_model->updateByParam('idtamu', $this->input->post('idtamu', TRUE), $data);
+                }
 
             }
 
