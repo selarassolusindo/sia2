@@ -106,7 +106,7 @@
             }
         ?>
             <tr>
-				<td><?php echo $t30_tamu->no ?></td>
+				<td class="text-right"><?php echo $t30_tamu->no.'.' ?></td>
 				<td><?php echo $t30_tamu->Name ?></td>
 				<td class="text-center"><?php echo $t30_tamu->PackageName ?></td>
 				<td class="text-center"><?php echo $t30_tamu->Night ?></td>

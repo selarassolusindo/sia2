@@ -123,7 +123,7 @@
         ?>
                     <tr>
         				<!-- <td style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo ++$start ?></td> -->
-                        <td style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo $t31_bayar->no ?></td>
+                        <td class="text-right" style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo $t31_bayar->no.'.' ?></td>
         				<td style="left: 0; position: sticky; background-color: white;"><?php echo $t31_bayar->Name ?></td>
                         <!-- price to pay -->
                         <td class="text-right"><?php echo numIndo($t31_bayar->Kurs) ?></td>
