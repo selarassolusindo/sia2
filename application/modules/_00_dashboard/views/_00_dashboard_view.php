@@ -228,6 +228,7 @@
                                     case 't02_top':
                                     case 't03_agent':
                                     case 't04_tos':
+                                    case 't05_tos2':
                                         echo 'menu-open';
                                         break;
                                     default:
@@ -247,6 +248,7 @@
                                         case 't02_top':
                                         case 't03_agent':
                                         case 't04_tos':
+                                        case 't05_tos2':
                                             echo 'active';
                                             break;
                                         default:
@@ -318,11 +320,19 @@
                                         </a>
                                     </li>
 
-                                    <!-- jenis selisih -->
+                                    <!-- jenis selisih PRICE-LIST-->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t05_tos2" class="nav-link <?php echo $this->uri->segment(1) == 't05_tos2' ? 'active' : ''; ?>">
+                                            <i class="far fa-window-restore nav-icon"></i>
+                                            <p>Jenis Selisih PRICE-LIST</p>
+                                        </a>
+                                    </li>
+
+                                    <!-- jenis selisih PRICE-TO-PAY-->
                                     <li class="nav-item">
                                         <a href="<?php echo site_url(); ?>t04_tos" class="nav-link <?php echo $this->uri->segment(1) == 't04_tos' ? 'active' : ''; ?>">
                                             <i class="far fa-window-restore nav-icon"></i>
-                                            <p>Jenis Selisih</p>
+                                            <p>Jenis Selisih PRICE-TO-PAY</p>
                                         </a>
                                     </li>
 
