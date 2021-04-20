@@ -290,13 +290,14 @@ class T31_bayar extends CI_Controller
             $this->T34_bayars2_model->deleteByIdbayar($this->input->post('idbayar', TRUE));
 
             /**
-             * ambil data TOS (type of selisih)
+             * ambil data TOS2 (type of selisih price list)
              */
             $dataTos2 = $this->T05_tos2_model->get_all();
 
             /**
              * simpan data detail selisih
              */
+            $totalJumlah = 0;
             foreach($dataTos2 as $dTos2) {
                 if ($this->input->post('___'.$dTos2->idtos2, TRUE) <> 0) {
                     $data = array(
@@ -306,8 +307,17 @@ class T31_bayar extends CI_Controller
                         'idusers' => $this->session->userdata('user_id'),
                     );
                     $this->T34_bayars2_model->insert($data);
+                    $totalJumlah += $this->input->post('___'.$dTos2->idtos2, TRUE);
                 }
             }
+
+            /**
+             * update total selisih price list ke master pembayaran
+             */
+            $data = array(
+                'SelisihPL' => $totalJumlah,
+            );
+            $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
 
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('t31_bayar'));
