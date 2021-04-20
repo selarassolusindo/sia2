@@ -357,7 +357,7 @@ class T31_bayar extends CI_Controller
                 $code = $dataByIdtamu->PackageName;
                 $night = $dataByIdtamu->Night;
                 // $priceList = T30_tamu->getPriceList($code, $night);
-                $priceList = file_get_contents(site_url('t30_tamu/getPriceList/'.$code.'/'.$night));
+                $priceList = file_get_contents(site_url('t30_tamu/getPriceList/'.$code.'/'.$night.'/outside'));
                 $pricePay = $dataByIdtamu->PricePay;
 
                 /**

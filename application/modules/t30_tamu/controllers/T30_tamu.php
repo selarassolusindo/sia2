@@ -416,31 +416,9 @@ class T30_tamu extends CI_Controller
                      */
                     $idtamu = $this->T30_tamu_model->getInsertId();
 
-                    /**
-                     * ambil data package name
-                     */
-                    $dataPackage = $this->T01_package_model->getByCode($row['C']);
+                    // temporary cutted
 
-                    /**
-                     * seleksi data package
-                     */
-                    if ($dataPackage) {
-                        // data package ditemukan
-                        $nights = $row['D'];
-                        switch ($nights) {
-                            case 3:
-                                $priceList = $dataPackage->SN3LN;
-                                break;
-                            case 6:
-                                $priceList = $dataPackage->SN6LN;
-                                break;
-                            default:
-                                $priceList = 0;
-                        }
-                    } else {
-                        // data package tidak ditemukan
-                        $priceList = 0;
-                    }
+                    $priceList = $this->getPriceList($row['C'], $row['D'], 'inside');
 
                     /**
                      * simpan ke tabel bayar
@@ -492,7 +470,7 @@ class T30_tamu extends CI_Controller
         }
     }
 
-    public function getPriceList($code, $night)
+    public function getPriceList($code, $night, $asal)
     {
         $dataPackage = $this->T01_package_model->getByCode($code);
 
@@ -508,18 +486,32 @@ class T30_tamu extends CI_Controller
                 case 3:
                     $priceList = $dataPackage->SN3LN;
                     break;
+                case 4:
+                    $priceList = $dataPackage->SN3LN + $dataPackage->SNELN;
+                    break;
+                case 5:
+                    $priceList = $dataPackage->SN3LN + (2 * $dataPackage->SNELN);
+                    break;
                 case 6:
                     $priceList = $dataPackage->SN6LN;
                     break;
                 default:
                     $priceList = 0;
             }
+            if ($night > 6) {
+                $priceList = $dataPackage->SN6LN + (($night - 6) * $dataPackage->SNELN);
+            }
         } else {
             // data package tidak ditemukan
             $priceList = 0;
         }
 
-        echo $priceList;
+        if ($asal == 'inside') {
+            return $priceList;
+        } else {
+            echo $priceList;
+        }
+
     }
 
 }
