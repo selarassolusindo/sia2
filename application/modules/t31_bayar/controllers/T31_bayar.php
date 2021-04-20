@@ -302,7 +302,7 @@ class T31_bayar extends CI_Controller
                     $data = array(
                         'idbayar' => $this->input->post('idbayar', TRUE),
                         'idtos2' => $dTos2->idtos2,
-                        'Jumlah' => $this->input->post('___'.$dTos->idtos, TRUE),
+                        'Jumlah' => $this->input->post('___'.$dTos2->idtos2, TRUE),
                         'idusers' => $this->session->userdata('user_id'),
                     );
                     $this->T34_bayars2_model->insert($data);
