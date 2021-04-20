@@ -492,6 +492,36 @@ class T30_tamu extends CI_Controller
         }
     }
 
+    public function getPriceList($code, $night)
+    {
+        $dataPackage = $this->T01_package_model->getByCode($code);
+
+        $priceList = 0;
+
+        /**
+         * seleksi data package
+         */
+        if ($dataPackage) {
+            // data package ditemukan
+            // $nights = $row['D'];
+            switch ($night) {
+                case 3:
+                    $priceList = $dataPackage->SN3LN;
+                    break;
+                case 6:
+                    $priceList = $dataPackage->SN6LN;
+                    break;
+                default:
+                    $priceList = 0;
+            }
+        } else {
+            // data package tidak ditemukan
+            $priceList = 0;
+        }
+
+        echo $priceList;
+    }
+
 }
 
 /* End of file T30_tamu.php */

@@ -354,7 +354,10 @@ class T31_bayar extends CI_Controller
                  * ambil nilai price list dan price pay milik idtamu di data tamu
                  */
                 $dataByIdtamu = $this->T30_tamu_model->get_by_id($this->input->post('idtamu', TRUE));
-                $priceList = $dataByIdtamu->PriceList;
+                $code = $dataByIdtamu->PackageName;
+                $night = $dataByIdtamu->Night;
+                // $priceList = T30_tamu->getPriceList($code, $night);
+                $priceList = file_get_contents(site_url('t30_tamu/getPriceList/'.$code.'/'.$night));
                 $pricePay = $dataByIdtamu->PricePay;
 
                 /**
