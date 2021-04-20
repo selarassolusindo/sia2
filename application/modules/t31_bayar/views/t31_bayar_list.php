@@ -87,8 +87,10 @@
                     <tr>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NO.</th>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NAME</th>
-                        <th rowspan="2" class="text-center">PRICE TO PAY</th>
                         <th rowspan="2" class="text-center">KURS</th>
+                        <th rowspan="2" class="text-center">PRICE LIST</th>
+                        <th rowspan="2" class="text-center">PRICE TO PAY</th>
+                        <th rowspan="2" class="text-center">SELISIH PRICE LIST</th>
                         <th rowspan="2" class="text-center">PAID-BY</th>
 
                         <!-- pembayaran detail -->
@@ -100,7 +102,7 @@
                         <th rowspan="2" class="text-center">TOTAL</th>
 
                         <!-- total selisih -->
-                        <th rowspan="2" class="text-center">SELISIH</th>
+                        <th rowspan="2" class="text-center">SELISIH PRICE TO PAY</th>
 
                         <!-- selisih detail -->
                         <?php foreach($dataTos as $dTos) { ?>
@@ -122,8 +124,10 @@
         				<td style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo ++$start ?></td>
         				<td style="left: 0; position: sticky; background-color: white;"><?php echo $t31_bayar->Name ?></td>
                         <!-- price to pay -->
-                        <td class="text-right"><?php echo numIndo($t31_bayar->PricePay) ?></td>
                         <td class="text-right"><?php echo numIndo($t31_bayar->Kurs) ?></td>
+                        <td class="text-right"><?php echo numIndo($t31_bayar->PriceList) ?></td>
+                        <td class="text-right"><?php echo numIndo($t31_bayar->PricePay) ?></td>
+                        <td class="text-right"><?php echo numIndo($t31_bayar->SelisihPL) ?></td>
                         <td><?php echo $t31_bayar->NamePaidBy ?></td>
 
                         <!-- data type of payment -->

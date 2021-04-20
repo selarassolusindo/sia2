@@ -99,6 +99,24 @@ class T31_bayar_model extends CI_Model
         return $this->db->get()->result();
     }
 
+    /**
+     * ambil data tamu sesuai trip plus data detail pembayaran
+     */
+    function get_limit_data_bayars2($q = NULL) {
+        $this->db->order_by($this->id, $this->order);
+        $this->db->like('t30_tamu.Name');
+        $this->db->or_like('t30_tamu.TripNo');
+        $this->db->or_like('t30_tamu.TripTgl');
+        $this->db->limit($limit, $start);
+        $this->db->select($this->table.'.*');
+        $this->db->select('t30_tamu.TripNo, t30_tamu.TripTgl, t30_tamu.Name');
+        $this->db->select('t34_bayars2.idtos2, t34_bayars2.Jumlah, concat(t34_bayars2.idbayar, t34_bayars2.idtos2) as idbayar_idtos2');
+        $this->db->from($this->table);
+        $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');
+        $this->db->join('t34_bayars2', 't34_bayars2.idbayar = '.$this->table.'.idbayar');
+        return $this->db->get()->result();
+    }
+
     // insert data
     function insert($data)
     {

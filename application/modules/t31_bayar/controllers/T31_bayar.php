@@ -16,6 +16,8 @@ class T31_bayar extends CI_Controller
         $this->load->model('t04_tos/T04_tos_model');
         $this->load->model('t33_bayars/T33_bayars_model');
         $this->load->model('t30_tamu/T30_tamu_model');
+        $this->load->model('t05_tos2/T05_tos2_model');
+        $this->load->model('t34_bayars2/T34_bayars2_model');
     }
 
     public function index()
@@ -59,6 +61,16 @@ class T31_bayar extends CI_Controller
          */
         $dataBayars = $this->T31_bayar_model->get_limit_data_bayars($q); //$config['per_page'], $start, $q);
 
+        /**
+         * ambil data tos2 (type of selisih price list)
+         */
+        $dataTos2 = $this->T05_tos2_model->get_all();
+
+        /**
+         * ambil data detail selisih
+         */
+        $dataBayars2 = $this->T31_bayar_model->get_limit_data_bayars2($q); //$config['per_page'], $start, $q);
+
         // echo pre($t31_bayar);
         // echo pre($dataBayard);
 
@@ -72,6 +84,8 @@ class T31_bayar extends CI_Controller
             'dataBayard' => $dataBayard,
             'dataTos' => $dataTos,
             'dataBayars' => $dataBayars,
+            'dataTos2' => $dataTos2,
+            'dataBayars2' => $dataBayars2,
         );
         // $this->load->view('t31_bayar/t31_bayar_list', $data);
         $data['_view'] = 't31_bayar/t31_bayar_list';
@@ -160,11 +174,22 @@ class T31_bayar extends CI_Controller
              */
             $dataBayars = $this->T33_bayars_model->getDataByIdbayar($row->idbayar); //$config['per_page'], $start, $q);
 
+            /**
+             * ambil data tos2 (type of selisih price list)
+             */
+            $dataTos2 = $this->T05_tos2_model->get_all();
+
+            /**
+             * ambil data detail selisih
+             */
+            $dataBayars2 = $this->T34_bayars2_model->getDataByIdbayar($row->idbayar); //$config['per_page'], $start, $q);
+
             $data = array(
                 'button' => 'Simpan',
                 'action' => site_url('t31_bayar/update_action'),
 				'idbayar' => set_value('idbayar', $row->idbayar),
 				'idtamu' => set_value('idtamu', $row->idtamu),
+                'PriceList' => set_value('idtamu', $row->PriceList),
                 'PricePay' => set_value('idtamu', $row->PricePay),
                 'Kurs' => set_value('idtamu', $row->Kurs),
                 'PaidBy' => set_value('idtamu', $row->PaidBy),
@@ -174,6 +199,8 @@ class T31_bayar extends CI_Controller
                 'dataTos' => $dataTos,
                 'dataBayars' => $dataBayars,
                 'dataTamu' => $dataTamu,
+                'dataTos2' => $dataTos2,
+                'dataBayars2' => $dataBayars2,
 			);
             // $this->load->view('t31_bayar/t31_bayar_form', $data);
             $data['_view'] = 't31_bayar/t31_bayar_form';
@@ -199,6 +226,7 @@ class T31_bayar extends CI_Controller
             $data = array(
 				// 'idtamu' => $this->input->post('idtamu',TRUE),
                 'PaidBy' => $this->input->post('PaidBy',TRUE),
+                'PriceList' => $this->input->post('PriceList',TRUE),
                 'PricePay' => $this->input->post('PricePay',TRUE),
                 'Kurs' => $this->input->post('Kurs',TRUE),
 				'idusers' => $this->session->userdata('user_id'),
@@ -253,6 +281,31 @@ class T31_bayar extends CI_Controller
                         'idusers' => $this->session->userdata('user_id'),
                     );
                     $this->T33_bayars_model->insert($data);
+                }
+            }
+
+            /**
+             * hapus terlebih dahulu data yang sudah ada di tabel t34_bayars2 berdasarkan idbayar
+             */
+            $this->T34_bayars2_model->deleteByIdbayar($this->input->post('idbayar', TRUE));
+
+            /**
+             * ambil data TOS (type of selisih)
+             */
+            $dataTos2 = $this->T05_tos2_model->get_all();
+
+            /**
+             * simpan data detail selisih
+             */
+            foreach($dataTos2 as $dTos2) {
+                if ($this->input->post('___'.$dTos2->idtos2, TRUE) <> 0) {
+                    $data = array(
+                        'idbayar' => $this->input->post('idbayar', TRUE),
+                        'idtos2' => $dTos2->idtos2,
+                        'Jumlah' => $this->input->post('___'.$dTos->idtos, TRUE),
+                        'idusers' => $this->session->userdata('user_id'),
+                    );
+                    $this->T34_bayars2_model->insert($data);
                 }
             }
 

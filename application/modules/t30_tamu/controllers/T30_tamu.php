@@ -414,6 +414,7 @@ class T30_tamu extends CI_Controller
                     $dataBayar = [
                         'idtamu' => $idtamu,
                         'PaidBy' => $idtamu,
+                        'PriceList' => $row['I'],
                         'PricePay' => $row['I'],
                         'Kurs' => $Kurs,
                         'idusers' => $this->session->userdata('user_id'),

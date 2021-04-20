@@ -19,14 +19,37 @@
         	</div>
 
             <div class="form-group">
+            	<label for="int">KURS <?php echo form_error('Kurs') ?></label>
+            	<input type="text" class="form-control" name="Kurs" id="Kurs" placeholder="KURS" value="<?php echo $Kurs; ?>" />
+        	</div>
+
+            <div class="form-group">
+            	<label for="int">PRICE LIST <?php echo form_error('PriceList') ?></label>
+            	<input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" />
+        	</div>
+
+            <div class="form-group">
             	<label for="int">PRICE TO PAY <?php echo form_error('PricePay') ?></label>
             	<input type="text" class="form-control" name="PricePay" id="PricePay" placeholder="PRICE TO PAY" value="<?php echo $PricePay; ?>" />
         	</div>
 
-            <div class="form-group">
-            	<label for="int">KURS <?php echo form_error('Kurs') ?></label>
-            	<input type="text" class="form-control" name="Kurs" id="Kurs" placeholder="KURS" value="<?php echo $Kurs; ?>" />
-        	</div>
+            <!-- data pembayaran selisih price list -->
+            <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
+                <tr>
+                    <th colspan="3">SELISIH PRICE LIST</th>
+                </tr>
+                <tr>
+                    <th>TYPE</th>
+                    <th>JUMLAH</th>
+                </tr>
+                <?php foreach($dataTos2 as $dTos2) { ?>
+                    <tr>
+                        <td><?php echo $dTos2->Type ?></td>
+                        <?php $key = array_search($dTos2->idtos2, array_column($dataBayars2, 'idtos2'), true) ?>
+                        <td><input type="text" class="form-control" name="___<?php echo $dTos2->idtos2?>" value="<?= (FALSE !== $key) ? $dataBayars2[$key]->Jumlah : '0' ?>" /></td>
+                    </tr>
+                <?php } ?>
+            </table>
 
             <div class="form-group">
             	<label for="int">PAID BY <?php echo form_error('PaidBy') ?></label>
@@ -85,7 +108,7 @@
             <!-- data pembayaran selisih -->
             <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
                 <tr>
-                    <th colspan="3">SELISIH</th>
+                    <th colspan="3">SELISIH PRICE TO PAY</th>
                 </tr>
                 <tr>
                     <th>TYPE</th>
