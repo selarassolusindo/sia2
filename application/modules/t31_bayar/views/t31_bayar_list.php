@@ -82,6 +82,7 @@
                 echo ' TGL. ';
                 echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> ';
                 echo '</h6>';
+
         ?>
                 <table class="table table-bordered table-striped" style="margin-bottom: 10px; white-space: nowrap;">
                     <tr>
@@ -121,7 +122,8 @@
             }
         ?>
                     <tr>
-        				<td style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo ++$start ?></td>
+        				<!-- <td style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo ++$start ?></td> -->
+                        <td style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo $t31_bayar->no ?></td>
         				<td style="left: 0; position: sticky; background-color: white;"><?php echo $t31_bayar->Name ?></td>
                         <!-- price to pay -->
                         <td class="text-right"><?php echo numIndo($t31_bayar->Kurs) ?></td>

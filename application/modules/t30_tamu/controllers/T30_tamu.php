@@ -394,6 +394,7 @@ class T30_tamu extends CI_Controller
                      * simpan ke tabel tamu
                      */
                     $dataTamu = [
+                        'no'           => $row['A'],
                         'TripNo'       => $TripNo,
                         'TripTgl'      => $TripTgl,
                         'Name'         => $row['B'],
@@ -445,6 +446,7 @@ class T30_tamu extends CI_Controller
                      * simpan ke tabel bayar
                      */
                     $dataBayar = [
+                        'no' => $row['A'],
                         'idtamu' => $idtamu,
                         'PaidBy' => $idtamu,
                         'PriceList' => $priceList,
