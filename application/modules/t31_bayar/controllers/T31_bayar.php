@@ -246,6 +246,7 @@ class T31_bayar extends CI_Controller
             /**
              * simpan data detail pembayaran
              */
+            $totalJumlah = 0;
             foreach($dataTop as $dTop) {
                 if ($this->input->post('_'.$dTop->idtop, TRUE) <> 0) {
                     $data = array(
@@ -256,8 +257,17 @@ class T31_bayar extends CI_Controller
                         'idusers' => $this->session->userdata('user_id'),
                     );
                     $this->T32_bayard_model->insert($data);
+                    $totalJumlah += $this->input->post('_'.$dTop->idtop, TRUE);
                 }
             }
+
+            /**
+             * update total pembayaran ke master pembayaran
+             */
+            $data = array(
+                'Total' => $totalJumlah,
+            );
+            $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
 
             /**
              * hapus terlebih dahulu data yang sudah ada di tabel t33_bayars berdasarkan idbayar
@@ -272,6 +282,7 @@ class T31_bayar extends CI_Controller
             /**
              * simpan data detail selisih
              */
+            $totalJumlah = 0;
             foreach($dataTos as $dTos) {
                 if ($this->input->post('__'.$dTos->idtos, TRUE) <> 0) {
                     $data = array(
@@ -281,8 +292,17 @@ class T31_bayar extends CI_Controller
                         'idusers' => $this->session->userdata('user_id'),
                     );
                     $this->T33_bayars_model->insert($data);
+                    $totalJumlah += $this->input->post('__'.$dTos->idtos, TRUE);
                 }
             }
+
+            /**
+             * update total selisih price to pay ke master pembayaran
+             */
+            $data = array(
+                'Selisih' => $totalJumlah,
+            );
+            $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
 
             /**
              * hapus terlebih dahulu data yang sudah ada di tabel t34_bayars2 berdasarkan idbayar
