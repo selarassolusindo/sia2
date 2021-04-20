@@ -33,28 +33,28 @@ class T01_package_model extends CI_Model
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('idprice', $q);
-	$this->db->or_like('PackageName', $q);
-	$this->db->or_like('PackageCode', $q);
-	$this->db->or_like('SN3LN', $q);
-	$this->db->or_like('SN6LN', $q);
-	$this->db->or_like('SNELN', $q);
-	$this->db->or_like('PN1LN', $q);
-	$this->db->or_like('PN1DN', $q);
-	$this->db->or_like('SN3C', $q);
-	$this->db->or_like('SN3CP', $q);
-	$this->db->or_like('SN6C', $q);
-	$this->db->or_like('SN6CP', $q);
-	$this->db->or_like('SNEC', $q);
-	$this->db->or_like('SNECP', $q);
-	$this->db->or_like('PN3C', $q);
-	$this->db->or_like('PN3CP', $q);
-	$this->db->or_like('PN6C', $q);
-	$this->db->or_like('PN6CP', $q);
-	$this->db->or_like('PNEC', $q);
-	$this->db->or_like('PNECP', $q);
-	$this->db->or_like('created_at', $q);
-	$this->db->or_like('updated_at', $q);
-	$this->db->from($this->table);
+    	$this->db->or_like('PackageName', $q);
+    	$this->db->or_like('PackageCode', $q);
+    	$this->db->or_like('SN3LN', $q);
+    	$this->db->or_like('SN6LN', $q);
+    	$this->db->or_like('SNELN', $q);
+    	$this->db->or_like('PN1LN', $q);
+    	$this->db->or_like('PN1DN', $q);
+    	$this->db->or_like('SN3C', $q);
+    	$this->db->or_like('SN3CP', $q);
+    	$this->db->or_like('SN6C', $q);
+    	$this->db->or_like('SN6CP', $q);
+    	$this->db->or_like('SNEC', $q);
+    	$this->db->or_like('SNECP', $q);
+    	$this->db->or_like('PN3C', $q);
+    	$this->db->or_like('PN3CP', $q);
+    	$this->db->or_like('PN6C', $q);
+    	$this->db->or_like('PN6CP', $q);
+    	$this->db->or_like('PNEC', $q);
+    	$this->db->or_like('PNECP', $q);
+    	$this->db->or_like('created_at', $q);
+    	$this->db->or_like('updated_at', $q);
+    	$this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
@@ -62,28 +62,28 @@ class T01_package_model extends CI_Model
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('idprice', $q);
-	$this->db->or_like('PackageName', $q);
-	$this->db->or_like('PackageCode', $q);
-	$this->db->or_like('SN3LN', $q);
-	$this->db->or_like('SN6LN', $q);
-	$this->db->or_like('SNELN', $q);
-	$this->db->or_like('PN1LN', $q);
-	$this->db->or_like('PN1DN', $q);
-	$this->db->or_like('SN3C', $q);
-	$this->db->or_like('SN3CP', $q);
-	$this->db->or_like('SN6C', $q);
-	$this->db->or_like('SN6CP', $q);
-	$this->db->or_like('SNEC', $q);
-	$this->db->or_like('SNECP', $q);
-	$this->db->or_like('PN3C', $q);
-	$this->db->or_like('PN3CP', $q);
-	$this->db->or_like('PN6C', $q);
-	$this->db->or_like('PN6CP', $q);
-	$this->db->or_like('PNEC', $q);
-	$this->db->or_like('PNECP', $q);
-	$this->db->or_like('created_at', $q);
-	$this->db->or_like('updated_at', $q);
-	$this->db->limit($limit, $start);
+    	$this->db->or_like('PackageName', $q);
+    	$this->db->or_like('PackageCode', $q);
+    	$this->db->or_like('SN3LN', $q);
+    	$this->db->or_like('SN6LN', $q);
+    	$this->db->or_like('SNELN', $q);
+    	$this->db->or_like('PN1LN', $q);
+    	$this->db->or_like('PN1DN', $q);
+    	$this->db->or_like('SN3C', $q);
+    	$this->db->or_like('SN3CP', $q);
+    	$this->db->or_like('SN6C', $q);
+    	$this->db->or_like('SN6CP', $q);
+    	$this->db->or_like('SNEC', $q);
+    	$this->db->or_like('SNECP', $q);
+    	$this->db->or_like('PN3C', $q);
+    	$this->db->or_like('PN3CP', $q);
+    	$this->db->or_like('PN6C', $q);
+    	$this->db->or_like('PN6CP', $q);
+    	$this->db->or_like('PNEC', $q);
+    	$this->db->or_like('PNECP', $q);
+    	$this->db->or_like('created_at', $q);
+    	$this->db->or_like('updated_at', $q);
+    	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
@@ -105,6 +105,13 @@ class T01_package_model extends CI_Model
     {
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
+    }
+
+    // get data by name
+    function getByCode($code)
+    {
+        $this->db->where('PackageCode', $code);
+        return $this->db->get($this->table)->row();
     }
 
 }

@@ -15,6 +15,8 @@ class T30_tamu extends CI_Controller
         $this->load->model('t31_bayar/T31_bayar_model');
         $this->load->model('t32_bayard/T32_bayard_model');
         $this->load->model('t33_bayars/T33_bayars_model');
+        $this->load->model('t34_bayars2/T34_bayars2_model');
+        $this->load->model('t01_package/T01_package_model');
     }
 
     public function index()
@@ -196,6 +198,11 @@ class T30_tamu extends CI_Controller
         $row = $this->T30_tamu_model->get_by_TripNo($TripNo);
 
         if ($row) {
+
+            /**
+             * hapus data detail pembayaran selisih price list
+             */
+            $this->T34_bayars2_model->deleteTripNo($TripNo);
 
             /**
              * hapus data detail pembayaran selisih
@@ -409,12 +416,38 @@ class T30_tamu extends CI_Controller
                     $idtamu = $this->T30_tamu_model->getInsertId();
 
                     /**
+                     * ambil data package name
+                     */
+                    $dataPackage = $this->T01_package_model->getByCode($row['C']);
+
+                    /**
+                     * seleksi data package
+                     */
+                    if ($dataPackage) {
+                        // data package ditemukan
+                        $nights = $row['D'];
+                        switch ($nights) {
+                            case 3:
+                                $priceList = $dataPackage->SN3LN;
+                                break;
+                            case 6:
+                                $priceList = $dataPackage->SN6LN;
+                                break;
+                            default:
+                                $priceList = 0;
+                        }
+                    } else {
+                        // data package tidak ditemukan
+                        $priceList = 0;
+                    }
+
+                    /**
                      * simpan ke tabel bayar
                      */
                     $dataBayar = [
                         'idtamu' => $idtamu,
                         'PaidBy' => $idtamu,
-                        'PriceList' => $row['I'],
+                        'PriceList' => $priceList,
                         'PricePay' => $row['I'],
                         'Kurs' => $Kurs,
                         'idusers' => $this->session->userdata('user_id'),
