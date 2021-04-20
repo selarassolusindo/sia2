@@ -158,6 +158,33 @@ class T31_bayar_model extends CI_Model
         $this->db->query($q);
     }
 
+    /**
+     * ambil data berdasarkan idtamu
+     */
+    function getByIdtamu($idtamu)
+    {
+        $this->db->where('idtamu', $idtamu);
+        return $this->db->get($this->table)->row();
+    }
+
+    // update data by parameter
+    function updateByParam($param, $value, $data)
+    {
+        echo pre($data);
+        //$this->db->set($data);
+        // foreach ($data as $key => $val) {
+        //     $this->db->set($key, $val, FALSE);
+        // }
+        // $this->db->set('PriceList', 'PriceList + 1', FALSE);
+        // $data = array(
+        //     'PriceList' => PriceList + 100,
+        // );
+        $this->db->where($param, $value);
+        $this->db->update($this->table, $data);
+        // echo $this->db->get_compiled_update();
+        // $this->db->update($this->table, $data);
+    }
+
 }
 
 /* End of file T31_bayar_model.php */

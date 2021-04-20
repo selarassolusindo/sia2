@@ -189,10 +189,15 @@ class T31_bayar extends CI_Controller
                 'action' => site_url('t31_bayar/update_action'),
 				'idbayar' => set_value('idbayar', $row->idbayar),
 				'idtamu' => set_value('idtamu', $row->idtamu),
-                'PriceList' => set_value('idtamu', $row->PriceList),
-                'PricePay' => set_value('idtamu', $row->PricePay),
-                'Kurs' => set_value('idtamu', $row->Kurs),
-                'PaidBy' => set_value('idtamu', $row->PaidBy),
+                'PriceList' => set_value('PriceList', $row->PriceList),
+                'PricePay' => set_value('PricePay', $row->PricePay),
+                'Kurs' => set_value('Kurs', $row->Kurs),
+                'PaidBy' => set_value('PaidBy', $row->PaidBy),
+                'SelisihPL' => set_value('SelisihPL', $row->SelisihPL),
+                'Total' => set_value('Total', $row->Total),
+                'Selisih' => set_value('Selisih', $row->Selisih),
+                'ShareP' => set_value('ShareP', $row->ShareP),
+                'ShareS' => set_value('ShareS', $row->ShareS),
                 'Name' => $row->Name,
                 'dataTop' => $dataTop,
                 'dataBayard' => $dataBayard,
@@ -338,6 +343,51 @@ class T31_bayar extends CI_Controller
                 'SelisihPL' => $totalJumlah,
             );
             $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
+
+            /**
+             * check paid by
+             */
+            if ($this->input->post('PaidBy',TRUE) <> $this->input->post('idtamu',TRUE)) {
+
+                // simpan data sebelum di-0-kan, untuk diakumulasikan ke tamu yang terbebani
+                $priceList = $this->input->post('PriceList',TRUE);
+                $pricePay = $this->input->post('PricePay',TRUE);
+                $selisihPL = $this->input->post('SelisihPL',TRUE);
+                $total = $this->input->post('Total',TRUE);
+                $selisih = $this->input->post('Selisih',TRUE);
+                $shareP = $this->input->post('ShareP',TRUE);
+                $shareS = $this->input->post('ShareS',TRUE);
+
+                // meng-0-kan data yang membebani tamu lain
+                $data = array(
+                    'PriceList' => 0,
+                    'PricePay' => 0,
+                    'SelisihPL' => 0,
+                    'Total' => 0,
+                    'Selisih' => 0,
+                    'ShareP' => 0,
+                    'ShareS' => 0,
+                );
+                $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
+
+                /**
+                 * ambil data dari tamu yang terbebani untuk ditambahkan dengan tamu yang membebani
+                 */
+                $dataTamuTerbebani = $this->T31_bayar_model->getByIdtamu($this->input->post('PaidBy', TRUE));
+
+                // mengakumulasikan data pada tamu yang terbebani
+                $data = array(
+                    'PriceList' => $dataTamuTerbebani->PriceList + $this->input->post('PriceList', TRUE),
+                    'PricePay' => $dataTamuTerbebani->PricePay + $this->input->post('PricePay', TRUE),
+                    'SelisihPL' => $dataTamuTerbebani->SelisihPL + $this->input->post('SelisihPL', TRUE),
+                    'Total' => $dataTamuTerbebani->Total + $this->input->post('Total', TRUE),
+                    'Selisih' => $dataTamuTerbebani->Selisih + $this->input->post('Selisih', TRUE),
+                    'ShareP' => $dataTamuTerbebani->ShareP + $this->input->post('ShareP', TRUE),
+                    'ShareS' => $dataTamuTerbebani->ShareS + $this->input->post('ShareS', TRUE),
+                );
+                $this->T31_bayar_model->updateByParam('idtamu', $this->input->post('PaidBy', TRUE), $data);
+
+            }
 
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('t31_bayar'));

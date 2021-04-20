@@ -15,6 +15,11 @@
 			<div class="form-group">
             	<label for="int">NAME <?php echo form_error('idtamu') ?></label>
                 <input type="hidden" name="idtamu" value="<?php echo $idtamu; ?>" />
+                <input type="hidden" name="SelisihPL" value="<?php echo $SelisihPL; ?>" />
+                <input type="hidden" name="Total" value="<?php echo $Total; ?>" />
+                <input type="hidden" name="Selisih" value="<?php echo $Selisih; ?>" />
+                <input type="hidden" name="ShareP" value="<?php echo $ShareP; ?>" />
+                <input type="hidden" name="ShareS" value="<?php echo $ShareS; ?>" />
             	<input type="text" class="form-control" value="<?php echo $Name; ?>" readonly />
         	</div>
 
