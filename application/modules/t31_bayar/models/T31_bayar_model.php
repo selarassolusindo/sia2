@@ -49,17 +49,17 @@ class T31_bayar_model extends CI_Model
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL) {
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('t30_tamu.Name');
-        $this->db->or_like('t30_tamu.TripNo');
-        $this->db->or_like('t30_tamu.TripTgl');
-        $this->db->or_like('pb.Name');
+        $this->db->like('t30_tamu.Name', $q);
+        $this->db->or_like('t30_tamu.TripNo', $q);
+        $this->db->or_like('t30_tamu.TripTgl', $q);
+        $this->db->or_like('pb.Name', $q);
 		$this->db->limit($limit, $start);
         $this->db->select($this->table.'.*');
         $this->db->select('t30_tamu.TripNo, t30_tamu.TripTgl, t30_tamu.Name');
         $this->db->select('pb.Name as NamePaidBy');
         $this->db->from($this->table);
         $this->db->join('t30_tamu', 't30_tamu.idtamu = '.$this->table.'.idtamu');
-        $this->db->join('t30_tamu pb', 'pb.idtamu = '.$this->table.'.PaidBy', 'left');
+        $this->db->join('t30_tamu pb', 'pb.idtamu = '.$this->table.'.PaidBy', 'left'); //echo $this->db->get_compiled_select();
         return $this->db->get()->result();
     }
 
