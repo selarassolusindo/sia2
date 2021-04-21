@@ -84,7 +84,7 @@
                 echo 'KURS ';
                 $kurs = unserialize($t31_bayar->Kurs);
                 foreach ($kurs as $dKurs) {
-                    echo '<b>' . $dKurs['MataUang'] . ' - RP. ' . $dKurs['Nilai'] . '</b> | ';
+                    echo '<b>' . $dKurs['MataUang'] . ' - ' . $dKurs['Nilai'] . '</b> | ';
                 }
                 echo '</h6>';
 
