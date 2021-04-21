@@ -115,7 +115,7 @@
                         <th rowspan="2" class="text-center">PROSES</th>
                     </tr>
                     <tr>
-                        <th class="text-right">USD</th>
+                        <th class="text-center">USD</th>
                         <th class="text-right">PIW</th>
                         <th class="text-right">SSW</th>
                     </tr>
