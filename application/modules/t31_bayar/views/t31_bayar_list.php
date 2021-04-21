@@ -89,7 +89,7 @@
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NO.</th>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NAME</th>
                         <th rowspan="2" class="text-center">KURS</th>
-                        <th rowspan="2" class="text-center">PRICE LIST</th>
+                        <th class="text-center">PRICE LIST</th>
                         <th rowspan="2" class="text-center">PRICE TO PAY</th>
                         <th rowspan="2" class="text-center">SELISIH PRICE LIST</th>
                         <th rowspan="2" class="text-center">PAID-BY</th>
@@ -115,6 +115,7 @@
                         <th rowspan="2" class="text-center">PROSES</th>
                     </tr>
                     <tr>
+                        <th class="text-right">USD</th>
                         <th class="text-right">PIW</th>
                         <th class="text-right">SSW</th>
                     </tr>
