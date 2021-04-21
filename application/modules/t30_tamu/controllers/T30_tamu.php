@@ -438,7 +438,20 @@ class T30_tamu extends CI_Controller
 
                     // temporary cutted
 
+                    // price list
                     $priceList = $this->getPriceList($row['C'], $row['D'], 'inside');
+
+                    // nilai kurs
+                    $key = array_search(DEFAULT_KURS, array_column($kurs, 'MataUang'), true);
+                    $nilaiKurs = $kurs[$key]['Nilai'];
+
+                    // price to pay
+                    $pricePay = $priceList * $nilaiKurs;
+
+                    // echo pre($kurs);
+                    // echo $key.'-'.$nilaiKurs;
+
+                    // exit;
 
                     /**
                      * simpan ke tabel bayar
@@ -449,7 +462,7 @@ class T30_tamu extends CI_Controller
                         'idtamu'    => $idtamu,
                         'PaidBy'    => $idtamu,
                         'PriceList' => $priceList,
-                        'PricePay'  => $row['I'],
+                        'PricePay'  => $pricePay,
                         'idusers'   => $this->session->userdata('user_id'),
                     ];
                     $this->T31_bayar_model->insert($dataBayar);

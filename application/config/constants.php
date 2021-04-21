@@ -92,3 +92,5 @@ define('STRBETWEEN22', '98');
 define('STRBETWEEN24', '998');
 define('STRBETWEEN27', '998');
 define('STRBETWEEN210', '998');
+
+define('DEFAULT_KURS', 'USD');

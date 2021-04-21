@@ -25,16 +25,16 @@
 
             <div class="form-group">
             	<label for="int">KURS <?php echo form_error('Kurs') ?></label>
-            	<input type="text" class="form-control" name="Kurs" id="Kurs" placeholder="KURS" value="<?php echo $Kurs; ?>" />
+            	<input type="text" class="form-control" name="Kurs" id="Kurs" placeholder="KURS" value="<?php echo $Kurs; ?>" readonly />
         	</div>
 
             <div class="form-group">
-            	<label for="int">PRICE LIST <?php echo form_error('PriceList') ?></label>
+            	<label for="int">PRICE LIST (<?php echo DEFAULT_KURS ?>) <?php echo form_error('PriceList') ?></label>
             	<input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" />
         	</div>
 
             <div class="form-group">
-            	<label for="int">PRICE TO PAY <?php echo form_error('PricePay') ?></label>
+            	<label for="int">PRICE TO PAY (RP)<?php echo form_error('PricePay') ?></label>
             	<input type="text" class="form-control" name="PricePay" id="PricePay" placeholder="PRICE TO PAY" value="<?php echo $PricePay; ?>" />
         	</div>
 

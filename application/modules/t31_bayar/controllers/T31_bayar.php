@@ -184,6 +184,11 @@ class T31_bayar extends CI_Controller
              */
             $dataBayars2 = $this->T34_bayars2_model->getDataByIdbayar($row->idbayar); //$config['per_page'], $start, $q);
 
+            $kurs = unserialize($row->Kurs);
+            foreach ($kurs as $dKurs) {
+                $dataKurs .= $dKurs['MataUang'] . ' - ' . $dKurs['Nilai'] . ', ';
+            }
+
             $data = array(
                 'button' => 'Simpan',
                 'action' => site_url('t31_bayar/update_action'),
@@ -191,7 +196,7 @@ class T31_bayar extends CI_Controller
 				'idtamu' => set_value('idtamu', $row->idtamu),
                 'PriceList' => set_value('PriceList', $row->PriceList),
                 'PricePay' => set_value('PricePay', $row->PricePay),
-                'Kurs' => set_value('Kurs', $row->Kurs),
+                'Kurs' => set_value('Kurs', $dataKurs),
                 'PaidBy' => set_value('PaidBy', $row->PaidBy),
                 'SelisihPL' => set_value('SelisihPL', $row->SelisihPL),
                 'Total' => set_value('Total', $row->Total),
