@@ -78,9 +78,14 @@
                 // echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b>';
                 echo '<h6>';
                 echo 'TRIP ';
-                echo 'NO. <b>' . $t31_bayar->TripNo . '</b>';
+                echo 'NO. <b>' . $t31_bayar->TripNo . '</b> || ';
                 echo ' TGL. ';
-                echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> ';
+                echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> || ';
+                echo 'KURS ';
+                $kurs = unserialize($t31_bayar->Kurs);
+                foreach ($kurs as $dKurs) {
+                    echo '<b>' . $dKurs['MataUang'] . ' - RP. ' . $dKurs['Nilai'] . '</b> | ';
+                }
                 echo '</h6>';
 
         ?>
@@ -88,10 +93,12 @@
                     <tr>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NO.</th>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NAME</th>
-                        <th rowspan="2" class="text-center">KURS</th>
                         <th class="text-center">PRICE LIST</th>
                         <th class="text-center">PRICE TO PAY</th>
-                        <th rowspan="2" class="text-center">SELISIH PRICE LIST</th>
+                        <!-- <th rowspan="2" class="text-center">SELISIH PRICE LIST</th> -->
+                        <?php foreach($dataTos2 as $dTos2) { ?>
+                            <th rowspan="2" class="text-right"><?php echo $dTos2->Type ?></th>
+                        <?php } ?>
                         <th rowspan="2" class="text-center">PAID-BY</th>
 
                         <!-- pembayaran detail -->
@@ -100,10 +107,10 @@
                         <?php } ?>
 
                         <!-- total pembayaran -->
-                        <th rowspan="2" class="text-center">TOTAL</th>
+                        <!-- <th rowspan="2" class="text-center">TOTAL</th> -->
 
                         <!-- total selisih -->
-                        <th rowspan="2" class="text-center">SELISIH PRICE TO PAY</th>
+                        <!-- <th rowspan="2" class="text-center">SELISIH PRICE TO PAY</th> -->
 
                         <!-- selisih detail -->
                         <?php foreach($dataTos as $dTos) { ?>
@@ -128,10 +135,16 @@
                         <td class="text-right" style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo $t31_bayar->no.'.' ?></td>
         				<td style="left: 0; position: sticky; background-color: white;"><?php echo $t31_bayar->Name ?></td>
                         <!-- price to pay -->
-                        <td class="text-right"><?php echo numIndo($t31_bayar->Kurs) ?></td>
+
                         <td class="text-right"><?php echo numIndo($t31_bayar->PriceList) ?></td>
                         <td class="text-right"><?php echo numIndo($t31_bayar->PricePay) ?></td>
-                        <td class="text-right"><?php echo numIndo($t31_bayar->SelisihPL) ?></td>
+                        <!-- <td class="text-right"><?php echo numIndo($t31_bayar->SelisihPL) ?></td> -->
+                        <!-- data type of selisih price list -->
+                        <?php foreach($dataTos2 as $dTos2) { ?>
+                            <?php $key = array_search($t31_bayar->idbayar.$dTos2->idtos2, array_column($dataBayars2, 'idbayar_idtos2'), true) ?>
+                            <!-- <td><?php //echo $dTop->Type ?></td> -->
+                            <td class="text-right"><?= (FALSE !== $key) ? numIndo($dataBayars2[$key]->Jumlah) : '0' ?></td>
+                        <?php } ?>
                         <td><?php echo $t31_bayar->NamePaidBy ?></td>
 
                         <!-- data type of payment -->
@@ -143,10 +156,10 @@
                         <?php } ?>
 
                         <!-- total pembayaran -->
-                        <td class="text-right"><?php echo numIndo($t31_bayar->Total) ?></td>
+                        <!-- <td class="text-right"><?php echo numIndo($t31_bayar->Total) ?></td> -->
 
                         <!-- total selisih -->
-                        <td class="text-right"><?php echo numIndo($t31_bayar->Selisih) ?></td>
+                        <!-- <td class="text-right"><?php echo numIndo($t31_bayar->Selisih) ?></td> -->
 
                         <!-- data type of selisih -->
                         <?php foreach($dataTos as $dTos) { ?>

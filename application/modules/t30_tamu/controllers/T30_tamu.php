@@ -378,7 +378,27 @@ class T30_tamu extends CI_Controller
              */
             $TripNo  = $sheet[4]['B'];
             $TripTgl = dateMysql($sheet[4]['C']);
-            $Kurs    = $sheet[4]['F'];
+
+            /**
+             * simpan data kurs
+             */
+            $chr = 71; // G
+            // $kurs = array();
+            while ($sheet[3][chr($chr)] != '') {
+                // echo $sheet[3][chr($chr)] . ' - ' . $sheet[4][chr($chr)] . '<br>';
+                $kurs[] = [
+                    'MataUang' => $sheet[3][chr($chr)],
+                    'Nilai' => $sheet[4][chr($chr)],
+                ];
+                $chr++;
+            }
+
+            // echo pre($kurs);
+            // exit;
+
+            // ($sheet[4][chr($chr)] == '')
+
+            // $Kurs    = $sheet[4]['F'];
             foreach ($sheet as $row) {
                 // echo pre($row);
                 if ($numRow >= $startRow) {
@@ -424,13 +444,13 @@ class T30_tamu extends CI_Controller
                      * simpan ke tabel bayar
                      */
                     $dataBayar = [
-                        'no' => $row['A'],
-                        'idtamu' => $idtamu,
-                        'PaidBy' => $idtamu,
+                        'Kurs'      => serialize($kurs),
+                        'no'        => $row['A'],
+                        'idtamu'    => $idtamu,
+                        'PaidBy'    => $idtamu,
                         'PriceList' => $priceList,
-                        'PricePay' => $row['I'],
-                        'Kurs' => $Kurs,
-                        'idusers' => $this->session->userdata('user_id'),
+                        'PricePay'  => $row['I'],
+                        'idusers'   => $this->session->userdata('user_id'),
                     ];
                     $this->T31_bayar_model->insert($dataBayar);
 
