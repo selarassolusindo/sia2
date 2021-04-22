@@ -31,8 +31,23 @@
         	</div>
 
             <div class="form-group">
-            	<label for="int">PRICE LIST (<?php echo DEFAULT_KURS ?>) <?php echo form_error('PriceList') ?></label>
-            	<input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" />
+
+                <div class="row">
+                    <div class="col-4">
+                        <label for="int">PRICE LIST (<?php echo DEFAULT_KURS ?>) <?php echo form_error('PriceList') ?></label>
+                        <input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" />
+                    </div>
+                    <div class="col-4">
+                        <label for="int">PRICE LIST (RP) <?php echo form_error('PriceList') ?></label>
+                        <?php
+                        // nilai kurs
+                        $key = array_search(DEFAULT_KURS, array_column($kursHitung, 'MataUang'), true);
+                        $nilaiKurs = $kursHitung[$key]['Nilai'];
+                        $priceListRP = $PriceList * $nilaiKurs;
+                        ?>
+                        <input type="text" class="form-control" name="PriceListRP" id="PriceListRP" placeholder="PRICE LIST (RP)" value="<?php echo numIndo($priceListRP); ?>" readonly />
+                    </div>
+                </div>
         	</div>
 
             <div class="form-group">
