@@ -20,6 +20,8 @@
                 <input type="hidden" name="Selisih" value="<?php echo $Selisih; ?>" />
                 <input type="hidden" name="ShareP" value="<?php echo $ShareP; ?>" />
                 <input type="hidden" name="ShareS" value="<?php echo $ShareS; ?>" />
+                <input type="hidden" name="TripNo" value="<?php echo $TripNo; ?>" />
+                <input type="hidden" name="TripTgl" value="<?php echo $TripTgl; ?>" />
             	<input type="text" class="form-control" value="<?php echo $Name; ?>" readonly />
         	</div>
 
@@ -70,7 +72,7 @@
             <!-- data pembayaran detail -->
             <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
                 <tr>
-                    <th colspan="3">PAYMENT</th>
+                    <th colspan="4">PAYMENT</th>
                 </tr>
                 <tr>
                     <th>TYPE</th>
@@ -154,7 +156,7 @@
 
 			<input type="hidden" name="idbayar" value="<?php echo $idbayar; ?>" />
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-			<a href="<?php echo site_url('t31_bayar') ?>" class="btn btn-secondary">Batal</a>
+			<a href="<?php echo site_url('t31_bayar?q='.$TripNo) ?>" class="btn btn-secondary">Selesai</a>
 		</form>
     <!-- </body>
 </html> -->

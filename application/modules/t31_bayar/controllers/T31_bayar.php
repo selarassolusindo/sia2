@@ -33,7 +33,7 @@ class T31_bayar extends CI_Controller
             $config['first_url'] = base_url() . 't31_bayar';
         }
 
-        $config['per_page'] = 10;
+        $config['per_page'] = 50;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->T31_bayar_model->total_rows($q);
         $t31_bayar = $this->T31_bayar_model->get_limit_data($config['per_page'], $start, $q);
@@ -212,6 +212,8 @@ class T31_bayar extends CI_Controller
                 'dataTos2' => $dataTos2,
                 'dataBayars2' => $dataBayars2,
                 'kursHitung' => $kurs,
+                'TripNo' => $TripNo,
+                'TripTgl' => $TripTgl,
 			);
             // $this->load->view('t31_bayar/t31_bayar_form', $data);
             $data['_view'] = 't31_bayar/t31_bayar_form';
@@ -409,7 +411,8 @@ class T31_bayar extends CI_Controller
             }
 
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('t31_bayar'));
+            redirect(site_url('t31_bayar/update/'.$this->input->post('idbayar', TRUE).'/'.$this->input->post('TripNo', TRUE).'/'.$this->input->post('TripTgl', TRUE)));
+            // update/473/T-03/2020-02-08
         }
     }
 
