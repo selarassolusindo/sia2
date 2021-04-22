@@ -94,3 +94,7 @@ define('STRBETWEEN27', '998');
 define('STRBETWEEN210', '998');
 
 define('DEFAULT_KURS', 'USD');
+
+define('KURS_1', 'USD');
+define('KURS_2', 'AUD');
+define('KURS_3', 'RP');

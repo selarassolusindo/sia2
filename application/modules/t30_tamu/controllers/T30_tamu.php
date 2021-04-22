@@ -472,6 +472,11 @@ class T30_tamu extends CI_Controller
                      */
                     $idbayar = $this->T31_bayar_model->getInsertId();
 
+                    /**
+                     * simpan data ke tabel detail bayar
+                     */
+
+                    $totalJumlah = 0;
                     $chr = 75; // start kolom K, kode ascii K adalah 75
                     foreach($dataTop as $dTop) {
                         $jumlahBayar = $row[chr($chr)];
@@ -487,9 +492,19 @@ class T30_tamu extends CI_Controller
                                 'idusers' => $this->session->userdata('user_id'),
                             ];
                             $this->T32_bayard_model->insert($dataBayarDetail);
+                            $totalJumlah += $jumlahBayar;
                         }
                         $chr++;
                     }
+
+                    /**
+                     * update total pembayaran ke master pembayaran
+                     */
+                    $data = array(
+                        'Total' => $totalJumlah,
+                    );
+                    $this->T31_bayar_model->update($idbayar, $data);
+
 
                 }
                 $numRow++;

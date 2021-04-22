@@ -74,13 +74,13 @@
                 </tr>
                 <tr>
                     <th>TYPE</th>
-                    <th>TGL. BAYAR</th>
+                    <th>n/n</th>
                     <th>JUMLAH</th>
                 </tr>
                 <?php foreach($dataTop as $dTop) { ?>
                     <tr>
                         <td><?php echo $dTop->Type ?></td>
-                        <td>
+                        <!-- <td>
                             <div class="input-group date" id="_tglbayar<?php echo $dTop->idtop?>" data-target-input="nearest">
                                 <div class="input-group-append" data-target="#_tglbayar<?php echo $dTop->idtop?>" data-toggle="datetimepicker">
                                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
@@ -95,7 +95,8 @@
                                     });
                                 })
                             </script>
-                        </td>
+                        </td> -->
+                        <td>n/n</td>
                         <?php $key = array_search($dTop->idtop, array_column($dataBayard, 'idtop'), true) ?>
                         <td><input type="text" class="form-control" name="_<?php echo $dTop->idtop?>" value="<?= (FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0' ?>" /></td>
                     </tr>

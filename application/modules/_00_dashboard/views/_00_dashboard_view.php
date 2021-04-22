@@ -249,6 +249,7 @@
                                         case 't03_agent':
                                         case 't04_tos':
                                         case 't05_tos2':
+                                        case 't06_currency':
                                             echo 'active';
                                             break;
                                         default:
@@ -309,6 +310,14 @@
                                         <a href="<?php echo site_url(); ?>t01_package" class="nav-link <?php echo $this->uri->segment(1) == 't01_package' ? 'active' : ''; ?>">
                                             <i class="far fa-window-restore nav-icon"></i>
                                             <p>Package</p>
+                                        </a>
+                                    </li>
+
+                                    <!-- mata uang -->
+                                    <li class="nav-item">
+                                        <a href="<?php echo site_url(); ?>t06_currency" class="nav-link <?php echo $this->uri->segment(1) == 't06_currency' ? 'active' : ''; ?>">
+                                            <i class="far fa-window-restore nav-icon"></i>
+                                            <p>Mata Uang</p>
                                         </a>
                                     </li>
 
