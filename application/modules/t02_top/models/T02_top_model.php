@@ -20,7 +20,12 @@ class T02_top_model extends CI_Model
     function get_all()
     {
         $this->db->order_by($this->id, $this->order);
-        return $this->db->get($this->table)->result();
+        // return $this->db->get($this->table)->result();
+        $this->db->select($this->table.'.*');
+        $this->db->select('t06_currency.Currency as CurrencyName');
+        $this->db->from($this->table);
+        $this->db->join('t06_currency','t06_currency.idcurrency = '.$this->table.'.Currency','left');
+        return $this->db->get()->result();
     }
 
     // get data by id

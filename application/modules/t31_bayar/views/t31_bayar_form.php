@@ -74,9 +74,11 @@
                 </tr>
                 <tr>
                     <th>TYPE</th>
-                    <th>n/n</th>
+                    <th>MATA UANG</th>
                     <th>JUMLAH</th>
+                    <th>JUMLAH (RP)</th>
                 </tr>
+                <?php $totalJumlahBayar = 0; ?>
                 <?php foreach($dataTop as $dTop) { ?>
                     <tr>
                         <td><?php echo $dTop->Type ?></td>
@@ -96,11 +98,22 @@
                                 })
                             </script>
                         </td> -->
-                        <td>n/n</td>
+                        <td><?php echo $dTop->CurrencyName ?></td>
                         <?php $key = array_search($dTop->idtop, array_column($dataBayard, 'idtop'), true) ?>
                         <td><input type="text" class="form-control" name="_<?php echo $dTop->idtop?>" value="<?= (FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0' ?>" /></td>
+                        <?php
+                        $keyKurs = array_search($dTop->CurrencyName, array_column($kursHitung, 'MataUang'), true);
+                        $jumlahBayar = ((FALSE !== $key) ? $dataBayard[$key]->Jumlah : '0') * ((FALSE !== $keyKurs) ? $kursHitung[$keyKurs]['Nilai'] : '1');
+                        $totalJumlahBayar += $jumlahBayar;
+                        ?>
+                        <input type="hidden" class="form-control" name="_<?php echo $dTop->idtop?>_RP" value="<?= $jumlahBayar ?>" readonly>
+                        <td class="text-right"><?php echo numIndo($jumlahBayar) ?></td>
                     </tr>
                 <?php } ?>
+                <tr>
+                    <td colspan="3" class="text-right"><b>TOTAL</b></td>
+                    <td class="text-right"><b><?php echo numIndo($totalJumlahBayar); ?></b></td>
+                </tr>
             </table>
 
             <!-- data pembayaran detail -->

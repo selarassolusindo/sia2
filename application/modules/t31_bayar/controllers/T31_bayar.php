@@ -211,6 +211,7 @@ class T31_bayar extends CI_Controller
                 'dataTamu' => $dataTamu,
                 'dataTos2' => $dataTos2,
                 'dataBayars2' => $dataBayars2,
+                'kursHitung' => $kurs,
 			);
             // $this->load->view('t31_bayar/t31_bayar_form', $data);
             $data['_view'] = 't31_bayar/t31_bayar_form';
@@ -238,7 +239,7 @@ class T31_bayar extends CI_Controller
                 'PaidBy' => $this->input->post('PaidBy',TRUE),
                 'PriceList' => $this->input->post('PriceList',TRUE),
                 'PricePay' => $this->input->post('PricePay',TRUE),
-                'Kurs' => $this->input->post('Kurs',TRUE),
+                // 'Kurs' => $this->input->post('Kurs',TRUE),
 				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
