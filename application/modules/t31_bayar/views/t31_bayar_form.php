@@ -26,15 +26,28 @@
         	</div>
 
             <div class="form-group">
-            	<label for="int">KURS <?php echo form_error('Kurs') ?></label>
-            	<input type="text" class="form-control" name="Kurs" id="Kurs" placeholder="KURS" value="<?php echo $Kurs; ?>" readonly />
+                <div class="row">
+                    <div class="col-4">
+                        <label for="int">KURS <?php echo form_error('Kurs') ?></label>
+                    	<input type="text" class="form-control" name="Kurs" id="Kurs" placeholder="KURS" value="<?php echo $Kurs; ?>" readonly />
+                    </div>
+                    <div class="col-4">
+                        <label for="int">PRICE LIST (<?php echo DEFAULT_KURS ?>) <?php echo form_error('PriceList') ?></label>
+                        <input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" />
+                    </div>
+                    <div class="col-4">
+                        <label for="int">PRICE TO PAY (RP)<?php echo form_error('PricePay') ?></label>
+                    	<input type="text" class="form-control" name="PricePay" id="PricePay" placeholder="PRICE TO PAY" value="<?php echo $PricePay; ?>" />
+                    </div>
+                </div>
+
         	</div>
 
             <div class="form-group">
                 <!-- <div class="row"> -->
                     <!-- <div class="col-4"> -->
-                        <label for="int">PRICE LIST (<?php echo DEFAULT_KURS ?>) <?php echo form_error('PriceList') ?></label>
-                        <input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" />
+                        <!-- <label for="int">PRICE LIST (<?php echo DEFAULT_KURS ?>) <?php echo form_error('PriceList') ?></label>
+                        <input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" /> -->
                     <!-- </div> -->
                     <!-- <div class="col-4">
                         <label for="int">PRICE LIST (RP) <?php echo form_error('PriceList') ?></label>
@@ -50,8 +63,8 @@
         	</div>
 
             <div class="form-group">
-            	<label for="int">PRICE TO PAY (RP)<?php echo form_error('PricePay') ?></label>
-            	<input type="text" class="form-control" name="PricePay" id="PricePay" placeholder="PRICE TO PAY" value="<?php echo $PricePay; ?>" />
+            	<!-- <label for="int">PRICE TO PAY (RP)<?php echo form_error('PricePay') ?></label>
+            	<input type="text" class="form-control" name="PricePay" id="PricePay" placeholder="PRICE TO PAY" value="<?php echo $PricePay; ?>" /> -->
         	</div>
 
             <!-- data pembayaran selisih price list -->
