@@ -313,7 +313,7 @@ class T31_bayar extends CI_Controller
              * update total selisih price to pay ke master pembayaran
              */
             $data = array(
-                'Selisih' => $totalJumlah,
+                'Selisih' => $this->input->post('totalSelisih', TRUE),
             );
             $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
 

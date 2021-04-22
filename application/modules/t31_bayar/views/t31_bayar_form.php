@@ -31,13 +31,12 @@
         	</div>
 
             <div class="form-group">
-
-                <div class="row">
-                    <div class="col-4">
+                <!-- <div class="row"> -->
+                    <!-- <div class="col-4"> -->
                         <label for="int">PRICE LIST (<?php echo DEFAULT_KURS ?>) <?php echo form_error('PriceList') ?></label>
                         <input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" />
-                    </div>
-                    <div class="col-4">
+                    <!-- </div> -->
+                    <!-- <div class="col-4">
                         <label for="int">PRICE LIST (RP) <?php echo form_error('PriceList') ?></label>
                         <?php
                         // nilai kurs
@@ -46,8 +45,8 @@
                         $priceListRP = $PriceList * $nilaiKurs;
                         ?>
                         <input type="text" class="form-control" name="PriceListRP" id="PriceListRP" placeholder="PRICE LIST (RP)" value="<?php echo numIndo($priceListRP); ?>" readonly />
-                    </div>
-                </div>
+                    </div> -->
+                <!-- </div> -->
         	</div>
 
             <div class="form-group">
@@ -128,7 +127,7 @@
                     </tr>
                 <?php } ?>
                 <tr>
-                    <td colspan="3" class="text-right"><b>TOTAL</b></td>
+                    <td colspan="3" class="text-right"><b>PAYMENT</b></td>
                     <input type="hidden" name="totalJumlahBayar" value="<?php echo $totalJumlahBayar ?>">
                     <td class="text-right"><b><?php echo numIndo($totalJumlahBayar); ?></b></td>
                 </tr>
@@ -144,6 +143,18 @@
             <?php //} ?>
 
             <!-- data pembayaran selisih -->
+
+            <?php
+            $selisihAwal = $PricePay - $totalJumlahBayar;
+            // $this->$dataBayars[1]->Jumlah = $selisihAwal;
+
+            // echo pre($dataBayars);
+            // foreach($dataBayars as $d) {
+            //     echo '1';
+            //     echo pre($d);
+            // }
+            ?>
+
             <table class="table table-bordered" style="margin-bottom: 10px; white-space: nowrap;">
                 <tr>
                     <th colspan="3">SELISIH PRICE TO PAY</th>
@@ -152,13 +163,22 @@
                     <th>TYPE</th>
                     <th>JUMLAH</th>
                 </tr>
+                <?php $totalSelisih = 0; ?>
                 <?php foreach($dataTos as $dTos) { ?>
                     <tr>
                         <td><?php echo $dTos->Type ?></td>
                         <?php $key = array_search($dTos->idtos, array_column($dataBayars, 'idtos'), true) ?>
-                        <td><input type="text" class="form-control" name="__<?php echo $dTos->idtos?>" value="<?= (FALSE !== $key) ? $dataBayars[$key]->Jumlah : '0' ?>" /></td>
+                        <td><input type="text" class="form-control" name="__<?php echo $dTos->idtos?>" value="<?= (FALSE !== $key) ? $dataBayars[$key]->Jumlah : ($dTos->idtos == 1 ? $selisihAwal : '0') ?>" /></td>
+                        <?php
+                        $totalSelisih += (FALSE !== $key) ? $dataBayars[$key]->Jumlah : ($dTos->idtos == 1 ? $selisihAwal : '0');
+                        ?>
                     </tr>
                 <?php } ?>
+                <tr>
+                    <td colspan="2" class="text-right"><b>SELISIH PRICE TO PAY</b></td>
+                    <input type="hidden" name="totalSelisih" value="<?php echo $totalSelisih ?>">
+                    <td class="text-right"><b><?php echo numIndo($totalSelisih); ?></b></td>
+                </tr>
             </table>
 
             <?php //foreach($dataTos as $dTos) { ?>
