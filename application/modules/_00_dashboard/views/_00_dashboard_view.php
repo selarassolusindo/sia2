@@ -229,6 +229,7 @@
                                     case 't03_agent':
                                     case 't04_tos':
                                     case 't05_tos2':
+                                    case 't06_currency':
                                         echo 'menu-open';
                                         break;
                                     default:

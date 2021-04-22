@@ -16,6 +16,16 @@
             	<label for="varchar">Type <?php echo form_error('Type') ?></label>
             	<input type="text" class="form-control" name="Type" id="Type" placeholder="Type" value="<?php echo $Type; ?>" />
         	</div>
+            <div class="form-group">
+            	<label for="varchar">Currency <?php echo form_error('Currency') ?></label>
+            	<!-- <input type="text" class="form-control" name="Currency" id="Currency" placeholder="Currency" value="<?php echo $Currency; ?>" /> -->
+                <select class="form-control" name="Currency">
+                    <option value=""></option>
+                    <?php foreach($dataCurrency as $dCurrency) { ?>
+                        <option value="<?php echo $dCurrency->idcurrency ?>" <?php echo ($dCurrency->idcurrency == $Currency) ? "selected" : "" ?>><?php echo $dCurrency->Currency ?></option>
+                    <?php } ?>
+                </select>
+        	</div>
 			<!-- <div class="form-group">
             	<label for="tinyint">Idusers <?php echo form_error('idusers') ?></label>
             	<input type="text" class="form-control" name="idusers" id="idusers" placeholder="Idusers" value="<?php echo $idusers; ?>" />

@@ -45,6 +45,7 @@
             <tr>
                 <th>No.</th>
 				<th>Type</th>
+                <th>Currency</th>
 				<!-- <th>Idusers</th>
 				<th>Created At</th>
 				<th>Updated At</th> -->
@@ -54,6 +55,7 @@
             <tr>
 				<td width="80px"><?php echo ++$start ?></td>
 				<td><?php echo $t02_top->Type ?></td>
+                <td><?php echo $t02_top->CurrencyName ?></td>
 				<!-- <td><?php echo $t02_top->idusers ?></td>
 				<td><?php echo $t02_top->created_at ?></td>
 				<td><?php echo $t02_top->updated_at ?></td> -->

@@ -50,7 +50,11 @@ class T02_top_model extends CI_Model
 		$this->db->or_like('created_at', $q);
 		$this->db->or_like('updated_at', $q);
 		$this->db->limit($limit, $start);
-        return $this->db->get($this->table)->result();
+        $this->db->select($this->table.'.*');
+        $this->db->select('t06_currency.Currency as CurrencyName');
+        $this->db->from($this->table);
+        $this->db->join('t06_currency','t06_currency.idcurrency = '.$this->table.'.Currency','left');
+        return $this->db->get()->result();
     }
 
     // insert data

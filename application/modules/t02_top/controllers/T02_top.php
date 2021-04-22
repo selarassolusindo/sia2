@@ -10,6 +10,8 @@ class T02_top extends CI_Controller
         parent::__construct();
         $this->load->model('T02_top_model');
         $this->load->library('form_validation');
+
+        $this->load->model('t06_currency/T06_currency_model');
     }
 
     public function index()
@@ -66,11 +68,14 @@ class T02_top extends CI_Controller
 
     public function create()
     {
+        $dataCurrency = $this->T06_currency_model->get_all();
         $data = array(
             'button' => 'Simpan',
             'action' => site_url('t02_top/create_action'),
 			'idtop' => set_value('idtop'),
 			'Type' => set_value('Type'),
+            'Currency' => set_value('Currency'),
+            'dataCurrency' => $dataCurrency,
 			// 'idusers' => set_value('idusers'),
 			// 'created_at' => set_value('created_at'),
 			// 'updated_at' => set_value('updated_at'),
@@ -90,6 +95,7 @@ class T02_top extends CI_Controller
         } else {
             $data = array(
 				'Type' => $this->input->post('Type',TRUE),
+                'Currency' => $this->input->post('Currency',TRUE),
 				'idusers' => $this->session->userdata('user_id'),
 				// 'created_at' => $this->input->post('created_at',TRUE),
 				// 'updated_at' => $this->input->post('updated_at',TRUE),
@@ -105,11 +111,14 @@ class T02_top extends CI_Controller
         $row = $this->T02_top_model->get_by_id($id);
 
         if ($row) {
+            $dataCurrency = $this->T06_currency_model->get_all();
             $data = array(
                 'button' => 'Simpan',
                 'action' => site_url('t02_top/update_action'),
 				'idtop' => set_value('idtop', $row->idtop),
 				'Type' => set_value('Type', $row->Type),
+                'Currency' => set_value('Currency', $row->Currency),
+                'dataCurrency' => $dataCurrency,
 				// 'idusers' => set_value('idusers', $row->idusers),
 				// 'created_at' => set_value('created_at', $row->created_at),
 				// 'updated_at' => set_value('updated_at', $row->updated_at),
@@ -133,6 +142,7 @@ class T02_top extends CI_Controller
         } else {
             $data = array(
 				'Type' => $this->input->post('Type',TRUE),
+                'Currency' => $this->input->post('Currency',TRUE),
 				'idusers' => $this->session->userdata('user_id'),
 				// 'created_at' => $this->input->post('created_at',TRUE),
 				// 'updated_at' => $this->input->post('updated_at',TRUE),
