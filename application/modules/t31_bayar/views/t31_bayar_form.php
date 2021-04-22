@@ -112,6 +112,7 @@
                 <?php } ?>
                 <tr>
                     <td colspan="3" class="text-right"><b>TOTAL</b></td>
+                    <input type="hidden" name="totalJumlahBayar" value="<?php echo $totalJumlahBayar ?>">
                     <td class="text-right"><b><?php echo numIndo($totalJumlahBayar); ?></b></td>
                 </tr>
             </table>

@@ -276,7 +276,7 @@ class T31_bayar extends CI_Controller
              * update total pembayaran ke master pembayaran
              */
             $data = array(
-                'Total' => $totalJumlah,
+                'Total' => $this->input->post('totalJumlahBayar', TRUE),
             );
             $this->T31_bayar_model->update($this->input->post('idbayar', TRUE), $data);
 
