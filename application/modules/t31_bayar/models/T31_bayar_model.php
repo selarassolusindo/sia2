@@ -170,7 +170,7 @@ class T31_bayar_model extends CI_Model
     // update data by parameter
     function updateByParam($param, $value, $data)
     {
-        echo pre($data);
+        // echo pre($data);
         //$this->db->set($data);
         // foreach ($data as $key => $val) {
         //     $this->db->set($key, $val, FALSE);

@@ -40,7 +40,6 @@
                     	<input type="text" class="form-control" name="PricePay" id="PricePay" placeholder="PRICE TO PAY" value="<?php echo $PricePay; ?>" />
                     </div>
                 </div>
-
         	</div>
 
             <div class="form-group">

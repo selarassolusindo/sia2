@@ -36,7 +36,12 @@
         	</div>
 			<div class="form-group">
             	<label for="varchar">PACKAGE NAME <?php echo form_error('PackageName') ?></label>
-            	<input type="text" class="form-control" name="PackageName" id="PackageName" placeholder="PACKAGE NAME" value="<?php echo $PackageName; ?>" />
+            	<!-- <input type="text" class="form-control" name="PackageName" id="PackageName" placeholder="PACKAGE NAME" value="<?php echo $PackageName; ?>" /> -->
+                <select class="form-control" name="PackageName">
+                    <?php foreach($dataPackage as $d) { ?>
+                        <option value="<?php echo $d->PackageCode ?>" <?php echo $d->PackageCode == $PackageName ? "selected" : ""  ?>><?php echo $d->PackageName ?></option>
+                    <?php } ?>
+                </select>
         	</div>
 			<div class="form-group">
             	<label for="tinyint">PACKAGE NIGHT <?php echo form_error('Night') ?></label>

@@ -138,6 +138,12 @@ class T30_tamu extends CI_Controller
         $row = $this->T30_tamu_model->get_by_id($id);
 
         if ($row) {
+
+            /**
+             * ambil data package
+             */
+            $dataPackage = $this->T01_package_model->get_all();
+
             $data = array(
                 'button' => 'Simpan',
                 'action' => site_url('t30_tamu/update_action'),
@@ -154,6 +160,7 @@ class T30_tamu extends CI_Controller
 				'FeeTanas' => set_value('FeeTanas', $row->FeeTanas),
 				'PricePay' => set_value('PricePay', $row->PricePay),
 				'Remarks' => set_value('Remarks', $row->Remarks),
+                'dataPackage' => $dataPackage,
 			);
             $data['_view'] = 't30_tamu/t30_tamu_form';
             $data['_caption'] = 'Data Tamu';
@@ -187,6 +194,20 @@ class T30_tamu extends CI_Controller
 				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T30_tamu_model->update($this->input->post('idtamu', TRUE), $data);
+
+            /**
+             * ambil nilai price list
+             */
+            $priceList = $this->getPriceList($this->input->post('PackageName',TRUE), $this->input->post('Night',TRUE), 'inside');
+
+            /**
+             * update pricelist di tabel bayar
+             */
+            $data = array(
+                'PriceList' => $priceList,
+            );
+            $this->T31_bayar_model->updateByParam('idtamu', $this->input->post('idtamu', TRUE), $data);
+
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('t30_tamu'));
         }
@@ -242,11 +263,11 @@ class T30_tamu extends CI_Controller
 		$this->form_validation->set_rules('Night', 'night', 'trim|required');
 		$this->form_validation->set_rules('CheckIn', 'checkin', 'trim|required');
 		$this->form_validation->set_rules('CheckOut', 'checkout', 'trim|required');
-		$this->form_validation->set_rules('Agent', 'agent', 'trim|required');
-		$this->form_validation->set_rules('PriceList', 'pricelist', 'trim|required|numeric');
-		$this->form_validation->set_rules('FeeTanas', 'feetanas', 'trim|required|numeric');
-		$this->form_validation->set_rules('PricePay', 'pricepay', 'trim|required|numeric');
-		$this->form_validation->set_rules('Remarks', 'remarks', 'trim|required');
+		// $this->form_validation->set_rules('Agent', 'agent', 'trim|required');
+		// $this->form_validation->set_rules('PriceList', 'pricelist', 'trim|required|numeric');
+		// $this->form_validation->set_rules('FeeTanas', 'feetanas', 'trim|required|numeric');
+		// $this->form_validation->set_rules('PricePay', 'pricepay', 'trim|required|numeric');
+		// $this->form_validation->set_rules('Remarks', 'remarks', 'trim|required');
 		$this->form_validation->set_rules('idtamu', 'idtamu', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
