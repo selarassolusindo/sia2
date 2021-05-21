@@ -43,7 +43,7 @@
                 </form>
             </div>
         </div>
-        <div class="table-responsive">
+        <!-- <div class="table-responsive"> -->
         <?php
         $recordPertama = 1;
         $cetakHeader = 0;
@@ -57,8 +57,10 @@
                     $tripNo = $t30_tamu->TripNo;
 
                     // close table pertama
+                    echo '</tbody>';
                     echo '</table>';
                     echo '<p>&nbsp;</p>';
+                    echo '</div>';
 
                     $cetakHeader = 1;
                 }
@@ -66,20 +68,76 @@
 
             if ($cetakHeader == 1) {
                 $cetakHeader = 0;
-
                 ?>
-                <table class="table" style="margin-bottom: 0px">
+                <div class="row">
+                    <div class="col-1">
+                        NO. BKM
+                    </div>
+                    <div class="col-1">
+                        : <?php echo $t30_tamu->TripNo ?>
+                    </div>
+                    <div class="col">
+                        <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus Data BKM NO. ' . $t30_tamu->TripNo,' onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        TGL.
+                    </div>
+                    <div class="col-1">
+                        : <?php echo date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') ?>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-1">
+
+                    </div>
+                    <div class="col-1">
+                        <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?>
+                    </div>
+                </div> -->
+                <!-- <div class="row ml-1">
+                    <div class="col-3 text-center border">
+                        <span class="font-weight-bold">BKM</span>
+                    </div>
+                </div>
+                <div class="row ml-1">
+                    <div class="col-1 text-center border">
+                        <span class="font-weight-bold">NO.</span>
+                    </div>
+                    <div class="col-1 text-center border">
+                        <span class="font-weight-bold">TGL.</span>
+                    </div>
+                    <div class="col-1 text-center border">
+                        <span class="font-weight-bold">PROSES</span>
+                    </div>
+                </div>
+                <div class="row ml-1">
+                    <div class="col-1 text-center border">
+                        <?php echo $t30_tamu->TripNo ?>
+                    </div>
+                    <div class="col-1 text-center border">
+                        <?php echo date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') ?>
+                    </div>
+                    <div class="col-1 text-center border">
+                        <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus',' onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?>
+                    </div>
+                </div> -->
+                <!-- <table class="table" style="margin-bottom: 0px">
                     <tr>
-                        <td width="10%">NO. BKM</td>
-                        <td width="40%"><b><?php echo $t30_tamu->TripNo ?></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?></td>
+                        <td colspan="3">BKM</td>
+                    </tr>
+                    <tr>
+                        <td width="10%">NO.</td>
+                        <td width="10%">TGL.</td>
                         <td>&nbsp;</td>
                     </tr>
                     <tr>
-                        <td>TGL.</td>
+                        <td width="10%"><b><?php echo $t30_tamu->TripNo ?></b></td>
                         <td><b><?php echo date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') ?></b></td>
-                        <td>&nbsp;</td>
+                        <td><?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?></td>
                     </tr>
-                </table>
+                </table> -->
                 <?php
                 // echo '<h6>';
                 // echo 'NO. BKM :: ';
@@ -98,7 +156,9 @@
                         <td><?php echo dateIndo($t30_tamu->TripTgl) ?></td>
                     </tr>
                 </table> -->
+                <div class="table-responsive">
                 <table class="table table-bordered table-striped" style="margin-bottom: 10px">
+                    <thead>
                     <tr>
                         <th rowspan="2" class="text-center">NO.</th>
         				<th rowspan="2" class="text-center">NAME</th>
@@ -116,9 +176,11 @@
         				<th class="text-center">CHECK IN</th>
         				<th class="text-center">CHECK OUT</th>
                     </tr>
-        <?php
+                    </thead>
+                    <tbody>
+            <?php
             }
-        ?>
+            ?>
             <tr>
 				<td class="text-right"><?php echo $t30_tamu->no.'.' ?></td>
 				<td><?php echo $t30_tamu->Name ?></td>
@@ -142,6 +204,7 @@
 				</td>
 			</tr>
             <?php } ?>
+            </tbody>
         </table>
         </div>
         <div class="row">
