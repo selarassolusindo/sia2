@@ -77,7 +77,7 @@
                         : <?php echo $t30_tamu->TripNo ?>
                     </div>
                     <div class="col">
-                        <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus Data BKM NO. ' . $t30_tamu->TripNo,' onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?>
+                        <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus BKM NO. ' . $t30_tamu->TripNo,' onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?>
                     </div>
                 </div>
                 <div class="row">
@@ -88,74 +88,6 @@
                         : <?php echo date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') ?>
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class="col-1">
-
-                    </div>
-                    <div class="col-1">
-                        <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?>
-                    </div>
-                </div> -->
-                <!-- <div class="row ml-1">
-                    <div class="col-3 text-center border">
-                        <span class="font-weight-bold">BKM</span>
-                    </div>
-                </div>
-                <div class="row ml-1">
-                    <div class="col-1 text-center border">
-                        <span class="font-weight-bold">NO.</span>
-                    </div>
-                    <div class="col-1 text-center border">
-                        <span class="font-weight-bold">TGL.</span>
-                    </div>
-                    <div class="col-1 text-center border">
-                        <span class="font-weight-bold">PROSES</span>
-                    </div>
-                </div>
-                <div class="row ml-1">
-                    <div class="col-1 text-center border">
-                        <?php echo $t30_tamu->TripNo ?>
-                    </div>
-                    <div class="col-1 text-center border">
-                        <?php echo date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') ?>
-                    </div>
-                    <div class="col-1 text-center border">
-                        <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus',' onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?>
-                    </div>
-                </div> -->
-                <!-- <table class="table" style="margin-bottom: 0px">
-                    <tr>
-                        <td colspan="3">BKM</td>
-                    </tr>
-                    <tr>
-                        <td width="10%">NO.</td>
-                        <td width="10%">TGL.</td>
-                        <td>&nbsp;</td>
-                    </tr>
-                    <tr>
-                        <td width="10%"><b><?php echo $t30_tamu->TripNo ?></b></td>
-                        <td><b><?php echo date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') ?></b></td>
-                        <td><?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?></td>
-                    </tr>
-                </table> -->
-                <?php
-                // echo '<h6>';
-                // echo 'NO. BKM :: ';
-                // echo '<b>' . $t30_tamu->TripNo . '</b> - ';
-                // echo ' TGL. :: ';
-                // echo '<b>' . date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') . '</b> ';
-                // echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"');
-                // echo '</h6>';
-                ?>
-                <!-- <table>
-                    <tr>
-                        <th colspan="2">BKM</th>
-                        <th>NO.</th>
-                        <td><?php echo $t30_tamu->TripNo ?></td>
-                        <th>TGL.</th>
-                        <td><?php echo dateIndo($t30_tamu->TripTgl) ?></td>
-                    </tr>
-                </table> -->
                 <div class="table-responsive">
                 <table class="table table-bordered table-striped" style="margin-bottom: 10px">
                     <thead>
