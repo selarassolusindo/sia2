@@ -67,17 +67,31 @@
             if ($cetakHeader == 1) {
                 $cetakHeader = 0;
 
-                echo '<h6>';
-                echo 'TRIP ';
-                echo 'NO. <b>' . $t30_tamu->TripNo . '</b>';
-                echo ' TGL. ';
-                echo '<b>' . date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') . '</b> ';
-                echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah TRIP NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"');
-                echo '</h6>';
-        ?>
+                ?>
+                <table class="table" style="margin-bottom: 0px">
+                    <tr>
+                        <td width="10%">NO. BKM</td>
+                        <td width="40%"><b><?php echo $t30_tamu->TripNo ?></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>TGL.</td>
+                        <td><b><?php echo date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') ?></b></td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+                <?php
+                // echo '<h6>';
+                // echo 'NO. BKM :: ';
+                // echo '<b>' . $t30_tamu->TripNo . '</b> - ';
+                // echo ' TGL. :: ';
+                // echo '<b>' . date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') . '</b> ';
+                // echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo),'Hapus','class="btn btn-primary" onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"');
+                // echo '</h6>';
+                ?>
                 <!-- <table>
                     <tr>
-                        <th colspan="2">TRIP</th>
+                        <th colspan="2">BKM</th>
                         <th>NO.</th>
                         <td><?php echo $t30_tamu->TripNo ?></td>
                         <th>TGL.</th>
