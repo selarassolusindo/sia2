@@ -13,21 +13,21 @@
         <h2 style="margin-top:0px">T30_tamu <?php echo $button ?></h2> -->
         <form action="<?php echo $action; ?>" method="post">
 			<div class="form-group">
-            	<label for="varchar">TRIP NO. <?php echo form_error('TripNo') ?></label>
-            	<input type="text" class="form-control" name="TripNo" id="TripNo" placeholder="TRIP NO." value="<?php echo $TripNo; ?>" />
+            	<label for="varchar">BKM NO. <?php echo form_error('TripNo') ?></label>
+            	<input type="text" class="form-control" name="TripNo" id="TripNo" placeholder="BKM NO." value="<?php echo $TripNo; ?>" />
         	</div>
 			<!-- <div class="form-group">
             	<label for="date">TripTgl <?php echo form_error('TripTgl') ?></label>
             	<input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" />
         	</div> -->
             <div class="form-group col-2">
-            	<label for="date">TRIP TGL. <?php echo form_error('TripTgl') ?></label>
+            	<label for="date">TGL. <?php echo form_error('TripTgl') ?></label>
             	<!-- <input type="text" class="form-control" name="TripTgl" id="TripTgl" placeholder="TripTgl" value="<?php echo $TripTgl; ?>" /> -->
                 <div class="input-group date" id="TripTgl" data-target-input="nearest">
                     <div class="input-group-append" data-target="#TripTgl" data-toggle="datetimepicker">
                         <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                     </div>
-                    <input placeholder="TRIP TGL." type="text" name="TripTgl" value="<?php echo $TripTgl; ?>" class="form-control datetimepicker-input" data-target="#TripTgl"/>
+                    <input placeholder="TGL." type="text" name="TripTgl" value="<?php echo $TripTgl; ?>" class="form-control datetimepicker-input" data-target="#TripTgl"/>
                 </div>
         	</div>
 			<div class="form-group">
