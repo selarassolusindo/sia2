@@ -76,21 +76,53 @@
                 // echo 'Trip No. <b>' . $t31_bayar->TripNo . '</b>';
                 // echo ' @ ';
                 // echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b>';
-                echo '<h6>';
-                echo 'TRIP ';
-                echo 'NO. <b>' . $t31_bayar->TripNo . '</b> || ';
-                echo ' TGL. ';
-                echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> || ';
-                echo 'KURS ';
-                $kurs = unserialize($t31_bayar->Kurs);
-                foreach ($kurs as $dKurs) {
-                    echo '<b>' . $dKurs['MataUang'] . ' - ' . $dKurs['Nilai'] . '</b> | ';
-                }
-                echo '</h6>';
+                ?>
+                <div class="row">
+                    <div class="col-1">
+                        <span class="font-weight-bold">NO. BKM</span>
+                    </div>
+                    <div class="col-1">
+                        <span class="font-weight-bold">TGL.</span>
+                    </div>
+                    <div class="col-1">
+                        <span class="font-weight-bold">KURS</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-1">
+                        <span><?php echo $t31_bayar->TripNo ?></span>
+                    </div>
+                    <div class="col-1">
+                        <span><?php echo date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') ?></span>
+                    </div>
+                    <?php
+                    $kurs = unserialize($t31_bayar->Kurs);
+                    foreach ($kurs as $dKurs) {
+                    ?>
+                        <div class="col-1">
+                            <?php echo $dKurs['MataUang'] . ' - ' . $dKurs['Nilai'] ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+                <?php
+                // echo '<h6>';
+                // echo 'TRIP ';
+                // echo 'NO. <b>' . $t31_bayar->TripNo . '</b> || ';
+                // echo ' TGL. ';
+                // echo '<b>' . date_format(date_create($t31_bayar->TripTgl), 'd-m-Y') . '</b> || ';
+                // echo 'KURS ';
+                // $kurs = unserialize($t31_bayar->Kurs);
+                // foreach ($kurs as $dKurs) {
+                //     echo '<b>' . $dKurs['MataUang'] . ' - ' . $dKurs['Nilai'] . '</b> | ';
+                // }
+                // echo '</h6>';
 
         ?>
                 <table class="table table-bordered table-striped" style="margin-bottom: 10px; white-space: nowrap;">
                     <tr>
+                        <thead>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NO.</th>
                         <th style="left: 0; position: sticky; background-color: white;" rowspan="2" class="text-center">NAME</th>
                         <th class="text-center">PRICE LIST</th>
@@ -120,6 +152,7 @@
                         <!-- sharing income -->
                         <th colspan="2">SHARING INCOME</th>
                         <th rowspan="2" class="text-center">PROSES</th>
+
                     </tr>
                     <tr>
                         <th class="text-center">USD</th>
@@ -127,6 +160,7 @@
                         <th class="text-right">PIW</th>
                         <th class="text-right">SSW</th>
                     </tr>
+                    </thead>
         <?php
             }
         ?>

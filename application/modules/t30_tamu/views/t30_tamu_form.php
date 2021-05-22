@@ -13,7 +13,7 @@
         <h2 style="margin-top:0px">T30_tamu <?php echo $button ?></h2> -->
         <form action="<?php echo $action; ?>" method="post">
 			<div class="form-group">
-            	<label for="varchar">BKM NO. <?php echo form_error('TripNo') ?></label>
+            	<label for="varchar">NO. BKM <?php echo form_error('TripNo') ?></label>
             	<input type="text" class="form-control" name="TripNo" id="TripNo" placeholder="BKM NO." value="<?php echo $TripNo; ?>" />
         	</div>
 			<!-- <div class="form-group">
