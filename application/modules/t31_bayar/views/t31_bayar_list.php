@@ -63,6 +63,7 @@
                     $tripNo = $t31_bayar->TripNo;
 
                     // close table pertama
+                    echo '</tbody>';
                     echo '</table>';
                     echo '<p>&nbsp;</p>';
 
@@ -161,9 +162,10 @@
                         <th class="text-right">SSW</th>
                     </tr>
                     </thead>
-        <?php
+                    <tbody>
+            <?php
             }
-        ?>
+            ?>
                     <tr>
         				<!-- <td style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo ++$start ?></td> -->
                         <td class="text-right" style="left: 0; position: sticky; background-color: white;" width="80px"><?php echo $t31_bayar->no.'.' ?></td>
@@ -217,6 +219,7 @@
         				</td>
         			</tr>
         <?php } ?>
+            </tbody>
         </table>
 
         </div>
@@ -224,9 +227,9 @@
 
         <div class="row">
             <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a>
-				<?php echo anchor(site_url('t31_bayar/excel'), 'Excel', 'class="btn btn-primary"'); ?>
-				<?php echo anchor(site_url('t31_bayar/word'), 'Word', 'class="btn btn-primary"'); ?>
+                <!-- <a href="#" class="btn btn-primary">Total Data : <?php echo $total_rows ?></a> -->
+				<!-- <?php echo anchor(site_url('t31_bayar/excel'), 'Excel', 'class="btn btn-primary"'); ?> -->
+				<!-- <?php echo anchor(site_url('t31_bayar/word'), 'Word', 'class="btn btn-primary"'); ?> -->
 			</div>
             <div class="col-md-6 text-right">
                 <?php echo $pagination ?>
