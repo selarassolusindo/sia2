@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2021 at 12:53 AM
+-- Generation Time: May 23, 2021 at 12:19 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.9
 
@@ -54,7 +54,7 @@ CREATE TABLE `t90_users` (
 --
 
 INSERT INTO `t90_users` (`id`, `ip_address`, `username`, `password`, `email`, `activation_selector`, `activation_code`, `forgotten_password_selector`, `forgotten_password_code`, `forgotten_password_time`, `remember_selector`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '127.0.0.1', 'administrator', '$2y$12$m81wttkoRppVHTbsu0YGp.oYt7SkSzsygvzWabarod0NG8rDL5asq', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1618670101, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(1, '127.0.0.1', 'administrator', '$2y$12$m81wttkoRppVHTbsu0YGp.oYt7SkSzsygvzWabarod0NG8rDL5asq', 'admin@admin.com', NULL, '', NULL, NULL, NULL, NULL, NULL, 1268889823, 1621661100, 1, 'Admin', 'istrator', 'ADMIN', '0'),
 (2, '::1', 'dodo', '$2y$10$veojgW7Qz2kDYzTsoikwSeq2G25wjIWwqhi46C10du5mcKpMDTD3O', '', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1616389085, 1616785340, 1, 'Dodo', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
@@ -177,7 +177,7 @@ ALTER TABLE `t92_users_groups`
 -- AUTO_INCREMENT for table `t93_login_attempts`
 --
 ALTER TABLE `t93_login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
