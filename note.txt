@@ -6,7 +6,7 @@ input data ::
 - auto update pricelist sesuai package
 - ubah pricelist :: harus diubah sesuai package dan berdampak di pricelist menu tamu - pembayaran
 - pengambilan pricelist sesuai package dan login perusahaan
-- kolom fee tanas 
+- kolom fee tanas
 - file template ditambahi 1 kolom untuk mata uang sebelum pricelist untuk piw
 - template dibedakan antara piw dan ssw
 - untuk piw :: ada kolom hotel di template
@@ -18,3 +18,5 @@ input data ::
 untuk import data,
 - ditambahi satu kolom penanda sesuai ssw atau piw
 
+sampai dengan pemilihan group perusahaan sesaat setelah login
+dipikirkan juga bagaimana kalo admin, karena bisa membuka 2 perusahaan
