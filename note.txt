@@ -11,6 +11,7 @@ input data ::
 - template dibedakan antara piw dan ssw
 - untuk piw :: ada kolom hotel di template
 - di file template ditambahi kolom Male-Female, Country, ID Card atau Passport
+- penambahan kolom untuk penanda login, untuk keperluan import bkm, sesuai login perusahaan
 
 
 
