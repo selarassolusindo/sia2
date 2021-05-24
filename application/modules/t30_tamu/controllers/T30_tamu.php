@@ -160,6 +160,7 @@ class T30_tamu extends CI_Controller
 				'FeeTanas' => set_value('FeeTanas', $row->FeeTanas),
 				'PricePay' => set_value('PricePay', $row->PricePay),
 				'Remarks' => set_value('Remarks', $row->Remarks),
+                'Company' => set_value('Company', $row->Company),
                 'dataPackage' => $dataPackage,
 			);
             $data['_view'] = 't30_tamu/t30_tamu_form';
@@ -191,6 +192,7 @@ class T30_tamu extends CI_Controller
 				'FeeTanas' => $this->input->post('FeeTanas',TRUE),
 				'PricePay' => $this->input->post('PricePay',TRUE),
 				'Remarks' => $this->input->post('Remarks',TRUE),
+                'Company' => $this->input->post('Company',TRUE),
 				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T30_tamu_model->update($this->input->post('idtamu', TRUE), $data);
@@ -448,6 +450,7 @@ class T30_tamu extends CI_Controller
                         'FeeTaNas'     => $row['H'],
                         'PricePay'     => $row['I'],
                         'Remarks'      => $row['J'],
+                        'Company'      => $this->session->userdata('dbName'),
                         'idusers'      => $this->session->userdata('user_id'),
                     ];
                     $this->T30_tamu_model->insert($dataTamu);
