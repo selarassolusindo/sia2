@@ -4,13 +4,21 @@ input data ::
 - ditambahi informasi kurs di header, sejajar dengan no. bkm dan tanggal
 - edit kurs di input data
 - auto update pricelist sesuai package
+
 - ubah pricelist :: harus diubah sesuai package dan berdampak di pricelist menu tamu - pembayaran
+
 - pengambilan pricelist sesuai package dan login perusahaan
+
 - kolom fee tanas 
+
 - file template ditambahi 1 kolom untuk mata uang sebelum pricelist untuk piw
+
 - template dibedakan antara piw dan ssw
+
 - untuk piw :: ada kolom hotel di template
+
 - di file template ditambahi kolom Male-Female, Country, ID Card atau Passport
+
 - penambahan kolom untuk penanda login, untuk keperluan import bkm, sesuai login perusahaan
 
 
