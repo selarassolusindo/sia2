@@ -13,7 +13,7 @@ input data ::
 
 - file template ditambahi 1 kolom untuk mata uang sebelum pricelist untuk piw
 
-- template dibedakan antara piw dan ssw
+- file template untuk import bkm :: dibedakan antara piw dan ssw
 
 - untuk piw :: ada kolom hotel di template
 

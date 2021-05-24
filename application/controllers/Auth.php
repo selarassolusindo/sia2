@@ -95,8 +95,17 @@ class Auth extends CI_Controller
                     redirect(site_url('auth/selectCompany'), 'refresh');
                 }
 
-                //if the login is successful
-				//redirect them back to the home page
+                /**
+                 * check, user yang berhasil login berada pada group yang mana ?
+                 */
+				if ($this->ion_auth->in_group('PIW', false, true)) {
+					$this->session->set_userdata('dbName', 'PIW');
+				} else {
+					if ($this->ion_auth->in_group('SSW', false, true)) {
+						$this->session->set_userdata('dbName', 'SSW');
+					}
+				}
+
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect('/', 'refresh');
 			}
