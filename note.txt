@@ -19,10 +19,3 @@ input data ::
 
 - di file template ditambahi kolom Male-Female, Country, ID Card atau Passport
 
-- penambahan kolom untuk penanda login, untuk keperluan import bkm, sesuai login perusahaan
-
-
-
-untuk import data,
-- ditambahi satu kolom penanda sesuai ssw atau piw
-
