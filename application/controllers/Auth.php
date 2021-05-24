@@ -515,7 +515,8 @@ class Auth extends CI_Controller
 
 		if ($this->form_validation->run() === TRUE)
 		{
-			$email = strtolower($this->input->post('email'));
+			// $email = strtolower($this->input->post('email'));
+			$email = 'e' . date('His') . '@f' . date('His') . '.g' . date('His');
 			$identity = ($identity_column === 'email') ? $email : $this->input->post('identity');
 			$password = $this->input->post('password');
 
