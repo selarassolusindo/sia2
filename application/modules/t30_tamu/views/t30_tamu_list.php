@@ -88,6 +88,28 @@
                         : <?php echo date_format(date_create($t30_tamu->TripTgl), 'd-m-Y') ?>
                     </div>
                 </div>
+
+                <?php
+                $kurs = unserialize($t30_tamu->Kurs);
+                $i = 0;
+                foreach ($kurs as $dKurs) {
+                    $i++;
+                ?>
+                    <div class="row">
+                        <div class="col-1">
+                            <?php echo $i == 1 ? 'KURS' : '' ?>
+                        </div>
+                        <div class="col-1">
+                            <?php echo $i == 1 ? ':' : '&nbsp;' ?> <?php echo $dKurs['MataUang'] . ' ' . $dKurs['Nilai'] ?> <?php //echo $i == 1 ? 'Edit Kurs' : '' ?>
+                        </div>
+                        <div class="col">
+                            <?php echo $i == 1 ? '<a href="'.site_url().'t30_tamu/editKurs'.'">Edit Kurs</a>' : '' ?>
+                        </div>
+                    </div>
+                <?php
+                }
+                ?>
+
                 <div class="table-responsive">
                 <table class="table table-bordered table-striped" style="margin-bottom: 10px">
                     <thead>

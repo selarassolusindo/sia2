@@ -440,6 +440,7 @@ class T30_tamu extends CI_Controller
                         'no'           => $row['A'],
                         'TripNo'       => $TripNo,
                         'TripTgl'      => $TripTgl,
+                        'Kurs'         => serialize($kurs),
                         'Name'         => $row['B'],
                         'MF'           => $row['C'],
                         'Country'      => $row['D'],
