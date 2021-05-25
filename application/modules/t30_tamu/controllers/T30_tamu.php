@@ -441,15 +441,18 @@ class T30_tamu extends CI_Controller
                         'TripNo'       => $TripNo,
                         'TripTgl'      => $TripTgl,
                         'Name'         => $row['B'],
-                        'PackageName'  => $row['C'],
-                		'Night'        => $row['D'],
-                		'CheckIn'      => dateMysql($row['E']),
-                        'CheckOut'     => dateAdd(dateMysql($row['E']), $row['D']),
-                		'Agent'        => $row['F'],
-                		'PriceList'    => $row['G'],
-                        'FeeTaNas'     => $row['H'],
-                        'PricePay'     => $row['I'],
-                        'Remarks'      => $row['J'],
+                        'MF'           => $row['C'],
+                        'Country'      => $row['D'],
+                        'IdCard'       => $row['E'],
+                        'PackageName'  => $row['F'],
+                		'Night'        => $row['G'],
+                		'CheckIn'      => dateMysql($row['H']),
+                        'CheckOut'     => dateAdd(dateMysql($row['H']), $row['G']),
+                		'Agent'        => $row['I'],
+                		'PriceList'    => $row['J'],
+                        'FeeTaNas'     => $row['K'],
+                        'PricePay'     => $row['L'],
+                        'Remarks'      => $row['M'],
                         'Company'      => $this->session->userdata('dbName'),
                         'idusers'      => $this->session->userdata('user_id'),
                     ];
@@ -463,7 +466,7 @@ class T30_tamu extends CI_Controller
                     // temporary cutted
 
                     // price list
-                    $priceList = $this->getPriceList($row['C'], $row['D'], 'inside');
+                    $priceList = $this->getPriceList($row['F'], $row['G'], 'inside');
 
                     // nilai kurs
                     $key = array_search(DEFAULT_KURS, array_column($kurs, 'MataUang'), true);
@@ -501,7 +504,7 @@ class T30_tamu extends CI_Controller
                      */
 
                     $totalJumlah = 0;
-                    $chr = 75; // start kolom K, kode ascii K adalah 75
+                    $chr = 78; // start kolom N, kode ascii K adalah 78
                     foreach($dataTop as $dTop) {
                         $jumlahBayar = $row[chr($chr)];
                         if ($jumlahBayar <> 0) {

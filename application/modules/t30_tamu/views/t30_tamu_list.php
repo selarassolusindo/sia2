@@ -94,6 +94,9 @@
                     <tr>
                         <th rowspan="2" class="text-center">NO.</th>
         				<th rowspan="2" class="text-center">NAME</th>
+                        <th rowspan="2" class="text-center">M/F</th>
+                        <th rowspan="2" class="text-center">COUNTRY</th>
+                        <th rowspan="2" class="text-center">ID CARD</th>
         				<th colspan="4" class="text-center">PACKAGE</th>
                         <th rowspan="2" class="text-center">AGENT</th>
                         <th rowspan="2" class="text-center">PRICE LIST</th>
@@ -116,6 +119,9 @@
             <tr>
 				<td class="text-right"><?php echo $t30_tamu->no.'.' ?></td>
 				<td><?php echo $t30_tamu->Name ?></td>
+                <td><?php echo $t30_tamu->MF ?></td>
+                <td><?php echo $t30_tamu->Country ?></td>
+                <td><?php echo $t30_tamu->IdCard ?></td>
 				<td class="text-center"><?php echo $t30_tamu->PackageName ?></td>
 				<td class="text-center"><?php echo $t30_tamu->Night ?></td>
 				<td class="text-center"><?php echo dateIndo($t30_tamu->CheckIn) ?></td>
