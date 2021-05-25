@@ -590,6 +590,11 @@ class T30_tamu extends CI_Controller
 
     }
 
+    public function editKurs($tripNo, $tripTgl, $company)
+    {
+        // code...
+    }
+
 }
 
 /* End of file T30_tamu.php */

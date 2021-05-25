@@ -50,6 +50,8 @@
         foreach ($t30_tamu_data as $t30_tamu) {
             if ($recordPertama == 1) {
                 $tripNo = $t30_tamu->TripNo;
+                $tripTgl = $t30_tamu->TripTgl;
+                $company = $t30_tamu->Company;
                 $recordPertama = 0;
                 $cetakHeader = 1;
             } else {
@@ -103,7 +105,7 @@
                             <?php echo $i == 1 ? ':' : '&nbsp;' ?> <?php echo $dKurs['MataUang'] . ' ' . $dKurs['Nilai'] ?> <?php //echo $i == 1 ? 'Edit Kurs' : '' ?>
                         </div>
                         <div class="col">
-                            <?php echo $i == 1 ? '<a href="'.site_url().'t30_tamu/editKurs'.'">Edit Kurs</a>' : '' ?>
+                            <?php echo $i == 1 ? '<a href="'.site_url().'t30_tamu/editKurs/'.$tripNo.'/'.$tripTgl.'/'.$company.'">Edit Kurs</a>' : '' ?>
                         </div>
                     </div>
                 <?php
