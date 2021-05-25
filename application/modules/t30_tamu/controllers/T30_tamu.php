@@ -593,6 +593,7 @@ class T30_tamu extends CI_Controller
     public function editKurs($tripNo, $tripTgl, $company)
     {
         // code...
+        // echo pre($tripNo . $tripTgl . $company);
     }
 
 }
