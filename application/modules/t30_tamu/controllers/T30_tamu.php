@@ -594,6 +594,7 @@ class T30_tamu extends CI_Controller
     {
         // code...
         // echo pre($tripNo . $tripTgl . $company);
+
     }
 
 }

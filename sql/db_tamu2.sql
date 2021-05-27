@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 23, 2021 at 12:19 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.9
+-- Generation Time: May 28, 2021 at 01:34 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 7.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -195,7 +195,11 @@ CREATE TABLE `t30_tamu` (
   `no` tinyint(4) DEFAULT 0,
   `TripNo` varchar(10) NOT NULL,
   `TripTgl` date NOT NULL,
+  `Kurs` text DEFAULT NULL,
   `Name` varchar(50) NOT NULL,
+  `MF` varchar(1) DEFAULT '-',
+  `Country` varchar(50) DEFAULT '-',
+  `IdCard` varchar(50) DEFAULT '-',
   `PackageName` varchar(10) NOT NULL,
   `Night` tinyint(4) NOT NULL,
   `CheckIn` date NOT NULL,
@@ -205,6 +209,7 @@ CREATE TABLE `t30_tamu` (
   `FeeTanas` double DEFAULT 0,
   `PricePay` double DEFAULT 0,
   `Remarks` text DEFAULT '-',
+  `Company` varchar(10) NOT NULL,
   `idusers` tinyint(4) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -214,29 +219,23 @@ CREATE TABLE `t30_tamu` (
 -- Dumping data for table `t30_tamu`
 --
 
-INSERT INTO `t30_tamu` (`idtamu`, `no`, `TripNo`, `TripTgl`, `Name`, `PackageName`, `Night`, `CheckIn`, `CheckOut`, `Agent`, `PriceList`, `FeeTanas`, `PricePay`, `Remarks`, `idusers`, `created_at`, `updated_at`) VALUES
-(477, 1, 'T-03', '2020-02-08', 'Peter Geofry', 'VIP', 6, '2020-08-02', '2020-08-08', 'Direct', 725, 100, 0, 'AC, special price Rp500000 / night', 1, '2021-04-22 17:38:33', '2021-04-24 16:52:08'),
-(478, 2, 'T-03', '2020-02-08', 'Todd Gisondi', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, 100, NULL, 'AC, special price Rp500000 / night', 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(479, 3, 'T-03', '2020-02-08', 'Xenia Maria', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, 100, NULL, 'AC, special price Rp500000 / night', 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(480, 4, 'T-03', '2020-02-08', 'Ace Will (4thn)', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, 100, NULL, 'AC, special price Rp500000 / night', 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(481, 5, 'T-03', '2020-02-08', 'Brad Buckle', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, NULL, NULL, 'AC, special price Rp500000 / night', 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(482, 6, 'T-03', '2020-02-08', 'Kiana Buckle (3 thn)', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(483, 7, 'T-03', '2020-02-08', 'Rahma Kristin', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(484, 8, 'T-03', '2020-02-08', 'Nick Chonge', 'SUP', 6, '2020-08-02', '2020-08-08', 'FREE', 800, NULL, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(485, 9, 'T-03', '2020-02-08', 'Alisa Chonge (anak 6 thn)', 'SUP', 6, '2020-08-02', '2020-08-08', 'FREE', 800, NULL, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(486, 10, 'T-03', '2020-02-08', 'Evgeni Ivkov', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, NULL, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(487, 11, 'T-03', '2020-02-08', 'Salmon Aidan John', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, 100, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(488, 12, 'T-03', '2020-02-08', 'Joao Machado ', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 625, 100, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(489, 13, 'T-03', '2020-02-08', 'Karolina  Hajova', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 625, 100, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(490, 14, 'T-03', '2020-02-08', 'Svetlanna', 'SUP', 6, '2020-08-02', '2020-08-08', 'Direct', 800, 100, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(491, 15, 'T-03', '2020-02-08', 'Ilya Vasilyev', 'SUP', 6, '2020-08-02', '2020-08-08', 'Direct', 800, 100, NULL, NULL, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(492, 16, 'T-03', '2020-02-08', 'Jarrod Moore', 'SUP', 4, '2020-08-02', '2020-08-06', 'Direct', 800, NULL, NULL, 'AC, special price Rp500000 / night', 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(493, 1, 'T-04', '2020-01-08', 'James Hendy', 'DEL', 3, '2020-08-01', '2020-08-04', 'Direct', 725, NULL, 1500000, 'AC, special price Rp500000 / night', 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(494, 2, 'T-04', '2020-01-08', 'Ruben Jack Hendy', 'DEL', 3, '2020-08-01', '2020-08-04', 'Direct', 725, NULL, 1500000, 'AC, special price Rp500000 / night', 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(495, 3, 'T-04', '2020-01-08', 'Koa Hendy', 'DEL', 3, '2020-08-01', '2020-08-04', 'Direct', 725, NULL, 1500000, 'AC, special price Rp500000 / night', 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(496, 4, 'T-04', '2020-01-08', 'Nick Haynes', 'DEL', 3, '2020-08-01', '2020-08-04', 'Direct', 725, NULL, 1500000, 'AC, special price Rp500000 / night', 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(497, 5, 'T-04', '2020-01-08', 'Luke Oliver Cromwell', 'DEL', 3, '2020-08-01', '2020-08-04', 'Direct', 725, NULL, 1500000, 'AC, special price Rp500000 / night', 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(498, 6, 'T-04', '2020-01-08', 'Eugene Tollemache', 'DEL', 3, '2020-08-01', '2020-08-04', 'Direct', 725, NULL, 1500000, 'AC, special price Rp500000 / night', 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09');
+INSERT INTO `t30_tamu` (`idtamu`, `no`, `TripNo`, `TripTgl`, `Kurs`, `Name`, `MF`, `Country`, `IdCard`, `PackageName`, `Night`, `CheckIn`, `CheckOut`, `Agent`, `PriceList`, `FeeTanas`, `PricePay`, `Remarks`, `Company`, `idusers`, `created_at`, `updated_at`) VALUES
+(569, 1, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Peter Geofry ', 'M', 'Canada', NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Direct', 725, 100, NULL, 'AC, special price Rp500000 / night', 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(570, 2, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Todd Gisondi', 'F', NULL, '351511', 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, 100, NULL, 'AC, special price Rp500000 / night', 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(571, 3, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Xenia Maria', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, 100, NULL, 'AC, special price Rp500000 / night', 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(572, 4, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Ace Will (4thn)', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, 100, NULL, 'AC, special price Rp500000 / night', 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(573, 5, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Brad Buckle', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, NULL, NULL, 'AC, special price Rp500000 / night', 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(574, 6, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Kiana Buckle (3 thn)', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, NULL, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(575, 7, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Rahma Kristin', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, NULL, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(576, 8, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Nick Chonge', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'FREE', 800, NULL, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(577, 9, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Alisa Chonge (anak 6 thn)', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'FREE', 800, NULL, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(578, 10, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Evgeni Ivkov', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, NULL, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(579, 11, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Salmon Aidan John', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 800, 100, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(580, 12, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Joao Machado ', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 625, 100, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(581, 13, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Karolina  Hajova', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Nic Chong', 625, 100, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(582, 14, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Svetlanna', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Direct', 800, 100, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(583, 15, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Ilya Vasilyev', NULL, NULL, NULL, 'SUP', 6, '2020-08-02', '2020-08-08', 'Direct', 800, 100, NULL, NULL, 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(584, 16, 'T-03', '2020-08-02', 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 'Jarrod Moore', NULL, NULL, NULL, 'SUP', 4, '2020-08-02', '2020-08-06', 'Direct', 800, NULL, NULL, 'AC, special price Rp500000 / night', 'SSW', 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43');
 
 -- --------------------------------------------------------
 
@@ -267,28 +266,22 @@ CREATE TABLE `t31_bayar` (
 --
 
 INSERT INTO `t31_bayar` (`idbayar`, `Kurs`, `no`, `idtamu`, `PaidBy`, `PriceList`, `PricePay`, `SelisihPL`, `Total`, `Selisih`, `ShareP`, `ShareS`, `idusers`, `created_at`, `updated_at`) VALUES
-(473, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 1, 477, 477, 1080, 14280000, 0, 2800000, 0, 0, 0, 1, '2021-04-24 16:52:08', '2021-04-24 16:52:08'),
-(474, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 2, 478, 478, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(475, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 3, 479, 479, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(476, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 4, 480, 480, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(477, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 5, 481, 481, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(478, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 6, 482, 482, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(479, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 7, 483, 483, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(480, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 8, 484, 484, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(481, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 9, 485, 485, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(482, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 10, 486, 486, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(483, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 11, 487, 487, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(484, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 12, 488, 488, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(485, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 13, 489, 489, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(486, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 14, 490, 490, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(487, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 15, 491, 491, 1020, 14280000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(488, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 16, 492, 492, 933, 13062000, 0, 0, 0, 0, 0, 1, '2021-04-22 17:38:33', '2021-04-22 17:38:33'),
-(489, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 1, 493, 493, 725.03, 10150420, 0, 5900000, 4250420, 0, 0, 1, '2021-04-22 21:49:58', '2021-04-22 21:49:58'),
-(490, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 2, 494, 494, 725.03, 10150420, 0, 4500000, 0, 0, 0, 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(491, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 3, 495, 495, 725.03, 10150420, 0, 0, 0, 0, 0, 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(492, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 4, 496, 496, 725.03, 10150420, 0, 0, 0, 0, 0, 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(493, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 5, 497, 497, 725.03, 10150420, 0, 0, 0, 0, 0, 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(494, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 6, 498, 498, 725.03, 10150420, 0, 0, 0, 0, 0, 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09');
+(565, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 1, 569, 569, 1020, 14280000, 0, 200, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(566, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 2, 570, 570, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(567, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 3, 571, 571, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(568, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 4, 572, 572, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(569, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 5, 573, 573, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(570, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 6, 574, 574, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(571, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 7, 575, 575, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(572, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 8, 576, 576, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(573, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 9, 577, 577, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(574, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 10, 578, 578, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(575, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 11, 579, 579, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(576, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 12, 580, 580, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(577, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 13, 581, 581, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(578, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 14, 582, 582, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(579, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 15, 583, 583, 1020, 14280000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43'),
+(580, 'a:2:{i:0;a:2:{s:8:\"MataUang\";s:3:\"USD\";s:5:\"Nilai\";d:14000;}i:1;a:2:{s:8:\"MataUang\";s:3:\"AUD\";s:5:\"Nilai\";d:17500;}}', 16, 584, 584, 933, 13062000, 0, 0, 0, 0, 0, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43');
 
 -- --------------------------------------------------------
 
@@ -312,11 +305,7 @@ CREATE TABLE `t32_bayard` (
 --
 
 INSERT INTO `t32_bayard` (`idbayard`, `idbayar`, `idtop`, `TglBayar`, `Jumlah`, `idusers`, `created_at`, `updated_at`) VALUES
-(101, 473, 1, NULL, 200, 1, '2021-04-22 18:41:58', '2021-04-22 18:41:58'),
-(102, 473, 2, NULL, 100, 1, '2021-04-22 18:41:58', '2021-04-22 18:41:58'),
-(104, 490, 5, '2020-01-08', 4500000, 1, '2021-04-22 18:43:09', '2021-04-22 18:43:09'),
-(109, 489, 1, NULL, 100, 1, '2021-04-22 21:49:58', '2021-04-22 21:49:58'),
-(110, 489, 5, NULL, 4500000, 1, '2021-04-22 21:49:58', '2021-04-22 21:49:58');
+(117, 565, 1, '2020-08-02', 200, 5, '2021-05-25 02:41:43', '2021-05-25 02:41:43');
 
 -- --------------------------------------------------------
 
@@ -333,13 +322,6 @@ CREATE TABLE `t33_bayars` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `t33_bayars`
---
-
-INSERT INTO `t33_bayars` (`idbayars`, `idbayar`, `idtos`, `Jumlah`, `idusers`, `created_at`, `updated_at`) VALUES
-(6, 489, 1, 4250420, 1, '2021-04-22 21:49:58', '2021-04-22 21:49:58');
 
 -- --------------------------------------------------------
 
@@ -471,19 +453,19 @@ ALTER TABLE `t06_currency`
 -- AUTO_INCREMENT for table `t30_tamu`
 --
 ALTER TABLE `t30_tamu`
-  MODIFY `idtamu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=499;
+  MODIFY `idtamu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=585;
 
 --
 -- AUTO_INCREMENT for table `t31_bayar`
 --
 ALTER TABLE `t31_bayar`
-  MODIFY `idbayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=495;
+  MODIFY `idbayar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=581;
 
 --
 -- AUTO_INCREMENT for table `t32_bayard`
 --
 ALTER TABLE `t32_bayard`
-  MODIFY `idbayard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
+  MODIFY `idbayard` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `t33_bayars`
