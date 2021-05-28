@@ -17,6 +17,7 @@ class T30_tamu extends CI_Controller
         $this->load->model('t33_bayars/T33_bayars_model');
         $this->load->model('t34_bayars2/T34_bayars2_model');
         $this->load->model('t01_package/T01_package_model');
+        $this->load->model('t35_kurs/T35_kurs_model');
     }
 
     public function index()
@@ -215,17 +216,17 @@ class T30_tamu extends CI_Controller
         }
     }
 
-    public function delete($TripNo)
+    public function delete($TripNo, $company)
     {
         // $row = $this->T30_tamu_model->get_by_id($id);
-        $row = $this->T30_tamu_model->get_by_TripNo($TripNo);
+        $row = $this->T30_tamu_model->get_by_TripNo($TripNo, $company);
 
         if ($row) {
 
             /**
              * hapus data detail pembayaran selisih price list
              */
-            $this->T34_bayars2_model->deleteTripNo($TripNo);
+            $this->T34_bayars2_model->deleteTripNo($TripNo, $company);
 
             /**
              * hapus data detail pembayaran selisih
@@ -416,6 +417,17 @@ class T30_tamu extends CI_Controller
                 $chr++;
             }
 
+            /**
+             * proses simpan data di tabel kurs
+             */
+            $dataKurs = array(
+                'no' => $TripNo,
+                'tgl' => $TripTgl,
+                'company' => $this->session->userdata('dbName'),
+                'kurs' => serialize($kurs),
+            );
+            $this->T35_kurs_model->insert($dataKurs);
+
             // echo pre($kurs);
             // exit;
 
@@ -503,7 +515,6 @@ class T30_tamu extends CI_Controller
                     /**
                      * simpan data ke tabel detail bayar
                      */
-
                     $totalJumlah = 0;
                     $chr = 78; // start kolom N, kode ascii K adalah 78
                     foreach($dataTop as $dTop) {
@@ -532,7 +543,6 @@ class T30_tamu extends CI_Controller
                         'Total' => $totalJumlah,
                     );
                     $this->T31_bayar_model->update($idbayar, $data);
-
 
                 }
                 $numRow++;
@@ -593,8 +603,11 @@ class T30_tamu extends CI_Controller
     public function editKurs($tripNo, $tripTgl, $company)
     {
         // code...
-        // echo pre($tripNo . $tripTgl . $company);
-
+        echo pre($tripNo . $tripTgl . $company);
+        $row = $this->T35_kurs_model->getByNo($tripNo, $tripTgl, $company);
+        if ($row) {
+            redirect(site_url('t35_kurs/update/'.$row->idbkm));
+        }
     }
 
 }

@@ -102,9 +102,10 @@ class T30_tamu_model extends CI_Model
     }
 
     // get data by trip no.
-    function get_by_TripNo($TripNo)
+    function get_by_TripNo($TripNo, $company)
     {
         $this->db->where('TripNo', $TripNo);
+        $this->db->where('Company', $company);
         return $this->db->get($this->table)->row();
     }
 
