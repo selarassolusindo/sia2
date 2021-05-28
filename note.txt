@@ -19,3 +19,5 @@ input data ::
 
 - di file template ditambahi kolom Male-Female, Country, ID Card atau Passport
 
+a:2:{i:0;a:2:{s:8:"MataUang";s:3:"USD";s:5:"Nilai";s:5:"14500";}i:1;a:2:{s:8:"MataUang";s:3:"AUD";s:5:"Nilai";s:5:"17500";}}
+a:2:{i:0;a:2:{s:8:"MataUang";s:3:"USD";s:5:"Nilai";s:5:"14500";}i:1;a:2:{s:8:"MataUang";s:3:"AUD";s:5:"Nilai";s:5:"17500";}}

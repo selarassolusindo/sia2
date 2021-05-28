@@ -135,6 +135,14 @@ class T30_tamu_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    // update kurs
+    function updateKurs($no, $tgl, $company, $data)
+    {
+        $where = "TripNo = '".$no."' and TripTgl = '".$tgl."' and Company = '".$company."'";
+        $this->db->where($where);
+        $this->db->update($this->table, $data);
+    }
+
 }
 
 /* End of file T30_tamu_model.php */

@@ -185,6 +185,19 @@ class T31_bayar_model extends CI_Model
         // $this->db->update($this->table, $data);
     }
 
+    // update kurs
+    function updateKurs($no, $tgl, $company, $data)
+    {
+        $q = "
+            update t31_bayar
+            set
+                Kurs = '".$data['Kurs']."'
+            where
+                idtamu in (select idtamu from t30_tamu where TripNo = '".$no."' and Company = '".$company."')
+        ";
+        $this->db->query($q);
+    }
+
 }
 
 /* End of file T31_bayar_model.php */

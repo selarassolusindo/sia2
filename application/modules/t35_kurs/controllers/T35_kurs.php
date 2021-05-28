@@ -113,10 +113,11 @@ class T35_kurs extends CI_Controller
 				'tgl' => set_value('tgl', $row->tgl),
 				'company' => set_value('company', $row->company),
 				'kurs' => set_value('kurs', $row->kurs),
+                'dataKurs' => $row->kurs,
 			);
             // $this->load->view('t35_kurs/t35_kurs_form', $data);
             $data['_view'] = 't35_kurs/t35_kurs_form';
-            $data['_caption'] = 'Kurs';
+            $data['_caption'] = 'Edit Kurs';
             $this->load->view('_00_dashboard/_00_dashboard_view', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -131,15 +132,59 @@ class T35_kurs extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('idbkm', TRUE));
         } else {
+            /**
+             * ambil idbkm
+             */
+            $row = $this->T35_kurs_model->get_by_id($this->input->post('idbkm', TRUE));
+            $aKurs = unserialize($row->kurs);
+            foreach($aKurs as $d) {
+                $dataKurs[] = [
+                    'MataUang' => $d['MataUang'],
+                    'Nilai' => $this->input->post($d['MataUang'],TRUE),
+                ];
+            }
+
+            /**
+             * simpan data hasil update di tabel kurs
+             */
             $data = array(
 				'no' => $this->input->post('no',TRUE),
 				'tgl' => $this->input->post('tgl',TRUE),
 				'company' => $this->input->post('company',TRUE),
-				'kurs' => $this->input->post('kurs',TRUE),
+				'kurs' => serialize($dataKurs),
 			);
             $this->T35_kurs_model->update($this->input->post('idbkm', TRUE), $data);
+
+            /**
+             * simpan data hasil update kurs di tabel t30_tamu
+             */
+            $data = array(
+                'Kurs' => serialize($dataKurs),
+            );
+            $this->load->model('t30_tamu/T30_tamu_model');
+            $this->T30_tamu_model->updateKurs(
+                $this->input->post('no',TRUE),
+                $this->input->post('tgl',TRUE),
+                $this->input->post('company',TRUE),
+                $data
+            );
+
+            /**
+             * simpan data hasil update kurs di tabel t31_bayar
+             */
+             $data = array(
+                 'Kurs' => serialize($dataKurs),
+             );
+             $this->load->model('t31_bayar/T31_bayar_model');
+             $this->T31_bayar_model->updateKurs(
+                 $this->input->post('no',TRUE),
+                 $this->input->post('tgl',TRUE),
+                 $this->input->post('company',TRUE),
+                 $data
+             );
+
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('t35_kurs'));
+            redirect(site_url('t30_tamu'));
         }
     }
 
@@ -159,10 +204,10 @@ class T35_kurs extends CI_Controller
 
     public function _rules()
     {
-		$this->form_validation->set_rules('no', 'no', 'trim|required');
-		$this->form_validation->set_rules('tgl', 'tgl', 'trim|required');
-		$this->form_validation->set_rules('company', 'company', 'trim|required');
-		$this->form_validation->set_rules('kurs', 'kurs', 'trim|required');
+		// $this->form_validation->set_rules('no', 'no', 'trim|required');
+		// $this->form_validation->set_rules('tgl', 'tgl', 'trim|required');
+		// $this->form_validation->set_rules('company', 'company', 'trim|required');
+		// $this->form_validation->set_rules('kurs', 'kurs', 'trim|required');
 		$this->form_validation->set_rules('idbkm', 'idbkm', 'trim');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
