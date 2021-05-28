@@ -18,7 +18,7 @@
         	</div>
 			<div class="form-group">
             	<label for="date">Tgl <?php echo form_error('tgl') ?></label>
-            	<input type="text" class="form-control" name="tgl" id="tgl" placeholder="Tgl" value="<?php echo $tgl; ?>" readonly />
+            	<input type="text" class="form-control" name="tgl" id="tgl" placeholder="Tgl" value="<?php echo dateIndo($tgl); ?>" readonly />
         	</div>
 			<div class="form-group">
             	<label for="varchar">Company <?php echo form_error('company') ?></label>
