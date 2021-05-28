@@ -224,6 +224,11 @@ class T30_tamu extends CI_Controller
         if ($row) {
 
             /**
+             * hapus data di tabel kurs
+             */
+            $this->T35_kurs_model->deleteTripNo($TripNo, $company);
+
+            /**
              * hapus data detail pembayaran selisih price list
              */
             $this->T34_bayars2_model->deleteTripNo($TripNo, $company);
@@ -231,22 +236,22 @@ class T30_tamu extends CI_Controller
             /**
              * hapus data detail pembayaran selisih
              */
-            $this->T33_bayars_model->deleteTripNo($TripNo);
+            $this->T33_bayars_model->deleteTripNo($TripNo, $company);
 
             /**
              * hapus data detail pembayaran
              */
-            $this->T32_bayard_model->deleteTripNo($TripNo);
+            $this->T32_bayard_model->deleteTripNo($TripNo, $company);
 
             /**
              * hapus data master pembayaran
              */
-            $this->T31_bayar_model->deleteTripNo($TripNo);
+            $this->T31_bayar_model->deleteTripNo($TripNo, $company);
 
             /**
              * hapus data berdasarkan Trip No. di tabel t30_tamu
              */
-            $this->T30_tamu_model->deleteTripNo($TripNo);
+            $this->T30_tamu_model->deleteTripNo($TripNo, $company);
 
 
             $this->session->set_flashdata('message', 'Delete Record Success');

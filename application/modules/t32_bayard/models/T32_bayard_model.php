@@ -90,7 +90,7 @@ class T32_bayard_model extends CI_Model
     /**
      * hapus data berdasarkan Trip No.
      */
-    function deleteTripNo($TripNo)
+    function deleteTripNo($TripNo, $company)
     {
         $q = "
         delete
@@ -103,7 +103,7 @@ class T32_bayard_model extends CI_Model
                 from
                     t31_bayar
                 where
-                    idtamu in (select idtamu from t30_tamu where TripNo = '".$TripNo."')
+                    idtamu in (select idtamu from t30_tamu where TripNo = '".$TripNo."' and Company = '".$company."')
                     )
         ";
         $this->db->query($q);

@@ -13,6 +13,7 @@ class T35_kurs_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->db = $this->load->database('TAMU', true);
     }
 
     // get all
@@ -78,6 +79,21 @@ class T35_kurs_model extends CI_Model
         $where = "no = '".$tripNo."' and tgl = '".$tripTgl."' and company = '".$company."'";
         $this->db->where($where);
         return $this->db->get($this->table)->row();
+    }
+
+    /**
+     * hapus data berdasarkan Trip No.
+     */
+    function deleteTripNo($TripNo, $company)
+    {
+        $q = "
+            delete
+            from
+                t35_kurs
+            where
+                no = '".$TripNo."' and company = '".$company."'
+        ";
+        $this->db->query($q);
     }
 
 }

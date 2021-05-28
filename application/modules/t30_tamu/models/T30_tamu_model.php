@@ -112,14 +112,14 @@ class T30_tamu_model extends CI_Model
     /**
      * hapus data berdasarkan Trip No.
      */
-    function deleteTripNo($TripNo)
+    function deleteTripNo($TripNo, $company)
     {
         $q = "
             delete
             from
                 t30_tamu
             where
-                TripNo = '".$TripNo."'
+                TripNo = '".$TripNo."' and Company = '".$company."'
         ";
         $this->db->query($q);
     }

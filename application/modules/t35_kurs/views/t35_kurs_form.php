@@ -30,7 +30,7 @@
         	</div>
 			<input type="hidden" name="idbkm" value="<?php echo $idbkm; ?>" />
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-			<a href="<?php echo site_url('t35_kurs') ?>" class="btn btn-secondary">Batal</a>
+			<a href="<?php echo site_url('t30_tamu') ?>" class="btn btn-secondary">Batal</a>
 		</form>
     <!-- </body>
 </html> -->
