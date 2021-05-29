@@ -566,6 +566,36 @@ class T30_tamu extends CI_Controller
     {
         $dataPackage = $this->T01_package_model->getByCode($code);
 
+        // echo pre($dataPackage); exit;
+        /*
+        stdClass Object
+        (
+        [idprice] => 2
+        [PackageName] => DELUXE
+        [PackageCode] => DEL
+        [SN3LN] => 725.03
+        [SN6LN] => 930
+        [SNELN] => 166
+        [PN1LN] => 95
+        [PN1DN] => 550000
+        [SN3C] => 440.03
+        [SN3CP] => 0.61
+        [SN6C] => 360
+        [SN6CP] => 0.39
+        [SNEC] => 71
+        [SNECP] => 0.43
+        [PN3C] => 285
+        [PN3CP] => 0.39
+        [PN6C] => 570
+        [PN6CP] => 0.61
+        [PNEC] => 95
+        [PNECP] => 0.57
+        [idusers] => 1
+        [created_at] => 2020-09-19 20:22:52
+        [updated_at] => 2021-04-02 00:47:15
+        )
+         */
+
         $priceList = 0;
 
         /**
@@ -574,24 +604,28 @@ class T30_tamu extends CI_Controller
         if ($dataPackage) {
             // data package ditemukan
             // $nights = $row['D'];
-            switch ($night) {
-                case 3:
-                    $priceList = $dataPackage->SN3LN;
-                    break;
-                case 4:
-                    $priceList = $dataPackage->SN3LN + $dataPackage->SNELN;
-                    break;
-                case 5:
-                    $priceList = $dataPackage->SN3LN + (2 * $dataPackage->SNELN);
-                    break;
-                case 6:
-                    $priceList = $dataPackage->SN6LN;
-                    break;
-                default:
-                    $priceList = 0;
-            }
-            if ($night > 6) {
-                $priceList = $dataPackage->SN6LN + (($night - 6) * $dataPackage->SNELN);
+            if ($this->session->userdata('dbName') == 'SSW') {
+                switch ($night) {
+                    case 3:
+                        $priceList = $dataPackage->SN3LN;
+                        break;
+                    case 4:
+                        $priceList = $dataPackage->SN3LN + $dataPackage->SNELN;
+                        break;
+                    case 5:
+                        $priceList = $dataPackage->SN3LN + (2 * $dataPackage->SNELN);
+                        break;
+                    case 6:
+                        $priceList = $dataPackage->SN6LN;
+                        break;
+                    default:
+                        $priceList = 0;
+                }
+                if ($night > 6) {
+                    $priceList = $dataPackage->SN6LN + (($night - 6) * $dataPackage->SNELN);
+                }
+            } else {
+                
             }
         } else {
             // data package tidak ditemukan

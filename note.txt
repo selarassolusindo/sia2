@@ -3,9 +3,9 @@ input data ::
 - * import data adalah sama dengan menu Tamu > Input Data
 - * Tamu > Input Data, ditambahi informasi kurs di header, sejajar dengan no. bkm dan tanggal
 - * Tamu > Input Data, ditambahi 'Edit Kurs'
-- Tamu > Input Data > Ubah, pricelist, nilainya berdasarkan Package (Setup > Package) yang dipilih
-- Tamu > Input Data > Ubah, pricelist, berdampak di pricelist Tamu > Pembayaran
-- pengambilan pricelist sesuai Package dan login perusahaan
+- * Tamu > Input Data > Ubah, pricelist, nilainya berdasarkan Package (Setup > Package) yang dipilih
+- * Tamu > Input Data > Ubah, pricelist, berdampak di pricelist Tamu > Pembayaran
+- * pengambilan pricelist sesuai Package dan login perusahaan
 
 - kolom fee tanas, menunggu info dari pak budi lagi setelah nelpon mbak ninik
 
@@ -16,7 +16,5 @@ input data ::
 - untuk piw :: ada kolom hotel di template
 
 - * di file template ditambahi kolom Male-Female, Country, ID Card atau Passport
-- Tamu > Input Data, header Price List ditambahi USD
+- * Tamu > Input Data, header Price List ditambahi USD
 
-a:2:{i:0;a:2:{s:8:"MataUang";s:3:"USD";s:5:"Nilai";s:5:"14500";}i:1;a:2:{s:8:"MataUang";s:3:"AUD";s:5:"Nilai";s:5:"17500";}}
-a:2:{i:0;a:2:{s:8:"MataUang";s:3:"USD";s:5:"Nilai";s:5:"14500";}i:1;a:2:{s:8:"MataUang";s:3:"AUD";s:5:"Nilai";s:5:"17500";}}
