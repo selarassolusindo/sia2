@@ -123,7 +123,7 @@
                         <th rowspan="2" class="text-center">ID CARD</th>
         				<th colspan="4" class="text-center">PACKAGE</th>
                         <th rowspan="2" class="text-center">AGENT</th>
-                        <th rowspan="2" class="text-center">PRICE LIST</th>
+                        <th rowspan="2" class="text-center">PRICE LIST<br>USD</th>
         				<th rowspan="2" class="text-center">FEE TANAS</th>
         				<th rowspan="2" class="text-center">PRICE TO PAY</th>
         				<th rowspan="2" class="text-center">REMARKS</th>

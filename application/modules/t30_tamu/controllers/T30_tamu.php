@@ -180,6 +180,12 @@ class T30_tamu extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('idtamu', TRUE));
         } else {
+
+            /**
+             * ambil nilai price list
+             */
+            $priceList = $this->getPriceList($this->input->post('PackageName',TRUE), $this->input->post('Night',TRUE), 'inside');
+
             $data = array(
 				'TripNo' => $this->input->post('TripNo',TRUE),
 				'TripTgl' => dateMysql($this->input->post('TripTgl',TRUE)),
@@ -189,7 +195,7 @@ class T30_tamu extends CI_Controller
 				'CheckIn' => dateMysql($this->input->post('CheckIn',TRUE)),
                 'CheckOut' => dateAdd(dateMysql($this->input->post('CheckIn',TRUE)), $this->input->post('Night',TRUE)),
 				'Agent' => $this->input->post('Agent',TRUE),
-				'PriceList' => $this->input->post('PriceList',TRUE),
+				'PriceList' => $priceList, // $this->input->post('PriceList',TRUE),
 				'FeeTanas' => $this->input->post('FeeTanas',TRUE),
 				'PricePay' => $this->input->post('PricePay',TRUE),
 				'Remarks' => $this->input->post('Remarks',TRUE),
@@ -197,11 +203,6 @@ class T30_tamu extends CI_Controller
 				'idusers' => $this->session->userdata('user_id'),
 			);
             $this->T30_tamu_model->update($this->input->post('idtamu', TRUE), $data);
-
-            /**
-             * ambil nilai price list
-             */
-            $priceList = $this->getPriceList($this->input->post('PackageName',TRUE), $this->input->post('Night',TRUE), 'inside');
 
             /**
              * update pricelist di tabel bayar
@@ -212,7 +213,7 @@ class T30_tamu extends CI_Controller
             $this->T31_bayar_model->updateByParam('idtamu', $this->input->post('idtamu', TRUE), $data);
 
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('t30_tamu'));
+            redirect(site_url('t30_tamu/update/'.$this->input->post('idtamu', TRUE)));
         }
     }
 

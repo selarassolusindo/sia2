@@ -71,7 +71,7 @@
         	</div>
 			<div class="form-group">
             	<label for="double">PRICE LIST <?php echo form_error('PriceList') ?></label>
-            	<input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" />
+            	<input type="text" class="form-control" name="PriceList" id="PriceList" placeholder="PRICE LIST" value="<?php echo $PriceList; ?>" readonly />
         	</div>
 			<div class="form-group">
             	<label for="double">FEE TANAS <?php echo form_error('FeeTanas') ?></label>
@@ -87,7 +87,7 @@
         	</div>
 			<input type="hidden" name="idtamu" value="<?php echo $idtamu; ?>" />
 			<button type="submit" class="btn btn-primary"><?php echo $button ?></button>
-			<a href="<?php echo site_url('t30_tamu') ?>" class="btn btn-secondary">Batal</a>
+			<a href="<?php echo site_url('t30_tamu') ?>" class="btn btn-secondary">Selesai</a>
 		</form>
 
         <script>
