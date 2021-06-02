@@ -13,7 +13,9 @@ input data ::
 
 - file template untuk import bkm :: dibedakan antara piw dan ssw
 
-- untuk piw :: ada kolom hotel di template
+- file excel template untuk piw ::
+  - ditambahi kolom hotel
+  - ditambahi kolom mata uang sebelum pricelist
 
 - * di file template ditambahi kolom Male-Female, Country, ID Card atau Passport
 - * Tamu > Input Data, header Price List ditambahi USD

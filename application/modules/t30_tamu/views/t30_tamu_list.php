@@ -76,7 +76,7 @@
                         NO. BKM
                     </div>
                     <div class="col-1">
-                        : <?php echo $t30_tamu->TripNo ?>
+                        : <?php echo $t30_tamu->TripNo . ' - ' . $t30_tamu->Company ?>
                     </div>
                     <div class="col">
                         <?php echo anchor(site_url('t30_tamu/delete/'.$t30_tamu->TripNo.'/'.$this->session->userdata('dbName')),'Hapus BKM NO. ' . $t30_tamu->TripNo,' onclick="javascript: return confirm(\'Apakah BKM NO. '.$t30_tamu->TripNo.' - TGL. '.date_format(date_create($t30_tamu->TripTgl), 'd-m-Y').' akan dihapus ?\')"'); ?>

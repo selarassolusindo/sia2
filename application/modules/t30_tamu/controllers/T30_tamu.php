@@ -625,7 +625,7 @@ class T30_tamu extends CI_Controller
                     $priceList = $dataPackage->SN6LN + (($night - 6) * $dataPackage->SNELN);
                 }
             } else {
-                
+
             }
         } else {
             // data package tidak ditemukan
