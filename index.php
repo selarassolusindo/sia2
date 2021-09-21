@@ -67,6 +67,11 @@
             define('DBPREFIX', 'u473805576');
             break;
 
+        case "sia.selarassolusindo.com":
+            $env = "production";
+            define('DBPREFIX', 'u736643050');
+            break;
+
         default:
             $env = "development";
             break;
